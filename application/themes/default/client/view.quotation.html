@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+          <div class="widget titlebar-widget">
+            <div class="titlebar">
+              <h3>[quotation.quotations_form_title;noerr]</h3>
+            </div>
+          </div>
+      <!--WI_TITLE_BAR-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_QUOATATION_MAIN_CONTAINER-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_quotation] == 1;comm]-->
+          <!--LEFT_SIDE_CONTAINER-->
+          <div class="col-lg-3">
+            <!--WI_QUOTATION_SUMMARY-->
+            <div class="box side-menu-main">
+              <div class="box-head-dark"><i class="icon-list"></i> [lang.lang_quotation_details]
+                <div class="clearfix"></div>
+              </div>
+              <div class="box-content">
+                <table class="table table-bordered table-no-division-border">
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-4">
+                        [lang.lang_id]:</td>
+                      <td class="col-sm-8"><!--[quotation.quotations_id;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_date]:</td>
+                      <td><!--[quotation.quotations_date;noerr;comm;onformat=runtime_date]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_status]:</td>
+                      <td><!--[quotation.quotations_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_reviewed]:</td>
+                      <td><!--[quotation.team_profile_full_name;noerr;comm;onformat=runtime_check_blank_ucwords]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_date]:</td>
+                      <td><!--[quotation.quotations_reviewed_date;noerr;comm;onformat=runtime_date]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_quote]</td>
+                      <td><strong>
+                        <!--[settings_general.currency_symbol;comm]--><!--[quotation.quotations_amount;noerr;comm;onformat=runtime_number_decimal]-->
+                        </strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_QUOTATION_SUMMARY-->
+          </div>
+          <!--LEFT_SIDE_CONTAINER-->
+          <!--WI_RIGHTSIDE_CONTAINER-->
+          <div class="col-lg-9">
+            <!--WI_QUOTATION_ANSWERS-->
+            <div class="widget">
+              <div class="widget-head-dark">
+                <div class="pull-left">
+                  <div class="pull-left">
+                    <i class="icon-user"></i> [lang.lang_quotation_form_responses]</div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-content">
+                <table class="table table-bordered quotation-extra-padd">
+                  <tbody>
+                    <tr>
+                      <td><label>
+                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank_ucfirst;comm]-->
+                        </label>
+                        <div>
+                          <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_QUOTATION_ANSWERS-->
+                        <!--WI_QUOTATION_NOTES-->
+            <div class="box">
+              <div class="box-head-dark"> [lang.lang_admin_notes] </div>
+              <div class="box-content box-pad"> [quotation.quotations_admin_notes;htmlconv=no]</div>
+            </div>
+            <!--WI_QUOTATION_NOTES-->
+          </div>
+          <!--WI_RIGHTSIDE_CONTAINER_END-->
+        </div>
+        <!--WI_QUOATATION_MAIN_CONTAINER-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

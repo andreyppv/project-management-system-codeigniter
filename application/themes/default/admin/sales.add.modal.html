@@ -1,0 +1,118 @@
+<div class="modal-dialog" style="width:750px;">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				x
+			</button>
+			<!--full screen icon - custom.js-->
+			<button type="button" class="full-screen-modal close" aria-hidden="true">
+				<i class="icon-fullscreen"></i>
+			</button>
+			<!--full screen icon - custom.js-->
+			<h4 class="modal-title" id="modal-iframe-title">Add New Lead</h4>
+			<div class="clearfix"></div>
+		</div>
+		<form class="form-horizontal" action="[conf.site_url]/admin/sales/add-lead" method="post" id="addNewProject">
+		<div class="modal-body">
+				<div class="box">
+					<div class="box-content">
+						<table class="table table-bordered table-forms">
+							<tbody>
+								<tr>
+									<td>Name*</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input required type="text" class="form-control" name="leads_name" id="leads_name" required="required" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Company</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="leads_company" id="leads_company"  autocomplete="off" aria-required="false">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Telephone</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="leads_telephone" id="leads_telephone"autocomplete="off" aria-required="false">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Email*</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input required type="email" class="form-control" name="leads_email" id="leads_email" required="required" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Website</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="leads_www" id="leads_www" autocomplete="off" aria-required="false">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Value</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="leads_value" id="leads_value" autocomplete="off" aria-required="false">
+									</div></td>
+								</tr>
+								<tr>
+                                    <td>Sales Person</td>
+                                    <td>
+                                    <div class="col-sm-12 col-md-8 no-padding-both">
+                                        <select class="form-control" name="sales_person" id="sales_person">
+                                            <option value="">Select</option>
+                                            <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                        </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+									<td>Hot</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+                                    	<input type="checkbox" name="leads_hot" id="leads_hot" value="1" aria-required="false" />
+									</div></td>
+								</tr>
+								<tr>
+									<td>Lost</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+                                    	<input type="checkbox" name="leads_lost" id="leads_lost" value="1" aria-required="false" />
+									</div></td>
+								</tr>
+								<tr>
+									<td>Description</td>
+									<td>
+									<div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+										<textarea required name="leads_description" id="leads_description" style="visibility: hidden; display: none;"></textarea>
+									</div></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-primary" type="submit" value="Add Lead" id="" name="submit">
+			<button class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		CKEDITOR.replace('leads_description', {
+			toolbar : 'Basic',
+			uiColor : '#ffffff',
+			height : '200px'
+		});
+	});
+</script>

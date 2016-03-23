@@ -1,0 +1,17 @@
+#NEXTLOOP
+#.HACCESS FILE FOR CODEIGNITER
+
+
+# Enable Rewrite
+RewriteEngine on
+
+# If you have installed to a subfolder, uncomment the line below and replace the text 'your-subfolder' with your real subfolder name
+#RewriteBase /your-subfolder/
+
+RewriteRule ^(application/themes|application/language|updates|files|install)($|/) - [L]
+
+#Allow direct access to images and robots.txt
+RewriteCond $1 !^(index\.php|images|robots\.txt|css|png|gif|jpg|ico|__freshbooksapi|quotes|workspaces)
+
+#redirect everything else
+RewriteRule ^(.*)$ ./index.php?/$1 [L]

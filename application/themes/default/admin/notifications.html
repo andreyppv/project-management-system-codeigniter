@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+<!-- Main bar -->
+<div class="mainbar">
+  <!----------------------COMMON PAGE HEADING--------------------------------->
+  <!--[onload;file=common.heading.html;getbody;comm]-->
+  <!----------------------COMMON PAGE HEADING--------------------------------->
+  <!-- Matter -->
+  <div class="matter">
+    <div class="container">
+        <div class="row fullscreen-mode">
+         
+
+<div class="navbar navbar-default" role="navigation">
+        
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only"> Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          
+
+             <style type="text/css">
+            .sales-buttons li{ display:inline; padding:20px;}
+            .sales-buttons{margin-top:10px;}
+            </style> 
+
+
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+
+
+
+        
+        </div>
+      </div>
+	  <div class="container">
+    <div class="row">
+    	<div class="col-md-12 widget" style="padding-top: 20px; padding-bottom: 20px;">
+			<a href="#modal" style="margin-bottom: 15px;" class="btn btn-info " data-toggle="modal" data-load-remote="/admin/sales/add-modal"> <i class="icon-plus" style="margin-right: 5px;"></i> Add a New Lead </a>
+			<div class="clearfix"></div>
+			<table id="salesTable" class="cell-border">
+			    <thead>
+			        <tr>
+			            <th>Project</th>
+			            <th>Action</th>
+			            <td>Date</td>
+			            <th></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			        	<td><!--[blk1.projects_title;block=tr;comm]--></td>
+			        	<td><!--[blk1.logs_action;block=tr;comm]--></td>
+			        	<td><!--[blk1.new_date;block=tr;comm;onformat=runtime_datetime]--></td>
+			        	<td>
+			        		<a target="_blank" href="/admin/<!--[blk1.logs_type;block=tr;comm]-->/<!--[blk1.projects_id;block=tr;comm]-->/view" class="btn btn-info">Check</a>
+			        	</td>
+			        </tr>
+			    </tbody>
+			</table>
+    	</div>
+    </div>
+    </div>
+    </div>
+    <!-- Matter ends -->    
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+</body>
+</html>

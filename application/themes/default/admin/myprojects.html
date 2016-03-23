@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+
+</head>
+
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+
+<body>
+    
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Main bar -->
+    <div class="mainbar">
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!--[onload;file=common.heading.html;getbody;comm]-->
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!-- Matter -->
+        <div class="matter">
+            <!--WI_TITLE_BAR-->
+            <div class="widget titlebar-widget">
+                <div class="titlebar">
+                    <a type="submit" class="btn btn-information btn-mid" href="[conf.site_url]/admin/myprojects/list">[lang.lang_all]</a>
+                    <a type="submit" style="margin-left:0;" class="btn btn-success btn-mid" href="[conf.site_url]/admin/myprojects/list/completed">[lang.lang_completed]</a>
+                    <a type="submit" style="margin-left:0;" class="btn btn-info btn-mid" href="[conf.site_url]/admin/myprojects/list/in-progress">[lang.lang_in_progress]</a><a type="submit" class="btn btn-danger btn-mid" href="[conf.site_url]/admin/myprojects/list/behind-schedule">[lang.lang_behind_schedule]</a>
+                </div>
+            </div>
+            <!--WI_TITLE_BAR-->
+            <div class="container">
+                <!----------------------COMMON NOTICES--------------------------------->
+                <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+                <!----------------------COMMON NOTICES--------------------------------->
+                <!--WI_PROJECTS_TABLE-->
+                <div class="row fullscreen-mode">
+                    <!--[onshow;block=div;when [visible.wi_projects_table] == 1;comm]-->
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-content">
+                                <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>[lang.lang_project]</th>
+                                        <th>[lang.lang_client]</th>
+                                        <th>[lang.lang_deadline]</th>
+                                        <th>[lang.lang_progress]</th>
+                                        <th>[lang.lang_my_time]</th>
+                                        <th>[lang.lang_my_tasks]</th>
+                                        <th>[lang.lang_status]</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+                                    <tr class="tr-link" data-link="[conf.site_url]/admin/project/[myprojects.projects_id;block=tr;noerr]/view">
+                                        <td>
+                                            <!--[myprojects.projects_id;block=tr;comm]-->
+                                        </td>
+                                        <td>
+                                            <!--[myprojects.projects_title;block=tr;comm;ope=max:120]-->
+                                        </td>
+                                        <td>
+                                            <span class="label label-purple">
+                                            <!--[myprojects.clients_company_name;block=tr;comm;ope=max:20]--></span> </td>
+                                        <td>
+                                            <!--[myprojects.project_deadline;block=tr;comm;onformat=runtime_date]-->
+                                        </td>
+                                        <td class="progress-bar-td">
+                                            <!--progress bar-->
+                                            <div class="progress active progress-table">
+                                                <div class="progress-bar progress-bar-primary progress-bar-table" style="width:[myprojects.projects_progress_percentage;block=tr;onformat=runtime_number]%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar"><span class="progress-text">
+                                                <!--[myprojects.projects_progress_percentage;block=tr;onformat=runtime_number;comm]-->%</span></div>
+                                            </div>
+                                            <!--progress bar-->
+                                        </td>
+                                        <td>
+                                            <span class="label label-success">
+                                            <!--[myprojects.timer;block=tr;comm;onformat=runtime_timer]-->
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <!--[myprojects.pending_tasks;block=tr;comm;onformat=runtime_number]-->
+                                        </td>
+                                        <td>
+                                            <!--[myprojects.projects_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]-->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+
+                                <div class="widget-foot">
+                                    <!--WI_SORTING_INFO-->
+                                    <div class="bns-info-div pull-left" style="max-width:300px;"> </div>
+                                    <!--WI_SORTING_INFO-->
+                                    <!--WI_PAGINATION-->
+                                    <ul class="pagination pull-right">
+                                        [vars.pagination;noerr;htmlconv=no]
+                                    </ul>
+                                    <!--WI_PAGINATION-->
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--WI_PROJECTS_TABLE-->
+                <!--WI_NOTIFICATION-->
+                <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                        </div>
+                    </div>
+                </div>
+                <!--WI_NOTIFICATION-->
+            </div>
+        </div>
+        <!-- Matter ends -->
+    </div>
+    <!-- Mainbar ends -->
+    <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+    <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <!--full screen icon - custom.js-->
+                    <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+                    <!--full screen icon - custom.js-->
+                    <h4 class="modal-title" id="modal-iframe-title">[lang.lang_edit]</h4>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-body">
+                    <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_closed]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    
+</body>
+
+</html>

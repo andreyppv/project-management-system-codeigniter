@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-3">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-9">
+            <div class="widget">
+              <div class="widget-content-project">
+                <!-----------------------------------------------TABS-INVOICE------------------------------------------------------------------>
+                <div class="project-info-tabs">
+                  <!--WI_INVOICE_NAVIGATION-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="tabs-sub-nav"> <span class="pull-left">
+                         <h3> [vars.invoice_id_display]</h3>
+                        </span>
+                        <!--WI_INVOICE_ACTIONS-->
+                        <span>
+ <!--[onshow;block=span;when [project_permissions.edit_item_my_project_invoices] == 1;comm]--><!--permissions-->                     
+                        <!--download pdf-->
+                        <a data-toggle="modal" 
+                           class="btn btn-mid btn-success pull-right" 
+                           href="[conf.site_url;noerr]/admin/invoice/[vars.project_id]/pdf/[invoice.invoices_id;noerr]/download"><i class="icon-download-alt"></i> <span class="allcaps">[lang.lang_pdf]</span> ([lang.lang_printable]) </a>
+                        <!--download pdf-->
+                        <!--resend email button-->
+                        <a data-toggle="modal" class="btn btn-mid btn-info pull-right" href="[conf.site_url;noerr]/admin/invoice/[vars.project_id]/publish-invoice/[invoice.invoices_id;noerr]/resend"><i class="icon-envelope"></i> [lang.lang_resend_invoice]</a>
+                        <!--resend email button-->
+                        <!--publish button-->
+                        <a class="btn btn-mid btn-warning pull-right" href="[conf.site_url;noerr]/admin/invoice/[vars.project_id]/publish-invoice/[invoice.invoices_id;noerr]/first"> <i class="icon-check"></i> [lang.lang_publish_invoice]
+                        <!--[onshow;block=a;when [invoice.invoices_status] == 'new';comm]-->
+                        </a>
+                        <!--publish button-->
+                        </span>
+                        <!--WI_INVOICE_ACTIONS-->
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_INVOICE_SUMMARY-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_show_invoice] == 1;comm]-->
+                    <div class="col-lg-12">
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <table class="table table-bordered table-shaded">
+                            <thead>
+                              <tr>
+                                <th colspan="4"><span class="pull-left">
+                                  <!--[project_details.clients_company_name;comm;noerr;ope=max:50]-->
+                                  </span> <span class="pull-right  invoice"> 
+         <!--[onshow;block=span;when [project_permissions.edit_item_my_project_invoices] == 1;comm]--><!--permissions--> 
+                                  <a class="btn btn-small btn-default edit-invoice-modal" 
+                                     data-toggle="modal"
+                                     data-modal-window-title="[lang.lang_edit_invoice]"
+                                     data-height="450" 
+                                     data-width="100%"
+                                     data-tax-rate="[invoice.invoices_tax_rate]"
+                                     data-invoice-notes="[invoice.invoices_notes]"
+                                     data-invoice-date="[invoice.invoices_date]"
+                                     data-invoice-due-date="[invoice.invoices_due_date]"
+                                     data-invoices-custom-id="[invoice.invoices_custom_id]"
+                                     data-invoices-id="[invoice.invoices_id]"
+                                     data-invoices-events-id="[invoice.invoices_events_id]"
+                                     data-target="#editInvoiceModal"><i class="icon-edit"></i> [lang.lang_edit] Invoice </a> <a data-toggle="modal" class="btn btn-small btn-default" href="#addInvoiceItemModal"><i class="icon-plus"></i> [lang.lang_add_invoice_items] </a> <a data-toggle="modal" class="btn btn-small btn-default" href="#addInvoicePaymentModal"><i class="icon-plus"></i> [lang.lang_add_payment] </a> </span> <span class="clearfix"></span></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><strong>[lang.lang_date_billed]:</strong> </td>
+                                <td><!--[invoice.invoices_date;onformat=runtime_date;comm]--></td>
+                                <td><strong>[lang.lang_status]:</strong></td>
+                                <td><!--[invoice.invoices_status;onformat=runtime_status_colors;htmlconv=no;comm]-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><strong>[lang.lang_date_due]</strong></td>
+                                <td><!--[invoice.invoices_due_date;onformat=runtime_date;comm]--></td>
+                                <td><strong>[lang.lang_last_emailed]:</strong></td>
+                                <td><!--[invoice.invoices_last_emailed;onformat=runtime_date;comm]--></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_INVOICE_SUMMARY-->
+                  <!--WI_INVOICE-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_show_invoice] == 1;comm]-->
+                    <div class="col-lg-12">
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <div class="widget-box">
+                            <!--WI_INVOICE_TABLE-->
+                            <table class="table table-bordered table-hover" width="100%">
+                              <thead>
+                                <tr>
+                                  <th style="width:30px;"></th>
+                                  <th> [lang.lang_title]</th>
+                                  <th class="responsive-table-xs-remove"> [lang.lang_description]</th>
+                                  <th>[lang.lang_quantity]</th>
+                                  <th>[lang.lang_rate]</th>
+                                  <th>[lang.lang_total]</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!--wi_no_invoice_items_found-->
+                                <tr>
+                                  <!--[onshow;block=tr;when [visible.wi_no_invoice_items_found] == 1;comm]-->
+                                  <td colspan="6"><div align="center"> [lang.lang_no_items_have_been_added_to_this_invoice]</div></td>
+                                </tr>
+                                <!--wi_no_invoice_items_found-->
+                                <tr>
+                                  <td><!--control buttons delete-->
+                                    <span>
+ <!--[onshow;block=span;when [project_permissions.delete_item_my_project_invoices] == 1;comm]--><!--permissions-->                                     <a class="btn btn-xs btn-danger confirm-url-action" 
+                                       href="[conf.site_url]/admin/invoice/[vars.project_id]/delete-invoice-item/[invoice.invoices_id;noerr]/[products.invoice_products_id;block=tr;noerr]"
+                                       data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                           data-popconfirm-no="[lang.lang_no;noerr]"
+                                       data-popconfirm-title="[lang.lang_are_you_sure;noerr]"
+                                       data-popconfirm-placement="left" > <i class="icon-trash"></i> </a> </span>
+                                    <!--control buttons delete - end -->
+                                  </td>
+                                  <td><!--[products.invoice_products_title;block=tr;onformat=runtime_check_blank_ucwords;comm]--></td>
+                                  <td class="responsive-table-xs-remove"><!--[products.invoice_products_description;block=tr;onformat=runtime_check_blank;comm]--></td>
+                                  <td><!--[products.invoice_products_quantity;block=tr;onformat=runtime_number;comm]--></td>
+                                  <td><!--[products.invoice_products_rate;block=tr;onformat=runtime_number_decimal;comm]--></td>
+                                  <td><!--[products.invoice_products_total;block=tr;onformat=runtime_number_decimal;comm]--></td>
+                                </tr>
+                                <!--wi_invocie_tax-->
+                                <tr>
+                                  <!--[onshow;block=tr;when [visible.wi_invocie_tax] == 1;comm]-->
+                                  <td colspan="4" style=""><div align="right"> [lang.lang_tax]</div></td>
+                                  <td><!--[invoice.invoices_tax_rate;comm;noerr;onformat=runtime_number_decimal]-->
+                                    %</td>
+                                  <td><!--[invoice.invoices_tax_amount;comm;noerr;onformat=runtime_number_decimal]--></td>
+                                </tr>
+                                <!--wi_invocie_tax_end-->
+                              </tbody>
+                            </table>
+                            <!--WI_INVOICE_TABLE-->
+                            <!--WI_INVOICE_TABLE_TOTAL-->
+                            <div class="widget-box-footer">
+                              <div class="invoice-footer-total pull-left"> [lang.lang_total]</div>
+                              <div class="invoice-footer-amount pull-right">
+                                <!--[settings_general.currency_symbol;comm;noerr]-->
+                                <!--[invoice.invoices_amount;comm;noerr;onformat=runtime_number_decimal]-->
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                            <!--WI_INVOICE_TABLE_TOTAL-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_INVOICE-->
+                  <!--WI_PAYMENT_HISTORY_TABLE-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_show_invoice] == 1;comm]-->
+                    <!--PAYMENTS-->
+                    <div class="col-lg-12">
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <div>
+                            <!--[onshow;block=div;when [visible.wi_sidemenu_payments_table] == 1;comm]-->
+                            <table class="table table-bordered table-shaded">
+                              <thead>
+                                <tr>
+                                  <th colspan="5">[lang.lang_payment_history]</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><!--[payments.payments_id;block=tr;onformat=runtime_check_blank;comm]--></td>
+                                  <td><!--[payments.payments_date;block=tr;onformat=runtime_date;comm]--></td>
+                                  <td><!--[payments.payments_method;block=tr;onformat=runtime_check_blank_ucwords;comm]--></td>
+                                  <td><!--[payments.payments_transaction_id;block=tr;onformat=runtime_check_blank;comm]--></td>
+                                  <td><!--[payments.payments_amount;block=tr;onformat=runtime_number_decimal;comm]--></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="4"><div align="right"><strong> [lang.lang_total_payments]</strong></div></td>
+                                  <td><strong>
+                                    <!--[settings_general.currency_symbol;noerr;comm]-->
+                                    <!--[vars.invoice_payments_sum;onformat=runtime_number_decimal;comm]-->
+                                    </strong></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="4"><div align="right">
+                                      <h3>[lang.lang_balance_due]</h3>
+                                    </div></td>
+                                  <td><h3>
+                                      <!--[settings_general.currency_symbol;comm]-->
+                                      [vars.invoice_balance_due;onformat=runtime_number_decimal]</h3></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!--PAYMENT_END-->
+                          <!--WI_NO_PAYMENTS_FOUND-->
+                          <div class="side-menu-info">
+                            <!--[onshow;block=div;when [visible.wi_sidemenu_no_payments] == 1;comm]-->
+                            [lang.lang_no_payments_found]</div>
+                          <!--WI_NO_PAYMENTS_FOUND-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_PAYMENT_HISTORY_TABLE-->
+                  <!--WI_INVOICE_NOTES-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_show_invoice] == 1;comm]-->
+                    <div class="col-lg-12">
+                      <div class="box">
+                        <div class="box-content padd">
+                          <h3 class="text-light">[lang.lang_invoice_notes] (<span class="lowercase">[lang.lang_not_seen_by_client]</span>)</h3>
+                          <!--[invoice.invoices_notes;comm]-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_INVOICE_NOTES-->
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                </div>
+                <div class="clearfix"></div>
+                <!-----------------------------------------------TABS-INVOICE------------------------------------------------------------------>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_INVOICE_ITEMS_MODAL-->
+<div class="row">
+<!--[onshow;block=div;when [project_permissions.edit_item_my_project_invoices] == 1;comm]--><!--permissions-->
+  <div id="addInvoiceItemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/invoice/[vars.project_id]/add-invoice-item" method="post" id="addInvoiceItem">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_invoice_item]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_select_item]</label>
+              <div class="col-lg-12">
+                <!--invoice items list-->
+                <select id="invoice_items_id" name="invoice_items_id" style="width:100%" 
+                        data-ajax-url ="[conf.site_url]/admin/ajax/get-invoice-item-details" autocomplete="off">
+                  <option></option>
+                  <!--[lists.all_invoice_items;noerr;htmlconv=no;protect=no;comm]-->
+                  <option value="0">[lang.lang_create_a_new_item]</option>
+                </select>
+                <!--invoice items list-->
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control toggle-readonly" name="invoice_products_title"  id="invoice_products_title" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control toggle-readonly" id="invoice_products_description" name="invoice_products_description" autocomplete="off" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_rate]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control toggle-readonly" id="invoice_products_rate" name="invoice_products_rate" autocomplete="off" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_quantity]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control toggle-readonly" id="invoice_products_quantity" name="invoice_products_quantity" autocomplete="off" readonly="readonly">
+              </div>
+            </div>
+            <!--save item (for new item only)-->
+            <div class="form-group" id="invoice-add-items-save" style="margin-bottom:10px; display:none;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_save_new_item]</label>
+              <div class="col-lg-12">
+                <input id="save_new_item" type="checkbox" name="save_new_item">
+              </div>
+            </div>
+            <!--save item (for new item only)-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="invoice_products_invoice_id" value="[invoice.invoices_id;noerr]">
+            <input type="hidden" name="invoice_products_project_id" value="[invoice.invoices_project_id;noerr]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_add_invoice_item]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_INVOICE_ITEMS_MODAL-->
+<!--WI_EDIT_INVOICE_MODAL-->
+<div class="row">
+<!--[onshow;block=div;when [project_permissions.edit_item_my_project_invoices] == 1;comm]--><!--permissions-->
+  <div id="editInvoiceModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/invoice/[vars.project_id]/edit/[invoice.invoices_id;noerr]" method="post" id="editInvoice">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit_invoice]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_date_billed]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="invoices_date"  id="invoices_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_date_due]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="invoices_due_date"  id="invoices_due_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_tax] %</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" name="invoices_tax_rate"  id="invoices_tax_rate_edit">
+                
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12"  style="width:100%;"> [lang.lang_custom_invoice_id]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoices_custom_id_edit" name="invoices_custom_id" autocomplete="off">
+              </div>
+            </div>			
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:100%;"> [lang.lang_notes] (<span class="lowercase">[lang.lang_not_seen_by_client]</span>)</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoices_notes_edit" name="invoices_notes" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="invoices_events_id" value="[vars.new_events_id;noerr]">
+            <input type="hidden" name="invoices_id" value="[invoice.invoices_id;noerr]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_INVOICE_MODAL-->
+<!--WI_ADD_INVOICE_PAYMENT_MODAL-->
+<div class="row">
+<!--[onshow;block=div;when [project_permissions.edit_item_my_project_invoices] == 1;comm]--><!--permissions-->
+  <div id="addInvoicePaymentModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/invoice/[vars.project_id]/add-invoice-payment/[invoice.invoices_id;noerr]" method="post" id="addInvoicePayment">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_new_payment]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_payment_method]</label>
+              <div class="col-lg-12">
+                <!--invoice items list-->
+                <select id="payments_method" name="payments_method" style="width:100%" autocomplete="off">
+                  
+                  
+                  
+                  [lists.payment_methods;noerr;htmlconv=no;protect=no]                  
+                
+                
+                
+                </select>
+                <!--invoice items list-->
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="payments_date"  id="payments_date">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_amount]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" name="payments_amount"  id="payments_amount">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_currency]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="payments_currency_code" name="payments_currency_code" value="[settings_general.currency_code]" autocomplete="off" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_transaction_id]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="payments_transaction_id" name="payments_transaction_id" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_notes]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control toggle-readonly" id="payments_notes" name="payments_notes" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="payments_invoice_id" value="[invoice.invoices_id;noerr]">
+            <input type="hidden" name="payments_project_id" value="[invoice.invoices_project_id;noerr]">
+            <input type="hidden" name="payments_client_id" value="[invoice.invoices_clients_id;noerr]">
+            <input type="hidden" name="invoices_custom_id" value="[invoice.invoices_custom_id;noerr]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_invoice_payment]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_INVOICE_PAYMENT_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_LANG-->
+<script>
+//-------------------------------------------------------------------------------
+//[DYNAMIC (TBS) VARIABLES & LANGUAGE]
+//-------------------------------------------------------------------------------
+
+//language
+var lang_requested_item_not_loaded = "[lang.lang_requested_item_not_loaded;noerr]";
+</script>
+<!--JS_LANG-->
+<!--JS_ADD_INVOICE_ITEMS_MODAL-->
+<script>
+//USED BY: VARIOUS
+//ACTIONS: creates a nice pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#invoice_items_id").select2({
+	    placeholder: "[lang.lang_select_invoice_item_or_new;noerr]",
+        allowClear: false
+    });
+    $("#payments_method").select2({
+        allowClear: false
+    });
+</script>
+<!--JS_ADD_INVOICE_ITEMS_MODAL-->
+<!--JS_ADD_INVOICE_ITEMS_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_INVOICE_ITEMS_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#addInvoiceItem").validate({
+		rules: {
+             invoice_products_title: "required",
+             invoice_products_quantity: {
+                           required: true,
+                           number: true
+                           },
+             invoice_products_rate: {
+                           required: true,
+                           number: true
+                           }		
+        },
+		messages: {
+			invoice_products_title: "[lang.lang_field_is_required]",
+            invoice_products_quantity: {
+                           required: "[lang.lang_field_is_required]",
+                           number: "[lang.lang_not_a_valid_number]"
+                           },
+            invoice_products_rate: {
+                           required: "[lang.lang_field_is_required]",
+                           number: "[lang.lang_not_a_valid_number]"
+                           }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_ADD_INVOICE_ITEMS_MODAL-->
+<!--JS_EDIT_INVOICE_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_INVOICE_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#editInvoice").validate({
+		rules: {
+			 invoices_date: "required",
+			 invoices_due_date: "required",
+	         invoices_tax_rate: {
+                required: true,
+                number: true
+            }
+		},
+		messages: {
+			invoices_date: "[lang.lang_field_is_required]",
+			invoices_due_date: "[lang.lang_field_is_required]",
+	        invoices_tax_rate: {
+                required: "[lang.lang_field_is_required]",
+                number: "[lang.lang_not_a_valid_number]"
+            }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_INVOICE_MODAL-->
+<!--JS_EDIT_INVOICE_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_INVOICE_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+		
+    //---edit item link clicked-------
+    $(".edit-invoice-modal").click(function(){
+
+        //get variables from "edit link" data attributes
+        var data_invoice_notes = $(this).attr("data-invoice-notes");
+		var data_invoice_date = $(this).attr("data-invoice-date");
+		var data_invoice_due_date = $(this).attr("data-invoice-due-date");
+		var data_invoices_id = $(this).attr("data-invoices-id");
+		var data_invoices_events_id = $(this).attr("data-invoices-events-id");
+        var data_invoices_tax_rate = $(this).attr("data-tax-rate");
+		var invoices_custom_id_edit = $(this).attr("data-invoices-custom-id");
+
+
+        //set modal input values dynamically
+		$('#invoices_notes_edit').val(data_invoice_notes);
+		$('#invoices_date_edit').val(data_invoice_date);
+		$('#invoices_due_date_edit').val(data_invoice_due_date);
+		$('#invoices_id_edit').val(data_invoices_id);
+		$('#invoices_events_id_edit').val(data_invoices_events_id);
+		$('#invoices_tax_rate_edit').val(data_invoices_tax_rate);
+		$('#invoices_custom_id_edit').val(invoices_custom_id_edit);
+		
+  });
+    
+});
+</script>
+<!--JS_EDIT_INVOICE_MODAL-->
+<!--JS_ADD_INVOICE_PAYMENT_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_INVOICE_PAYMENT_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#addInvoicePayment").validate({
+		rules: {
+			 payments_method: "required",
+			 payments_date: "required",
+			 payments_amount: "required",
+			 payments_currency_code: "required",
+			 payments_transaction_id: "required"
+		},
+		messages: {
+			payments_method: "[lang.lang_field_is_required]",
+			payments_date: "[lang.lang_field_is_required]",
+			payments_amount: "[lang.lang_field_is_required]",
+			payments_currency_code: "[lang.lang_field_is_required]",
+			payments_transaction_id: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_ADD_INVOICE_PAYMENT_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

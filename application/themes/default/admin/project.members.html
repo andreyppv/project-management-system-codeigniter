@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <!-- Sidebar ends -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+    <!----------------------COMMON PROJECT HEAD--------------------------------->
+	<!--[onload;file=common.project.header.html;getbody;comm]-->
+	<!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-md-12">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content-project">
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+                <div class="project-info-tabs">
+                  <!--WI_FILES_NAVIGATION-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="tabs-sub-nav">
+                      	<a class="button btn btn-primary button-back-projects pull-right" href="[vars.return_link;noerr]">Return</a>
+                        <h3 class="pull-left">[lang.lang_project_members]</h3>
+                        <button data-toggle="modal" class="btn btn-mid btn-success" href="#addNewMemberModal"><i class="icon-plus"></i>
+                        [lang.lang_add_new_staff_member]
+<!--[onshow;block=button;when [vars.my_group] == 1;comm]--><!--permissions-->                        
+                        </button>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_FILES_NAVIGATION-->
+                  <!--WI_FILES_TABLE-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_project_members] == 1;comm]-->
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <table class="footable table project-members-table table-bordered table-files">
+                            <thead>
+                              <tr>
+                                <th>&nbsp;</th>
+                                <th><a href="[vars.sortby_filetype;noerr]">[lang.lang_type]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th><a href="[vars.sortby_filename;noerr]">[lang.lang_name]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th data-hide="phone"><a href="[vars.sortby_uploadedby;noerr]">[lang.lang_email]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th data-hide="phone"><a href="[vars.sortby_size;noerr]">
+                                  [lang.lang_telephone]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th style="width:50px; text-align:center; font-size:14px;">
+                                  <i class="icon-reorder"></i> </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!--team members-->
+                              <tr>
+                                <td>
+<img class="avatar-small img-rounded pull-left" src="[conf.site_url;noerr]/files/avatars/[members.team_profile_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/>                                 
+                                </td>
+                                <td><!--[members.project_members_project_lead;block=tr;comm;onformat=runtime_project_members_label;htmlconv=no]--></td>
+                                <td>
+<a class="iframeModal links-blue"
+                                                                      data-height="250" 
+                                                                      data-width="100%"
+                                                                      data-toggle="modal"
+                                                                      data-target="#modalIframe"
+                                                                      data-modal-window-title="[lang.lang_user_profile]" 
+                                                                      data-src="[conf.site_url]/admin/people/team/[members.team_profile_id;block=tr]"
+                                                      href="#">                                
+                                <!--[members.team_profile_full_name;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm]--></a></td>
+                                <td><!--[members.team_profile_email;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><!--[members.team_profile_telephone;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><!--control buttons edit-->
+                                <span>
+<!--[onshow;block=span;when [vars.my_group] == 1;comm]--><!--permissions-->                                
+                                  <button class="btn btn-xs btn-info edit-project-leader" href="#editProjectLeaderModal"  
+                                          data-toggle="modal"
+                                          data-members-id="[members.team_profile_id;block=tr;noerr]"><i class="icon-pencil"></i>
+                                  
+                                  </button>
+                                  </span>
+                                  <!--control buttons edit-->
+                                  <!--control buttons delete-->
+                                  <span>
+<!--[onshow;block=span;when [vars.my_group] == 1;comm]--><!--permissions-->                                  
+                                  <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_project_member;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[members.team_profile_id;block=tr]"
+                                data-mysql-record-id2="[vars.project_id]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-project-member"> <i class="icon-trash"></i>
+                                  
+                                  </button>
+                                  </span>
+                                  <!--control buttons delete - end -->
+                                  </span> </td>
+                              </tr>
+                              <!--team members end-->
+                              <!--clients user-->
+                              <tr>
+                                <td><span class="label label-purple">
+                                  [lang.lang_client_users]</span></td>
+                                <td>
+<a class="iframeModal links-blue"
+                                                                      data-height="250" 
+                                                                      data-width="100%"
+                                                                      data-toggle="modal"
+                                                                      data-target="#modalIframe"
+                                                                      data-modal-window-title="[lang.lang_user_profile]" 
+                                                                      data-src="[conf.site_url]/admin/people/client/[clients_users.client_users_id;block=tr]"
+                                                      href="#">                                <!--[clients_users.client_users_full_name;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm;ope=max:15]--></a></td>
+                                <td><!--[clients_users.client_users_email;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><!--[clients_users.client_users_telephone;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><div align="center">---</div></td>
+								<td></td>
+                                <!--clients users end-->
+                              </tr>
+                            </tbody>
+                          </table>
+
+                            
+                            <!--WI_PAGINATION-->
+                            <ul class="pagination pull-right">
+                              [vars.pagination;noerr;htmlconv=no]
+                            </ul>
+                            <!--WI_PAGINATION-->
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_FILES_TABLE-->
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                </div>
+                <div class="clearfix"></div>
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_MEMBER_MODAL-->
+<div class="row">
+<!--[onshow;block=div;when [vars.my_group] == 1;comm]--><!--permissions-->  <div id="addNewMemberModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/members/[vars.project_id;noerr]/add" method="post" id="addNewMember">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+             [lang.lang_add_new_member]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_team_member]</label>
+              <div class="col-lg-12">
+                <select id="team_profile_id" data-placeholder="[lang.lang_team_member]" name="team_profile_id">
+                  
+                  <option></option>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                     <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                
+                
+                
+                
+                
+                
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_add_member]" id="" name="submit">
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_MEMBER_MODAL-->
+<!--WI_MAKE_LEADER_MODAL-->
+<div class="row">
+<!--[onshow;block=div;when [vars.my_group] == 1;comm]--><!--permissions-->
+  <div id="editProjectLeaderModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/members/[vars.project_id;noerr]/edit" method="post" id="editProjectLeader">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit] Member</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:300px;">
+              [lang.lang_make_project_leader]?</label>
+              <div class="col-lg-12">
+                <select id="project_members_project_lead" name="project_members_project_lead">
+                  <option value="yes">
+                  [lang.lang_yes]</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="project_members_team_id" id="project_members_team_id" value="">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_MAKE_LEADER_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_PULLDOWNLISTS-->
+<script>
+//USED BY: VARIOUS
+//ACTIONS: creates a nice pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#team_profile_id").select2({
+        allowClear: true
+    });
+    $("#project_members_project_lead").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_PULLDOWNLISTS-->
+<!--JS_MAKE_LEADER_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_MAKE_LEADER_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+	
+    //---edit item link clicked-------
+    $(".edit-project-leader").click(function(){
+        //get variables from "edit link" data attributes
+        var data_members_id = $(this).attr("data-members-id");
+
+        //set modal input values dynamically
+		$('#project_members_team_id').val(data_members_id);
+  });
+    
+});
+</script>
+<!--JS_MAKE_LEADER_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

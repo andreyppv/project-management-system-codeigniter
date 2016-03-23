@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+
+<script>
+function checkTimer_(){
+    //commented this by Tomasz
+    //because there is no client/popuptimer controller
+    //maybe this is copied from admin side?
+  /*if (timerActive){
+    alert('Timer is active, we will open a popup to keep your timer running.');
+    window.open("[conf.site_url]/client/popuptimer/[vars.project_id]/[vars.task_id]?timer=start",null,"height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+    timer_stop();
+  }*/
+}
+
+</script>
+</head>
+
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+
+<body onunload="checkTimer_();">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+
+  <style type="text/css">
+  .mainbar{
+    margin-left: 0px;
+  }
+  </style>
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <div class="matter">
+      <!--OMMON PROJECT HEAD-->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!--COMMON PROJECT HEAD-->
+      <!---->
+      <script type="text/javascript" src="[conf.site_url]/__freshbooksapi/newtimer.js"></script>
+      <script type="text/javascript">
+        /*USER SETTINGS*/
+        var task = "[vars.task_id]";
+        var project = "[vars.project_id]";
+        var user = "[vars.my_id]";
+        /*End of USER SETTINGS*/
+
+        $(document).ready(function(){
+          /*Update timer variables.*/
+          
+          timerHours = [vars.hoursworked]; /*Default to current task hours*/
+          timerMinutes = [vars.minutesworked]; /*Default to current task minutes*/
+          timerSeconds = [vars.secondsworked]; /*Default to current task seconds*/
+          
+          convertTimer(true);
+
+        });
+      </script>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+
+            <div class="row">
+              <div class="col-md-12">
+                <script>
+                        $.ajax({
+                          url: "[conf.site_url]/__freshbooksapi/_clientcommunication.php?projectid=[rows4.projects_id]"
+                        }).done(function(data){
+                          $(".client_communication").append(data);
+                        });
+                      </script>
+                
+
+
+                <style type="text/css">
+
+                  .milestones{width:100%; background:#fff;}
+                  .task-table{ width:100%;}
+                  .task-table tr {border-bottom:1px solid #d2d2d2; padding:5px 0; }
+                  .task-table th{ padding:10px 0 5px 0;}
+                  .task-table input{display:block; margin: 0 auto;}
+                  .class-column{ width:50px!important;}
+                  #newSubTask{ padding:20px; width:100%;}
+                  .task-table .pad-me{padding-left:10px;}
+
+                </style>
+                <script type="text/javascript">
+                  function taskCompleted(element){
+                    var subtaskid = $(element).attr('subtaskid');
+                    console.log('called');
+
+                    if($(element).is(':checked')){
+                      /*Marked complete*/
+                      $.ajax({
+                        url: "[conf.site_url]/__freshbooksapi/_subtaskchange.php?status=0&subtaskid=" + subtaskid
+                      }).done(function(e){ /*Action*/ });
+                      $.each($("#subtaskrow"), function(e){ if($($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'line-through'); } });
+
+                    }else{
+                      /*Marked incomplete*/
+                      $.ajax({
+                        url: "[conf.site_url]/__freshbooksapi/_subtaskchange.php?status=1&subtaskid=" + subtaskid
+                      }).done(function(e){ /*Action*/ });
+                      $.each($("#subtaskrow"), function(e){ if(!$($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'none'); } });
+                    }
+                  }
+
+                  function markCompleted(element, status){
+                    console.log("Called event");
+                    if(status == 0){
+                      $(element).attr('checked', 'checked');
+                      $.each($("#subtaskrow"), function(e){ if($($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'line-through'); } });
+                    }
+                  }
+
+                  $(document).ready(function(){
+                    $.each($("#subtaskrow"), function(e){ if($($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'line-through'); } });
+                  });
+                </script>
+                 <div class="milestones">
+                  <div class="bg-night" style="text-align:center; font-size:18px; width:100%; color:#fff;padding:10px 0;">[vars.taskname]</div>
+ 
+                  <div style="padding:20px; min-height:300px;">        
+                                      [rows4.projects_description;noerr;htmlconv=no]
+                   
+                  <div style="clear:both;"></div>
+                  </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+    
+            <h2>Communication</h2>
+            <div role="tabpanel" class="widget">
+          <!-- Nav tabs -->
+          <div class="widget-head-tabbed">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#communiacation-client" aria-controls="communiacation-client" role="tab" data-toggle="tab">Client</a></li>
+            <!--li role="presentation"><a href="#communiacation-notes" aria-controls="communiacation-notes" role="tab" data-toggle="tab">Notes</a></li-->
+          </ul>
+        </div>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="communiacation-client">
+              <div class="col-md-12">
+                      <div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                        <h3>Client Communication</h3>
+                        </span>
+                        
+                        <div class="clearfix"></div>
+                        <!--message-reply-box-->
+                        
+                        <!--message-reply-box-->
+                      </div>
+                      <!--permissions-->
+                              <script>
+                                $(document).ready(function(){
+                                  $(".addmessageform2").submit(function(e){
+                                    $.post( 
+                                      "[conf.site_url]/__freshbooksapi/_createmessage.php?client", 
+                                      { 
+
+                                        messages_text: $("#message_reply_11").val(), 
+                                        messages_project_id: $("#messages_project_id").val(),
+                                        messages_by_id: $("#messages_by_id").val(),
+                                        posted_by: $("#posted_by").val(),
+                                        messages_by: $("#messages_by").val()
+
+                                      }).done(function( data ) {
+                                        location.href = "[conf.site_url]/client/project/"+$("#messages_project_id").val()+"/view?type=client&timer=start";
+                                      });
+                                    e.preventDefault();
+                                  });
+
+                                  $("#messages_replies_by_id").each(function(e){
+                                    $(this).val("[vars.my_id;noerr]");
+                                  });
+                                });
+                              </script>
+                                <form class="addmessageform2" action="[conf.site_url]/client/messages/[vars.project_id;noerr]/add-message" method="post">
+                                  <div class="form-group form-group-standard">
+                                    <div class="col-lg-12">
+                                      <textarea name="messages_text" id="message_reply_11"></textarea>
+                                    </div>
+                                  </div>
+                                  <div class="form-group form-group-standard">
+                                    <div class="col-lg-12">
+                                      <input type="hidden" name="messages_project_id" id="messages_project_id" value="[vars.project_id;noerr]">
+                                      <input type="hidden" name="messages_by_id" id="messages_by_id" value="[vars.my_id;noerr]">
+                                      <input type="hidden" name="posted_by" id="posted_by" value="[vars.my_name;noerr]">
+                                      <input type="hidden" name="messages_by" id="messages_by" value="[vars.my_user_type;noerr]">
+                                      <button class="btn btn-mid btn-primary" type="submit">Post Message</button>
+                                    </div>
+                                  </div>
+                                </form>
+                    <div class="client_communication"></div>
+                </div>  
+              </div>
+            <div role="tabpanel" class="tab-pane" id="communiacation-notes">.3..</div>
+          </div>
+        
+        </div>
+            <div class="row">
+                          <!--div class="col-md-6">
+                            <div class="widget widget-content widget-content-project" style="min-height: 0; height: 200px; overflow-y:scroll;">
+                              <div class="tabs-sub-nav">
+                                <h3 class="pull-left">Details</h3>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="col-lg-12">
+                            rows4.projects_description;htmlconv=no]
+                              </div>
+                            </div>
+                          </div-->
+                          <!--div class="col-md-12">
+                            <div class="widget widget-content widget-content-project" style="min-height: 0; height: 200px; overflow-y:scroll;">
+                              <div class="tabs-sub-nav">
+                                <h3 class="pull-left">FTP Details</h3>
+                                <div class="clearfix"></div>
+                              </div>
+                              <ul class="data-list project-addition-details">
+                              
+                            </ul>
+                            </div>
+                          </div-->
+                        </div>
+        
+        
+          </div>
+        </div>
+        
+
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_EDIT_PROJECT_MODAL-->
+<div class="row">
+  <!--[onshow;block=div;when [project_permissions.edit_item_my_project_details] == 1;comm]-->
+  <!--permissions-->
+  <div id="editProjectModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/project/[vars.project_id;noerr]/edit-project" method="post" id="editProject">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit_project_details]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="projects_title" name="projects_title" value="[rows4.projects_title;noerr]" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_deadline]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" id="project_deadline" name="project_deadline" value="[rows4.project_deadline;noerr]" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project_title]</label>
+              <div class="col-lg-12">
+                <textarea name="projects_description" id="projects_description">
+                                      [rows4.projects_description;noerr;htmlconv=no]</textarea>
+                <script>
+                                 document.addEventListener('DOMContentLoaded', function(){
+                         CKEDITOR.replace( 'projects_description', {
+                                                        toolbar: 'Basic',
+                                                        uiColor: '#ffffff',
+                                                      height: '300px'});
+                                  });                                               
+
+                                           </script>
+              </div>
+            </div>
+            <!--------------------OPTIONAL FIELDS------------------------------>
+            <div class="form-group" style="margin-bottom:10px;">
+            <!--[onshow;block=div;when [visible.wi_projects_optionalfield1] == 1;comm]-->
+              <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield1]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="projects_optionalfield1" name="projects_optionalfield1" value="[rows4.projects_optionalfield1;noerr]" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:10px;">
+            <!--[onshow;block=div;when [visible.wi_projects_optionalfield2] == 1;comm]-->
+              <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield2]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="projects_optionalfield2" name="projects_optionalfield2" value="[rows4.projects_optionalfield2;noerr]" autocomplete="off">
+              </div>
+            </div>
+ 
+             <div class="form-group" style="margin-bottom:10px;">
+            <!--[onshow;block=div;when [visible.wi_projects_optionalfield3] == 1;comm]-->
+              <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield3]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="projects_optionalfield3" name="projects_optionalfield3" value="[rows4.projects_optionalfield3;noerr]" autocomplete="off">
+              </div>
+            </div>
+            
+            <div class="form-group" style="margin-bottom:10px;">
+            <!--[onshow;block=div;when [visible.wi_projects_optionalfield4] == 1;comm]-->
+              <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield4]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="projects_optionalfield4" name="projects_optionalfield4" value="[rows4.projects_optionalfield4;noerr]" autocomplete="off">
+              </div>
+            </div>                       
+ 
+             <div class="form-group" style="margin-bottom:10px;">
+            <!--[onshow;block=div;when [visible.wi_projects_optionalfield5] == 1;comm]-->
+              <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield5]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="projects_optionalfield5" name="projects_optionalfield5" value="[rows4.projects_optionalfield5;noerr]" autocomplete="off">
+              </div>
+            </div>
+                                   
+            <!--------------------OPTIONAL FIELDS------------------------------>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_closed]</button>
+            <input type="hidden" name="projects_id" value="[rows4.projects_id]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_PROJECT_MODAL-->
+<!--WI_ADD_NEW_TASK_MODAL-->
+<div class="row">
+  <div id="addNewTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/add" method="post" id="addNewTask">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_new_task]</h4>
+          </div>
+          <div class="modal-body">
+            <script type="text/javascript">
+              $.ajax({
+                url: "[conf.site_url]/__freshbooksapi/_tasks.php"
+              }).done(function(data){
+                $("#tasks-tasks-list-edit").append(data);
+              });
+
+              function loadMilestones(){
+                $.ajax({
+                  url: "[conf.site_url]/__freshbooksapi/_milestones.php?projectid=[vars.project_id;noerr]"
+                }).done(function(data){
+                  $("#tasks-milestones-list").append(data);
+                });
+              }
+
+              function loadTeam(){
+                $.ajax({
+                  url: "[conf.site_url]/__freshbooksapi/_teammembers.php?projectid=[vars.project_id;noerr]"
+                }).done(function(data){
+                  $("#tasks-assigned-to-list").append(data);
+                });
+              }
+
+              //$(document).ready(function(){
+                loadMilestones();
+                loadTeam();
+              //});
+            </script>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> Billing Category</label>
+              <div class="col-lg-12">
+                <select id="tasks-tasks-list-edit" name="freshbookstaskid" style="width:100%">
+                  
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:300px;"> Hours needed to complete task</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" placeholder="In hours (E.g .5 for 30minutes)" id="estimatedtaskhours" name="estimatedtaskhours" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> Describe the task</label>
+              <div class="col-lg-12">
+                <textarea class="form-control" id="tasks_text" name="tasks_text" autocomplete="off"></textarea>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:300px;"> Associate task with Milestone:</label>
+              <div class="col-lg-12">
+                <select id="tasks-milestones-list" name="tasks_milestones_id" style="width:100%">
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:300px;"> Or Add a new milestone</label>
+              <div class="col-lg-12">
+                <script type="text/javascript">
+                  function createMilestone(){
+                    $.post(
+                      "[conf.site_url]/__freshbooksapi/_createmilestone.php",
+                      {
+                        milestones_title: $("#milestoneText").val(),
+                        milestones_start_date: $("#milestones_start_date").val(),
+                        milestones_end_date: $("#milestones_end_date").val(),
+                        milestones_project_id: $("#milestones_project_id").val(),
+                        milestones_client_id: $("#milestones_client_id").val(),
+                        milestones_created_by: $("#milestones_created_by").val(),
+                        milestones_events_id: $("#milestones_events_id").val(),
+                      },
+                      function(data){
+                        console.log(data);
+                        loadMilestones(); /*Refresh milestones*/
+                      });
+                  }
+                </script>
+                <input type="text" name="milestoneText" id="milestoneText"/>
+                Milestone Start Date:
+                <input type="text" class="pickadate" name="milestones_start_date"  id="milestones_start_date">
+                Milestone End Date:
+                <input type="text" class="pickadate" name="milestones_end_date"  id="milestones_end_date">
+                <input type="hidden" name="milestones_project_id" id="milestones_project_id" value="[vars.project_id;noerr]">
+                <input type="hidden" name="milestones_client_id" id="milestones_client_id" value="[vars.client_id;noerr]">
+                <input type="hidden" name="milestones_created_by" id="milestones_created_by" value="[vars.my_id;noerr]">
+                <input type="hidden" name="milestones_events_id" id="milestones_events_id" value="[vars.new_events_id;noerr]">
+                <a value="saveMilestone" class="btn btn-primary" onClick="createMilestone();" id="saveMilestoneBtn">Create Milestone</a>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_start_date"  id="tasks_start_date">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_end_date"  id="tasks_end_date">
+              </div>
+            </div>
+            <!--admin & project leader only-->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_assigned_to]</label>
+              <div class="col-lg-12">
+                <select id="tasks-assigned-to-list" name="tasks_assigned_to_id" style="width:100%">
+                  <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+            </div>
+            <!--admin & project leader only-->
+
+<!--regular team member only-->
+            <div>
+            <!--[onshow;block=div;when [project_permissions.regular_user] == 1;comm]--><!--permissions--> 
+              <!--input type="hidden" name="tasks_assigned_to_id" value="[vars.my_id;noerr]"-->
+            </div>
+<!--regular team member only-->
+           
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="tasks_project_id" value="[vars.project_id;noerr]">
+            <input type="hidden" name="tasks_client_id" value="[vars.client_id;noerr]">
+            <input type="hidden" name="tasks_events_id" value="[vars.new_events_id;noerr]">
+            <input type="hidden" name="tasks_created_by_id" value="[vars.my_id;noerr]">
+             <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_create_new_task]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_TASK_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_closed]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<script>
+$().ready(function(){
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#editProject").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            projects_title: "required",
+            project_deadline: "required",
+            projects_description: "required"
+        },
+        messages: {
+            projects_title: "[lang.lang_field_is_required]",
+            project_deadline: "[lang.lang_field_is_required]",
+            projects_description: "[lang.lang_field_is_required]"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+
+
+<!--JS_EDIT_TASK_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_TASK_MODAL
+  //ACTIONS: dynamically add data into modal form
+  //REQUIRES: jquery.js
+  //ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
+    //REQUIRES-2: select2.js
+    
+    //---edit item link clicked-------
+    $(".edit-task-modal").click(function(){
+    
+        //get variables from "edit link" data attributes
+        var task_text_edit = $(this).attr("data-task-text");
+    console.log(task_text_edit);
+    var task_id_edit = $(this).attr("data-task-id");
+
+        //set modal input values dynamically
+    $('#task_text_edit').val(task_text_edit);
+    $('#task_id_edit').val(task_id_edit);
+
+       //pre-select data in pull down lists
+       $("#tasks-status-list-edit").select2().select2('val', task_status_preselected); 
+  });
+    
+});
+</script>
+<!--JS_EDIT_TASK_MODAL-->
+<script src="http://designgeeks.net:4911/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/chatbox.js"></script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/moment.min.js"></script>
+<script>var socket = io.connect('http://designgeeks.net:4911');</script>
+<script>
+  $(".chat_input_t[vars.task_id]").keyup(function(e) {
+    if (e.keyCode == 13) {
+      var len = $(".chat_inner_t[vars.task_id] > .chat_row").length;
+      var tronc = len / 2;
+      if (tronc > 20) {
+        var $firstElement = $(".chat_inner_t[vars.task_id] div:first");
+        $firstElement.remove();
+      }
+    }
+    return false;
+  });
+  chat_user = {
+    Member_id : [vars.my_id],
+    name :'[vars.my_name]',
+    nickname : '[vars.my_name]',
+    image : '[conf.site_url;noerr]/files/avatars/[vars.my_avatar;onformat=runtime_check_avatar]'
+  }
+  var chatroom = {
+    title      : 'General chat',
+    itemID     : 't[vars.task_id]',
+    meme_type   :'private',
+    slug      :'232',
+    url      :'[vars.site_url_current_page]',
+      file      :'' , // room logo
+      user_fk    :'sherif',
+      owner      : { 
+          Member_id: '1', 
+          name :'David Whitaker',
+      nickname : 'David Whitaker',
+      image : '[conf.site_url]/files/avatars/5538f66a5d179.jpg'
+    }
+  };
+  socket.emit("join", chatroom, chat_user);
+</script>
+</body>
+</html>

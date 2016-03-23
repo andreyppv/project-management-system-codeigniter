@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+		<link href="../common/style/bootstrap.css" rel="stylesheet">
+		<link href="../common/style/style.css" rel="stylesheet">
+		<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+	</head>
+	<!--HEAD - ONLOAD-->
+	<!--[onload;file=../common/common.head.html;getbody;comm]-->
+	<!--HEAD - ONLOAD-->
+	<body>
+		<!--HEADER SECTION - ONLOAD-->
+		<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--[onload;file=common_include_debug;getbody;comm]-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--[onload;file=common.header.html;getbody;comm]-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!-- Main content starts -->
+
+		<script src="http://designgeeks.net:4911/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io.connect('http://designgeeks.net:4911');
+		</script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/chatbox.js"></script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/moment.min.js"></script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jquery.multiSelect.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				// Default options
+				$("#control_1, #control_3, #control_4, #control_5").multiSelect();
+
+				// Show test data
+
+			});
+
+		</script>
+
+		<!--FLOT CHART-->
+		<!--[if lte IE 8]>
+		<script language="javascript" type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/flot/excanvas.min.js"></script><![endif]-->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/flot/jquery.flot.js"></script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/flot/jquery.flot.pie.js"></script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/flot/jquery.flot.canvas.js"></script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/mixitup-master/src/jquery.mixitup.js"></script>
+
+		<script>
+			var mixedFilter = {
+				$filters : null,
+				$reset : null,
+				groups : [],
+				outputArray : [],
+				outputString : '',
+				init : function() {
+					var self = this;
+					self.$filters = $('#js-filters');
+					self.$reset = $('#js-reset');
+					self.$container = $('#myprojectsnew');
+					self.$filters.find('fieldset').each(function() {
+						var $this = $(this);
+						self.groups.push({
+							$buttons : $this.find('.filter'),
+							$inputsSelect : $this.find('select'),
+							$inputsText : $this.find('input[type="text"]'),
+							active : ''
+						});
+					});
+					self.bindHandlers();
+				},
+				bindHandlers : function() {
+					var self = this;
+					self.$filters.on('click', '.filter', function(e) {
+						e.preventDefault();
+						var $button = $(this);
+						$button.hasClass('active') ? $button.removeClass('active') : $button.addClass('active').siblings('.filter').removeClass('active');
+						self.parseFilters();
+					});
+					self.$filters.on('change', 'select', function() {
+						self.parseFilters();
+					});
+					self.$filters.on('keyup', 'input[type="text"]', function() {
+						var $input = $(this);
+						console.log($input.val());
+						$input.attr('data-filter', '[class*="' + $input.val().replace(/ /, '-') + '"]');
+						if ($input.val() == '')
+							$input.attr('data-filter', '');
+						console.log($input.attr('data-filter'));
+						self.parseFilters();
+					});
+					self.$reset.on('click', function(e) {
+						e.preventDefault();
+						self.$filters.find('.filter').removeClass('active');
+						self.$filters.find('.show-all').addClass('active');
+						self.$filters.find('select').val('');
+						self.$filters.find('input[type="text"]').val('').attr('data-filter', '');
+						self.parseFilters();
+					});
+				},
+				parseFilters : function() {
+					var self = this;
+					for (var i = 0,
+					    group; group = self.groups[i]; i++) {
+						var activeButtons = group.$buttons.length ? group.$buttons.filter('.active').attr('data-filter') || '' : '';
+						var activeSelect = group.$inputsSelect.length ? group.$inputsSelect.val() || '' : '';
+						var activeText = group.$inputsText.length ? group.$inputsText.attr('data-filter') : '';
+						group.active = activeButtons + activeSelect + activeText;
+						console.log(group.active);
+					}
+					self.concatenate();
+				},
+				concatenate : function() {
+					var self = this;
+					self.outputString = '';
+					for (var i = 0,
+					    group; group = self.groups[i]; i++) {
+						self.outputString += group.active;
+					}
+					!self.outputString.length && (self.outputString = 'all');
+					console.log(self.outputString);
+					if (self.$container.mixItUp('isLoaded')) {
+						self.$container.mixItUp('filter', self.outputString);
+					}
+				}
+			};
+
+			//@ sourceURL=pen.js
+		</script>
+		<!--FLOT CHART-->
+		<div class="content">
+			<!-- Main bar -->
+			<div class="mainbar" style="margin: 0px;">
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<!--[onload;file=common.heading.html;getbody;comm]-->
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<!-- Matter -->
+				<div class="matter">
+					
+					<script type="text/javascript">
+						function opened() {
+
+							var timer = setTimeout(function() {
+								$(".modal-backdrop").removeClass("modal-backdrop");
+								timer = "";
+							}, 200);
+
+						}
+					</script>
+
+					<div class="navbar navbar-default" role="navigation">
+
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">[lang.lang_toggle_navigation]</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+								</button>
+							</div>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<form class="navbar-form navbar-left form-small controls" id="js-filters">
+									<div class="form-group">
+										<fieldset>
+											<input type="text" placeholder="Project Name" val="" data-filter="" id="filter--text" />
+										</fieldset>
+									</div>
+
+									<div class="form-group" >
+										<fieldset>
+											<select id="filter--area"  name="team_profile_full_name" >
+												<option value="">All Users</option>
+												<!--[lists.all_members;noerr;htmlconv=no;protect=no;comm]-->
+											</select>
+										</fieldset>
+									</div>
+									<div class="form-group">
+										<!--select2.js pulldown-->
+										<fieldset>
+
+											<select name="area" id="filter--area">
+												<option value="">All Statuses</option>
+												<option value=".1">Uncategorized Lead</option>
+												<option value=".2">Lead</option>
+												<option value=".3">On Going</option>
+												<option value=".4">Lost Lead</option>
+												<option value=".5">Post Sale</option>
+												<option value=".6">In-Progress</option>
+												<option value=".7">Behind Schedule</option>
+												<option value=".8">On Hold</option>
+												<option value=".10">On Hold - Pending Payment</option>
+												<option value=".9">Completed</option>
+												<option value=".commercial">Commercial</option>
+												<option value=".competition">Competition</option>
+											</select>
+										</fieldset>
+									</div>
+									<div class="form-group" style="display:none;">
+										<button type="submit" class="btn btn-primary">
+											Search Projects
+										</button>
+									</div>
+									<div class="form-group" >
+										<span class="btn btn-primary" id="js-reset">Clear Filters</span>
+									</div>
+									<div class="form-group">
+										<a onclick='opened();' class="edit-task-modal btn btn-success"
+										data-toggle="modal"
+										data-modal-window-title="Add Project"
+										data-height="350"
+										data-width="100%"
+										data-target="#addNewProject">+ Add a new project</a>
+									</div>
+
+								</form>
+								<form class="controls" id="js-filters1" style="display:none;">
+
+									<fieldset>
+										<label for="filter--text">Keyword</label>
+										<input type="text" placeholder="Enter Name" val="" data-filter="" id="filter--text" />
+									</fieldset>
+
+									<fieldset>
+										<label for="filter--area">Status</label>
+										<select name="area" id="filter--area">
+											<option value="">All</option>
+											<option value=".1">Uncategorized Lead</option>
+											<option value=".2">Lead</option>
+											<option value=".3">On Going</option>
+											<option value=".4">Lost Lead</option>
+											<option value=".5">Post Sale</option>
+											<option value=".6">In-Progress</option>
+											<option value=".7">Behind Schedule</option>
+											<option value=".8">On Hold</option>
+											<option value=".10">On Hold - Pending Payment</option>
+											<option value=".9">Completed</option>
+											<option value=".commercial">Commercial</option>
+											<option value=".competition">Competition</option>
+										</select>
+									</fieldset>
+
+									<fieldset>
+										<label for="filter--sector">Position</label>
+										<select name="sector" id="filter--sector">
+											<option value="">All</option>
+											<option value=".director">Director</option>
+											<option value=".manager">Manager</option>
+											<option value=".partner">Partner</option>
+										</select>
+									</fieldset>
+
+									<button id="js-reset1">
+										Clear Filters
+									</button>
+
+								</form>
+							</div>
+							<!-- /.navbar-collapse -->
+						</div>
+						<!-- /.container-fluid -->
+					</div>
+
+					<div class="row">
+						<div id="addNewProject" class="modal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog" style="width:750px;">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											x
+										</button>
+										<!--full screen icon - custom.js-->
+										<button type="button" class="full-screen-modal close" aria-hidden="true">
+											<i class="icon-fullscreen"></i>
+										</button>
+										<!--full screen icon - custom.js-->
+										<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+										<div class="clearfix"></div>
+									</div>
+									<div class="modal-body">
+										<!--iframe style="width:700px; height:700px;" src="http://pms.isodeveloper.com/admin/projects/new-project"></iframe-->
+										<form class="form-horizontal" action="http://pms.isodeveloper.com/admin/projects/add-project" method="post" id="addNewProject" novalidate="novalidate">
+											<div class="box">
+												<div class="box-content">
+													<table class="table table-bordered table-forms">
+														<tbody>
+															<tr>
+																<td>Client</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<div class="col-sm-12 col-md-8 no-padding-both">
+																		<script type="text/javascript">
+																			$.ajax({
+																				url : "http://pms.isodeveloper.com/__freshbooksapi/_clients.php"
+																			}).done(function(e) {
+																				$("#projects_clients_id").append(e);
+																			});
+																		</script>
+																		<select name="projects_clients_id" id="projects_clients_id" tabindex="-1" title="">
+
+																		</select>
+																	</div>
+																</div></td>
+															</tr>
+															<tr>
+																<td>Project Title</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control" id="projects_title" name="projects_title" value="" autocomplete="off" required="required" aria-required="true">
+																</div></td>
+															</tr>
+															<tr>
+																<td>Project Deadline</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control pickadate" id="project_deadline" name="project_deadline" value="[vars.today_date]" autocomplete="off" required="required" aria-required="true">
+																</div></td>
+															</tr>
+															<tr>
+																<td>Time Estimate</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control" id="project_estimate" placeholder="In hours ( E.g 20 )" name="project_timeestimate" value="" required="required" autocomplete="off" aria-required="true">
+																</div></td>
+															</tr>
+															<tr>
+																<td>Project Budget</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control" id="project_budget" placeholder="In dollars ( E.g 250000 )" name="project_budget" value="" required="required" autocomplete="off" aria-required="true">
+																</div></td>
+															</tr>
+															<tr>
+																<td>Description</td>
+																<td>
+																<div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+																	<textarea name="projects_description" id="projects_description" style="visibility: hidden; display: none;"></textarea>
+																	<script>
+																		document.addEventListener('DOMContentLoaded', function() {
+																			CKEDITOR.replace('projects_description', {
+																				toolbar : 'Basic',
+																				uiColor : '#ffffff',
+																				height : '300px'
+																			});
+																		});
+
+																	</script>
+																</div></td>
+															</tr>
+															<tr>
+
+																<td> Website URL</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control" id="projects_optionalfield1" name="projects_optionalfield1" value="" autocomplete="off" required="required" aria-required="true">
+																</div></td>
+															</tr>
+															<tr>
+
+																<td> FTP User Name</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control" id="projects_optionalfield2" name="projects_optionalfield2" value="" autocomplete="off" required="required" aria-required="true">
+																</div></td>
+															</tr>
+															<tr>
+
+																<td> FTP Password</td>
+																<td>
+																<div class="col-sm-12 col-md-8 no-padding-both">
+																	<input type="text" class="form-control" id="projects_optionalfield3" name="projects_optionalfield3" value="" autocomplete="off" required="required" aria-required="true">
+																</div></td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+												<div class="box-footer">
+													<div class="bns-info-div pull-right">
+														<!--control submit form button-->
+														<input class="btn btn-primary" type="submit" value="Add New Project" id="" name="submit">
+														<!--control submit form button-->
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+											[lang.lang_close]
+										</button>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<!----------------------COMMON NOTICES--------------------------------->
+						<!--[onload;file=../common/common.notices.html;getbody;comm]-->
+						<!----------------------COMMON NOTICES--------------------------------->
+
+						<div class="row">
+							<div class="col-md-3">
+								<!--WI_TASKS_SNAPSHOT-->
+								<div style="padding-bottom:20px;">
+									<div class="widget-content dashboard-widget-tasks slimScrollHomeTasks">
+										<table class="table">
+											<thead>
+												<tr>
+													<th style="font-weight:normal;">[lang.lang_my_tasks]</th>
+													<th style="font-weight:normal;">[lang.lang_project]</th>
+													<th style="font-weight:normal;">[lang.lang_status]</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="task-title"><a class="links-blue" href="http://pms.isodeveloper.com/admin/tasksexpanded/[mytasks.tasks_project_id;block=tr;noerr]/[mytasks.tasks_id;block=tr;noerr]"> <!--[mytasks.tasks_text;block=tr;onformat=runtime_check_blank_ucfirst;ope=max:70;comm]--> </a></td>
+													<td><a class="links-blue" href="/admin/project/[mytasks.projects_id;block=tr;comm;htmlconv=no]/view"><!--[mytasks.projects_title;block=tr;comm;htmlconv=no]--></a></td>
+													<td><!--[mytasks.tasks_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+												</tr>
+												<tr>
+													<!--[onshow;block=tr;when [visible.wi_tasks_none] == 1;comm]-->
+													<td colspan="3">
+													<div align="center">
+														<p>
+															&nbsp;
+														</p>
+														<p>
+															&nbsp;
+														</p>
+														<h2>[lang.lang_you_do_not_have_any_open_tasks]</h2>
+														<p>
+															&nbsp;
+														</p>
+														<p>
+															&nbsp;
+														</p>
+													</div></td>
+												</tr>
+												<tr>
+													<!--[onshow;block=tr;when [visible.wi_tasks_seemore_link] == 1;comm]-->
+													<td colspan="3">
+													<div align="center">
+														<a class="links-blue" href="[conf.site_url]/admin/mytasks"> [lang.lang_see_more_tasks]</a>
+													</div></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!--WI_TASKS_SNAPSHOT-->
+
+
+								<!--WI_BUGS-->
+								<div style="padding-bottom:20px;">
+									<div class="widget-content dashboard-widget-tasks slimScrollHomeTasks">
+										<table class="table">
+											<thead>
+												<tr>
+													<th style="font-weight:normal;">[lang.lang_my_tasks]</th>
+													<th style="font-weight:normal;">Project</th>
+													<th style="font-weight:normal;">[lang.lang_status]</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="task-title"><a class="links-blue" href="http://pms.isodeveloper.com/admin/tasksexpanded/[mytasks.tasks_project_id;block=tr;noerr]/[mytasks.tasks_id;block=tr;noerr]"> <!--[mytasks.tasks_text;block=tr;onformat=runtime_check_blank_ucfirst;ope=max:70;comm]--> </a></td>
+													<td><a class="links-blue" href="/admin/project/[mytasks.projects_id;block=tr;comm;htmlconv=no]/view"><!--[mytasks.projects_title;block=tr;comm;htmlconv=no]--></a></td>
+													<td><!--[mytasks.tasks_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+												</tr>
+												<tr>
+													<!--[onshow;block=tr;when [visible.wi_tasks_none] == 1;comm]-->
+													<td colspan="4">
+													<div align="center">
+														<p>
+															&nbsp;
+														</p>
+														<p>
+															&nbsp;
+														</p>
+														<h2>[lang.lang_you_do_not_have_any_open_tasks]</h2>
+														<p>
+															&nbsp;
+														</p>
+														<p>
+															&nbsp;
+														</p>
+													</div></td>
+												</tr>
+												<tr>
+													<!--[onshow;block=tr;when [visible.wi_tasks_seemore_link] == 1;comm]-->
+													<td colspan="4">
+													<div align="center">
+														<a class="links-blue" href="[conf.site_url]/admin/mytasks"> [lang.lang_see_more_tasks]</a>
+													</div></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!--WI_WI_BUGS-->
+
+
+								<div>
+									<div class='container widget-content dashboard-widget-tasks' style='padding: 10px;'>
+										<p style='border-bottom: 2px solid #ddd; margin-bottom: 15px; padding-bottom: 5px;'>
+											General Chat
+										</p>
+
+										<div class="chat_box">
+											<div class="chat_inner chat_inner_1001 chat-inner-container" id="chat_inner_1001"></div>
+										</div>
+										<div class="chat_input">
+											<form class='commentForm' style="float:left; width:93%; margin-bottom:0px;">
+												<input type='text' name="chat_input" id="chat_input" autocomplete="off" data-room='1001' class='msginput chat_input_1001' value='' style='width: 100%;' />
+											</form>
+										</div>
+
+									</div>
+								</div>
+
+								<div>
+									<div class='container widget-content dashboard-widget-tasks' style='padding: 10px;'>
+										<p style='border-bottom: 2px solid #ddd; margin-bottom: 15px; padding-bottom: 5px;'>
+											RSS Feed
+										</p>
+
+										[feed;block=begin;]
+										<div class="feed_box">
+											<img src="http://pms.isodeveloper.com/files/avatars/[feed.feed_by_avatar;onformat=runtime_check_avatar]" class="image-boardered" style="float: left; width: 40px; margin: 0px 5px 5px 0px;" />
+
+											<div class="feed_date">
+												<!--[feed.date;comm;onformat=runtime_time_ago;noerr]-->
+											</div>
+											<div class="feed_content">
+												[feed.text;strconv=no]
+											</div>
+										</div>
+										<div style="clear: both;"></div>
+										[feed;block=end]
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<!--WI_STATS_TOP-->
+
+								<!--WI_STATS_TOP-->
+								<script type="text/javascript">
+									$.ajax({
+										url : "http://pms.isodeveloper.com/__freshbooksapi/_myprojectsnew.php?userid=[vars.my_id]"
+									}).done(function(data) {
+										$("#myprojectsnew").append(data);
+										mixedFilter.init();
+										$('#myprojectsnew').mixItUp({
+											controls : {
+												enable : false,
+												toggleLogic : 'and'
+											},
+											callbacks : {
+												onMixFail : function() {
+													console.log('no-results');
+												}
+											}
+										});
+
+										$('[data-toggle="tooltip"]').tooltip();
+
+										$("select").each(function() {
+											if ($(this).attr('id') == 'leadSelector') {
+												$(this).children().each(function() {
+													if ($(this).attr('selected') == 'selected') {
+														$(this).removeAttr('selected');
+													}
+												});
+												$($(this).children()[$(this).attr('currentstatus') - 1]).attr('selected', 'selected');
+											}
+										});
+
+										$('select').each(function() {
+											if ($(this).attr('id') == 'leadSelector') {
+												$(this).change(function() {
+													var projectid = $(this).attr('projectid');
+													$.ajax({
+														url : 'http://pms.isodeveloper.com/__freshbooksapi/_changeprojectstatus.php?projectid=' + projectid + '&newstatus=' + $(this).val()
+													}).done(function(data) {
+														location.href = location.href;
+													});
+												});
+											}
+										});
+									});
+								</script>
+
+								<div id="myprojectsnew">
+
+								</div>
+
+								<!--WI_TASKS_AND_PINNED_PROJECTS-->
+								<div class="row">
+
+								</div>
+							</div>
+							<!--WI_TASKS_AND_PINNED_PROJECTS-->
+						</div>
+					</div>
+					<!-- Matter ends -->
+				</div>
+				<!-- Mainbar ends -->
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- Content ends -->
+		<!----------------------COMMON FOOTER--------------------------------->
+		<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+		<!----------------------COMMON FOOTER--------------------------------->
+		<!-- Scroll to top -->
+		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+		
+		<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!-- REQUIRED - ALL VENDORS -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/all-vendors.js"></script>
+		<!-- REQUIRED - ALL VENDORS -->
+
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jquery/jquery-tooltip.js"></script>
+
+		<!--REQUIRED js_ckeditor - CKeditor-->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/ckeditor/ckeditor.js"></script>
+
+		<!--REQUIRED js_ckeditor - CKeditor-->
+
+		<!-- CUSTOM - Datepicker (eternicode.github.io) -->
+		<script>
+			//USED BY: All date picking forms
+			$(document).ready(function() {
+				$('.pickadate').datepicker({
+					format : "yyyy-mm-dd",
+					language : "lang",
+					autoclose : true,
+					todayHighlight : true
+				});
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+		</script>
+		<!-- CUSTOM - Datepicker (eternicode.github.io) -->
+
+		<!-- REQUIRED js_noty - Noty Notification -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/noty/jquery.noty.packaged.min.js"></script>
+		<!-- REQUIRED js_noty - Noty Notification -->
+
+		<!--REQUIRED - footable.js (included in all-vendors.js)-->
+		<script type="text/javascript">
+			$(function() {
+				$('.footable').footable();
+			});
+		</script>
+		<!--REQUIRED - footable.js -->
+
+		<!-- CUSTOM -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.js"></script>
+		<!-- CUSTOM -->
+
+		<!-- CUSTOM GENERAL -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.general.js"></script>
+		<!-- CUSTOM GENERAL -->
+
+		<!-- REMOTE MODAL -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/remote-modal.js"></script>
+
+		<!-- JQUERY DATETIMEPICKER -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jquery/jquery-datetimepicker.js"></script>
+
+		<!-- DATATABLES -->
+
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/datatables/jquery.dataTables.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#salesTable').dataTable({
+					"order" : [[0, "desc"]]
+				});
+			});
+		</script>
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<script>
+			$(".chat_input_1001").keyup(function(e) {
+				if (e.keyCode == 13) {
+					var len = $(".chat_inner_1001 > .chat_row").length;
+					var tronc = len / 2;
+					if (tronc > 20) {
+						var $firstElement = $(".chat_inner_1001 div:first");
+						$firstElement.remove();
+					}
+				}
+				return false;
+			});
+			chat_user = {
+				Member_id : [vars.my_id],
+				name : '[vars.my_name]',
+				nickname : '[vars.my_name]',
+				image : '[conf.site_url;noerr]/files/avatars/[vars.my_avatar;onformat=runtime_check_avatar]'
+			}
+			var chatroom = {
+				title : 'General chat',
+				itemID : '1001',
+				meme_type : 'private',
+				slug : '232',
+				url : '[vars.site_url_current_page]',
+				file : '', // room logo
+				user_fk : 'sherif',
+				owner : {
+					Member_id : '1',
+					name : 'David Whitaker',
+					nickname : 'David Whitaker',
+					image : 'http://pms.isodeveloper.com/files/avatars/5538f66a5d179.jpg'
+				}
+			};
+			socket.emit("join", chatroom, chat_user);
+		</script>
+
+	</body>
+</html>

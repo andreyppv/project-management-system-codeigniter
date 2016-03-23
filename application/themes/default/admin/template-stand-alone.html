@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar{
+margin:0px;
+}
+.sidebar{
+display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="body-light">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<div class="content quotation-form">
+      <div class="container">
+        <!--WI_NOTICE_ERROR-->
+        <div class="row" id="WI_Notice_Error">
+          <!--[onshow;block=div;when [visible.wi_notice_error] == 1;comm]-->
+          <div class="col-md-12 bns-pull-center">
+            <div class="alert alert-warning">[notices.error;noerr;htmlconv=no] </div>
+          </div>
+        </div>
+        <!--WI_NOTICE_ERROR-->
+        <!--WI_NOTICE_SUCCESS-->
+        <div class="row" id="WI_Notice_Error">
+          <!--[onshow;block=div;when [visible.wi_notice_success] == 1;comm]-->
+          <div class="col-md-12 bns-pull-center">
+            <div class="alert alert-success">[notices.success;noerr;htmlconv=no] </div>
+          </div>
+        </div>
+        <!--WI_NOTICE_SUCCESS-->
+        <!--WI_NOTICE_ERROR_NOTY-->        
+        <script type="text/javascript">
+          <!--[onshow;block=script;when [visible.wi_notice_error_noty] == 1;comm]-->
+		$().ready(function() {
+                noty({
+                    text: '[notices.error;noerr;htmlconv=no]',
+                    layout: 'bottomRight',
+                    type: 'warning',
+                    timeout: [settings_general.notifications_display_duration;noerr]
+                });
+             });
+		</script>
+        <!--WI_NOTICE_ERROR_NOTY-->      
+        <!--WI_NOTICE_SUCCESS_NOTY-->        
+        <script type="text/javascript">
+          <!--[onshow;block=script;when [visible.wi_notice_success_noty] == 1;comm]-->
+		$().ready(function() {
+                noty({
+                    text: '[notices.success;noerr;htmlconv=no]',
+                    layout: 'bottomRight',
+                    type: 'information',
+                    timeout: [settings_general.notifications_display_duration;noerr]
+                });
+             });
+		</script>
+        <!--WI_NOTICE_SUCCESS_NOTY-->
+        <!--WI_SEARCH-->
+        <div class="navbar navbar-default" role="navigation">
+          <!--[onshow;block=div;when [visible.wi_quotations_search] == 1;comm]-->
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">
+              <!--lang-->
+              Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/quotationforms/search" method="post">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="quotationforms_id" placeholder="<!--lang-->Item ID" >
+                  <!--lang-->
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="quotationforms_title" placeholder="<!--lang-->Title" >
+                  <!--lang-->
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="quotationforms_status_search" name="quotationforms_status" data-placeholder="<!--lang-->Status">
+                    <!--lang-->
+                    <option></option>
+                    <option value="enabled">
+                    <!--lang-->
+                    Enabled</option>
+                    <option value="disabled">
+                    <!--lang-->
+                    Disabled</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="quotations_created_by_id_search" name="quotations_created_by_id" data-placeholder="<!--lang-->Created By">
+                    <!--lang-->
+                    <option></option>
+                     <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->            
+                   </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                  <!--lang-->
+                  Search Quotation Forms</button>
+                </div>
+                <div class="form-group"> <a href="[conf.site_url]/admin/quotationforms/new" class="btn btn-grad"><i class="icon-plus"></i>
+                  <!--lang-->
+                  Create New Form</a> </div>
+              </form>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!--WI_SEARCH END-->
+        
+        <!---------------------------------------CONTENT GOES HERE--------------------------------->
+        XYZ
+        <!---------------------------------------CONTENT GOES HERE--------------------------------->
+        
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!-- Footer starts --><!-- Footer ends -->
+<!-- Scroll to top --><!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+			<div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#projects-list").select2({
+        allowClear: true
+    });
+    $("#task-status").select2({
+        allowClear: true
+    });
+    $("#task-timer-status").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

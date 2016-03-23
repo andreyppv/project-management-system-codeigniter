@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+      <div class="widget titlebar-widget">
+        <!--[onshow;block=div;when [visible.wi_show_bug] == 1;comm]-->
+        <div class="titlebar">
+          <h3>[bug.projects_title;noerr]</h3>
+        </div>
+      </div>
+      <!--WI_TITLE_BAR-->
+      <!--WI_BUGS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only"> [lang.Toggle navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/client/bugs/search-bugs" method="post">
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="bugs_project_id" name="bugs_project_id" data-placeholder="[lang.lang_projects]">
+                  <option></option>
+                  <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="bugs_status" name="bugs_status" data-placeholder="[lang.lang_bug_status]">
+                  <option></option>
+                  <option value="new-bug"> [lang.lang_new]</option>
+                  <option value="in-progress"> [lang.lang_in_progress]</option>
+                  <option value="resolved"> [lang.lang_resolved]</option>
+                  <option value="not-a-bug"> [lang.lang_not_a_bug]</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary"> [lang.lang_search_bugs]</button>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" data-toggle="modal" href="#reportNewBugModal"> [lang.lang_report_new_bugs]</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_BUGS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_BUGS_TABLE-->
+        <!--WI_BUGS_TABLE-->
+        <!--WI_VIEW_BUG-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_show_bug] == 1;comm]-->
+          <div class="col-lg-3">
+            <!--WI_BUG_DETAILS_TABLE-->
+            <div class="box">
+              <div class="box-head-dark"><i class="icon-list"></i> [lang.lang_bug_details] </div>
+              <div class="box-content">
+                <table class="table table-bordered table-extra-padd">
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-3"> [lang.lang_id]</td>
+                      <td class="col-sm-9"><!--[bug.bugs_id;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3">[lang.lang_date]:</td>
+                      <td class="col-sm-9"><!--[bug.bugs_date;noerr;comm;onformat=runtime_date]--></td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3">[lang.lang_status]:</td>
+                      <td class="col-sm-9"><!--[bug.bugs_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_BUG_DETAILS_TABLE-->
+          </div>
+          <div class="col-lg-9">
+            <!--bug title-->
+            <div class="box">
+              <div class="box-content box-pad">
+                <h4>[bug.bugs_title]</h4>
+              </div>
+            </div>
+            <!--bug title-->
+            <!--main bug-->
+            <div class="box">
+              <div class="box-content box-pad"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[bug.client_users_avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                <div class="ticket-container">
+                  <div class="ticket-meta"><span class="label label-purple">[bug.client_users_full_name;htmlconv=no]</span> <small class="text-muted pull-right"><i class="icon-time"></i>
+                    <!--[bug.bugs_date;comm;onformat=runtime_time_ago;noerr]-->
+                    </small> </div>
+                  <div class="ticket-message line-height-normal">[bug.bugs_description;htmlconv=no;]</div>
+                  <div class="ticket-actions">
+                    <!--attachment-->
+                    <div class="pull-left"> </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <!--main bug-->
+            <!--bug comment-->
+            <div class="box">
+              <!--[onshow;block=div;when [visible.wi_show_bug_comment] == 1;comm]-->
+              <div class="box-content box-pad"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[bug.team_profile_avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                <div class="ticket-container">
+                  <div class="ticket-meta"><span class="label label-info">[bug.team_profile_full_name;htmlconv=no]</span> <small class="text-muted pull-right"><i class="icon-time"></i>
+                    <!--[bug.bugs_date;comm;onformat=runtime_time_ago;noerr]-->
+                    </small> </div>
+                  <div class="ticket-message line-height-normal">[bug.bugs_comment;htmlconv=no;]</div>
+                  <div class="ticket-actions">
+                    <!--attachment-->
+                    <div class="pull-left"> </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <!--bug comment-->
+          </div>
+          <!--WI_VIEW_BUG-->
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+      <!-- Matter ends -->
+    </div>
+    <!-- Mainbar ends -->
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_REPORT_NEW_BUG_MODAL-->
+<div class="row">
+  <div id="reportNewBugModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/client/bugs/report-bug" method="post" id="reportNewBug">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_report_new_bugs]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="bugs_title" name="bugs_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project]</label>
+              <div class="col-lg-12">
+                <select id="bugs_project_id_new" name="bugs_project_id">
+                  <option></option>
+                  <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <textarea name="bugs_description" id="bugs_description">
+                                        </textarea>
+                <script>
+document.addEventListener('DOMContentLoaded', function(){
+                                            CKEDITOR.replace( 'bugs_description', {
+                                                     toolbar: 'Basic',
+                                                     uiColor: '#ffffff',
+	                                                 height: '120px'
+                                                     });
+});
+
+                                        </script>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_report_new_bugs]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_REPORT_NEW_BUG_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#bugs_project_id_new").select2({
+        allowClear: true
+    });
+    $("#bugs_project_id").select2({
+        allowClear: true
+    });
+    $("#bugs_status").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+<!--JS_SOME_FORM_VALIDATION-->
+<script>
+$().ready(function(){
+    //USED BY: WI_SOME_MODAL
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#reportNewBug").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            bugs_title: "required",
+            bugs_project_id: "required"
+        },
+        messages: {
+            bugs_title: "[lang.lang_field_is_required]",
+            bugs_project_id: "[lang.lang_field_is_required]"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_SOME_FORM_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

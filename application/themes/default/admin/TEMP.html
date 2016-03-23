@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+
+<!--WI_REPORT_NEW_BUG_MODAL-->
+<div class="row">
+  <div id="reportNewBugModal" class="modalx fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/client/bugs/report-bug" method="post" id="reportNewBug">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              <!--lang-->
+              Edit Item</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              <!--lang-->
+              Title (text)</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="bugs_title" name="bugs_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              <!--lang-->
+              Product (preselect list)</label>
+              <div class="col-lg-12">
+                <!--invoice items list-->
+                  <select id="bugs_project_id_add" name="bugs_project_id" data-placeholder="[lang.lang_projects]">
+                  <option></option>
+                   <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->            
+                  </select>
+                <!--invoice items list-->
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              <!--lang-->
+              Notes (text editor)</label>
+              <div class="col-lg-12">
+                <textarea name="bugs_description" id="bugs_description">
+                                        [invoices.settings_invoices_notes;htmlconv=no;noerr]
+                                        </textarea>
+                <script>
+document.addEventListener('DOMContentLoaded', function(){
+                                            CKEDITOR.replace( 'bugs_description', {
+                                                     toolbar: 'Basic',
+                                                     uiColor: '#ffffff',
+	                                                 height: '120px'
+                                                     });
+});
+
+                                        </script>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_report_new_bugs]" id="" name="submit">
+            <!--lang-->
+            <!--lang-->
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_REPORT_NEW_BUG_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>

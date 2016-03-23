@@ -1,0 +1,69 @@
+<div class="col-lg-6 col-md-12 mix <!--[projects.filter_class;block=div;comm]-->">
+	<div class="dashboard-pinned-project dashboard-pinned-project-info" data-link="/admin/messages/'.$project['projects_id'].'/view">
+	  <div class="dashboard-pinned-project-header">
+	   	<h3 class="project-title">
+	     	<a href="/admin/messages/[projects.projects_id]/view">[projects.projects_title]</a>
+	    </h3>
+	  </div>
+	  <div class="myprojectsnew-qlinks">
+	    <div>
+	  		<a href="/admin/messages/[projects.projects_id]/view">Client chat</a>&nbsp;|&nbsp;
+	  		<a href="/admin/teammessages/[projects.projects_id]/view">Team chat</a>&nbsp;|&nbsp;
+	  		<a href="/admin/project/[projects.projects_id]/view">Details</a>&nbsp;|&nbsp;
+	  		<a href="/admin/members/[projects.projects_id]/view">Users</a>&nbsp;|&nbsp;
+              <a href="/admin/tasks/[projects.projects_id]/view">Tasks</a>
+	  	</div>
+	  </div>
+	  <div class="myprojectsnew-box1">
+	  	<div>
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="list-group">
+
+
+
+
+							<li class="list-group-item pdn-2-15">
+								<label class="label label-default pull-right">[projects.client_primary_name;onformat=runtime_check_blank;]</label>
+								<a href="/admin/client/[projects.clients_id]/users">Primary User</a>
+				  		    </li>
+							<li class="list-group-item pdn-2-15 even_row">
+								<label class="label label-default pull-right">[projects.client_primary_phone;onformat=runtime_check_blank;]</label>
+								<a href="/admin/client/[projects.clients_id]/users">Phone</a>
+				  		</li>
+
+
+							<li class="list-group-item pdn-2-15">
+								<label class="label label-warning pull-right">[projects.tasks_count.uncompleted]</label>
+								<a href="/admin/tasksfilter/[projects.projects_id]/uncompleted">Uncompleted Tasks</a>
+				  		</li>
+				  		<li class="list-group-item pdn-2-15 even_row">
+								<label class="label label-success pull-right">[projects.tasks_count.bugs]</label>
+								<a href="/admin/bugs/list-project/[projects.projects_id]/">Bugs</a>
+				  		</li>
+				  		<li class="list-group-item pdn-2-15">
+								<label class="label label-primary pull-right">[projects.tasks_count.unread_messages]</label>
+								<a href="/admin/teammessages/[projects.projects_id]/view">Unread Messages</a>
+				  		</li>
+				  		<li class="list-group-item pdn-2-15 even_row">
+								<label class="label label-default pull-right">[projects.projects_date_created;onformat=runtime_date;]</label>
+								Project Start Date
+				  		</li>
+				  		<li class="list-group-item pdn-2-15">
+								<label class="label label-danger pull-right">[projects.tasks_count.needing_rewiew]</label>
+								<a href="/admin/tasksfilter/[projects.projects_id]/needing_rewiew">Tasks Needing Review</a>
+				  		</li>
+				  		<li class="list-group-item pdn-2-15 even_row">
+				  			<!--[onshow;block=li;when [visible.wi_total_billiable] == 1;comm]-->
+								<label class="label label-success pull-right">$&nbsp;[projects.tasks_count.total_billable;onformat=runtime_number]</label>
+								Total Billable Tasks
+				  		</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	  </div>
+						
+		<div class="clearfix"></div>
+	</div>
+</div>

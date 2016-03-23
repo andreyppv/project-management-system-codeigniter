@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+		<link href="../common/style/bootstrap.css" rel="stylesheet">
+		<link href="../common/style/style.css" rel="stylesheet">
+
+		<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+	</head>
+	<!--HEAD - ONLOAD-->
+	<!--[onload;file=../common/common.head.html;getbody;comm]-->
+	<!--HEAD - ONLOAD-->
+	<body>
+		<!--JS SECTION - ONLOAD-->
+		<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+		<!--JS SECTION - ONLOAD-->
+		<!--DEBUG SECTION - ONLOAD-->
+		<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+		<!--DEBUG SECTION - ONLOAD-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--[onload;file=common.header.html;getbody;comm]-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!-- Main content starts -->
+		<div class="content">
+			<!-- Main bar -->
+			<div class="mainbar">
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<!--[onload;file=common.heading.html;getbody;comm]-->
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<!-- Matter -->
+				<div class="matter">
+					<div class="container">
+						<div class="row fullscreen-mode">
+
+							<div class="navbar navbar-default" role="navigation">
+
+								<div class="container-fluid">
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+											<span class="sr-only"> Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+										</button>
+									</div>
+
+									<style type="text/css">
+										.sales-buttons li {
+											display: inline;
+											padding: 20px;
+										}
+										.sales-buttons {
+											margin-top: 10px;
+										}
+									</style>
+									<ul class="sales-buttons">
+										<li>
+											<!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+											<div class="btn-group">
+												<a class="[vars.css_menu_invoices;noerr]" href="[conf.site_url]/admin/allinvoices/view"> <i class="icon-list-alt"></i> <span>[lang.lang_manage_invoices]</span> </a>
+											</div>
+										</li>
+										<li>
+											<!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+											<div class="btn-group">
+												<a class="[vars.css_menu_invoices;noerr]" href="[conf.site_url]/admin/invoiceitems/view"> <i class="icon-list-alt"></i> <span>[lang.lang_manager_invoice_items]</span> </a>
+											</div>
+										</li>
+
+										<li>
+											<div class="btn-group">
+												<a class="[vars.css_menu_payments;noerr]" href="[conf.site_url]/admin/allpayments/all"> <i class="icon-credit-card"></i> <span> [lang.lang_payments] </span> </a>
+											</div>
+										</li>
+
+										<li>
+											<!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]--><!--permissions-->
+											<div class="btn-group">
+												<a class="[vars.css_menu_quotations;noerr]" href="[conf.site_url]/admin/quotations/list"> <i class="icon-paste"></i> <span> [lang.lang_quotations] </span> </a>
+											</div>
+										</li>
+										<li>
+											<!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+											<div class="btn-group">
+												<a class="[vars.css_menu_quotationforms;noerr]" href="[conf.site_url]/admin/quotationforms/list"> <i class="icon-paste"></i> <span> [lang.lang_quotation_forms] </span> </a>
+											</div>
+										</li>
+
+									</ul>
+
+									<!-- /.navbar-collapse -->
+								</div>
+								<!-- /.container-fluid -->
+							</div>
+
+						</div>
+					</div>
+					<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div role="tabpanel">
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active">
+										<a href="#info" aria-controls="home" role="tab" data-toggle="tab">General Info</a>
+									</li>
+									<li role="presentation">
+										<a href="#contacts" aria-controls="profile" role="tab" data-toggle="tab">Contacts Data</a>
+									</li>
+									<!--li role="presentation"><a href="#opportunities" aria-controls="messages" role="tab" data-toggle="tab">Opportunities</a></li-->
+									<li role="presentation">
+										<a href="#notes" aria-controls="settings" role="tab" data-toggle="tab">Notes</a>
+									</li>
+									<!--li role="presentation"><a href="#attachements" aria-controls="settings" role="tab" data-toggle="tab">Attachements</a></li-->
+								</ul>
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane active widget" id="info">
+										<div class="col-md-9" style="padding-top: 15px; padding-bottom: 15px;">
+											
+											
+											
+											<h2>Client Info</h2>
+											<dl class="dl-horizontal list">
+												<!--[onshow;block=dl;when [vars.leadDetails.leads_clients_id] != 0;comm]-->
+												<dt>Company</dt><dd>[vars.clientDetails.clients_company_name;noerr]</dd>
+												<dt>Address</dt><dd>[vars.clientDetails.clients_address;noerr]</dd>
+												<dt>City</dt><dd>[vars.clientDetails.clients_city;noerr]</dd>
+												<dt>State</dt><dd>[vars.clientDetails.clients_state;noerr]</dd>
+												<dt>Zip/Post Code</dt><dd>[vars.clientDetails.clients_zipcode;noerr]</dd>
+												
+												<dt>Country</dt><dd>[vars.clientDetails.clients_country;noerr]</dd>
+												<dt>Website</dt><dd>[vars.clientDetails.clients_website;noerr]</dd>
+												<a href="/admin/client/<!--[vars.clientDetails.clients_id;comm]-->/view" class="btn btn-info pull-right"><i class="icon-user"></i> Client Page </a>
+											</dl>
+											<p>
+												<!--[onshow;block=p;when [vars.leadDetails.leads_clients_id] == 0;comm]-->
+												No Client Generated From This Lead
+											</p>
+											<div class="clearfix"></div>
+											<h2>Lead Info</h2>
+											<dl class="dl-horizontal list">
+												<dt>Source</dt>
+												<dd><!--[onshow;block=dd;when [vars.leadDetails.leads_source] == 1;comm]-->Branding Landing Page</dd>
+												<dd><!--[onshow;block=dd;when [vars.leadDetails.leads_source] == 2;comm]-->ISO Developers Contact Form</dd>
+												<dd><!--[onshow;block=dd;when [vars.leadDetails.leads_source] == 3;comm]-->ISO Developers Mobile Website Test</dd>
+												<dd><!--[onshow;block=dd;when [vars.leadDetails.leads_source] == 4;comm]-->Added by Admin</dd>		
+												<dt>Name</dt><dd>[vars.leadDetails.leads_name]</dd>
+												<dt>Company</dt><dd>[vars.leadDetails.leads_company]</dd>
+												<dt>Telephone</dt><dd>[vars.leadDetails.leads_telephone]</dd>
+												<dt>E-email</dt><dd>[vars.leadDetails.leads_email]</dd>
+												<dt>Website</dt><dd>[vars.leadDetails.leads_www]</dd>
+												<dt>Description</dt><dd>[vars.leadDetails.leads_description;strconv=no]</dd>
+												<dt>[lang.lang_value]</dt><dd>[settings_general.currency_symbol] [vars.leadDetails.leads_value;frm='0,000.00']</dd>
+												<dt>Sales Person</dt><dd>[vars.leadDetails.team_profile_full_name;strconv=no]</dd>
+												<dt>[lang.lang_hot]</dt>
+                                                <dd><!--[onshow;block=dd;when [vars.leadDetails.leads_hot] == 0;comm]-->NO</dd>
+                                                <dd><!--[onshow;block=dd;when [vars.leadDetails.leads_hot] == 1;comm]-->YES</dd>
+												<dt>[lang.lang_lost]</dt>
+                                                <dd><!--[onshow;block=dd;when [vars.leadDetails.leads_lost] == 0;comm]-->NO</dd>
+                                                <dd><!--[onshow;block=dd;when [vars.leadDetails.leads_lost] == 1;comm]-->YES</dd>
+											</dl>
+											<a href="#modal" class="btn btn-info mrg5R pull-right" data-toggle="modal" data-load-remote="/admin/sales/create-client/[vars.leadDetails.id]">
+												<!--[onshow;block=a;when [vars.leadDetails.leads_clients_id] == 0;comm]-->
+												<i class="icon-plus"> </i> Create Client from Lead 
+											</a>
+											<a href="#modal" class="btn btn-info mrg5R pull-right" data-toggle="modal" data-load-remote="/admin/sales/lead-details/[vars.leadDetails.id]"> <i class="icon-pencil" style="margin-right: 5px;"></i> Edit Lead </a>
+											<div class="clearfix"></div>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div role="tabpanel" class="tab-pane widget" id="contacts">
+										<div class="col-md-6" style="padding-top: 15px; padding-bottom: 15px;">
+											
+											<!--[blk1;block=begin;sub1=projects]-->
+											<h2>
+												<!--[onshow;block=h2;when [blk1.client_users_main_contact] == yes;comm]-->
+												Main Contact
+											</h2>
+											
+											<h2>
+												<!--[onshow;block=h2;when [blk1.client_users_main_contact] == no;comm]-->
+												Additional Contact
+											</h2>
+											
+											<dl class="dl-horizontal list">
+												<!--[onshow;block=dl;when [vars.leadDetails.leads_clients_id] != 0;comm]-->
+										
+												<dt>Name</dt><dd><!--[blk1.client_users_full_name;comm;onformat=runtime_check_blank_ucwords;htmlconv=no]--></dd>								
+												<dt>Position</dt><dd><!--[blk1.client_users_job_position_title;comm]--></dd>
+												<dt>E-mail</dt>	<dd><!--[blk1.client_users_email;comm]--></dd>
+												<dt>Mobile</dt><dd><!--[blk1.client_users_telephone;comm;onformat=runtime_check_blank;ope=max:15]--></dd>
+		
+											</dl>
+											<!--[blk1;block=end]-->
+											
+											
+											<!-- <h2>Client Contact</h2>
+											<dl class="dl-horizontal list">
+												<!--[onshow;block=dl;when [vars.leadDetails.leads_clients_id] != 0;comm]-->
+												<dt>Company</dt><dd>[vars.clientDetails.clients_company_name]</dd>
+												<dt>Name</dt><dd>[vars.clientDetails.client_users_full_name]</dd>								
+												<dt>Position</dt><dd>[vars.clientDetails.client_users_job_position_title]</dd>
+												<dt>E-mail</dt>	[vars.clientDetails.client_users_email]</dd>
+												<dt>Mobile</dt><dd>[vars.clientDetails.client_users_telephone]</dd>
+												<a href="/admin/client/<!--[blk1.clients_id;comm]-->/view" class="btn btn-info pull-right"><i class="icon-user"></i> Client Page </a>
+											</dl> -->
+											<p>
+												<!--[onshow;block=p;when [vars.leadDetails.leads_clients_id] == 0;comm]-->
+												<h2>Client Contact</h2>
+												No Client Generated From This Lead
+											</p>
+											<!-- <div class="clearfix"></div>
+											<h2>Main Contact</h2>
+											<dl class="dl-horizontal list">
+												<dt>Name</dt><dd>John</dd>
+												<dt>Surname</dt><dd>Doe</dd>
+												<dt>Position</dt><dd>Owner</dd>
+												<dt>E-mail</dt>	john.doe@gmail.com</dd>
+												<dt>Mobile</dt><dd>+1 (617) 124-8745</dd>
+											</dl>
+											<h2>Additional Contacts</h2>
+											<dl class="dl-horizontal list">
+												<dt>Name</dt><dd>John</dd>
+												<dt>Surname</dt><dd>Doe</dd>
+												<dt>Position</dt><dd>IT Administrator</dd>
+												<dt>E-mail</dt><dd>john.doe@gmail.com</dd>
+												<dt>Mobile</dt><dd>+1 (617) 124-8745</dd>
+											</dl> -->
+										</div>
+										<div class="clearfix"></div>
+									</div>
+
+									<div role="tabpanel" class="tab-pane widget" id="notes">
+										<form method="post">
+											<textarea name="leads_description" id="leads_description">[vars.leadDetails.leads_description]</textarea>
+											<input type="hidden" name="save_note" value="true">
+											<input type="hidden" name="lead_id" value="[vars.current_item]">
+											<button class="btn btn-primary pull-right" type="submit" id="" name="submit" style="margin-top: 15px;"> <i class="icon-check"></i> Save Changes </button>
+											<button class="btn btn-warning pull-right" type="reset" id="" name="submit" style="margin: 15px 5px 15px 0px;"> <i class="icon-repeat"></i> Restore </button>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+
+							<div class="widget" style="margin-top:0px;">
+								<div class="col-md-12">
+									<h2>Activities history</h2>
+									<a class="add-task-modal btn btn-success" style="margin:10px 0 15px 17px;"
+									data-toggle="modal"
+									data-modal-window-title="Add New Activity"
+									data-height="350"
+									data-width="100%"
+									data-target="#addNewActivity"><i class="icon-plus" style="margin-right: 5px;"></i> Add a New Activity</a>
+									<div class="clearfix"></div>
+								</div>
+
+								<div class="slimScrollAdminProjectTimeline" style="padding-top:7px;">
+
+									<div class="project-info-tabs project-details">
+										<ul class="timeline">
+											<!--[onshow;block=ul;when [visible.show_timeline] == 1;comm]-->
+											<!--left event-->
+											<li style="padding-right: 20px;">
+												<div class="tl-circ [timeline.lead_events_type;block=li;onformat=runtime_timeline_colors]">
+													<i class="[timeline.lead_events_type;block=li;onformat=runtime_timeline_icons]"></i>
+												</div>
+												<div class="timeline-panel">
+													<div class="tl-heading col-md-3">
+														<div>
+															<strong> <!--[timeline.team_profile_full_name;block=li;onformat=runtime_check_blank_ucwords;comm]--> </strong>
+														</div>
+														<div>
+															<!--[timeline.lead_events_type;block=li;onformat=runtime_check_blank;comm]-->
+														</div>
+														<div>
+															<small class="text-muted"><i class="icon-time"></i> <!--[timeline.lead_events_date;block=li;onformat=runtime_time_ago;comm]--> </small>
+														</div>
+													</div>
+													<div class="tl-body col-md-9">
+														<div>
+															<!--[timeline.lead_events_details;block=li;onformat=runtime_check_blank;comm;strconv=no]-->
+														</div>
+														<a href="#modal" class="btn btn-info pull-right" data-toggle="modal" data-load-remote="/admin/sales/event-details/<!--[timeline.lead_events_id;block=li;onformat=runtime_check_blank;comm]-->"> <i class="icon-pencil" style="margin-right: 5px;"></i> Edit Activity </a>
+														<a href="#modal" class="btn btn-info pull-right mrg5R" data-toggle="modal" data-load-remote="/admin/sales/event-delete-details/<!--[timeline.lead_events_id;block=li;onformat=runtime_check_blank;comm]-->"> <i class="icon-remove" style="margin-right: 5px;"></i> Delete Activity </a>
+													</div>
+												</div>
+											</li>
+											<!--left event end-->
+											<!--right event-->
+											<li class="timeline-inverted"  style="padding-right: 20px;">
+												<div class="tl-circ [timeline.project_events_type;block=li;onformat=runtime_timeline_colors]">
+													<i class="[timeline.project_events_type;block=li;onformat=runtime_timeline_icons]"></i>
+												</div>
+												<div class="timeline-panel">
+													<div class="tl-heading col-md-3">
+														<div>
+															<strong> <!--[timeline.team_profile_full_name;block=li;onformat=runtime_check_blank_ucwords;comm]--> </strong>
+														</div>
+														<div>
+															<!--[timeline.lead_events_type;block=li;onformat=runtime_check_blank;comm]-->
+														</div>
+														<div>
+															<small class="text-muted"><i class="icon-time"></i> <!--[timeline.lead_events_date;block=li;onformat=runtime_time_ago;comm]--> </small>
+														</div>
+													</div>
+													<div class="tl-body col-md-9">
+														<div>
+															<!--[timeline.lead_events_details;block=li;onformat=runtime_check_blank;comm;strconv=no]-->
+														</div>
+														<a href="#modal" class="btn btn-info pull-right" data-toggle="modal" data-load-remote="/admin/sales/event-details/<!--[timeline.lead_events_id;block=li;onformat=runtime_check_blank;comm]-->"> <i class="icon-pencil" style="margin-right: 5px;"></i> Edit Activity </a>
+														<a href="#modal" class="btn btn-info pull-right mrg5R" data-toggle="modal" data-load-remote="/admin/sales/event-delete/<!--[timeline.lead_events_id;block=li;onformat=runtime_check_blank;comm]-->"> <i class="icon-remove" style="margin-right: 5px;"></i> Delete Activity </a>
+													</div>
+												</div>
+											</li>
+											<!--right event-->
+										</ul>
+										<!--wi_no_timeline-->
+										<div style="text-align:center; padding-top:55px;">
+											<!--[onshow;block=div;when [visible.show_no_timeline] == 1;comm]-->
+											<h2>[lang.lang_no_timeline_events]</h2>
+										</div>
+										<!--wi_no_timeline-->
+									</div>
+									<!--WI_PROJECT_EVENTS-->
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Mainbar ends -->
+			<div class="clearfix"></div>
+		</div>
+
+		<div id="addNewActivity" class="modal modal-fade" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width:750px;">
+				<form class="form-horizontal" action="/admin/sales/add-activity" method="post" id="addNewProject" novalidate>
+				<div class="modal-content">
+					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							x
+						</button>
+						<!--full screen icon - custom.js-->
+						<button type="button" class="full-screen-modal close" aria-hidden="true">
+							<i class="icon-fullscreen"></i>
+						</button>
+						<!--full screen icon - custom.js-->
+						<h4 class="modal-title" id="modal-iframe-title"> Add New Activity </h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="modal-body">
+						<!--iframe style="width:700px; height:700px;" src="http://pms.isodeveloper.com/admin/projects/new-project"></iframe-->
+						
+							<input type="hidden" name="lead_id" value="[vars.current_item]">
+							<div class="box">
+								<div class="box-content">
+									<table class="table table-bordered table-forms">
+										<tbody>
+											<tr>
+												<td>Activity Type</td>
+												<td>
+												<div class="col-sm-12 col-md-8 no-padding-both">
+													<select class="form-control" name="leads_events_type">
+														<option value="note">Note</option>
+														<option value="email">E-mail</option>
+														<option value="telephone">Telephone</option>
+														<option value="conference">Conference</option>
+														<option value="meeting">Meeting</option>
+													</select>
+												</div></td>
+											</tr>
+											<tr>
+												<td>Date</td>
+												<td>
+												<div class="col-sm-12 col-md-8 no-padding-both">
+													<input type="text" class="form-control datetimepicker" name="leads_events_date" id="leads_events_date" value="[vars.datetime]" required="required" autocomplete="off" aria-required="true">
+												</div></td>
+											</tr>
+											<tr>
+												<td>Next Contact Date</td>
+												<td>
+												<div class="col-sm-12 col-md-8 no-padding-both">
+													<input type="text" class="form-control datetimepicker" name="lead_events_date_next" id="lead_events_date_next" value="" autocomplete="off" aria-required="true">
+												</div></td>
+											</tr>
+											<tr>
+												<td>Description</td>
+												<td>
+												<div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+													<textarea name="leads_events_description" id="leads_events_description" style="visibility: hidden; display: none;"></textarea>
+												</div></td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								
+							</div>
+						
+					</div>
+					<div class="modal-footer">
+						<input class="btn btn-primary" type="submit" value="Add New Activity" id="" name="submit">
+						<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+				</div>
+				<!-- Matter ends -->
+				
+
+		<!-- Content ends -->
+		<!----------------------COMMON FOOTER--------------------------------->
+		<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+		<!----------------------COMMON FOOTER--------------------------------->
+		<!-- Scroll to top -->
+		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+		<!--WI_IFRAME_MODAL-->
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+				<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+
+		<script type="text/javascript">
+			//to recall after ajax forms load
+			function jsElements(){
+				$('.datetimepicker').datetimepicker({
+					formatTime : 'H:i',
+					formatDate : 'm/d/Y'
+				});
+			}
+			$(document).ready(function() {
+				CKEDITOR.replace('leads_events_description', {
+					toolbar : 'Basic',
+					uiColor : '#ffffff',
+					height : '300px'
+				});
+				CKEDITOR.replace('leads_description', {
+					toolbar : 'Basic',
+					uiColor : '#ffffff',
+					height : '500px'
+				});
+				jsElements();
+			})
+		</script>
+	</body>
+</html>

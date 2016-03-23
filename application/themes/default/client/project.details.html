@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-md-3">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <!------------------------------------PROJECT-DETAILS--------------------------------------------------->
+          <div class="col-md-5">
+            <div class="widget">
+              <div class="widget-content widget-content-project">
+                <div class="project-info-tabs">
+                  <!--[onshow;block=div;when [visible.wi_project_details] == 1;comm]-->
+                  <div class="res-project-summary"-->
+                    <!--project head-->
+                    <div class="project-details">
+                      <!--WI_PROJECT_HEAD-->
+                      <div class="project-home">
+                        <h3><i class="icon-folder-open-alt"></i> [lang.lang_project_details;noerr]</h3>
+                        <div class="project-heading-left">
+                          <div class="col-xs-12 col-md-6"><span class="label label-default-dark label-projects" id="project-timer">
+                            [vars.project_timer_hours_spent;onformat=runtime_timer;noerr]</span></div>
+                          <div class="col-xs-12 col-md-6">[rows4.project_deadline;onformat=runtime_project_deadline;noerr;htmlconv=no]</div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      <!--WI_PROJECT_HEAD-->
+                      <div class="project-spacer"></div>
+                      <!--WI_PROJECT_CONTACTS-->
+                      <div class="project-home">
+                        <div class="project-home-split-right">
+                          <!--client main contact-->
+                          <div class="col-xs-6 project-users"><a><img class="avatar-small image-boardered pull-left" src="[conf.site_url;noerr]/files/avatars/[rows2.team_profile_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/></a>
+                            <div class="pull-left avatar-information"> <span><span class="label label-purple">
+                              [lang.lang_client_main_contact]</span></span> <span><a>[rows2.client_users_full_name;noerr]</a></span> <span><a>tel: [rows2.client_users_telephone;noerr]</a></span> </div>
+                            <div class="clearfix"></div>
+                          </div>
+                          <!--client main contact end-->
+                          <!--team main contact-->
+                          <div class="col-xs-6 project-users"><a><img class="avatar-small image-boardered pull-left" src="[conf.site_url;noerr]/files/avatars/[rows3.team_profile_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/></a>
+                            <div class="pull-left avatar-information"> <span><span class="label label-info">
+                              [lang.lang_project_leader]</span></span> <span><a>[rows3.team_profile_full_name;noerr]</a></span> <span><a>tel: [rows3.team_profile_telephone;noerr]</a></span> </div>
+                            <div class="clearfix"></div>
+                          </div>
+                          <!--team main contact end-->
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      <!--WI_PROJECT_CONTACTS-->
+                      <div class="project-spacer"></div>
+                      <!--WI_PROJECT_BRIEF-->
+                      <div id="project-brief">
+                        <h4><span class="allcaps">[lang.lang_project_brief]</span></h4>
+                        [rows4.projects_description;htmlconv=no]</div>
+                      <!--WI_PROJECT_BRIEF-->
+                      <div class="project-spacer"></div>
+                      <!--WI_ADDITIONAL_PROJECT_DETAILS-->
+                      <div id="project-details"> <a class="divminimize divminimize-project-details" href="#"> <i class="icon-chevron-down"></i>
+                        <h4 style="display:inline-block;"><span class="allcaps">[lang.lang_additional_details]</span></h4>
+                        </a>
+                        <div class="toggle-div" style="display: block;">
+                          <!--project details list-->
+                          <div class="col-lg-12">
+                            <!--[onshow;block=div;when [visible.wi_additional_project_details] == 1;comm]-->
+                            <ul class="data-list project-addition-details">
+                              <li>
+                                <label>
+                                <!--[blk2.field_title;block=li;comm]-->
+                                :</label>
+                                <span>
+                                <!--[blk2.field_data;block=li;comm]-->
+                                </span></li>
+                            </ul>
+                          </div>
+                          <!--project details list-->
+                          <!--wi_additional_project_details_notfound-->
+                          <div class="col-lg-12">
+                            <!--[onshow;block=div;when [visible.wi_additional_project_details_notfound] == 1;comm]-->
+                            <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                          </div>
+                          <!--wi_additional_project_details_notfound-->
+                        </div>
+                      </div>
+                      <!--WI_ADDITIONAL_PROJECT_DETAILS-->
+                      <div class="project-spacer"></div>
+                    </div>
+                  </div>
+                </div>
+                <!--WI_TABS_NOTIFICATION-->
+                <div class="project-info-tabs">
+                  <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                  <div class="col-md-10">
+                    <div class="widget">
+                      <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                    </div>
+                  </div>
+                </div>
+                <!--WI_TABS_NOTIFICATION-->
+              </div>
+            </div>
+          </div>
+          <!------------------------------------PROJECT-DETAILS-END--------------------------------------------------->
+          <!-------------------------------------------------TIMELINE------------------------------------------------->
+          <div class="col-md-4">
+            <div class="widget">
+              <div class="widget-content widget-content-project slimScrollProjectTimeline">
+                <!--WI_PROJECT_EVENTS-->
+                <div class="project-info-tabs project-details">
+                  <ul class="timeline">
+                    <!--left event-->
+                    <li>
+                      <div class="tl-circ [timeline.project_events_type;block=li;onformat=runtime_timeline_colors]"><i class="[timeline.project_events_type;block=li;onformat=runtime_timeline_icons]"></i></div>
+                      <div class="timeline-panel">
+                        <div class="tl-heading">
+                          <div><strong>
+                            <!--[timeline.user_name;block=li;onformat=runtime_check_blank_ucwords;comm;ope=max:20]-->
+                            </strong></div>
+                          <div>
+                            <!--[timeline.project_events_action_lang;block=li;onformat=runtime_check_blank;comm]-->
+                          </div>
+                          <div><small class="text-muted"><i class="icon-time"></i>
+                            <!--[timeline.project_events_date;block=li;onformat=runtime_time_ago;comm]-->
+                            </small></div>
+                        </div>
+                        <div class="tl-body">
+                          <div>
+                            <!--[timeline.project_events_item;block=li;onformat=runtime_check_blank;comm;ope=max:60]-->
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <!--left event end-->
+                    <!--right event-->
+                    <li class="timeline-inverted">
+                      <div class="tl-circ [timeline.project_events_type;block=li;onformat=runtime_timeline_colors]"><i class="[timeline.project_events_type;block=li;onformat=runtime_timeline_icons]"></i></div>
+                      <div class="timeline-panel">
+                        <div class="tl-heading">
+                          <div><strong>
+                            <!--[timeline.user_name;block=li;onformat=runtime_check_blank_ucwords;comm;ope=max:20]-->
+                            </strong></div>
+                          <div>
+                            <!--[timeline.project_events_action_lang;block=li;onformat=runtime_check_blank;comm]-->
+                          </div>
+                          <div><small class="text-muted"><i class="icon-time"></i>
+                            <!--[timeline.project_events_date;block=li;onformat=runtime_time_ago;comm]-->
+                            </small></div>
+                        </div>
+                        <div class="tl-body">
+                          <div>
+                            <!--[timeline.project_events_item;block=li;onformat=runtime_check_blank;comm;ope=max:60]-->
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <!--right event-->
+                  </ul>
+                </div>
+                <!--WI_PROJECT_EVENTS-->
+              </div>
+            </div>
+          </div>
+          <!-------------------------------------------------TIMELINE END------------------------------------------------->
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_closed]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<script>
+$().ready(function(){
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#editProject").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            projects_title: "required",
+            project_deadline: "required",
+            projects_description: "required"
+        },
+        messages: {
+            projects_title: "[lang.lang_field_is_required]",
+            project_deadline: "[lang.lang_field_is_required]",
+            projects_description: "[lang.lang_field_is_required]"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

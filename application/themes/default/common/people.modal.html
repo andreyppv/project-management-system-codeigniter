@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_USER_PROFILE_TABLE-->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong>
+              <div class="avatar pull-left"> <img class="avatar-small image-boardered" src="[conf.site_url;noerr]/files/avatars/[people.profile_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/> </div>
+              </strong></td>
+            <td></td>
+          </tr>
+          <!--<tr>
+            <td bgcolor="#FAFAFA"><strong>[lang.lang_id]</strong></td>
+            <td><span class="label label-info">[people.user_id;onformat=runtime_check_blank]</span></td>
+          </tr>-->
+          <tr>
+            <td bgcolor="#FAFAFA"><strong>[lang.lang_full_name]</strong></td>
+            <td>[people.full_name;noerr;onformat=runtime_check_blank_ucwords]</td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong>[lang.lang_job_title]</strong></td>
+            <td>[people.job_title;noerr;onformat=runtime_check_blank_ucwords]</td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_group]</strong></td>
+            <td>[people.groups_name;noerr;onformat=runtime_lang;htmlconv=no;ope=max:20]</td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_email_address]</strong></td>
+            <td>[people.email_address;noerr;onformat=runtime_check_blank]</td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_telephone]</strong></td>
+            <td>[people.telephone;noerr;onformat=runtime_check_blank]</td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> Last Active</strong></td>
+            <td>[people.last_active;noerr;onformat=runtime_datetime]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_USER_PROFILE_TABLE-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

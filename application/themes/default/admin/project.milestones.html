@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-md-12">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TABS-MILESTONES------------------------------------------------------------------>
+                <div class="project-info-tabs">
+                  <!--[onshow;block=div;when [visible.wi_project_milestones] == 1;comm]-->
+                  <!--WI_MILESTONES_NAVIGATION-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="tabs-sub-nav"> <span class="pull-left">
+                        <h3>[lang.lang_project_milestones]</h3>
+                        </span>
+                        <button data-toggle="modal" class="btn btn-mid btn-success pull-right" href="#addNewMilestomeModal">
+                        <!--[onshow;block=button;when [project_permissions.add_item_my_project_milestones] == 1;comm]-->
+                        <!--permissions-->
+                        <i class="icon-plus"></i> [lang.lang_new_milestone]</button>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_MILESTONES_NAVIGATION-->
+                  <!--WI_MILESTONES_TABLE-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_milestones_table] == 1;comm]-->
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <table class="footable table table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th><a href="[vars.sortby_companyname;noerr]"> [lang.lang_title]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th data-hide="phone">[lang.lang_start_date]</th>
+                                <th data-hide="phone">[lang.lang_deadline]</th>
+                                <th data-hide="phone">Progress</th>
+                                <th><a href="[vars.sortby_projects;noerr]"> [lang.lang_status]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th style="width:50px; text-align:center; font-size:14px;"> <i class="icon-reorder"></i> </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><a class="links-blue" href="[conf.site_url]/admin/tasks/[milestones.milestones_project_id;block=tr;noerr]/view/[milestones.milestones_id;block=tr;noerr]">
+                                  <!--[milestones.milestones_title;block=tr;comm;ope=max:100]-->
+                                  </a> </td>
+                                <td><!--[milestones.milestones_start_date;block=tr;comm;onformat=runtime_date]--></td>
+                                <td><!--[milestones.milestones_end_date;block=tr;comm;onformat=runtime_date]--></td>
+                                <td><!--progress bar-->
+                                  <div class="progress active progress-table">
+                                    <div class="progress-bar progress-bar-primary" style="width:[milestones.percentage;noerr]%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar"><span class="progress-text">
+                                      <!--[milestones.percentage;comm]-->
+                                      %</span></div>
+                                  </div>
+                                  <!--progress bar--></td>
+                                <td><!--[milestones.milestones_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                                <td style="max-width:100px"><div>
+                                    <!--control buttons edit-->
+                                    <span>
+                                    <!--[onshow;block=span;when [project_permissions.edit_item_my_project_milestones] == 1;comm]-->
+                                    <!--permissions-->
+                                    <a class="btn btn-xs btn-info edit-milestone-modal" 
+                                         data-toggle="modal"
+                                         data-modal-window-title="[lang.lang_edit_milestone]"
+                                         data-height="350" 
+                                         data-width="100%"
+                                         data-milestones-title="[milestones.milestones_title;block=tr;noerr]"
+                                         data-milestones-start-date="[milestones.milestones_start_date;block=tr;noerr]"
+                                         data-milestones-end-date="[milestones.milestones_end_date;block=tr;noerr]"
+                                         data-milestones-id="[milestones.milestones_id;block=tr;noerr]"
+                                         data-milestones-events-id="[milestones.milestones_events_id;block=tr;noerr]"
+                                         data-target="#editMilestomeModal"><i class="icon-pencil"></i></a> </span>
+                                    <!--control buttons edit - end-->
+                                    <!--control buttons delete-->
+                                    <span>
+                                    <!--[onshow;block=span;when [project_permissions.delete_item_my_project_milestones] == 1;comm]-->
+                                    <!--permissions-->
+                                    <button class="btn btn-xs btn-danger ajax-delete-record"
+                                            data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                                data-popconfirm-no="[lang.lang_no;noerr]"
+                                            data-popconfirm-title="[lang.lang_confirm_delete_milestone;noerr]"
+                                            data-popconfirm-placement="left"
+                                            data-mysql-record-id="[milestones.milestones_id;block=tr]"
+                                            data-mysql-record-id3="[milestones.milestones_title;block=tr]"
+                                            data-mysql-record-id4="[milestones.milestones_project_id;block=tr]"
+                                            data-mysql-table-name="milestones"
+                                            data-ajax-url="[conf.site_url]/admin/ajax/delete-milestone"> <i class="icon-trash"></i> </button>
+                                    </span>
+                                    <!--control buttons delete - end -->
+                                  </div></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="widget-foot">[lang.lang_milestone_progress_calculation]</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_MILESTONES_TABLE-->
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                  <div class="just-a-wrapper" style="margin-top:15px;">
+                    <!--[onshow;block=div;when [vars.milestone_info_no_milestones_found] == 1;comm]-->
+                    <div class="alert alert-info">
+                      <!--[onshow;block=div;when [settings_general.show_information_tips] == 'yes';comm]-->
+                      <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_disable_info]"> <i class="icon-info-sign"></i> </a>
+                      <!--info start-->
+                      [lang.lang_info_milestones;noerr]
+                      <!--info end-->
+                    </div>
+                    <div align="center"> <img class="img-responsive" src="[conf.site_url_themes_common;noerr]/images/milestones-and-tasks.png" > </div>
+                  </div>
+                  <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                </div>
+                <div class="clearfix"></div>
+                <!-----------------------------------------------TABS-MILESTONES------------------------------------------------------------------>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_MILESTONE_MODAL-->
+<div class="row">
+
+  <div id="addNewMilestomeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/milestones/[vars.project_id;noerr]/add" method="post" id="addNewMilestone">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_new_milestone]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="milestones_title" name="milestones_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="milestones_start_date"  id="milestones_start_date">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_deadline]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="milestones_end_date"  id="milestones_end_date">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="milestones_project_id" value="[vars.project_id;noerr]">
+            <input type="hidden" name="milestones_client_id" value="[vars.client_id;noerr]">
+            <input type="hidden" name="milestones_created_by" value="[vars.my_id;noerr]">
+            <input type="hidden" name="milestones_events_id" value="[vars.new_events_id;noerr]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_add_new_milestone]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_MILESTONE_MODAL-->
+<!--WI_EDIT_MILESTONE_MODAL-->
+<div class="row">
+  <!--[onshow;block=div;when [project_permissions.edit_item_my_project_milestones] == 1;comm]-->
+  <!--permissions-->
+  <div id="editMilestomeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/milestones/[vars.project_id;noerr]/edit" method="post" id="editMilestone">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit_milestone]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="milestones_title_edit" name="milestones_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="milestones_start_date"  id="milestones_start_date_edit" value="">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="milestones_end_date"  id="milestones_end_date_edit" value="">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="milestones_project_id" value="[vars.project_id;noerr]">
+            <input type="hidden" name="milestones_id" id="milestones_id_edit">
+            <input type="hidden" name="milestones_events_id" id="milestones_events_id_edit">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_edit_milestone]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_MILESTONE_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_ADD_NEW_MILESTONE_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_NEW_MILESTONE_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#addNewMilestone").validate({
+		rules: {
+             milestones_start_date: "required",
+			 milestones_end_date: "required",
+			 milestones_title: "required"
+		},
+		messages: {
+			milestones_title: "[lang.lang_field_is_required]",
+			milestones_start_date: "[lang.lang_field_is_required]",
+			milestones_end_date: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_ADD_NEW_MILESTONE_MODAL-->
+<!--JS_EDIT_MILESTONE_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_MILESTONE_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+		
+    //---edit item link clicked-------
+    $(".edit-milestone-modal").click(function(){
+    
+        //get variables from "edit link" data attributes
+        var milestones_title_edit = $(this).attr("data-milestones-title");
+		var milestones_start_date_edit = $(this).attr("data-milestones-start-date");
+		var milestones_end_date_edit = $(this).attr("data-milestones-end-date");
+		var milestones_id_edit = $(this).attr("data-milestones-id");
+		var milestones_events_id_edit = $(this).attr("data-milestones-events-id");
+
+        //set modal input values dynamically
+		$('#milestones_title_edit').val(milestones_title_edit);
+		$('#milestones_start_date_edit').val(milestones_start_date_edit);
+		$('#milestones_end_date_edit').val(milestones_end_date_edit);
+		$('#milestones_id_edit').val(milestones_id_edit);
+		$('#milestones_events_id_edit').val(milestones_events_id_edit);
+
+  });
+    
+});
+</script>
+<!--JS_EDIT_MILESTONE_MODAL-->
+<!--JS_EDIT_MILESTONE_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_MILESTONE_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#editMilestone").validate({
+		rules: {
+             milestones_start_date: "required",
+			 milestones_end_date: "required",
+			 milestones_title: "required"
+		},
+		messages: {
+			milestones_title: "[lang.lang_field_is_required]",
+			milestones_start_date: "[lang.lang_field_is_required]",
+			milestones_end_date: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_MILESTONE_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

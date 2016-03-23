@@ -1,0 +1,74 @@
+<style>
+	.matter{margin-left:250px; }
+	 
+	.headerbar-widget{
+		background-color: #35414f!important;
+    	position: absolute;
+	    width: 250px;
+	    top: 55px;
+		height:100%;
+	}
+	.headerbar-widget > ul li span, .headerbar-widget > ul li i{color:#fff;}
+	.headerbar-project-title h3{color:#fff;}
+	.page-head{height: 55px;}
+	.dashboard-user-picture{background:none;}
+	.headerbar-form-search{padding-top:10px;}
+	.headerbar-form-search .btn{margin-left:0px;}
+</style>
+
+<div class="page-head">
+	<div class="nav_logo" style="margin-top:6px;">
+		<img class="img-responsive" src="[conf.site_url_themes_common]/images/logo.png"> 	
+		<ul id="navbar-hide" class="pull-left nav navbar-nav navbar-actions navbar-left">
+			<li class="visible-md visible-lg"><i class="fa fa-bars"></i></li>
+			<li class="visible-xs visible-sm"><i class="fa fa-bars"></i></li>
+		</ul>
+	</div>
+	<div class="pull-right">
+		<form class="form-inline headerbar-form-search" method="post" action="/admin/home">
+			<div class="form-group">
+				<input name="search_project_name" type="text" class="form-control" placeholder="Project Name">
+			</div>
+			<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+		</form>
+	</div>
+
+	<!-- <div class="headerbar-project-title headerbar-project-title-hide pull-left">
+		<h2 class="pull-left responsive-heading-title">
+			[vars.main_title_icon;htmlconv=no;noerr]
+			[vars.main_title;ope=max:35]
+		</h2>
+	</div> -->
+  <!-- menu -->
+  <!-- <div class="heading-menu pull-right responsive-heading-tabs">
+
+  					
+								<div class="pull-left" style="margin-top: 10px;"> <a href="/admin/myprojects" style="float:left;">PROJECTS</a> 
+									<label  class="nums label label-info">[vars.count_my_projects;onformat=runtime_number]</label>
+								</div>
+								<div class="pull-left" style="margin-top: 10px; margin-left: 10px;">
+									<a href="/admin/mytasks" style="float:left;">TASKS</a> 
+									<label class="nums label label-success">[my_tasks_count.all_open;onformat=runtime_number]</label>
+								</div>
+								<div class="pull-left" style="margin-top: 10px; margin-left: 10px;">
+									<a href="/admin/notifications" style="float:left;">NOTIFICATIONS</a> 
+									<label class="nums label label-warning-dark"></label>
+								</div>
+								<script type="text/javascript">
+									var data = {count: 1}
+									$.ajax({                                                                                   
+									url : "[vars.site_url;noerr]admin/ajax/count-notifications"
+									}).done(function(e) {
+										console.log(e);
+									$(".label-warning-dark").append(e); 
+									});                                                                                
+								</script>
+
+								
+ </div> -->
+	<div class="clearfix"></div>
+</div>
+
+<!--WI_HEADING_BAR-->
+	<!--[onload;file=common.headbar.html;getbody;comm]-->
+<!--WI_HEADING_BAR-->

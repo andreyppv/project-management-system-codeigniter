@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="login body-login">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!-- WI_LOGIN_FORM -->
+<div class="container login-form login-form-small">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+</div>
+<div class="login-background">
+<div class="login-overlay"></div>
+<style type="text/css">
+      .login-background {
+      position: fixed; right: 0; bottom: 0;
+      min-width: 100%; min-height: 100%;
+      width: auto; height: auto; z-index: -100;
+      background: url(back.jpg) no-repeat;
+      background-size: cover;
+      }
+      </style>
+
+</div>
+<div class="container login-form login-form-small">
+  <!--[onshow;block=div;when [visible.wi_login_form] == 1;comm]-->
+  
+  <!--LOGO-->
+
+  <div class="login-form-logo"> <img src="[conf.site_url_themes_common]/images/logo.png" alt="Freelane dashboard"> 
+
+
+  </div>
+  <!--LOGO-->
+  <div class="login-form">
+    <form action="[conf.site_url]/admin/login/signin" class="form-horizontal" method="post">
+      <div class="widget">
+        <!-- Widget head -->
+        <div class="widget-content">
+        <div class="login-title">[lang.lang_account_login]</div>
+          <!-- Login form -->
+          <div class="form-group" style="margin-bottom:13px;">
+            <div class="col-lg-12">
+              <div class="input-group"> <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" id="email" name="email" autocomplete="off" data-placeholder="email address">
+              </div>
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="input-group"> <span class="input-group-addon"><i class="icon-key"></i></span>
+                <input type="password" class="form-control" id="password" name="password" autocomplete="off" data-placeholder="password">
+              </div>
+            </div>
+          </div>
+          <div class="checkbox" style="color:gray">
+            <label>
+              <input name="rememberme" value="on" type="checkbox"> This is not a public computer, remember my session
+            </label>
+          </div>
+          <div class="form-group" style="padding:12px 0px;">
+            <div class="col-lg-12"> <a class="btn btn-information btn-lg" href="#myModal" data-toggle="modal">[lang.lang_forgot_password]</a>
+              <input type="submit" class="btn btn-info btn-lg" name="submit" value="Sign In">
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--WI_LOGIN_FORM(end)-->
+<!--WI_NOTIFICATION-->
+<div class="container login-form login-form-small">
+  <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+  <div class="col-md-12">
+    <div class="widget">
+      <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+    </div>
+  </div>
+</div>
+<!--WI_NOTIFICATION-->
+<!--WI_PASSWORD_RESET_FORM-->
+<div class="login-form">
+  <!--[onshow;block=div;when [visible.wi_password_reset_form] == 1;comm]-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Widget starts -->
+        <div class="widget worange">
+          <!-- Widget head -->
+          <div class="widget-head">Reset Your Password</div>
+          <div class="widget-content">
+            <form action="[conf.site_url]/admin/login/passwordreset" class="form-horizontal" method="post">
+              <div class="padd">
+                <!-- Login form -->
+                <!-- Email -->
+                <div class="form-group" style="margin-bottom:13px;">
+                  <label class="control-label col-lg-2" for="inputEmail" style="width:100px;">[lang.lang_new_password]</label>
+                  <div class="col-lg-9">
+                    <input type="password" class="form-control" id="new_password" placeholder="[lang.lang_password]" name="new_password" autocomplete="off">
+                  </div>
+                </div>
+                <!-- Password -->
+                <div class="form-group" style="margin-bottom:13px;">
+                  <label class="control-label col-lg-2" for="inputPassword"  style="width:100px;">[lang.lang_confirm_password]</label>
+                  <div class="col-lg-9">
+                    <input type="password" class="form-control" id="confirm_password" placeholder="[lang.lang_confirm_password]" name="confirm_password" autocomplete="off">
+                  </div>
+                </div>
+                <!-- Remember me checkbox and sign in button -->
+                <div class="col-lg-9 col-lg-offset-2">
+                  <input type="hidden" name="resetcode" value="[vars.resetcode;noerr]">
+                  <input type="submit" class="btn btn-info" name="submit" value="Update Password">
+                </div>
+                <br />
+              </div>
+            </form>
+          </div>
+          <div class="widget-foot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_PASSWORD_RESET_FORM (end)-->
+<!--WI_MODAL_PASSWORD_REMINDER-->
+<div class="row">
+  <div id="myModal" class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <form class="form-horizontal" action="[conf.site_url]/admin/login/reminder" method="post" id="ResetPassword">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <h4 class="modal-title">
+            [lang.lang_reset_my_password]</h4>
+        </div>
+        <div class="modal-body">
+          <!-- Email -->
+          <div class="form-group" style="margin-bottom:10px;">
+            <label class="control-label col-lg-12" for="inputEmail">
+            [lang.lang_email]</label>
+            <div class="col-lg-12">
+              <input type="text" class="form-control" id="my_emailaddress" placeholder="[lang.lang_your_email_address]" name="my_emailaddress" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+          [lang.lang_close]</button>
+          <input type="hidden" name="action" value="reminder">
+          <input class="btn btn-primary" type="submit" value="Reset Password" id="" name="submit">
+          </button>
+        </div>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--WI_MODAL_PASSWORD_REMINDER(end)-->
+<!--JS_MODAL_PASSWORD_REMINDER-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_NEW_CLIENT_MODAL
+	//ACTIONS: validates the [add new client, modal] form. Each specified field must not be empty on submit
+	//REQUIRES: jquery.validate.js
+	$("#ResetPassword").validate({
+		rules: {
+			my_emailaddress: {
+				required: true,
+				email: true
+			}
+		},
+		messages: {
+			my_emailaddress: "Please enter a valid email address"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_MODAL_PASSWORD_REMINDER-->
+<!--BREAK OUT OF IFRAME-->
+<script>
+this.top.location !== this.location && (this.top.location = this.location);
+</script>
+<!--BREAK OUT OF IFRAME-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

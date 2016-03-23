@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_PAYMENTS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/allpayments/search-payments" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="payments_transaction_id" placeholder="[lang.lang_transaction_id]" >
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control pickadate" name="payment_date" placeholder="[lang.lang_date]" >
+              </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="payments_client_id" name="payments_client_id" data-placeholder="[lang.lang_client]">
+                    <option></option>
+                     <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->           
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="payments_project_id" name="payments_project_id" data-placeholder="[lang.lang_projects]">
+                    <option></option>
+                     <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->            
+                  </select>
+                </div>
+                                                          
+                           
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary"> [lang.lang_search_payments]</button>
+              </div>
+              
+            </form>
+            <div class="clearfix"></div>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_PAYMENTS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_PAYMENTS_TABLE-->
+        <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_payments_table] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content">
+                <table class="footable table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th  data-hide="phone"><a href="[vars.sortby_id;noerr]"> [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>[lang.lang_client]</th>
+                      <th  data-hide="phone">[lang.lang_project]</th>
+                      <th><a href="[vars.sortby_date;noerr]"> [lang.lang_date]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th  data-hide="phone">[lang.lang_transaction_id]</th>
+                      <th  data-hide="phone">[lang.lang_payment_method]</th>
+                      <th><a href="[vars.sortby_amount;noerr]"> [lang.lang_amount_paid]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:25px; text-align:center; font-size:14px;"> <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><!--[all_payments.payments_id;block=tr;comm;onformat=runtime_check_blank;noerr]--></td>
+                      <td><a href="[conf.site_url]/admin/client/[all_payments.clients_id;block=tr]/payments"><span class="label label-purple"><!--[all_payments.clients_company_name;block=tr;comm;onformat=runtime_check_blank_ucfirst;ope=max:30]--></span></a></td>
+                      <td><!--[all_payments.projects_title;block=tr;comm;onformat=runtime_check_blank_ucfirst;ope=max:30]--></td>
+                      <td><!--[all_payments.payments_date;block=tr;comm;onformat=runtime_date]--></td>
+                      <td><!--[all_payments.payments_transaction_id;block=tr;comm;onformat=runtime_check_blank]--></td>
+                      <td><!--[all_payments.payments_method;block=tr;comm;onformat=runtime_check_blank]--></td>
+                      <td><!--[settings_general.currency_symbol;comm]-->
+                        <!--[all_payments.payments_amount;block=tr;comm;onformat=runtime_number_decimal;noerr]--></td>
+                      <td class="tr-link-excluded"><!--WI_CONTROL_BUTTONS-->
+                        <!--control buttons delete-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[all_payments.payments_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-invoice-payment"> <i class="icon-trash"></i>
+                        
+                        </button>
+                        <!--control buttons delete-->
+                        <!--WI_CONTROL_BUTTONS_END-->                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_BUTTONS_INFORMATION-->
+                  <div class="bns-info-div pull-left" style="max-width:350px; margin-top:8px;"> [lang.lang_buttons_information]:
+                    <button class="btn btn-xs btn-danger tooltips" title="[lang.lang_delete;noerr]"><i class="icon-trash"></i> </button>
+                    <!--WI_BUTTONS_INFORMATION-->
+                  </div>
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--WI_PAYMENTS_TABLE-->
+          <!--WI_NOTIFICATION-->
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+          <!--WI_NOTIFICATION-->
+        </div>
+      </div>
+      <!-- Matter ends -->
+    </div>
+    <!-- Mainbar ends -->
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"> [lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--------SPECIFIC-CUSTOM-JAVASCRIPT--------->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.ajax.get.clients.projects.js"></script>
+<!--------SPECIFIC-CUSTOM-JAVASCRIPT--------->
+<!--JS_ADD_NEW_INVOICE_MODAL-->
+<script>
+//USED BY: VARIOUS
+//ACTIONS: creates a nice pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#payments_project_id").select2({
+        allowClear: true
+    });
+    $("#payments_client_id").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_ADD_NEW_INVOICE_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

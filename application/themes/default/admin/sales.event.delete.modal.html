@@ -1,0 +1,46 @@
+<div class="modal-dialog" style="width:750px;">
+	<div class="modal-content">
+		<form class="form-horizontal" action="http://pms.isodeveloper.com/admin/sales/event-delete" method="post" id="addNewProject" novalidate="novalidate">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				x
+			</button>
+			<!--full screen icon - custom.js-->
+			<button type="button" class="full-screen-modal close" aria-hidden="true">
+				<i class="icon-fullscreen"></i>
+			</button>
+			<!--full screen icon - custom.js-->
+			<h4 class="modal-title" id="modal-iframe-title"> Delete Activity </h4>
+			<div class="clearfix"></div>
+		</div>
+		<div class="modal-body">
+			
+				<input type="hidden" name="delete_id" value="[vars.elementDetails.lead_events_id]">
+				<input type="hidden" name="lead_id" value="[vars.elementDetails.lead_events_lead_id]">
+
+				<dl class="dl-horizontal list">
+					<dt>Type</dt><dd>[vars.elementDetails.lead_events_type]</dd>
+					<dt>Date</dt><dd>[vars.elementDetails.lead_events_date]</dd>
+					<dt>Content</dt><dd>[vars.elementDetails.lead_events_details;strconv=no]</dd>
+				</dl>
+	
+			
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-danger" type="submit" value="Delete" name="submit">
+			<button class="btn btn-primary" data-dismiss="modal">Cancel</button>
+		</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+				CKEDITOR.replace('leads_events_description_edit', {
+					toolbar : 'Basic',
+					uiColor : '#ffffff',
+					height : '300px'
+				});
+				console.log('test');
+	});
+</script>

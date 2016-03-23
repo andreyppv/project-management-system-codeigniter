@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_EDIT_CLIENT_DETAILS_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_client_details_table] == 1;comm]-->
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong>[lang.lang_id]</strong></td>
+            <td><span class="label label-info">[row.clients_id;block=tr;onformat=runtime_check_blank]</span></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_company_name]</strong></td>
+            <td><a href="#" id="clients_company_name" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_company_name"
+                                  class="editable_area">[row.clients_company_name;noerr] </a></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_address]</strong></td>
+            <td><a href="#" id="clients_address" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_address" 
+                                  class="editable_area">[row.clients_address;noerr] </a></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong>[lang.lang_city]</strong></td>
+            <td><a href="#" id="clients_city" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_city" 
+                                  class="editable_area">[row.clients_city;noerr] </a></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_state]</strong></td>
+            <td><a href="#" id="clients_state" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_state"
+                                  class="editable_area">[row.clients_state;noerr] </a></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_zip_code]</strong></td>
+            <td><a href="#" id="clients_zipcode" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_zipcode"
+                                  class="editable_area">[row.clients_zipcode;noerr] </a></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_website]</strong></td>
+            <td><a href="#" id="clients_website" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_website"
+                                  class="editable_area">[row.clients_website;noerr]</a></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FAFAFA"><strong> [lang.lang_main_contact]</strong></td>
+            <td><a href="#" id="client_users" 
+                                  data-type="select" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="client_users">[row.client_users_full_name;noerr]</a>
+              <!--editable pulldown js end-->
+              <script>
+                                 $(function(){
+                                 $('#client_users').editable({
+                                 value: '', 
+                                 source: [
+                                 [vars.editable_users_list;noerr]
+                                 ]
+                                 });
+                                 });
+                                 </script>
+              <!--editable pulldown js end-->
+            </td>
+          </tr>
+          <!--WI_CLIENTS_OPTIONALFIELD1-->
+          <tr>
+            <!--[onshow;block=tr;when [visible.wi_clients_optionalfield1] == 1;comm]-->
+            <td bgcolor="#FAFAFA"><strong>[row.wi_clients_optionalfield1;noerr]</strong></td>
+            <td><a href="#" id="clients_optionalfield1" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_optionalfield1"
+                                  class="editable_area">[row.clients_optionalfield1;noerr]</a></td>
+          </tr>
+          <!--WI_CLIENTS_OPTIONALFIELD1-->
+          <!--WI_CLIENTS_OPTIONALFIELD2-->
+          <tr>
+            <!--[onshow;block=tr;when [visible.wi_clients_optionalfield2] == 1;comm]-->
+            <td bgcolor="#FAFAFA"><strong>[row.wi_clients_optionalfield2;noerr]</strong></td>
+            <td><a href="#" id="clients_optionalfield2" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_optionalfield2"
+                                  class="editable_area">[row.clients_optionalfield2;noerr]</a></td>
+          </tr>
+          <!--WI_CLIENTS_OPTIONALFIELD2-->
+          <!--WI_CLIENTS_OPTIONALFIELD3-->
+          <tr>
+            <!--[onshow;block=tr;when [visible.wi_clients_optionalfield3] == 1;comm]-->
+            <td bgcolor="#FAFAFA"><strong>[row.wi_clients_optionalfield3;noerr]</strong></td>
+            <td><a href="#" id="clients_optionalfield3" 
+                                  data-type="text" 
+                                  data-pk="[row.clients_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-client-profile" 
+                                  data-name="clients_optionalfield3"
+                                  class="editable_area">[row.clients_optionalfield3;noerr]</a></td>
+          </tr>
+          <!--WI_CLIENTS_OPTIONALFIELD3-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_EDIT_CLIENT_DETAILS_TABLE-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

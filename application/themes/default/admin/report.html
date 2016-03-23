@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Main bar -->
+    <div class="mainbar">
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!--[onload;file=common.heading.html;getbody;comm]-->
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!-- Matter -->
+        <div class="matter">
+            <style type="text/css">
+                th{text-align: center;}
+            </style>
+            
+            <div class="widget titlebar-widget">
+                <div class="titlebar">
+                    <h3>Report</h3>
+                </div>
+            </div>
+            <!-- START TOP MENU -->
+            <div class="container">
+                <div class="row fullscreen-mode">
+                    <div class="col-md-12">
+                        <div class="btn-group sales-reports-btn" role="group" aria-label="...">
+                            <a class="btn btn-default active" href="[conf.site_url]/admin/reports/sales">Sales</a>
+                            <a class="btn btn-default" href="[conf.site_url]/admin/reports/freelancers">Freelancers</a>
+                            <a class="btn btn-default" href="[conf.site_url]/admin/reports/clients">Clients</a>
+                            <a class="btn btn-default" href="[conf.site_url]/admin/reports/mytasks">Others</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TOP MENU -->
+            <div class="container table-sales-report">
+                <form action="[conf.site_url]/admin/reports/home" method="POST" id="report-form">
+                <div class="row">
+                    <!--start sales panel-->
+                    <div class="col-md-6">
+                        <div class="panel panel-default report-panel">
+                            <div class="panel-heading">
+                                <nav class="navbar navbar-default">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="[conf.site_url]/admin/reports/sales">Sales</a>
+                                    </div>
+                                    <div class="collapse navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="[conf.site_url]/admin/reports/sales/leads">Leads</a></li>
+                                            <li><a href="[conf.site_url]/admin/reports/sales/hotleads">Hot Leads</a></li>    
+                                            <li><a href="[conf.site_url]/admin/reports/sales/lost">Lost</a></li>    
+                                            <li><a href="[conf.site_url]/admin/reports/sales/users">Sales Users</a></li>    
+                                            <li><a href="[conf.site_url]/admin/reports/sales/converted">Converted</a></li>    
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            
+                            <!--start sales form-->
+                            <div class="panel-body" id="sales-box">     
+                                <input type="hidden" name="sales-search-type" id="sales-search-type" value="[vars.sales_search_type]"/>
+                                <p>Select a period:</p>
+                                <div class="sales-reports-btn" style="margin:5px 0px;" role="group" aria-label="...">
+                                    <a class="btn btn-default btn-search" data-search-type="week">Week</a>
+                                    <a class="btn btn-default btn-search" data-search-type="month">Month</a>
+                                    <a class="btn btn-default btn-search" data-search-type="year">Year</a>
+                                </div>
+
+                                <p>or enter date range:</p>
+                                <div class='input-group date' style="margin:5px 0px 10px 0; width:100%;">
+                                    <input type='text' class="form-control datetimepicker" name="sales_start_date" placeholder="Start Date..." value="[vars.sales_start_date]" style="width:50%;"/>                                                                            
+                                    <input type='text' class="form-control datetimepicker" name="sales_end_date" placeholder="End Date..." value="[vars.sales_end_date]" style="width:49%; margin-right:2px;"/>
+                                    <a class="btn btn-default form-control btn-search" style="width:50px;" data-search-type="range">Submit</a>
+                                </div>
+                       
+                                <table class="table">
+                                    <tr><th></th><th>No. of Leads</th><th>Total Value</th></tr>
+                                    <tr><td>Total Leads</td><td>[vars.total_lead_no]</td><td>[vars.total_lead_value]</td></tr>
+                                    <tr><td>Hot Leads</td><td>[vars.hot_lead_no]</td><td>[vars.hot_lead_value]</td></tr>  
+                                    <tr><td>Lost Leads</td><td>[vars.lost_lead_no]</td><td>[vars.lost_lead_value]</td></tr>
+                                </table>
+                                <table class="table">
+                                    <tr><th></th><th>No. of Clients</th><th>Total Project Spend to Date</th></tr>
+                                    <tr><td>Converted Sales</td><td>[vars.client_no]</td><td>[vars.client_value]</td></tr>
+                                </table>
+                               
+                            </div>
+                            <!--end sales form-->
+                        </div>
+                    </div>
+                    <!--end sales panel-->
+                    
+                    <!--start team panel-->
+                    <div class="col-md-6">
+                        <div class="panel panel-default report-panel">
+                            <div class="panel-heading">
+                                <nav class="navbar navbar-default">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="[conf.site_url]/admin/reports/freelancers">Team Members</a>
+                                    </div>
+                                    <div class="collapse navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="[conf.site_url]/admin/reports/freelancers/users">Users</a></li>
+                                            <li><a href="[conf.site_url]/admin/reports/freelancers/pendingPayment">Pending Task Payments</a></li>    
+                                            <li><a href="[conf.site_url]/admin/reports/unapprovedTasks">Unapproved Tasks</a></li>    
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <!--start team form-->
+                            <div class="panel-body" id="team-box">
+                                <input type="hidden" name="team-search-type" id="team-search-type" value="[vars.team_search_type]"/>
+                                <p>Select a period:</p>
+                                <div class="sales-reports-btn" style="margin:5px 0px;" role="group" aria-label="...">
+                                    <a class="btn btn-default btn-search" data-search-type="week">Week</a>
+                                    <a class="btn btn-default btn-search" data-search-type="month">Month</a>
+                                    <a class="btn btn-default btn-search" data-search-type="year">Year</a>
+                                </div>
+
+                                <p>or enter date range:</p>
+                                <div class='input-group date' style="margin:5px 0px 10px 0; width:100%;">
+                                    <input type='text' class="form-control datetimepicker" name="team_start_date" placeholder="Start Date..." value="[vars.team_start_date]" style="width:50%;"/>                                                                            
+                                    <input type='text' class="form-control datetimepicker" name="team_end_date" placeholder="End Date..." value="[vars.team_end_date]" style="width:49%; margin-right:2px;"/>
+                                    <a class="btn btn-default form-control btn-search" style="width:50px;" data-search-type="range">Submit</a>
+                                </div>     
+                                
+                                <h4 style="text-align:center;"><strong>Unassigned &amp; Assigned Tasks</strong></h4>
+                                <table class="table table-bordered">
+                                    <tr><th></th><th>No. of Tasks</th><th>Total Cost (based upon billable value of tasks)</th></tr>
+                                    <tr><td>Unassigned Tasks</td><td>[vars.task_unassigned_no]</td><td>[vars.task_unassigned_cost]</td></tr>
+                                    <tr><td>Assigned Tasks</td><td>[vars.task_assigned_no]</td><td>[vars.task_assigned_cost]</td></tr>  
+                                </table>
+
+                                <h4 style="text-align:center;"><strong>In Progress Tasks</strong></h4>
+                                <div class="col-md-8"></div> 
+                                <div class="col-md-4"> 
+                                <table class="table table-bordered">
+                                    <tr><td>No. of Tasks</td><td>[vars.task_progress_no]</td></tr>
+                                </table>
+                                </div>
+                                <table class="table table-bordered">
+                                    <tr><th></th><th>Hours</th><th>Total Cost<br>(based upon team members' hrly rates)</th></tr>
+                                    <tr><td>Assigned Hours</td><td>[vars.task_progress_assigned_hours]</td><td>[vars.task_progress_assigned_cost]</td></tr>
+                                    <tr><td>Worked Hours</td><td>[vars.task_progress_worked_hours]</td><td>[vars.task_progress_worked_cost]</td></tr>  
+                                </table>
+                                
+                                <div style="width:500px; display:block; margin: 0 auto;" id="chart_div"></div>
+                              
+                                <h4 style="text-align:center;"><strong>Tasks Pending Approval</strong></h4>
+                                <table class="table table-bordered">
+                                    <tr><th></th><th>No. of Tasks</th><th>Hours</th><th>Total Cost<br>(based upon team members' hrly rates)</th></tr>
+                                    <tr><td>Tasks submitted for client approval</td><td>[vars.task_pending_no]</td><td>[vars.task_pending_hours]</td><td>[vars.task_pending_cost]</td></tr>  
+                                </table>
+
+                                <h4 style="text-align:center;"><strong>Completed Tasks</strong></h4>
+                                <table class="table table-bordered">
+                                    <tr><th></th><th>No. of Tasks</th><th>Worked Hours</th><th>Assigned Hours</th><th>Total Cost<br>(based upon team members' hrly rates)</th></tr>
+                                    <tr><td>Tasks Completed</td><td>[vars.task_completed_no]</td><td>[vars.task_completed_worked_hours]</td><td>[vars.task_completed_assigned_hours]</td><td>[vars.task_completed_cost]</td></tr>  
+                                </table>
+                            </div>
+                            <!--end team form-->
+                        </div>
+                    </div>
+                </div>
+                </form>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default report-panel">
+                            <div class="panel-heading">
+                                <nav class="navbar navbar-default">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="[conf.site_url]/admin/reports/clients">Clients</a>
+                                    </div>
+                                    <div class="collapse navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="[conf.site_url]/admin/reports/clients/clients">clients</a></li>
+                                            <li><a href="[conf.site_url]/admin/reports/clients/onHold">On Hold</a></li>    
+                                            <li><a href="[conf.site_url]/admin/reports/clients/review">Review</a></li>    
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover table-reports-details">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Credit</th>
+                                            <th>Date Added</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="/admin/client/<!--[clients.clients_id;comm]-->/view">
+                                                    <!--[clients.clients_id;block=tr;comm;onformat=runtime_check_blank]-->
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/client/<!--[clients.clients_id;comm]-->/view">
+                                                    <!--[clients.clients_company_name;block=tr;comm;onformat=runtime_check_blank]-->
+                                                </a>
+                                            </td>
+                                            <td><!--[clients.credit_amount_remaining;block=tr;comm;onformat=runtime_check_blank]--></td>
+                                            <td><!--[clients.clients_date_created;block=tr;comm;;onformat=runtime_date]--></td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default report-panel">
+                            <div class="panel-heading">
+                                <nav class="navbar navbar-default">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="[conf.site_url]/admin/reports/mytasks">My Tasks</a>
+                                    </div>
+                                    <div class="collapse navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="[conf.site_url]/admin/reports/mytasks/urgent">Urgent</a></li>
+                                            <li><a href="[conf.site_url]/admin/reports/mytasks/thisWeek">This Week</a></li>    
+                                            <li><a href="[conf.site_url]/admin/reports/mytasks/all">All</a></li>    
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="panel-body">
+                                
+                                <table class="table table-bordered table-hover table-ordered-reports-details three">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Task</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td><!--[myTasks.tasks_text;block=tr;comm;onformat=runtime_check_blank]--></td>
+                                            <td><!--[myTasks.tasks_status;block=tr;comm;onformat=runtime_check_blank]--></td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Matter ends -->
+
+    </div>
+    <!-- Mainbar ends -->
+    <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>   
+<!--WI_IFRAME_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT----------------------------> 
+
+<!--Load the AJAX API-->
+<!--<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jsapi.js"></script>-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+$('.datetimepicker').datepicker({autoclose:true, format:'yyyy-mm-dd'});
+
+$('#sales-box .btn-search').click(function(e) {
+    type = $(this).data('search-type');
+
+    $('#sales-search-type').val(type);
+    $('#report-form').submit();
+       
+    //e.prevenDefault();
+});
+
+$('#team-box .btn-search').click(function(e) {
+    type = $(this).data('search-type');
+
+    $('#team-search-type').val(type);
+    $('#report-form').submit();
+       
+    //e.prevenDefault();
+});
+</script>
+
+<script type="text/javascript">
+    remaining = parseFloat([vars.task_progress_assigned_hours]) - parseFloat([vars.task_progress_worked_hours]);
+    
+    google.load('visualization', '1.0', {'packages':['corechart']});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task Time');
+        data.addColumn('number', 'Hours');
+        data.addRows([
+            ['Assigned Hours Worked', parseFloat([vars.task_progress_worked_hours])],
+            ['Assigned Hours currently Unworked', parseFloat(remaining)]
+        ]);
+        
+        // Set chart options
+        var options = {'title':'Ratio of Assigned Hours That Have Been Worked ',
+            'width':500,
+            'height':300
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>   
+<!--END the AJAX API-->  
+ 
+</body>
+</html>

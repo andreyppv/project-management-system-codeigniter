@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+        <link href="../common/style/bootstrap.css" rel="stylesheet">
+        <link href="../common/style/style.css" rel="stylesheet">
+        <style>
+            .mainbar {
+                margin:0px;
+            }
+            .sidebar {
+                display:none;
+            }
+        </style>
+        <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+        <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+
+    </head>
+    <!--HEAD - ONLOAD-->
+    <!--[onload;file=../common/common.head.html;getbody;comm]-->
+    <!--HEAD - ONLOAD-->
+    <body>
+        <!--JS SECTION - ONLOAD-->
+        <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+        <!--JS SECTION - ONLOAD-->
+        <!--DEBUG SECTION - ONLOAD-->
+        <!--[onload;file=../common/include.debug.html;getbody;comm]-->
+        <!--DEBUG SECTION - ONLOAD-->
+        <!--HEADER SECTION - ONLOAD-->
+        <!--[onload;file=common.header.html;getbody;comm]-->
+        <!--HEADER SECTION - ONLOAD-->
+        <!-- Main content starts -->
+        <div class="content">
+            <!-- Main bar -->
+            <div class="mainbar">
+                <!----------------------COMMON PAGE HEADING--------------------------------->
+                <!--[onload;file=common.heading.html;getbody;comm]-->
+                <!----------------------COMMON PAGE HEADING--------------------------------->
+                <!-- Matter -->
+                <div class="matter">
+                    <!--WI_TITLE_BAR-->
+                    <div class="widget titlebar-widget">
+                        <div class="titlebar">
+                            <h3>[vars.main_title;noerr]</h3>
+                        </div>
+                    </div>
+                    <!--WI_TITLE_BAR-->
+
+                    <!-- START TOP MENU -->
+                    <div class="container">
+                        <div class="row fullscreen-mode">
+                            <div class="col-md-12">
+                                <div class="btn-group sales-reports-btn" role="group" aria-label="...">
+                                    <a class="btn btn-default" href="[conf.site_url]/admin/reports/sales">Sales</a>
+                                    <a class="btn btn-default active" href="[conf.site_url]/admin/reports/freelancers">Freelancers</a>
+                                    <a class="btn btn-default" href="[conf.site_url]/admin/reports/clients">Clients</a>
+                                    <a class="btn btn-default" href="[conf.site_url]/admin/reports/mytasks">Others</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END TOP MENU -->
+
+                    <div class="container table-sales-report">
+                        <!----------------------COMMON NOTICES--------------------------------->
+                        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+                        <!----------------------COMMON NOTICES--------------------------------->
+                        <!--WI_SALES_TABLE-->
+                        <div class="row fullscreen-mode">
+                            <div class="col-md-12 widget report-table">
+                                <div style="padding-left: 20px;" class="widget-content">
+                                    <div class="panel panel-default report-panel">
+                                        <div class="panel-body">
+                                            <table class="table table-bordered table-hover table-ordered-reports-details one">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Name</th>
+                                                        <th>No. of Projects</th>
+                                                        <th>No. Open Tasks</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><!--[freelancers.team_profile_full_name;block=tr;comm;onformat=runtime_check_blank]--></td>
+                                                        <td><!--[freelancers.projects_count;block=tr;comm;onformat=runtime_check_blank]--></td>
+                                                        <td><!--[freelancers.tasks_count;block=tr;comm;onformat=runtime_check_blank]--></td>
+                                                    </tr> 
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--WI_SALES_TABLE-->
+                    </div>
+
+                </div>
+                <!-- Matter ends -->
+            </div>
+            <!-- Mainbar ends -->
+        </div>
+        <div class="clearfix"></div>
+        <!-- Content ends -->
+        <!----------------------COMMON FOOTER--------------------------------->
+        <!--[onload;file=../common/common.footer.html;getbody;comm]-->
+        <!----------------------COMMON FOOTER--------------------------------->
+        <!-- Scroll to top -->
+        <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+
+        <!--JS_SELECT_LISTS-->
+        <script>
+            //USED BY: WI_USERS_SEARCH
+            //ACTIONS: creates a noce pull down/select for each specified field
+            //REQUIRES: select2.js
+            //NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+
+        </script>
+        <!--JS_SELECT_LISTS-->
+        <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+        <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+        <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    </body>
+</html>

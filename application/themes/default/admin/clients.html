@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <style type="text/css">
+    .clientBox-info {
+        background: red;
+    }
+    
+    .clientBox-info li p {
+        display: inline-block;
+        padding: 10px;
+        font-size: 18px;
+    }
+    
+    .clientBox-info li input {}
+    </style>
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+   
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+
+<body>
+    <!--JS SECTION - ONLOAD-->
+    <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+    <!--JS SECTION - ONLOAD-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--[onload;file=../common/include.debug.html;getbody;comm]-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!--[onload;file=common.header.html;getbody;comm]-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!-- Main content starts -->
+	<style>
+		*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+		.clientSort {
+			-moz-column-width: 24em;
+			-webkit-column-width: 24em;
+			-moz-column-gap: 1.3em;
+			-webkit-column-gap: 1.3em; 
+			margin-left: 15px;
+			margin-right: 15px;		  
+		}
+		
+		.clientBox {
+			margin-top: 40px;
+			position: relative;
+			width: 100%;
+			display: inline-block;
+		}
+		
+		.clients-details .row {
+			margin-bottom: 5px;
+		}
+	</style>
+    <div class="content">
+        <!-- Main bar -->
+        <div class="mainbar">
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!--[onload;file=common.heading.html;getbody;comm]-->
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!-- Matter -->
+            <div class="matter">
+                <!--WI_CLIENTS_SEARCH-->
+                <div class="navbar navbar-default" role="navigation">
+                    <!--[onshow;block=div;when [visible.wi_clients_search] == 1;comm]-->
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only"> [lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <form id="js-filters" class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/clients/search-clients" method="post">
+                                <div class="form-group">
+								<fieldset>
+						    		<input type="text" placeholder="Company Name / Mail" val="" data-filter="" id="filter--text" />
+						  		</fieldset>                                </div>
+                                <div class="form-group hidden">
+                                    <!--select2.js pulldown-->
+                                    <select id="clients-list" data-placeholder="[lang.lang_company_name]" name="client_name">
+                                        <option></option>
+                                        <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->
+                                    </select>
+                                </div>
+                                <div class="form-group hidden">
+                                    <!--select2.js pulldown-->
+                                    <select id="users-email-list" data-placeholder="[lang.lang_email]" name="client_email">
+                                        <option></option>
+                                        <!--[lists.all_users_email;noerr;htmlconv=no;protect=no;comm]-->
+                                    </select>
+                                </div>
+                                <div class="form-group" >
+                					<button class="btn btn-primary" id="js-reset">Clear Filters</button>
+              					</div>
+                                <div class="form-group">
+                                    <button href="#addNewClientModal" class="btn btn-success" data-toggle="modal">
+                                        <!--[onshow;block=button;when [permission.add_item_clients] == 1;comm]-->
+                                        <!--permissions-->
+                                        <i class="icon-plus"></i> [lang.lang_add_new_client]</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </div>
+                <!--WI_CLIENTS_SEARCH END-->
+                <div class="container">
+                    <!----------------------COMMON NOTICES--------------------------------->
+                    <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+                    <!----------------------COMMON NOTICES--------------------------------->
+                    <!-- Clients CARDS -->
+                    
+                    
+                    <!--WI_NOTIFICATION-->
+				    <div class="row">
+				        <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+				        <div class="col-md-12">
+				            <div class="widget">
+				                <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+				            </div>
+				        </div>
+				    </div>
+				    <!--WI_NOTIFICATION-->
+                    
+                    <div class="row clientSort">
+                    	<!--[blk1;block=begin;sub1=projects]-->
+                        <div class="mix clientBox <!--[blk1.class_name;comm]--> <!--[blk1.client_users_email;comm]-->" >
+                            <div class="dashboard-pinned-project dashboard-pinned-project-info">
+                                <a href="/admin/client/<!--[blk1.clients_id;comm]-->/view">
+	                                <div class="dashboard-pinned-project-header bg-info" style="background-color:#35414f !important;"> 
+	                                	<span style="display: inline-block;" class="project-client-name">
+	                                		<i style="; font-size: 18px; margin-right: 10px;" class="icon-briefcase"></i>
+										</span> 
+										<span style="display: inline-block; font-size: 20px;" class="project-title">
+	                      					<!--[blk1.clients_company_name;comm;ope=max:20]-->
+										</span>
+										<span style="margin-left: 15px; display: inline-block; font-size: 14px;" class="project-title">
+											(id <!--[blk1.clients_id;comm]-->)
+										</span>
+										<!--[onshow;block=span;when [permission.delete_item_clients] == 1;comm]--><!--permissions-->
+										<span class="pull-right">
+					                    <button class="btn btn-xs btn-danger ajax-delete-record"
+											data-popconfirm-yes="[lang.lang_yes;noerr]"
+											data-popconfirm-no="[lang.lang_no;noerr]"
+											data-popconfirm-title="[lang.lang_confirm_delete_client;noerr]"
+											data-popconfirm-placement="left"
+											data-mysql-record-id="[blk1.clients_id;block=tr]"
+											data-ajax-url="[conf.site_url]/admin/ajax/delete-client"> <i class="icon-trash"></i> 
+										</button>
+					                    </span>
+	                                </div>
+                                </a>
+                                <!--CLIENT BOX HEADER ENDS -->
+                                <div class="col-md-12 clients-details" style="padding-top: 15px; padding-bottom: 15px; background-color: #ffffff; border-left: solid 1px #e7e7e7; border-right: solid 1px #e7e7e7;">
+                                    <div class="row">
+										<div class="col-md-4">
+											<p style="display: inline-block;padding: 5px;font-size: 14px;">Contact: </p>
+										</div>
+										<div class="col-md-8">
+											<input style="font-size: 14px; border: none; border-bottom: 1px solid #35414f; width: 100%;" type="text" value="<!--[blk1.client_users_full_name;comm;onformat=runtime_check_blank_ucwords;htmlconv=no]-->">
+                                        </div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<p style="display: inline-block;padding: 5px;font-size: 14px;">E-mail:</p>
+										</div>
+										<div class="col-md-8">
+											<input style="font-size: 14px; border: none; border-bottom: 1px solid #35414f; width: 100%;" type="text" value="<!--[blk1.client_users_email;comm]--> ">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<p style="display: inline-block;padding: 5px;font-size: 14px;">Phone:</p>
+										</div>
+										<div class="col-md-8">
+											<input style="font-size: 14px; border: none; border-bottom: 1px solid #35414f; width: 100%;" type="text" value="<!--[blk1.client_users_telephone;comm;onformat=runtime_check_blank;ope=max:15]-->">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<p style="display: inline-block;padding: 5px;font-size: 14px;">Projects (<!--[blk1.all_projects;comm;onformat=runtime_number]-->):</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<a href="/admin/project/<!--[blk1_sub1.projects_id;block=div;comm]-->/view">
+												<p style="display: inline-block;padding: 2px 5px 2px 15px;font-size: 14px;"><!--[blk1_sub1.projects_title;block=div;comm]--></p>
+											</a>
+										</div>
+									</div>
+									
+
+									
+                                </div>
+                               
+							</div>
+                        </div>
+                        <!--[blk1;block=end]-->
+					</div>
+				</div>
+		    </div>
+		    <!-- Matter ends -->
+   		</div>
+    </div>
+    <!-- Mainbar ends -->
+    <div class="clearfix"></div>
+    <!-- Content ends -->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!--[onload;file=../common/common.footer.html;getbody;comm]-->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+    <!--WI_IFRAME_MODAL-->
+    <div class="row">
+        <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-body">
+                        <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--WI_IFRAME_MODAL-->
+    <!--WI_ADD_NEW_CLIENT_MODAL-->
+    <div class="row">
+        <div id="addNewClientModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-horizontal" action="[conf.site_url]/admin/clients/add" method="post" id="addNewClient">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                            <!--full screen icon - custom.js-->
+                            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+                            <!--full screen icon - custom.js-->
+                            <h4 class="modal-title"> [lang.lang_add_new_client]</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-lg-12 heading-modal"> [lang.lang_company_details]</div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_company_name]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_company_name" name="clients_company_name" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_address]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_address" name="clients_address" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_city] </label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_city" name="clients_city" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_state]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_state" name="clients_state" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_zip_code] </label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_zipcode" name="clients_zipcode" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_country] </label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_country" name="clients_country" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_website]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_website" name="clients_website" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_value]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="clients_value" name="clients_value" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_hot]</label>
+                                <div class="col-lg-12">
+                                  <input type="hidden" name="clients_hot" value="0" />
+                                  <input type="checkbox" id="clients_hot" name="clients_hot" value="1" />
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_lost]</label>
+                                <div class="col-lg-12">
+                                  <input type="hidden" name="clients_lost" value="0" />
+                                  <input type="checkbox" id="clients_lost" name="clients_lost" value="1" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12 heading-modal"> [lang.lang_main_contact]</div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_full_name]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="client_users_full_name" name="client_users_full_name" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_job_title]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="client_users_job_position_title" name="client_users_job_position_title" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_telephone]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="client_users_telephone" name="client_users_telephone" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_email]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="client_users_email" name="client_users_email" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_password]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="client_users_password" name="client_users_password" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_password]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD_HEADING-->
+                            <div class="col-lg-12 heading-modal">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfields_heading] == 1;comm]-->
+                                [lang.lang_additional_information]</div>
+                            <!--WI_CLIENTS_OPTIONALFIELD_HEADING-->
+                            <!--WI_CLIENTS_OPTIONALFIELD1-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield1] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield1;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield1" name="clients_optionalfield1" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD1-->
+                            <!--WI_CLIENTS_OPTIONALFIELD2-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield2] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield2;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield2" name="clients_optionalfield2" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD2-->
+                            <!--WI_CLIENTS_OPTIONALFIELD3-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield3] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield3;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield3" name="clients_optionalfield3" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD3-->
+                            <!--WI_CLIENTS_OPTIONALFIELD4-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield4] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield4;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield4" name="clients_optionalfield4" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD4-->
+                            <!--WI_CLIENTS_OPTIONALFIELD5-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield5] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield5;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield5" name="clients_optionalfield5" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD5-->
+                            <!--WI_CLIENTS_OPTIONALFIELD6-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield6] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield6;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield6" name="clients_optionalfield6" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD6-->
+                            <!--WI_CLIENTS_OPTIONALFIELD7-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield7] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield7;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield7" name="clients_optionalfield7" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD7-->
+                            <!--WI_CLIENTS_OPTIONALFIELD8-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield8] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield8;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield8" name="clients_optionalfield8" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD8-->
+                            <!--WI_CLIENTS_OPTIONALFIELD9-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield9] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield9;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield9" name="clients_optionalfield9" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD9-->
+                            <!--WI_CLIENTS_OPTIONALFIELD10-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_clients_optionalfield10] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_clients_optionalfield10;noerr]</label>
+                                <div class="col-lg-12">
+                                    <input type="password" class="form-control" id="clients_optionalfield10" name="clients_optionalfield10" autocomplete="off">
+                                </div>
+                            </div>
+                            <!--WI_CLIENTS_OPTIONALFIELD10-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"> [lang.lang_close]</button>
+                            <input class="btn btn-primary" type="submit" value="[lang.lang_add_new_client]" id="" name="submit">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--WI_ADD_NEW_CLIENT_MODAL-->
+    <!--JS_SELECT_LISTS-->
+    <script>
+    //USED BY: WI_USERS_SEARCH
+    //ACTIONS: creates a noce pull down/select for each specified field
+    //REQUIRES: select2.js
+    //NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#clients-list").select2({
+        allowClear: true
+    });
+    $("#users-email-list").select2({
+        allowClear: true
+    });
+    </script>
+    <!--JS_SELECT_LISTS-->
+    <!--JS_WI_ADD_NEW_CLIENT_MODAL-->
+    <script type="text/javascript">
+    $().ready(function() {
+        //USED BY: WI_ADD_NEW_CLIENT_MODAL
+        //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+        //         when form is validated, its posted to appropriate controller, where more validation will be done
+        //REQUIRES: jquery.validate.js
+        $("#addNewClient").validate({
+            rules: {
+
+                //optional fields (required fields)
+                //these are fields from client optional fields table
+                //this data is generated by [optionalfields_helper.php
+                [js_validation.wi_clients_optionalfield1;noerr;protect = no;htmlconv = no]
+                [js_validation.wi_clients_optionalfield2;noerr;protect = no;htmlconv = no]
+                [js_validation.wi_clients_optionalfield3;noerr;protect = no;htmlconv = no]
+
+                //fixed fields - each form field that needs to be validated
+                //special validation for email and password
+                clients_company_name: "required",
+                    //clients_address: "required",
+                    //clients_city: "required",
+                    //clients_state: "required",
+                    //clients_zipcode: "required",
+                    //clients_country: "required",
+                    //clients_website: "required",
+                    client_users_full_name: "required",
+                    //client_users_job_position_title: "required",
+                    //client_users_telephone: "required",
+                    client_users_email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: "[conf.site_url;noerr]/common/ajax/validation-is-user-email-in-use",
+                            type: "post"
+                        }
+                    },
+                    client_users_password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    confirm_password: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#client_users_password"
+                    }
+            },
+            messages: {
+
+                //error messages for dbase optional fields (required messages)
+                //for each optional field in clients table, the validation message
+                [js_validation_message.wi_clients_optionalfield1;noerr;protect = no;htmlconv = no]
+                [js_validation_message.wi_clients_optionalfield2;noerr;protect = no;htmlconv = no]
+                [js_validation_message.wi_clients_optionalfield3;noerr;protect = no;htmlconv = no]
+
+                //error messages for fixed form fields.
+                clients_company_name: "[lang.lang_field_is_required;noerr]",
+                    //clients_address: "[lang.lang_field_is_required;noerr]",
+                    //clients_city: "[lang.lang_field_is_required;noerr]",
+                    //clients_state: "[lang.lang_field_is_required;noerr]",
+                    //clients_zipcode: "[lang.lang_field_is_required;noerr]",
+                    //clients_country: "[lang.lang_field_is_required;noerr]",
+                    //clients_website: "[lang.lang_field_is_required;noerr]",
+                    client_users_full_name: "[lang.lang_field_is_required;noerr]",
+                    //client_users_job_position_title: "[lang.lang_field_is_required;noerr]",
+                    //client_users_telephone: "[lang.lang_field_is_required;noerr]",
+                    client_users_email: {
+                        required: "[lang.lang_field_is_required;noerr]",
+                        remote: "[lang.lang_email_address_alread_in_use;noerr]"
+                    },
+                    client_users_password: {
+                        required: "[lang.field_is_required;noerr]",
+                        minlength: "[lang.lang_password_must_be_at_least_five;noerr]"
+                    },
+                    confirm_password: {
+                        required: "[lang.field_is_required;noerr]",
+                        minlength: "[lang.lang_password_must_be_at_least_five;noerr]",
+                        equalTo: "[lang.passwords_do_not_match;noerr]"
+                    }
+
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+
+
+    });
+    </script>
+    <!--JS_WI_ADD_NEW_CLIENT_MODAL-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+
+</html>

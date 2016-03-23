@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+ 
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+          <div class="widget titlebar-widget">
+            <div class="titlebar">
+              <div class="pull-left">
+              <h3>[vars.sub_title_icon;htmlconv=no] [vars.sub_title;noerr]</h3>
+              </div>
+              <div class="pull-right"> <a data-toggle="modal" class="btn btn-lg btn-success" href="#addNewUserModal"><i class="icon-plus"></i> [lang.lang_add_new_user]</a> </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+      <!--WI_TITLE_BAR-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!---------------------------------------CLIENT USERS--------------------------------->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_client_users] == 1;comm]-->
+          <div class="col-lg-12">
+            <div class="widget">
+              <div class="widget-content">
+                <table class="table table-bordered table-hover table-with-avatar">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th><a href="[vars.sortby_fullname;noerr]"> [lang.lang_full_name]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_companyname;noerr]">[lang.lang_job_title]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>[lang.lang_telephone]</th>
+                      <th>[lang.lang_email]</th>
+                      <th>[lang.lang_main_contact]</th>
+                      <th style="width:50px; text-align:center; font-size:14px;"> <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a class="links-blue iframeModal" href="#" 
+                                 data-src="[conf.site_url;noerr]/client/people/client/[client_users.client_users_id]" 
+                                 data-modal-window-title="[lang.lang_user_profile]" 
+                                 data-target="#modalIframe" 
+                                 data-toggle="modal" 
+                                 data-width="100%" 
+                                 data-height="250"><img class="avatar-smallest image-boardered" src="[conf.site_url;noerr]/files/avatars/[client_users.client_users_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/></a></td>
+                      <td><!--[client_users.client_users_full_name;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm]--></td>
+                      <td><!--[client_users.client_users_job_position_title;block=tr;onformat=runtime_check_blank_ucwords;comm;ope=max:30]-->                      </td>
+                      <td><!--[client_users.client_users_telephone;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                      <td><!--[client_users.client_users_email;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                      <td><!--[client_users.client_users_main_contact;block=tr;onformat=runtime_status_colors;htmlconv=no;comm]--></td>
+                      <td><!--control buttons edit-->
+                        <button class="btn btn-xs btn-info iframeModal"
+                                data-toggle="modal" 
+                                data-modal-window-title="[lang.lang_edit_user_profile]"
+                                data-src="[conf.site_url]/client/users/edit-modal/[client_users.client_users_id;block=tr]" 
+                                data-height="350" 
+                                data-width="100%" 
+                                data-target="#modalIframe"><i class="icon-pencil"></i></button>
+                        <!--control buttons edit - end-->
+                        <!--control buttons delete-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_user;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[client_users.client_users_id;block=tr]"
+                                data-mysql-record-id2 = "[client_users.clients_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/common/ajax/delete-client-user"> <i class="icon-trash"></i> </button>
+                        <!--control buttons delete - end -->                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---------------------------------------CLIENT USERS END--------------------------------->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_USER_MODAL-->
+<div class="row">
+  <div id="addNewUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/client/users/add-user" method="post" id="addNewUser">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_new_user]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_full_name]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_full_name" name="client_users_full_name" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_job_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_job_position_title" name="client_users_job_position_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_email_address]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_email" name="client_users_email" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_telephone]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_telephone" name="client_users_telephone" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_password]</label>
+              <div class="col-lg-12">
+                <input type="password" class="form-control" id="client_users_password" name="client_users_password" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_primary_contact]</label>
+              <div class="col-lg-12">
+                <div class="make-switch" data-on="info" data-off="danger" data-on-label="yes" data-off-label="no">
+                  <input type="checkbox" checked="" name="client_users_main_contact">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+              <input class="btn btn-primary" type="submit" value="[lang.lang_add_new_user]" id="" name="submit">
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_USER_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row reload-parent-on-close">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_EDIT_PROFILE-->
+<script>
+$().ready(function(){
+    //USED BY: EDIT CLIENT PROFILE
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#editClientProfile").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            clients_company_name: "required",
+            clients_address: "required",
+			clients_city: "required",
+			clients_state: "required",
+			clients_zipcode: "required",
+			[js_validation.wi_clients_optionalfield1;htmlconv=no]
+			[js_validation.wi_clients_optionalfield2;htmlconv=no]
+			[js_validation.wi_clients_optionalfield3;htmlconv=no]
+			clients_country: "required"
+        },
+        messages: {
+            clients_company_name: "[lang.lang_field_is_required;noerr]",
+            clients_address: "[lang.lang_field_is_required;noerr]",
+			clients_city: "[lang.lang_field_is_required;noerr]",
+			clients_state: "[lang.lang_field_is_required;noerr]",
+			clients_zipcode: "[lang.lang_field_is_required;noerr]",
+			[js_validation_message.wi_clients_optionalfield1;htmlconv=no]
+			[js_validation_message.wi_clients_optionalfield2;htmlconv=no]
+			[js_validation_message.wi_clients_optionalfield3;htmlconv=no]
+			clients_country: "required"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_EDIT_PROFILE-->
+<!--JS_ADD_NEW_USER_MODAL-->
+<script>
+$().ready(function(){
+    //USED BY: WI_ADD_NEW_USER_MODAL
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#addNewUser").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            client_users_clients_id: "required",
+            client_users_full_name: "required",
+            client_users_job_position_title: "required",
+            client_users_telephone: "required",
+            client_users_email: {
+                required: true,
+                email: true,
+                remote: {
+                    url: "[conf.site_url;noerr]/common/ajax/validation-is-user-email-in-use",
+                    type: "post"
+                }
+            },
+            client_users_password: {
+                required: true,
+                minlength: 8
+            }
+        },
+        messages: {
+            client_users_clients_id: "[lang.lang_field_is_required;noerr]",
+            client_users_full_name: "[lang.lang_field_is_required;noerr]",
+            client_users_job_position_title: "[lang.lang_field_is_required;noerr]",
+            client_users_telephone: "[lang.lang_field_is_required;noerr]",
+            client_users_email: {
+                required: "[lang.lang_invalid_input]",
+                remote: "[lang.lang_email_address_alread_in_use]"
+            },
+            client_users_password: {
+                required: "[lang.lang_field_is_required;noerr]",
+                minlength: "[lang.lang_password_must_be_at_least_eight]"
+            }
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_ADD_NEW_USER_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_TASK_TIME_DOCTOR_ADD-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_task_time_doctor_add] == 1;comm]-->
+    <div class="col-md-12 cn">
+        <div class="inner">
+          <a class="btn btn-lg btn-primary" href="[vars.add_time_doctor_link]">
+             <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Create<br><small>Time Doctor Task</small></span></a>
+        </div>
+    </div>
+  </div>
+  <style>
+    a, span, i {font-size: 18px;}
+    a span{padding-left:15px;padding-right:5px;width:100%;display:inline-block; text-align:left;}
+    a span small{width:100%; display:inline-block; text-align:left;}
+    div.cn {
+        display: table-cell;
+        width: 700px;
+        padding-top: 100px;
+        vertical-align: middle;
+        text-align: center;
+    }
+    div.inner {
+        display: inline-block;  
+    }
+  </style>
+  <!--WI_TASK_TIME_DOCTOR_ADD-->
+
+
+  <!--WI_TASK_TIME_DOCTOR_VIEW-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_task_time_doctor_view] == 1;comm]-->
+    <div class="col-md-12">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong> Total Hours Worked Yesterday</strong></td>
+            <td>[vars.hoursyesterday] seconds</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked Today</strong></td>
+            <td>[vars.hourstoday] seconds</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked This Week</strong></td>
+            <td>[vars.hoursweek] seconds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_TASK_TIME_DOCTOR_VIEW-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

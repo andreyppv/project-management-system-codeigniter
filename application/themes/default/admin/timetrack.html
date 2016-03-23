@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar ends -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <!---->
+      <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-head-light">
+                <div class="pull-left">
+                  <div class="bns-info-div pull-left">
+                    <i class="icon-list"></i> Historical Task Form
+                  </div>
+                 
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-content">
+               
+                <style>
+               .time-list li{ display:inline-block; max-width: 350px; padding-left:10px;}
+               .time-list{float:right;padding:15px;}
+                </style>
+               
+               <div class="collapse navbar-collapse"> </div>
+                <div class="row">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10">
+                    <form action="" method="POST">
+                      <script type="text/javascript">
+                        $.ajax({
+                          url: "http://pms.isodeveloper.com/__freshbooksapi/_tasks.php"
+                        }).done(function(data){
+                          $("#freshbookstaskid").append(data);
+                        });
+
+                        $.ajax({
+                          url: "http://pms.isodeveloper.com/__freshbooksapi/_teammembers.php?all"
+                        }).done(function(data){
+                          $("#tasks-assigned-to-list").append(data);
+                        });
+
+                        $.ajax({
+                          url: "http://pms.isodeveloper.com/__freshbooksapi/_projects.php"
+                        }).done(function(data){
+                          $("#projects").append(data);
+                        });
+                      </script>
+                      <div>
+                        <h3>Project Name:</h3>
+                        <select class="form-control" id="projects" name="project">
+                        </select>
+                      </div>
+
+                      <div>
+                        <h3>Developer Name:</h3>
+                        <select id="tasks-assigned-to-list" name="tasks_assigned_to_id" class="form-control">
+                          
+                        </select>
+                      </div>
+
+                      <div>
+                        <h3>Task Description:</h3>
+                        <input required type="text" class="form-control" name="description"/>
+                      </div>
+
+                      <div>
+                        <h3>Task Type (billable rate):</h3>
+                        <select class="form-control" id="freshbookstaskid" name="freshbookstaskid">
+                        </select>
+                      </div>
+
+                      <div>
+                        <h3>Task Time (In Hours (E.g: 0.5 = 30minutes)):</h3>
+                        <input required type="text" class="form-control" name="time"/>
+                      </div>
+
+                      <div>
+                        <h3>Start Task Date:</h3>
+                        <input required type="text" class="form-control pickadate" name="tasks_start_date"  id="tasks_start_date">
+                      </div>
+
+                      <div>
+                        <h3>End Task Date:</h3>
+                        <input required type="text" class="form-control pickadate" name="tasks_end_date"  id="tasks_end_date">
+                      </div>
+                      <input type="hidden" name="tasks_events_id" value="[vars.new_events_id;noerr]">
+
+                      <div>
+                        <button type="submit" class="btn btn-primary">Save Time Entry</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>    </div>
+    </div>
+    </div>
+  </div>
+ </div>
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+</body>
+</html>

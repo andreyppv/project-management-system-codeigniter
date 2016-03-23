@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+            <!--WI_SEARCH-->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">
+              [lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/quotations/search" method="post">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="quotations_id" placeholder="[lang.lang_quotation_id]" >
+                  
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="quotations_form_title" placeholder="[lang.lang_form_title]" >
+                  
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control datepicker" name="quotations_date" placeholder="[lang.lang_date]" >
+                  
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="quotations_status" name="quotations_status" data-placeholder="[lang.lang_status]">
+                    <option></option>
+                    <option value="new">
+                    [lang.lang_new]</option>
+                    <option value="priced">
+                    [lang.lang_priced]</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                  [lang.lang_search_quotations]</button>
+                </div>
+                
+                 <div class="form-group">
+                  <a href="[conf.site_url]/admin/quotationforms/list" class="btn btn-purple">
+                  [lang.lang_quotation_forms]</a>
+                </div>
+                
+              </form>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!--WI_SEARCH END-->
+      <div class="container">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_QUOTATIONS_TABLE-->
+        <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_quotations_table] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content">
+                <table class="footable table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th  style="width:65px;" data-hide="phone"><a href="[vars.sortby_id;noerr]">
+                        [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_form_title;noerr]" data-hide="phone">Title<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:150px;" data-hide="phone">
+                        [lang.lang_company]</th>
+                      <th  style="width:70px;">
+                        [lang.lang_client]</th>
+                      <th  style="width:85px;"><a href="[vars.sortby_date;noerr]" data-hide="phone">
+                        [lang.lang_date]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:80px;"><a href="[vars.sortby_date;noerr]" data-hide="phone">[lang.lang_amount]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th  style="width:70px;"><a href="[vars.sortby_status;noerr]">
+                        [lang.lang_status]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:55px; text-align:center; font-size:14px;">
+                        <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tr-link" data-link="[conf.site_url]/admin/quotation/view/[quotations.quotations_id;block=tr;noerr]">
+                      <td><!--[quotations.quotations_id;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                      <td><!--[quotations.quotations_form_title;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm;ope=max:200]--></td>
+                      <td><!--[quotations.quotations_company_name;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm;ope=max:40]--></td>
+                      <td><!--[quotations.quotations_by_client;block=tr;onformat=runtime_status_colors;htmlconv=no;noerr;comm]--></td>
+                      <td><!--[quotations.quotations_date;block=tr;onformat=runtime_date;noerr;comm]--></td>
+                      <td><!--[quotations.quotations_amount;block=tr;onformat=runtime_number_decimal;noerr;comm]--></td>
+                      <td><!--[quotations.quotations_status;block=tr;onformat=;onformat=runtime_status_colors;noerr;htmlconv=no;comm]--></td>
+                      <td class="tr-link-excluded"><!--WI_CONTROL_BUTTONS-->
+                        <!--control buttons edit-->
+                        <a href="[conf.site_url]/admin/quotation/view/[quotations.quotations_id;block=tr;noerr]" 
+                           title="" 
+                           rel="gb_page_fs[]" 
+                           class="btn btn-xs btn-info"><i class="icon-external-link"></i> </a>
+                        <!--control buttons edit-->
+                        <!--control buttons delete-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[quotations.quotations_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-quotation"> <i class="icon-trash"></i>                        </button>
+                        <!--control buttons delete - end -->
+                        <!--WI_CONTROL_BUTTONS_END-->                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_BUTTONS_INFORMATION-->
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_QUOTATIONS_TABLE-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#quotations_client_id").select2({
+        allowClear: true
+    });
+    $("#quotations_status").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

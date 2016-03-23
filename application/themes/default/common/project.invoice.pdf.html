@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!--define our base-->
+<base href="[conf.site_url;noerr]/application/themes/[settings_general.theme]/common/">
+<!--define our base-->
+<!-- #GOOGLE FONT -->
+<link rel="stylesheet" href="[conf.site_url;noerr]/application/themes/[settings_general.theme]/common/style/invoice.print.css">
+
+</head>
+<body class="invoice-body">
+<div class="invoice-main-container">
+<div>
+<table cellpadding="0" cellspacing="0" class="invoice-table-grid" width="100%">
+    <thead>
+      <tr valign="top">
+        <th width="33%"><div class="invoice-logo">
+          <div align="left">
+          <img src="[conf.site_url_themes_common]/images/logo-invoice.png" alt="Freelane dashboard"></div>
+        </div></th>
+        <th width="33%">&nbsp;</th>
+        <th width="34%"></th>
+        </tr>
+      <tr>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top"><div class="invoice-title">
+          <div align="right">[vars.invoice_id_display]</div>
+        </div></td>
+      </tr>
+      <tr>
+        <td valign="top"><div class="invoice-date-issued">[lang.lang_invoice_date]: <!--[invoice.invoices_date;onformat=runtime_date;comm]--></div></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top"><div align="right" class="invoice-date-due">[lang.lang_date_due]: <!--[invoice.invoices_due_date;onformat=runtime_date;comm]--></div></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding:0px;"><table cellpadding="0" cellspacing="0" class="invoice-table">
+    <thead>
+      <tr>
+        <th valign="middle">[invoice.clients_company_name;noerr]</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td valign="top"><div class="table-row-div"><!--[invoice.clients_address;noerr;comm]--></div>
+            <div class="table-row-div"><!--[invoice.clients_city;noerr;comm]--></div>
+          <div class="table-row-div"><!--[invoice.clients_state;noerr;comm]--> <!--[invoice.clients_zipcode;noerr;comm]--></div>
+          <div class="table-row-div"><!--[invoice.clients_country;noerr;comm]--></div>
+                    <div class="table-row-div"><!--[invoice.company_telephone;noerr;comm]--></div>          </td>
+    </tbody>
+  </table></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top"><table class="invoice-table">
+    <thead>
+      <tr>
+        <th>[settings_company.company_name;noerr]</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td valign="top"><div class="table-row-div"><!--[settings_company.company_address_street;noerr;comm]--></div>
+            <div class="table-row-div"><!--[settings_company.company_address_city;noerr;comm]--></div>
+          <div class="table-row-div"><!--[settings_company.company_address_state;noerr;comm]--> <!--[company.company_address_zip;noerr;comm]--></div>
+          <div class="table-row-div"><!--[settings_company.company_address_country;noerr;comm]--></div>
+                    <div class="table-row-div"><!--[settings_company.company_telephone;noerr;comm]--></div>          </td>
+      </tr>
+    </tbody>
+  </table></td>
+      </tr>
+      <tr>
+        <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+        <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+        <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+        <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+        <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3" bgcolor="#FFFFFF">
+        <div class="invoice-main-section">
+  <table class="invoice-table">
+    <thead>
+      <tr>
+        <th width="33%" valign="middle">[lang.lang_item]</th>
+        <th width="33%" valign="middle">[lang.lang_description]</th>
+        <th width="8%" valign="middle" class="invoice-qty"><div align="right">[lang.lang_qty]/[lang.lang_hrs]</div></th>
+        <th width="13%" valign="middle" class="invoice-rate"><div align="right">[lang.lang_rate]</div></th>
+        <th width="13%" valign="middle" class="invoice-amount"><div align="right">[lang.lang_total]</div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td valign="middle"><div align="left">
+          <!--[products.invoice_products_title;block=tr;onformat=runtime_check_blank_ucwords;comm]-->
+        </div></td>
+        <td valign="middle"><div align="left">
+          <!--[products.invoice_products_description;block=tr;onformat=runtime_check_blank_ucwords;comm]-->
+        </div></td>
+        <td valign="middle"><div align="right"><!--[products.invoice_products_quantity;block=tr;onformat=runtime_number;comm]--></div></td>
+        <td valign="middle"><div align="right"><!--[products.invoice_products_rate;block=tr;onformat=runtime_number_decimal;comm]--></div></td>
+        <td valign="middle"><div align="right"><!--[products.invoice_products_total;block=tr;onformat=runtime_number_decimal;comm]--></div></td>
+      </tr>
+    </tbody>
+  </table>
+ </div>        </td>
+        </tr>
+      <tr>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+      </tr>
+      <tr>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top" bgcolor="#FFFFFF">
+        [settings_invoices.settings_invoices_notes;noerr]</td>
+        <td valign="top" bgcolor="#FFFFFF">
+    <table cellpadding="0" cellspacing="0" class="invoice-table">
+    
+    <tbody>
+      <tr>
+                                        <!--[onshow;block=tr;when [visible.wi_invocie_tax] == 1;comm]-->
+        <td width="46%"><div align="left">
+          
+          [lang.lang_total]</div></td>
+        <td width="54%"><div align="right"><!--[invoice.invoices_pretax_amount;comm;noerr;onformat=runtime_number_decimal]--></div></td>
+      </tr>
+      <tr>
+                                        <!--[onshow;block=tr;when [visible.wi_invocie_tax] == 1;comm]-->
+        <td><div align="left">
+          
+          [lang.lang_tax] (
+          <!--[invoice.invoices_tax_rate;comm;noerr;onformat=runtime_number_decimal]-->
+          %)</div></td>
+        <td><div align="right"><!--[invoice.invoices_tax_amount;comm;noerr;onformat=runtime_number_decimal]--></div></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="invoice-total"><div>
+          <div align="right"><!--[settings_general.currency_symbol;comm;noerr]-->
+                                <!--[invoice.invoices_amount;comm;noerr;onformat=runtime_number_decimal]--></div>
+        </div></td>
+        </tr>
+    </tbody>
+  </table></td>
+      </tr>
+      <tr>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+      </tr>
+      <tr>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        <td bgcolor="#FFFFFF">&nbsp;</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

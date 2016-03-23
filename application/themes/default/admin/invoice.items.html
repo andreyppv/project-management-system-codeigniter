@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+            <!--WI_INVOICE_ITEMS_SEARCH-->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/invoiceitems/search-items" method="post">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="invoice_items_id" placeholder="[lang.lang_id]" >
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="invoice_items_title" placeholder="[lang.lang_title]" >
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">[lang.lang_search_invoice_items]</button>
+                </div>
+                <div class="form-group">
+                  <button href="#addNewItemModal" class="btn btn-success" data-toggle="modal"><i class="icon-plus"></i> [lang.lang_add_new_item]</button>
+                </div>
+              </form>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!--WI_INVOICE_ITEMS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+
+        <!--WI_INVOICE_ITEMS_TABLE-->
+        <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_invoice_items_table] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-head-light">
+                <div class="pull-left">
+                  <div class="bns-info-div pull-left">
+                    <i class="icon-list"></i> [lang.lang_invoice_items] ([vars.invoice_items_count;noerr;onformat=runtime_number])</div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-content">
+                <table class="footable table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th data-hide="phone"><a href="[vars.sortby_id;noerr]">
+                        [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>[lang.lang_title]</th>
+                      <th  data-hide="phone"> [lang.lang_description]</th>
+                      <th  data-hide="phone"><a href="[vars.sortby_date;noerr]">
+                        [lang.lang_date_added]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_date;noerr]">
+                        [lang.lang_amount]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:75px; text-align:center; font-size:14px;">
+                        <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><!--[items.invoice_items_id;block=tr;comm;onformat=runtime_check_blank]--></td>
+                      <td><!--[items.invoice_items_title;block=tr;comm;onformat=runtime_check_blank_ucwords]--></td>
+                      <td><!--[items.invoice_items_description;block=tr;comm;onformat=runtime_check_blank]--></td>
+                      <td><!--[items.invoice_items_date_added;block=tr;comm;onformat=runtime_date]--></td>
+                      <td><!--[items.invoice_items_amount;block=tr;comm;onformat=runtime_number_decimal]--></td>
+                      <td><!--WI_CONTROL_BUTTONS-->
+                        <!--control buttons edit-->
+                        <a class="btn btn-xs btn-info edit-invoice-item-modal" 
+                                data-toggle="modal"
+                                data-modal-window-title="[lang.lang_edit_invoice_item]"
+                                data-height="450" 
+                                data-width="100%"
+                                data-invoice-items-id="[items.invoice_items_id;block=tr;noerr]"
+                                data-invoice-items-title="[items.invoice_items_title;block=tr;noerr]"
+                                data-invoice-items-description="[items.invoice_items_description;block=tr;noerr]"
+                                data-invoice-items-amount="[items.invoice_items_amount;block=tr;noerr]"
+                                data-target="#editInvoiceItemModal"><i class="icon-pencil"></i>
+                        </a>
+                        <!--control buttons edit-->
+                        <!--control buttons delete-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[items.invoice_items_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-invoice-item"> <i class="icon-trash"></i>
+                        
+                        </button>
+                        <!--control buttons delete-->
+                        <!--WI_CONTROL_BUTTONS_END-->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_BUTTONS_INFORMATION-->
+                  <div class="bns-info-div pull-left" style="max-width:350px; margin-top:8px;"> [lang.lang_buttons_information]:
+                    <button class="btn btn-xs btn-danger tooltips" title="[lang.lang_delete;noerr]"><i class="icon-trash"></i> </button>
+                    <button class="btn btn-xs btn-info tooltips" title="[lang.lang_edit;noerr]"><i class="icon-pencil"></i> </button>
+                    <!--WI_BUTTONS_INFORMATION-->
+                  </div>
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--WI_INVOICE_ITEMS_TABLE-->
+          <!--WI_NOTIFICATION-->
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+          <!--WI_NOTIFICATION-->
+        </div>
+      </div>
+      <!-- Matter ends -->
+    </div>
+    <!-- Mainbar ends -->
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_INVOICE_ITEM_MODAL-->
+<div class="row">
+  <div id="addNewItemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/invoiceitems/add" method="post" id="addInvoiceItem">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_add_new_invoice_item]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoice_items_title" name="invoice_items_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_description] ([lang.lang_optional])</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoice_items_description" name="invoice_items_description" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_amount]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoice_items_amount" name="invoice_items_amount" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+            [lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_add_new_item]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_INVOICE_ITEM_MODAL-->
+<!--WI_EDIT_INVOICE_ITEM_MODAL-->
+<div class="row">
+  <div id="editInvoiceItemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/invoiceitems/edit" method="post" id="editInvoiceItem">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_edit_invoice_item]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoice_items_title_edit" name="invoice_items_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_description] ([lang.lang_optional])</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoice_items_description_edit" name="invoice_items_description" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_amount]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="invoice_items_amount_edit" name="invoice_items_amount" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+            [lang.lang_close]</button>
+            <input type="hidden" name="invoice_items_id" id="invoice_items_id_edit">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_INVOICE_ITEM_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_ADD_NEW_INVOICE_ITEM_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_NEW_INVOICE_ITEM_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#addInvoiceItem").validate({
+		rules: {
+             invoice_items_title: "required",
+             invoice_items_amount: {
+                           required: true,
+                           number: true
+                           }		
+        },
+		messages: {
+			invoice_items_title: "[lang.lang_field_is_required]",
+            invoice_items_amount: {
+                           required: "[lang.lang_field_is_required]",
+                           number: "[lang.lang_field_is_required]"
+                           }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_ADD_NEW_INVOICE_ITEM_MODAL-->
+<!--JS_EDIT_INVOICE_ITEM_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_INVOICE_ITEM_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+	
+    //---edit item link clicked-------
+    $(".edit-invoice-item-modal").click(function(){
+        //get variables from "edit link" data attributes
+        var invoice_items_id = $(this).attr("data-invoice-items-id");
+        var invoice_items_title = $(this).attr("data-invoice-items-title");
+		var invoice_items_description = $(this).attr("data-invoice-items-description");
+		var invoice_items_amount = $(this).attr("data-invoice-items-amount");
+
+        //set modal input values dynamically
+		$('#invoice_items_id_edit').val(invoice_items_id);
+		$('#invoice_items_title_edit').val(invoice_items_title);
+		$('#invoice_items_description_edit').val(invoice_items_description);
+		$('#invoice_items_amount_edit').val(invoice_items_amount);
+  });
+    
+});
+</script>
+<!--JS_EDIT_INVOICE_ITEM_MODAL-->
+<!--JS_EDIT_INVOICE_ITEM_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_INVOICE_ITEM_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#editInvoiceItem").validate({
+		rules: {
+             invoice_items_title: "required",
+             invoice_items_amount: {
+                           required: true,
+                           number: true
+                           }		
+        },
+		messages: {
+			invoice_items_title: "[lang.lang_field_is_required]",
+            invoice_items_amount: {
+                           required: "[lang.lang_field_is_required]",
+                           number: "[lang.lang_field_is_required]"
+                           }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_INVOICE_ITEM_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

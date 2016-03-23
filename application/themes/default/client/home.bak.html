@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common_include_debug;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <!-- Main bar -->
+  <div class="mainbar">
+	 <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_HEADING_BAR-->
+       <!--  <div class="headerbar">
+          <div class="widget headerbar-widget">
+            <div class="pull-left dashboard-user-picture"><img class="avatar-small" src="[conf.site_url;noerr]/files/avatars/[vars.my_avatar;onformat=runtime_check_avatar]" alt=""/></div>
+            <div class="headerbar-project-title pull-left">
+              <h3>[vars.my_name] - [lang.lang_welcome_back]</h3>
+            </div>
+            <div class="dashboard-user-group pull-right">
+              <label class="label label-default">[vars.my_group_name]</label>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>-->
+      <!--WI_HEADING_BAR-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_STATS_TOP-->
+       
+        <!--WI_STATS_TOP-->
+        <!--WI_TASKS_AND_PINNED_PROJECTS-->
+         <style>
+		tr.tr-link:hover > td {
+		    background: #d2d2d2!important;
+		}
+	</style>
+		<div class="row">
+			<div class="cilinet-home-top">
+				<div class="col-md-3">
+					<div class="form-group">
+						<input type="text" placeholder="Project Name:" class="form-control" name="project-name" id="project-name">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<select size="1" class="form-control input-lg" name="select" id="select">
+							<option value="0">All Users</option>
+							<option value="1">Option #1</option>
+							<option value="2">Option #2</option>
+							<option value="3">Option #3</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<select size="1" class="form-control input-lg" name="select" id="select">
+							<option value="0">All Statuses</option>
+							<option value="1">Option #1</option>
+							<option value="2">Option #2</option>
+							<option value="3">Option #3</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary" type="button">Clear Filters</button>
+					<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Add a new project</button>
+				</div>
+			</div>
+		</div>
+        <div class="row" style="margin-top:20px; margin-bottom: 20px;">
+          <!---TIMELINE-->
+			<div class="col-lg-6">
+				<div class="timeline-events-client">				
+				<div class="widget">
+					<h3>[lang.lang_my_projects] - [lang.lang_events_timeline]</h3>
+				  <div class="widget-content widget-content-project slimScrollProjectTimeline"  style="padding-top:7px;">
+					<!--WI_PROJECT_EVENTS-->
+					<div class="project-info-tabs">
+					  <ul class="timeline">
+						<!--[onshow;block=ul;when [visible.show_timeline] == 1;comm]-->
+						<!--left event-->
+						<li>
+						  <div class="tl-circ [timeline.project_events_type;block=li;onformat=runtime_timeline_colors]"><i class="[timeline.project_events_type;block=li;onformat=runtime_timeline_icons]"></i></div>
+						  <div class="timeline-panel">
+							<div class="tl-heading">
+							  <div><strong>
+								<!--[timeline.user_name;block=li;onformat=runtime_check_blank_ucwords;comm;ope=max:20]-->
+								</strong></div>
+							  <div>
+								<!--[timeline.project_events_action_lang;block=li;onformat=runtime_check_blank;comm]-->
+							  </div>
+							  <div><small class="text-muted"><i class="icon-time"></i>
+								<!--[timeline.project_events_date;block=li;onformat=runtime_time_ago;comm]-->
+								</small></div>
+							</div>
+							<div class="tl-body">
+							  <div>
+								<!--[timeline.project_events_item;block=li;onformat=runtime_check_blank;comm;ope=max:60]-->
+							  </div>
+							</div>
+						  </div>
+						</li>
+						<!--left event end-->
+						<!--right event-->
+						<li class="timeline-inverted">
+						  <div class="tl-circ [timeline.project_events_type;block=li;onformat=runtime_timeline_colors]"><i class="[timeline.project_events_type;block=li;onformat=runtime_timeline_icons]"></i></div>
+						  <div class="timeline-panel">
+							<div class="tl-heading">
+							  <div><strong>
+								<!--[timeline.user_name;block=li;onformat=runtime_check_blank_ucwords;comm;ope=max:20]-->
+								</strong></div>
+							  <div>
+								<!--[timeline.project_events_action_lang;block=li;onformat=runtime_check_blank;comm]-->
+							  </div>
+							  <div><small class="text-muted"><i class="icon-time"></i>
+								<!--[timeline.project_events_date;block=li;onformat=runtime_time_ago;comm]-->
+								</small></div>
+							</div>
+							<div class="tl-body">
+							  <div>
+								<!--[timeline.project_events_item;block=li;onformat=runtime_check_blank;comm;ope=max:60]-->
+							  </div>
+							</div>
+						  </div>
+						</li>
+						<!--right event-->
+					  </ul>
+					  <!--wi_no_timeline-->
+					  <div style="text-align:center; padding-top:55px;">
+						<!--[onshow;block=div;when [visible.show_no_timeline] == 1;comm]-->
+						<h2>[lang.lang_no_timeline_events]</h2>
+					  </div>
+					  <!--wi_no_timeline-->
+					</div>
+					<!--WI_PROJECT_EVENTS-->
+				  </div>
+				</div>
+			</div> 
+			</div>
+          <!-------------------------------------------------TIMELINE END------------------------------------------------->
+          <div class="col-lg-6">
+            <!--WI_PINNED_PROJECT_NONE-->
+            <div class="box dashboard-projects-none">
+              <!--[onshow;block=div;when [visible.wi_project_none] == 1;comm]-->
+              <div class="box-content">
+                <h2>[lang.lang_you_have_no_open_projects]</h2>
+              </div>
+            </div>
+            <!--WI_PINNED_PROJECT_NONE-->
+        
+
+            <!--PAY NOW-->
+          <!-- PROJECT PANEL-->
+            <div class="project-panel-client">                
+                      <div class="widget" style="margin:0; padding: 0; border:none;">
+						 <h3>My Projects</h3>
+						<p>Click below to see the project page</p>
+                        <div class="widget-content" style="border:none;">
+                          <table class="table table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th>Project Name</th>
+                                <th>[lang.lang_start_date]</th>
+                              </tr>
+                            </thead>
+                            <tbody class="">
+                              <tr class="tr-link" data-link="[conf.site_url]/client/messages/[projects.projects_id;block=tr;noerr]/view">
+                                <td><!--[projects.projects_title;block=tr;comm;ope=max:120]--></td>
+                                <td><!--[projects.projects_date_created;block=tr;comm;onformat=runtime_date]--></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="widget-foot">
+                            <!--WI_SORTING_INFO-->
+                            <div class="bns-info-div pull-left" style="max-width:300px;"> </div>
+                            <!--WI_SORTING_INFO-->
+                            <!--WI_PAGINATION-->
+                            <ul class="pagination pull-right">
+                              [vars.pagination;noerr;htmlconv=no]
+                            </ul>
+                            <!--WI_PAGINATION-->
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+           <!--END OF PROJECT PANEL-->
+          </div>
+      </div>
+      <!--WI_TASKS_AND_PINNED_PROJECTS-->
+	  
+	  <div class="row">
+		<div class="col-md-12">
+		<!--ADD FUNDS BLOCK-->
+		<div style="margin-bottom:20px;">
+			<div style="background:#fff; padding:45px;">
+				<div class="row">
+					<div class="col-md-12 text-center">
+					   <div class="current-balance" title="Credit Amount: $ [vars.credit_amount_remaining;onformat=runtime_number]">
+							<span class="current-text">Current Balance</span>
+							<div class="current-balance-1">
+								$ [vars.client_balance;onformat=runtime_number]
+							</div>
+						   <a class="view-payment" href="https://pms.isodeveloper.com/client/payments">View Payments</a>				   
+					   </div>
+				   </div>
+				</div>
+				<div class="row balance-form">
+					  <form class="add-credit" action="" method="POST" style="margin-top:10px;line-height: 40px;">
+						<div class="row">
+							<div class="col-md-3 col-md-offset-3">
+								<div class="form-group">
+									<input type="radio" name="package" value="1" ><span class="money-amount"> $ </span><input type="text" name="customamount">
+								</div>
+								<div class="form-group">
+									<input type="radio" name="package" value="1" ><span class="money-amount"> $ 250</span><span class="bonus-text"></span>
+								</div>
+								<div class="form-group">
+								   <input type="radio" name="package" value="2" checked><span class="money-amount"> $ 500</span><span class="bonus-text"> - get $50 credit bonus</span>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="radio" name="package" value="3" ><span class="money-amount"> $ 1,000</span><span class="bonus-text"> - get $150 credit bonus</span>
+								</div>
+								<div class="form-group">
+									<input type="radio" name="package" value="4" ><span class="money-amount"> $ 2,500</span><span class="bonus-text"> - get $350 credit bonus</span>
+								</div>
+								<div class="form-group">
+									<input type="radio" name="package" value="5"><span class="money-amount"> $ 5,000</span><span class="bonus-text"> - get $800 credit bonus</span>
+								</div>
+							</div>
+						</div>
+						<div class="row check-out-btn">
+							<div class="col-md-12 text-center">
+								<input type="submit" class="btn btn-success" value="Check Out">
+							</div>
+						</div>
+					  </form>
+				</div>
+          </div>
+		  </div>
+        </div>
+<!--END OF ADD FUND BLOCK-->
+	  </div>
+    </div>
+  </div>
+  <!-- Matter ends -->
+</div>
+<!-- Mainbar ends -->
+<div class="clearfix"></div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_EDIT_TASK_MODAL-->
+<div class="row">
+  <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/client/home/edit-task" method="post" id="editTask">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit_task]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="task_text_edit" name="tasks_text" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_start_date"  id="task_start_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_end_date"  id="task_end_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_status]</label>
+              <div class="col-lg-12">
+                <select id="tasks-status-list-edit" name="tasks_status" style="width:100%">
+                  <!--NB: do not change lang on value=""-->
+                  <option value="pending"> [lang.lang_pending]</option>
+                  <option value="completed"> [lang.lang_completed]</option>
+                  <option value="behind schedule"> [lang.lang_behind_schedule]</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" id="task_id_edit" name="tasks_id" value="">
+            <input type="hidden" id="task_assigned_to_id_edit" name="tasks_assigned_to_id" value="">
+            <input type="hidden" id="task_milestone_id_edit" name="tasks_milestones_id" value="">
+            <input type="hidden" id="task_events_id_edit" name="tasks_events_id" value="">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_TASK_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_EDIT_TASK_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_NEW_TASK_MODAL
+  //ACTIONS: validates the form and submits it
+  //REQUIRES: jquery.validate.js
+  $("#editTask").validate({
+    rules: {
+             tasks_text: "required",
+       tasks_milestones_id: "required",
+       tasks_start_date: "required",
+       tasks_end_date: "required",
+       tasks_assigned_to_id: "required"
+    },
+    messages: {
+      tasks_text: "[lang.lang_field_is_required]",
+      tasks_milestones_id: "[lang.lang_field_is_required]",
+      tasks_start_date: "[lang.lang_field_is_required]",
+      tasks_end_date: "[lang.lang_field_is_required]",
+      tasks_assigned_to_id: "[lang.lang_field_is_required]"
+    },
+    submitHandler: function(form) {
+        //alert('form submitted');
+    form.submit();
+        }
+  });
+});
+</script>
+<!--JS_EDIT_TASK_MODAL-->
+<!--JS_EDIT_TASK_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_TASK_MODAL
+  //ACTIONS: dynamically add data into modal form
+  //REQUIRES: jquery.js
+  //ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
+    //REQUIRES-2: select2.js
+    
+    //---edit item link clicked-------
+    $(".edit-task-modal").click(function(){
+    
+        //get variables from "edit link" data attributes
+        var task_text_edit = $(this).attr("data-task-text");
+    var task_start_date_edit = $(this).attr("data-task-start-date");
+    var task_end_date_edit = $(this).attr("data-task-end-date");
+    var task_id_edit = $(this).attr("data-task-id");
+    var task_events_id_edit = $(this).attr("data-task-events-id");
+    var task_assigned_to_id_edit = $(this).attr("data-task-assigned-to-id");
+    var task_milestone_id_edit = $(this).attr("data-task-milestone-id");
+    var task_status_preselected = $(this).attr("data-task-status");
+
+        //set modal input values dynamically
+    $('#task_text_edit').val(task_text_edit);
+    $('#task_start_date_edit').val(task_start_date_edit);
+    $('#task_end_date_edit').val(task_end_date_edit);
+    $('#task_id_edit').val(task_id_edit);
+    $('#task_events_id_edit').val(task_events_id_edit);
+    $('#task_assigned_to_id_edit').val(task_assigned_to_id_edit);
+    $('#task_milestone_id_edit').val(task_milestone_id_edit);
+
+       //pre-select data in pull down lists
+       $("#tasks-status-list-edit").select2().select2('val', task_status_preselected); 
+  });
+    
+});
+</script>
+<!--JS_EDIT_TASK_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

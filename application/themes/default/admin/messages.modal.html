@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_EDIT_MESSAGE_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_message_table] == 1;comm]-->
+    <div class="col-md-12">
+    <form action="[conf.site_url]/admin/messages/[vars.project_id;noerr]/edit-message/[message.messages_id;noerr]/[vars.offset]" method="post" target="_parent">
+            <textarea name="messages_text" id="message_new" cols="20" rows="5">[message.messages_text;noerr;htmlconv=no]</textarea>
+            <script>
+			 document.addEventListener('DOMContentLoaded', function(){
+             CKEDITOR.replace( 'message_new', {
+                      toolbar: 'Plain',
+                      uiColor: '#ffffff',
+	                  height: '120px'
+                      });
+              });
+
+           </script><div align="right" style="padding-top:15px;">
+            <input type="hidden" name="messages_id" value="[message.messages_id;noerr]">
+            <input id="" class="btn btn-primary" type="submit" name="submit" value="[lang.lang_save_changes]">
+            </div>
+     </form>
+    </div>
+  </div>
+  <!--WI_EDIT_MESSAGE_TABLE-->
+  
+    <!--WI_EDIT_REPLIES_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_replies_table] == 1;comm]-->
+    <div class="col-md-12">
+    <form action="[conf.site_url]/admin/messages/[vars.project_id;noerr]/edit-reply/[replies.messages_replies_id;noerr]/[vars.offset]" method="post" target="_parent">
+            <textarea name="messages_replies_text" id="message_reply" cols="20" rows="5">[replies.messages_replies_text;noerr]</textarea>
+            <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                    CKEDITOR.replace( 'message_reply', {
+                             toolbar: 'Plain',
+                             uiColor: '#ffffff',
+	                         height: '120px'
+                      });
+              });
+           </script><div align="right" style="padding-top:15px;">
+            <input type="hidden" name="messages_replies_id" value="[replies.messages_replies_id;noerr]">
+            <input id="" class="btn btn-primary" type="submit" name="submit" value="[lang.lang_save_changes]">
+            </div>
+     </form>
+    </div>
+  </div>
+  <!--WI_EDIT_REPLIES_TABLE-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

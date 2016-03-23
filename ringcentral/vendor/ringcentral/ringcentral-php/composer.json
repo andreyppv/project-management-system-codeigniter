@@ -1,0 +1,47 @@
+{
+  "name": "ringcentral/ringcentral-php",
+  "type": "library",
+  "description": "RingCentral Connect Platform PHP SDK",
+  "keywords": [
+    "php",
+    "sdk",
+    "ringcentral",
+    "connect",
+    "platform",
+    "api"
+  ],
+  "homepage": "http://developers.ringcentral.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kirill Konshin",
+      "email": "kirill.konshin@ringcentral.com"
+    },
+    {
+      "name": "RingCentral, Inc.",
+      "email": "devsupport@ringcentral.com"
+    }
+  ],
+  "repositories": [
+    {
+      "url": "https://github.com/kirill-konshin/psr7.git",
+      "type": "git"
+    }
+  ],
+  "require": {
+    "ext-curl": "*",
+    "php": ">=5.3.29",
+    "guzzlehttp/psr7": "dev-master",
+    "pubnub/pubnub": "~3.7",
+    "symfony/event-dispatcher": "^2.7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "satooshi/php-coveralls": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "RingCentral\\SDK\\": "src/"
+    }
+  }
+}

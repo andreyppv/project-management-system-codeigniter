@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+        <!--WI_TICKETS_SEARCH-->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/tickets/search-tickets" method="post">
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="all_departments" data-placeholder="[lang.lang_department]" name="tickets_department_id">
+                    
+                    <option></option>
+
+                     <!--[lists.all_departments;noerr;htmlconv=no;protect=no;comm]-->            
+                </select>
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="all_users" data-placeholder="[lang.lang_client_user]" name="tickets_by_user_id">
+                    
+                    <option></option>
+                     
+                     <!--[lists.all_users;noerr;htmlconv=no;protect=no;comm]-->            
+                  </select>
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="all_team_members" data-placeholder="[lang.lang_team_member]" name="tickets_by_team_member_id">
+                    
+                    <option></option>
+                      <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->            
+                  </select>
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="tickets_status_list" data-placeholder="[lang.lang_ticket_status]" name="tickets_status">
+                    
+                    <option></option>
+                    <option value="new">[lang.lang_new;noerr]</option>
+                    <option value="open">[lang.lang_open;noerr]</option>
+                    <option value="answered">[lang.lang_answered;noerr]</option>
+                    <option value="client-replied">[lang.lang_client_replied;noerr]</option>
+                    <option value="closed">[lang.lang_closed;noerr]</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                  [lang.lang_search_tickets]</button>
+                </div>
+                  <a href="[conf.site_url]/admin/tickets/new" class="btn btn-success btn-mid" data-toggle="modal"><i class="icon-plus"></i>
+                  [lang.lang_create_new_ticket]
+ <!--[onshow;block=a;when [permission.add_item_tickets] == 1;comm]--><!--permissions-->                           
+                  </a>
+              </form>
+              
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!--WI_TICKETS_SEARCH END-->
+      <div class="container">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_TICKETS_TABLE-->
+        <div class="row fullscreen-mode">
+          <!--[onshow;block=div;when [visible.wi_tickets_table] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content">
+                <table class="footable table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th style="width:45px;" data-hide="phone"><a href="[vars.sortby_ticketid;noerr]">ID<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th class="col-md-5 col-lg-5">[lang.lang_title]</th>
+                      <th data-hide="phone">[lang.lang_submitted_by]</th>
+                      <th data-hide="phone"><a href="[vars.sortby_datecreated;noerr]">
+                        [lang.lang_date_created]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th data-hide="phone"><a href="[vars.sortby_dateactive;noerr]">
+                        [lang.lang_last_active]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_status;noerr]">
+                        [lang.lang_status]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:30px; text-align:center; font-size:14px;">
+                        <i class="icon-th"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tr-link" data-link="[conf.site_url]/admin/ticket/[tickets.tickets_id;block=tr;noerr]/view">
+                      <td><!--[tickets.tickets_id;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                      <td><!--[tickets.tickets_title;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm;ope=max:150]--></td>
+                      <td><!--[tickets.submitted_by;block=tr;htmlconv=no;comm]--></td>
+                      <td><!--[tickets.tickets_date;block=tr;onformat=runtime_date;noerr;comm]--></td>
+                      <td><!--[tickets.tickets_last_active_date;block=tr;onformat=runtime_time_ago;noerr;comm]--></td>
+                      <td><!--[tickets.tickets_status;block=tr;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                      <td class="tr-link-excluded"><!--control buttons delete-->
+                      <span>
+                      <!--[onshow;block=span;when [permission.delete_item_tickets] == 1;comm]--><!--permissions-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[tickets.tickets_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-ticket"> <i class="icon-trash"></i>
+                        
+                        </button>
+                        </span>
+                        <!--control buttons delete - end -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_TICKETS_TABLE-->
+        <!--WI_NEW_TICKET-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_new_ticket] == 1;comm]-->
+          <form class="form-horizontal" action="[conf.site_url]/admin/tickets/add-new" method="post" id="newTicket">
+            <div class="col-lg-3">
+              <div class="box side-menu-main">
+                <div class="box-head-dark"><i class="icon-list"></i> [lang.lang_new_ticket_details]</div>
+                <div class="box-content box-pad tickets-new-details">
+                  <table class="table">
+                    <tr>
+                      <td><!--departments_list-->
+                        <select id="all_departments_2" data-placeholder="[lang.lang_department]" name="tickets_department_id">
+                          <option></option>
+                          
+                          
+                          
+                          
+                        
+                        
+                        
+                        
+                         <!--[lists.all_departments;noerr;htmlconv=no;protect=no;comm]-->            
+                        
+                      
+                      
+                      
+                      
+                        
+                        
+                        
+                        </select>
+                        <!--departments_list-->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><!--clients_list-->
+                        <select id="all_clients_2" data-placeholder="[lang.lang_client]" name="tickets_client_id">
+                          
+                          <option></option>
+                          
+                          
+                          
+                          
+                        
+                        
+                        
+                        
+                     <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                      
+                      
+                      
+                      
+                        
+                        
+                        
+                        </select>
+                        <!--clients_list-->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><!--team_members_list-->
+                        <select id="all_team_members_2" data-placeholder="[lang.lang_assigned_to]" name="tickets_assigned_to_id">
+                          
+                          <option></option>
+                          
+                          
+                           <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->            
+                        
+                        
+                        </select>
+                        <!--team_members_list-->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><!--status list-->
+                        <select id="tickets_status_list_2" data-placeholder="[lang.lang_ticket_status]" name="tickets_status">
+                          
+                          <option value="new">[lang.lang_new;noerr]</option>
+                          <option value="open">[lang.lang_open;noerr]</option>
+                          <option value="answered">[lang.lang_answered;noerr]</option>
+                          <option value="replied">[lang.lang_client_replied;noerr]</option>
+                          <option value="closed">[lang.lang_closed;noerr]</option>
+                        </select>
+                        <!--status list-->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><!---------------------------SIMPLE AJAX FILEUPLOAD---------------------->
+                        <div>
+                          <!--upload button-->
+                          <div id="upload-button-container">
+                            <input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button" value="[lang.lang_attach_a_new_file]">
+                            
+                          </div>
+                          <!--upload button end-->
+                          <!--file info-->
+                          <div id="file-info-div"> </div>
+                          <!--file info end-->
+                          <!--progress bar-->
+                          <div id="progress-container">
+                            <div class="progress active progress-table">
+                              <div id="progress-bar"
+                         class="progress-bar progress-bar-primary progress-bar-table" 
+                         role="progressbar" 
+                         aria-valuenow="100" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100"
+                         style="width:0%"></div>
+                            </div>
+                          </div>
+                          <!--progress bar end-->
+                          <!--results div-->
+                          <div id="results-container" style="display:none;"></div>
+                          <!--results div end-->
+                          <!--results div extended (will show actual attached file etc)-->
+                          <div id="results-container-extended" style="display:none;"> <i class="icon-paper-clip"></i> <span id="new-file-name"></span> <a href="#" id="delete-uploaded-file"> <i class="icon-remove-sign text-danger"></i></a> </div>
+                          <!--results extended end-->
+                          <!-- optional hidden form field-->
+                          <input type="hidden" name="tickets_file_name" id="files_name" value="">
+                          <input type="hidden" name="tickets_file_folder" id="files_foldername" value="">
+                          <input type="hidden" name="tickets_file_size" id="files_size" value="">
+                          <input type="hidden" name="tickets_file_extension" id="files_extension" value="">
+                          <!-- optional hidden form field-->
+                        </div>
+                        <!---------------------------SIMPLE AJAX FILEUPLOAD END----------------------></td>
+                    </tr>
+                    <tr>
+                      <td><a title="[lang.lang_allowed_file_types]"
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[vars.allowed_file_types_human_readable]"> <i class="icon-info-sign"></i> [lang.lang_file_upload_help]</a></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--ticket form-->
+            <div class="col-lg-9">
+              <div class="box">
+                <input type="text" autocomplete="off" name="tickets_title" id="tickets_title" class="form-control" placeholder="[lang.lang_title]">
+              </div>
+              <div class="box">
+                <div class="box-content tickets-new">
+                  <div>
+                    <textarea name="tickets_message" id="tickets_message" cols="20" rows="5"></textarea>
+                    <script>
+document.addEventListener('DOMContentLoaded', function(){
+             CKEDITOR.replace( 'tickets_message', {
+                      toolbar: 'Basic',
+                      uiColor: '#ffffff',
+	                  height: '190px'
+                      });
+});
+
+           </script>
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <div class="pull-right">
+                    <input type="hidden" name="tickets_by_user_id" value="[vars.my_id;noerr]">
+                    <input type="hidden" name="tickets_by_user_type" value="team">
+                    <input class="btn btn-primary btn-mid" type="submit" value="[lang.lang_submit_new_ticket]" id="" name="submit">
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!--ticket form end-->
+        </div>
+        <!--WI_NEW_TICKET-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#all_team_members").select2({
+        allowClear: true
+    });
+    $("#all_users").select2({
+        allowClear: true
+    });
+    $("#all_clients_2").select2({
+        allowClear: true
+    });
+    $("#all_departments").select2({
+        allowClear: true
+    });
+    $("#all_departments_2").select2({
+        allowClear: true
+    });
+    $("#tickets_status_list").select2({
+        allowClear: true
+    });
+    $("#tickets_status_list_2").select2({
+        allowClear: true
+    });
+	
+	$("#all_team_members_2").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+<!--JS_NEW_TICKET-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_NEW_TICKET
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#newTicket").validate({
+		rules: {
+             tickets_department_id: "required",
+			 tickets_client_id: "required",
+			 tickets_assigned_to_id: "required",
+			 tickets_status: "required",
+			 tickets_title: "required",
+			 tickets_message: "required"		 
+		},
+		messages: {
+			tickets_department_id: "[lang.lang_field_is_required]",
+			tickets_client_id: "[lang.lang_field_is_required]",
+			tickets_assigned_to_id: "[lang.lang_field_is_required]",
+			tickets_status: "[lang.lang_field_is_required]",
+			tickets_title: "[lang.lang_field_is_required]",
+			tickets_message: "[lang.lang_field_is_required]"		
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_NEW_TICKET-->
+
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js">
+<!--[onshow;block=script;when [visible.wi_new_ticket] == 1;comm]-->
+</script>
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<!--JS_NEW_TICKET_FILE_UPLOAD-->
+<script>
+<!--[onshow;block=script;when [visible.wi_new_ticket] == 1;comm]-->
+ //variabled
+ var upload_url = '[conf.site_url;noerr]/common/ajax/upload-ticket-file/';
+ var js_allowed_types = [vars.js_allowed_types;protect=no;noerr];
+ var js_file_size_limit = [vars.js_file_size_limit;noerr];
+ //language
+ var lang_file_too_big = "[lang.upload_invalid_filesize;noerr]";
+ var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_attached;noerr]";
+ var lang_upload_invalid_filetype = "[lang.lang_upload_invalid_filetype;noerr]";
+ var lang_upload_invalid_filesize = "[lang.lang_upload_invalid_filesize;noerr]";
+ var lang_upload_system_error = "[lang.lang_upload_system_error;noerr]";
+ </script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.uploadfile.js">
+<!--[onshow;block=script;when [visible.wi_new_ticket] == 1;comm]-->
+</script>
+<!--JS_NEW_TICKET_FILE_UPLOAD-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

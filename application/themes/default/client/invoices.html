@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <!-- Main bar -->
+  <div class="mainbar">
+     <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_INVOICE_ITEMS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/client/invoices/search-invoices" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="invoices_id" placeholder="[lang.lang_invoice_id]" >
+              </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="invoices_project_id" name="invoices_project_id" data-placeholder="[lang.lang_project]">
+                    <option></option>
+                     <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->            
+                  </select>
+                </div>
+                                              <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="invoices_status" name="invoices_status" data-placeholder="[lang.lang_status]">
+                    <option></option>
+                    <option value="due">[lang.lang_due]</option>   
+                    <option value="paid">[lang.lang_paid]</option>
+                    <option value="partpaid">[lang.lang_paid_partially]</option> 
+                    <option value="overdue">[lang.lang_overdue]</option>      
+                  </select>
+                </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary"> [lang.lang_search_invoices]</button>
+              </div>
+            </form>
+            <div class="clearfix"></div>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_INVOICE_ITEMS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_INVOICES_TABLE-->
+        <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_invoices_table] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th><a href="[vars.sortby_id;noerr]"> [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th data-hide="phone">[lang.lang_reference_id]</th>                      
+                      <th>[lang.lang_project]</th>
+                      <th><a href="[vars.sortby_date;noerr]"> [lang.lang_date_created]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_due_date;noerr]"> [lang.lang_due_date]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_amount;noerr]"> [lang.lang_invoice_amount]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_amount_paid;noerr]"> [lang.lang_amount_paid]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>[lang.lang_status]</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tr-link" data-link="[conf.site_url]/client/invoice/[invoices.projects_id;block=tr;noerr]/view/[invoices.invoices_id;block=tr]/standard">
+                      <td><!--[invoices.invoices_id;block=tr;comm;onformat=runtime_check_blank;noerr]--></td>
+                                <td><!--[invoices.invoices_custom_id;block=tr;comm;onformat=runtime_check_blank;noerr]--></td>
+         <td><!--[invoices.projects_title;block=tr;comm;onformat=runtime_check_blank_ucwords;noerr;ope=max:20]--></td>
+                      <td><!--[invoices.invoices_date;block=tr;comm;onformat=runtime_date;noerr]--></td>
+                      <td><!--[invoices.invoices_due_date;block=tr;comm;onformat=runtime_date;noerr]--></td>
+                      <td><!--[settings_general.currency_symbol;comm]-->
+                        <!--[invoices.invoices_amount;block=tr;comm;onformat=runtime_number_decimal;noerr]--></td>
+                      <td><!--[settings_general.currency_symbol;comm]-->
+                        <!--[invoices.payments_sum;block=tr;comm;onformat=runtime_number_decimal;noerr]--></td>
+                      <td><!--[invoices.invoices_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no;noerr]--></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--WI_INVOICES_TABLE-->
+          <!--WI_NOTIFICATION-->
+          <div class="col-md-12">
+            <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+          <!--WI_NOTIFICATION-->
+        </div>
+      </div>
+      <!-- Matter ends -->
+    </div>
+    <!-- Mainbar ends -->
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"> [lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--------SPECIFIC-CUSTOM-JAVASCRIPT--------->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.ajax.get.clients.projects.js"></script>
+<!--------SPECIFIC-CUSTOM-JAVASCRIPT--------->
+<!--JS_ADD_NEW_INVOICE_MODAL-->
+<script>
+//USED BY: VARIOUS
+//ACTIONS: creates a nice pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#invoices_clients_id").select2({
+        allowClear: true
+    });
+    $("#invoices_project_id").select2({
+        allowClear: true
+    });
+    $("#invoices_status").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_ADD_NEW_INVOICE_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

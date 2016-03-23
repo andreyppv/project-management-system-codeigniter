@@ -1,0 +1,284 @@
+<!-- REQUIRED - ALL VENDORS -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/all-vendors.js"></script>
+<!-- REQUIRED - ALL VENDORS -->
+
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jquery/jquery-tooltip.js"></script>
+
+<!--REQUIRED js_ckeditor - CKeditor-->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/ckeditor/ckeditor.js">
+</script>
+
+<!--REQUIRED js_ckeditor - CKeditor-->
+
+<!-- CUSTOM - Datepicker (eternicode.github.io) -->
+<script>
+//USED BY: All date picking forms
+    $(document).ready(function () {
+        $('.pickadate').datepicker({
+            format: "yyyy-mm-dd",
+            language: "lang",
+            autoclose: true,
+            todayHighlight: true
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<!-- CUSTOM - Datepicker (eternicode.github.io) -->
+
+<!-- REQUIRED js_noty - Noty Notification -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/noty/jquery.noty.packaged.min.js">
+</script>
+<!-- REQUIRED js_noty - Noty Notification -->
+
+<!-- HIDDE MAIN MENU -->
+<script type="text/javascript">
+$('#navbar-hide').click(function(){		
+	if($('body').hasClass('sidebar-hidden')){									
+		$('body').removeClass('sidebar-hidden');			
+	} else {						
+		$('body').addClass('sidebar-hidden');			
+	}	
+});
+
+if ($(window).width() <= 992){          
+	$('body').addClass('sidebar-hidden-disabled');
+}
+
+$(window).resize(function(){
+    if ($(window).width() <= 992){          
+		if ( $('body').hasClass('sidebar-hidden') ) {
+			$('body').removeClass('sidebar-hidden').addClass('sidebar-hidden-disabled');
+		}
+		$('body').addClass('sidebar-hidden-disabled');
+    }
+});
+</script>
+<!-- ADD ACTIVE CLASS TO MAIN MENU -->
+
+<!--REQUIRED - footable.js (included in all-vendors.js)-->
+<script type="text/javascript">
+    $(function () {
+        $('.footable').footable();
+    });
+</script>
+<!--REQUIRED - footable.js -->
+
+
+<!-- CUSTOM -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.js"></script>
+<!-- CUSTOM -->
+
+
+<!-- CUSTOM GENERAL -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.general.js"></script>
+<!-- CUSTOM GENERAL -->
+
+<!-- REMOTE MODAL -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/remote-modal.js"></script>
+
+<!-- JQUERY DATETIMEPICKER -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jquery/jquery-datetimepicker.js"></script>
+
+<!-- DATATABLES -->
+
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#salesTable').dataTable({
+            "order": [[0, "desc"]],
+			"bAutoWidth": false
+        });
+
+        $('.table-reports-details').dataTable({
+            "order": [[0, "desc"]]
+        });
+
+        var t = $('.table-ordered-reports-details').DataTable({
+            "columnDefs": [{
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0
+                }],
+            "order": [[1, 'asc']]
+        });
+
+        t.on('order.dt search.dt', function () {
+            t.column(0, {search: 'applied', order: 'applied'}).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+        }).draw();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#timersTable').dataTable({
+            "order": [[3, "desc"]]
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#invoicesTable').dataTable({
+            stateSave: true,
+            "order": [[3, "desc"]],
+            "columnDefs": [{"targets": [1, 4], "orderable": false}],
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.header()))
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                        );
+
+                                column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                            });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        if (d.substring(0, 5) == "<span") {
+                            select.append('<option value="' + $(d).text() + '">' + $(d).text() + '</option>')
+                        }
+                        else
+                        {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+
+                        }
+                    });
+                });
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#bugsTable').dataTable({
+            "order": [[4, "desc"]],
+            "columnDefs": [{"targets": [0, 5], "orderable": false}],
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.header()))
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                        );
+
+                                column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                            });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        if (d.substring(0, 5) == "<span") {
+                            select.append('<option value="' + $(d).text() + '">' + $(d).text() + '</option>')
+                        }
+                        else
+                        {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+
+                        }
+                    });
+                });
+            }
+        });
+    });
+</script>
+
+<script src="[conf.site_url_themes_common;noerr]/js/mixitup-master/src/jquery.mixitup.min.js"></script>
+<script src="[conf.site_url_themes_common;noerr]/js/tinymce.min.js"></script>
+
+<script>
+    var mixedFilter = {
+        $filters: null,
+        $reset: null,
+        groups: [],
+        outputArray: [],
+        outputString: '',
+        init: function () {
+            var self = this;
+            self.$filters = $('#js-filters');
+            self.$reset = $('#js-reset');
+            self.$container = $('.clientSort');
+            self.$filters.find('fieldset').each(function () {
+                var $this = $(this);
+                self.groups.push({
+                    $buttons: $this.find('.filter'),
+                    $inputsSelect: $this.find('select'),
+                    $inputsText: $this.find('input[type="text"]'),
+                    active: ''
+                });
+            });
+            self.bindHandlers();
+        },
+        bindHandlers: function () {
+            var self = this;
+            self.$filters.on('click', '.filter', function (e) {
+                e.preventDefault();
+                var $button = $(this);
+                $button.hasClass('active') ? $button.removeClass('active') : $button.addClass('active').siblings('.filter').removeClass('active');
+                self.parseFilters();
+            });
+            self.$filters.on('change', 'select', function () {
+                self.parseFilters();
+            });
+            self.$filters.on('keyup', 'input[type="text"]', function () {
+                var $input = $(this);
+                console.log($input.val());
+                $input.attr('data-filter', '[class*="' + $input.val().replace(/ /, '-') + '"]');
+                if ($input.val() == '')
+                    $input.attr('data-filter', '');
+                console.log($input.attr('data-filter'));
+                self.parseFilters();
+            });
+            self.$reset.on('click', function (e) {
+                e.preventDefault();
+                self.$filters.find('.filter').removeClass('active');
+                self.$filters.find('.show-all').addClass('active');
+                self.$filters.find('select').val('');
+                self.$filters.find('input[type="text"]').val('').attr('data-filter', '');
+                self.parseFilters();
+            });
+        },
+        parseFilters: function () {
+            var self = this;
+            for (var i = 0, group; group = self.groups[i]; i++) {
+                var activeButtons = group.$buttons.length ? group.$buttons.filter('.active').attr('data-filter') || '' : '';
+                var activeSelect = group.$inputsSelect.length ? group.$inputsSelect.val() || '' : '';
+                var activeText = group.$inputsText.length ? group.$inputsText.attr('data-filter') : '';
+                group.active = activeButtons + activeSelect + activeText;
+                console.log(group.active);
+            }
+            self.concatenate();
+        },
+        concatenate: function () {
+            var self = this;
+            self.outputString = '';
+            for (var i = 0, group; group = self.groups[i]; i++) {
+                self.outputString += group.active;
+            }
+            !self.outputString.length && (self.outputString = 'all');
+            console.log(self.outputString);
+            if (self.$container.mixItUp('isLoaded')) {
+                self.$container.mixItUp('filter', self.outputString);
+            }
+        }
+    };
+    $(function () {
+        mixedFilter.init();
+        $('.clientSort').mixItUp({
+            controls: {enable: false},
+            callbacks: {
+                onMixFail: function () {
+                    console.log('no-results');
+                }
+            }
+        });
+    });
+//@ sourceURL=pen.js
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_TASK_TIME_DOCTOR_ADD-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_task_time_doctor_add] == 1;comm]-->
+    <script>
+      location = '[vars.add_time_doctor_link]';
+    </script>
+  </div>
+  <!--WI_TASK_TIME_DOCTOR_ADD-->
+
+
+  <!--WI_TASK_TIME_DOCTOR_VIEW-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_task_time_doctor_view] == 1;comm]-->
+    <div class="col-md-12">
+      
+
+      <div class="alert alert-success">
+        Your task is added on TimeDoctor. You can start tracking time using your TimeDoctor desktop application.
+      </div>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong> Total Hours Worked Yesterday</strong></td>
+            <td>[vars.hoursyesterday]</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked Today</strong></td>
+            <td>[vars.hourstoday]</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked This Week</strong></td>
+            <td>[vars.hoursweek]</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked All Time</strong></td>
+            <td>[vars.hoursall]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_TASK_TIME_DOCTOR_VIEW-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box" style="color:#a94442;"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

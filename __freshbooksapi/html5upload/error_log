@@ -1,0 +1,15 @@
+[24-Aug-2015 14:14:40 UTC] PHP Notice:  Undefined index: id in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 4
+[24-Aug-2015 14:14:40 UTC] PHP Fatal error:  Call to undefined function fetch() in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[24-Aug-2015 14:14:51 UTC] PHP Fatal error:  Call to undefined function fetch() in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[24-Aug-2015 14:15:15 UTC] PHP Notice:  Undefined variable: db in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 5
+[24-Aug-2015 14:15:15 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 5
+[24-Aug-2015 14:15:33 UTC] PHP Fatal error:  Call to undefined function fetch() in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[24-Aug-2015 14:15:44 UTC] PHP Notice:  Undefined variable: row in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 7
+[24-Aug-2015 14:16:01 UTC] PHP Fatal error:  Call to undefined function fetch() in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[24-Aug-2015 14:16:10 UTC] PHP Notice:  Undefined variable: row in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 7
+[24-Aug-2015 14:16:37 UTC] PHP Fatal error:  Call to undefined function fetch() in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[24-Aug-2015 14:16:58 UTC] PHP Fatal error:  Call to a member function fetch() on a non-object in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[24-Aug-2015 14:17:28 UTC] PHP Fatal error:  Call to a member function fetch() on a non-object in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/shownhide.php on line 6
+[25-Aug-2015 08:35:25 UTC] PHP Fatal error:  Call to a member function as() on a non-object in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/editname.php on line 10
+[25-Aug-2015 08:35:40 UTC] PHP Fatal error:  Call to a member function as() on a non-object in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/editname.php on line 10
+[25-Aug-2015 08:36:07 UTC] PHP Fatal error:  Call to a member function as() on a non-object in /var/www/vhosts/isodeveloper.com/pms.isodeveloper.com/__freshbooksapi/html5upload/editname.php on line 10

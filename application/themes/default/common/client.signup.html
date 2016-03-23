@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="style/bootstrap.css" rel="stylesheet">
+<link href="style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="body-light">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<div class="content quotation-form">
+  <div class="container">
+    <!----------------------COMMON NOTICES--------------------------------->
+    <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+    <!----------------------COMMON NOTICES--------------------------------->
+    <!--WI_SIGNUP_FORM-->
+    <div class="row">
+        <!--[onshow;block=div;when [settings_general.client_registration] == 'yes';comm]-->
+      <div class="col-lg-12">
+        <form action="[conf.site_url]/common/signup/create-account" method="post" id="createAccount">
+          <div class="box">
+            <div class="box-head-light">[vars.main_title] </div>
+            <div class="box-content box-pad">
+              <div class="heading-bar">
+                <h4>
+                  
+                  [lang.lang_contact_information]</h4>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                [lang.lang_full_name]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="client_users_full_name" id="client_users_full_name" class="form-control" value="[new_client.client_users_full_name]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                <strong>[lang.lang_email_address]*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="client_users_email" id="client_users_email" class="form-control" value="[new_client.client_users_email]">
+                </div>
+              </div>
+                            <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                <strong>[lang.lang_telephone]*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="client_users_telephone" id="client_users_telephone" class="form-control" value="[new_client.client_users_telephone]">
+                </div>
+              </div>
+              <div class="heading-bar">
+                <h4>
+                  
+                  [lang.lang_company_details]</h4>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                [lang.lang_company_name]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_company_name" id="clients_company_name" class="form-control" value="[new_client.clients_company_name]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                [lang.lang_address]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_address" id="clients_address" class="form-control" value="[new_client.clients_address]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                [lang.lang_city]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_city" id="clients_city" class="form-control" value="[new_client.clients_city]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                [lang.lang_state]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_state" id="clients_state" class="form-control" value="[new_client.clients_state]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                [lang.lang_zip_code]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_zipcode" id="clients_zipcode" class="form-control" value="[new_client.clients_zipcode]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                
+                [lang.lang_country]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_country" id="clients_country" class="form-control" value="[new_client.clients_country]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <label class="control-label">
+                [lang.lang_website]<strong>*</strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_website" id="clients_website" class="form-control" value="[new_client.clients_website]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <!--[onshow;block=div;when [visible.wi_clients_optionalfield1] == 1;comm]-->
+                <label class="control-label">
+                
+                [row.wi_clients_optionalfield1]<strong></strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_optionalfield1" id="clients_optionalfield1" class="form-control" value="[new_client.clients_optionalfield1]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <!--[onshow;block=div;when [visible.wi_clients_optionalfield2] == 1;comm]-->
+                <label class="control-label">
+                
+                [row.wi_clients_optionalfield2]<strong></strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_optionalfield2" id="clients_optionalfield2" class="form-control" value="[new_client.clients_optionalfield2]">
+                </div>
+              </div>
+              <div style="margin-bottom:10px;" class="form-group">
+                <!--[onshow;block=div;when [visible.wi_clients_optionalfield3] == 1;comm]-->
+                <label class="control-label">
+                
+                [row.wi_clients_optionalfield3]<strong></strong></label>
+                <div>
+                  <input type="text" autocomplete="off" name="clients_optionalfield3" id="clients_optionalfield3" class="form-control" value="[new_client.clients_optionalfield3]">
+                </div>
+              </div>
+                            <div class="heading-bar">
+                <h4>
+                  [lang.lang_enter_security_image_text]</h4>
+              </div>
+              <!--captcha image-->
+              <div style="margin-bottom:10px;" class="form-group">
+                [vars.captcha_image;htmlconv=no]
+              </div> 
+              <!--captcha image-->  
+              <div style="margin-bottom:10px;" class="form-group">
+                <div style="width:200px;">
+                  <input type="text" autocomplete="off" name="captcha_text" id="captcha_text" class="form-control" placeholder="[lang.lang_security_text]">
+                </div>
+              </div>           
+            </div>
+            <div class="box-footer">
+              <div class="pull-right">
+              <input type="hidden" name="client_users_job_position_title" value="">
+              <input class="btn btn-primary" type="submit" value="[lang.lang_create_new_account]" id="" name="submit"></div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--WI_SIGNUP_FORM-->
+    <!--WI_NOTIFICATION-->
+    <div class="row">
+      <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+      <div class="col-md-12 quotation-notification">
+        <div class="widget">
+          <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+        </div>
+      </div>
+    </div>
+    <!--WI_NOTIFICATION-->
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_CLIENT_SIGNUP-->
+<script>
+$().ready(function(){
+    //USED BY: CLIENT SIGNUP
+    //REQUIRES: jquery.validate.js
+    $("#createAccount").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            clients_company_name: "required",
+            clients_address: "required",
+			clients_city: "required",
+			clients_state: "required",
+			clients_zipcode: "required",
+			clients_website: "required",
+			client_users_full_name: "required",
+			client_users_telephone: "required",
+			captcha_text: "required",
+            client_users_email: {
+                required: true,
+                email: true,
+                remote: {
+                    url: "[conf.site_url;noerr]/common/ajax/validation-is-user-email-in-use",
+                    type: "post"
+                }
+            },			
+			[js_validation.wi_clients_optionalfield1;htmlconv=no]
+			[js_validation.wi_clients_optionalfield2;htmlconv=no]
+			[js_validation.wi_clients_optionalfield3;htmlconv=no]
+			clients_country: "required"
+        },
+        messages: {
+            clients_company_name: "[lang.lang_field_is_required;noerr]",
+            clients_address: "[lang.lang_field_is_required;noerr]",
+			clients_city: "[lang.lang_field_is_required;noerr]",
+			clients_state: "[lang.lang_field_is_required;noerr]",
+			clients_zipcode: "[lang.lang_field_is_required;noerr]",
+			clients_website: "[lang.lang_field_is_required;noerr]",
+			client_users_full_name: "[lang.lang_field_is_required;noerr]",
+			client_users_telephone: "[lang.lang_field_is_required;noerr]",
+			captcha_text: "[lang.lang_field_is_required;noerr]",
+            client_users_email: {
+                required: "[lang.lang_please_enter_a_valid_email_address]",
+                remote: "[lang.lang_email_address_is_already_in_use]"
+            },
+			[js_validation_message.wi_clients_optionalfield1;htmlconv=no]
+			[js_validation_message.wi_clients_optionalfield2;htmlconv=no]
+			[js_validation_message.wi_clients_optionalfield3;htmlconv=no]
+			clients_country: "required"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_CLIENT_SIGNUP-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

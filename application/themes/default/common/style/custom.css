@@ -1,0 +1,51 @@
+.table-responsive {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.sorting-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    margin-top: 4px;
+    margin-left: 7px;
+    background-image: url(custom/sorting2.png);
+    background-position: 0 0;
+    vertical-align: top;
+    float: right;
+}
+th.sortable a,
+th.sorted a {
+    text-decoration: none;
+    color: black;
+    display:block;
+}
+th.sortable .sorting-indicator {
+    background-position: 0 0;
+}
+th.sortable:hover .sorting-indicator,
+th.sorted .sorting-indicator {
+    /*display: inline-block;*/    
+}
+th.sortable.desc:hover .sorting-indicator,
+th.sorted.asc .sorting-indicator,
+th.sorted.desc:hover .sorting-indicator {
+    background-position: -8px 0;
+}
+th.sortable.asc:hover .sorting-indicator,
+th.sorted.asc:hover .sorting-indicator, 
+th.sorted.desc .sorting-indicator {
+    background-position: -16px 0;
+}
+
+.table-even tr:nth-child(even) {background: #ffffe0;}
+
+.messaging-reply {
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px 0 0 60px;
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<style>
+	select {
+    border: 1px solid #ededed;
+    border-radius: 0;
+    color: #909090;
+    font-size: 14px !important;
+    margin-left: 10px;
+    margin-right: 12px;
+    padding: 3px 10px;
+}
+
+label {
+    font-weight: normal;
+}
+
+input {
+    border: 1px solid #ededed;
+    border-radius: 0;
+    color: #909090;
+    font-size: 14px !important;
+    margin-right: 12px;
+    padding: 3px 15px;
+}
+
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #b7b7b7 !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    font-size: 13px;
+    padding: 10px !important;
+	padding-right: 15px;
+    text-align: left;
+    vertical-align: middle;
+	border-bottom: 1px solid #b7b7b7 !important;
+}
+
+.widget .table-bordered thead tr > th:last-child, .widget .table-bordered tbody tr > td:last-child {
+    border-right: 0 none;
+	padding: 5px 3px !important;
+}
+
+.widget .table-striped thead tr > th:last-child {
+	background: none;
+	background-color: #ffffff !important;
+}
+
+td a.btn, td .btn {
+    font-size: 12px !important;
+	margin-bottom: 2px;
+    margin-top: 2px;
+    width: 50px;
+	padding: 3px 5px !important;
+}
+
+.toggle-hot span {
+	color: #d9534f;
+	font-weight: bold;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 0 10px;
+	font-size: 12px;
+	vertical-align: middle;
+	color: #354151;
+}
+
+table.dataTable thead th {
+	padding-left: 20px !important;
+}
+
+table.dataTable {
+    border-collapse: collapse !important;
+    border-spacing: 0;
+	margin-bottom: 10px !important;
+}
+
+
+.table-bordered {
+    border: 1px solid #ddd !important;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #ffffe0 !important;
+}
+
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+
+</style>
+<div class="content">
+<!-- Main bar -->
+<div class="mainbar">
+  <!----------------------COMMON PAGE HEADING--------------------------------->
+  <!--[onload;file=common.heading.html;getbody;comm]-->
+  <!----------------------COMMON PAGE HEADING--------------------------------->
+  <!-- Matter -->
+  <div class="matter">
+    <div class="container">
+        <div class="row fullscreen-mode">
+         
+
+<div class="navbar navbar-default" role="navigation">
+        
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only"> Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          
+
+             <style type="text/css">
+            .sales-buttons li{ display:inline; padding:20px;}
+            .sales-buttons{margin-top:10px; float: left;}
+            </style>
+       <ul class="sales-buttons">
+         <li>
+          <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions--> 
+          <div class="btn-group">
+            <a class="[vars.css_menu_invoices;noerr]" href="[conf.site_url]/admin/allinvoices/view">
+              <i class="icon-list-alt"></i>
+              <span>[lang.lang_manage_invoices]</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions--> 
+        <div class="btn-group">
+          <a class="[vars.css_menu_invoices;noerr]" href="[conf.site_url]/admin/invoiceitems/view">
+            <i class="icon-list-alt"></i>
+            <span>[lang.lang_manager_invoice_items]</span>
+          </a>
+        </div>
+      </li>
+
+      <li>
+        <div class="btn-group">
+           <a class="[vars.css_menu_payments;noerr]" href="[conf.site_url]/admin/allpayments/all">
+                <i class="icon-credit-card"></i>
+                <span> [lang.lang_payments] </span>
+              </a>
+            </div>
+      </li>
+
+      <li>
+        <!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]--><!--permissions-->  
+        <div class="btn-group">
+          <a class="[vars.css_menu_quotations;noerr]" href="[conf.site_url]/admin/quotations/list">
+            <i class="icon-paste"></i>
+            <span> [lang.lang_quotations] </span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->  
+        <div class="btn-group">
+          <a class="[vars.css_menu_quotationforms;noerr]" href="[conf.site_url]/admin/quotationforms/list">
+            <i class="icon-paste"></i>
+            <span> [lang.lang_quotation_forms] </span>
+          </a>
+        </div>
+      </li>
+
+            </ul>  
+
+		<a href="#modal" style="float: right; margin-right: 15px; margin-top: 5px;" class="btn btn-info" data-toggle="modal" data-load-remote="/admin/sales/add-modal"> <i class="icon-plus" style="margin-right: 5px;"></i> Add a New Lead </a>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+
+
+
+        
+        </div>
+      </div>
+    
+	 <div class="container">
+    <div class="row">
+    	<div class="col-md-12 widget" style="padding-top: 20px; padding-bottom: 20px;">
+			<table id="salesTable" class="table table-striped">				
+			    <thead>
+			        <tr>
+			            <th style="display: none;">id</th>
+			            <th>Contact</th>
+			            <th>Company</th>
+			            <th style="min-width: 90px;">Telephone</th>
+			            <th>E-mail</th>
+			            <th style="display: none;">Projects</th>
+			            <th>Lead Created</th>
+			            <th style="display: none;">Lead Source</th>
+			            <th style="min-width: 70px;">[lang.lang_value]</th>
+						<th>Sales Person</th>
+			            <th style="min-width: 45px;">Status</th>
+			            <th style="min-width: 28px;">[lang.lang_hot]</th>
+			            <th style="min-width: 32px;">[lang.lang_lost]</th>
+			            <th style="width:40px;"></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			        	<td style="display: none;"><!--[blk1.id;block=tr;comm]--></td>
+			        	<td><!--[blk1.leads_name;block=tr;comm]--></td>
+			        	<td><!--[blk1.leads_company;block=tr;comm]--></td>
+			        	<td><!--[blk1.leads_telephone;block=tr;comm]--></td>
+			        	<td><!--[blk1.leads_email;block=tr;comm]--></td>
+			        	<td style="display: none;"><!--[blk1.all_projects;block=tr;comm]--></td>
+			        	<td><!--[blk1.leads_created;block=tr;comm;onformat=runtime_datetime]--></td>
+			        	<td style="display: none;"><!--[onshow;block=td;when [blk1.leads_source] == '';comm]-->n/a</td>
+			        	<td style="display: none;"><!--[onshow;block=td;when [blk1.leads_source] == 1;comm]-->Branding Landing Page</td>
+						<td style="display: none;"><!--[onshow;block=td;when [blk1.leads_source] == 2;comm]-->ISO Developers Contact Form</td>
+						<td style="display: none;"><!--[onshow;block=td;when [blk1.leads_source] == 3;comm]-->ISO Developers Mobile Website Test</td>
+						<td style="display: none;"><!--[onshow;block=td;when [blk1.leads_source] == 4;comm]-->Added by Admin</td>
+						<td><!--[onshow;block=td;when [blk1.leads_status] != 'Lead';comm]--><!--[settings_general.currency_symbol;comm]--> <!--[blk1.clients_value;block=tr;comm;frm='0,000.00']--></td>
+						<td><!--[onshow;block=td;when [blk1.leads_status] == 'Lead';comm]--><!--[settings_general.currency_symbol;comm]--> <!--[blk1.leads_value;block=tr;comm;frm='0,000.00']--></td>
+						<td><!--[blk1.team_profile_full_name;block=tr;comm]--></td>
+			        	<td>
+			        		<label class="label label-[blk1.leads_status;block=tr; if [blk1.leads_status]='Lead';then 'warning';else 'success']"><!--[blk1.leads_status;block=tr;comm]--></label>
+			        	</td>
+                        <td class="toggle-hot" style="cursor:pointer" data-type="[blk1.leads_status;if [blk1.leads_status]='Lead';then 'lead';else 'client']" data-id="[blk1.id]" data-clients-id="[blk1.leads_clients_id]">
+                        	<span><!--[onshow;block=span;when [blk1.clients_hot] == 1;comm]-->HOT</span>
+                        	<span><!--[onshow;block=span;when [blk1.leads_hot] == 1;comm]-->HOT</span>
+                        </td>
+                        <td class="toggle-lost" style="cursor:pointer" data-type="[blk1.leads_status;if [blk1.leads_status]='Lead';then 'lead';else 'client']" data-id="[blk1.id]" data-clients-id="[blk1.leads_clients_id]">
+                        	<span><!--[onshow;block=span;when [blk1.clients_lost] == 1;comm]-->LOST</span>
+                        	<span><!--[onshow;block=span;when [blk1.leads_lost] == 1;comm]-->LOST</span>
+                        </td>
+			        	<td>
+			        		
+			        		
+			        		<a href="/admin/sales/view/<!--[blk1.id;block=tr;comm]-->" class="btn btn-info">Details</a>
+			        		 <button class="btn btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_are_you_sure;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[blk1.id;block=tr]"
+                                data-mysql-table-name="tasks"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-lead"> Delete
+                        	</button>
+			        	</td>
+			        </tr>
+			    </tbody>
+			</table>
+    	</div>
+    </div>
+    </div>
+	</div>
+    <!-- Matter ends -->
+   
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+	<script language="javascript" type="text/javascript">
+		$(document).ready(function(){
+		$('#salesTable').on('click', 'td.toggle-hot', function(event)
+		{
+			$.ajax({
+				type: 'post',
+				url: '[conf.site_url]/admin/ajax/toggle-hot',
+				dataType: 'json',
+				data: { type:$(this).data('type'), id:$(this).data('id'), clients_id:$(this).data('clients-id') },
+	
+				success: function(data){
+//					$(this).html(data.newValue? 'HOT': '');
+					$(event.target).html(data.newValue? 'HOT': '');
+					
+					//show noty notification 1 sec later
+					setTimeout(function(){
+						noty({
+							text: data.message,
+							layout: 'bottomRight',
+							type: 'information',
+							timeout: 1500
+						});
+					}, 300);
+				},
+				error: function(data){
+					var data = data.responseJSON
+					
+					//get a json message from server if one exists
+					ajax_response = data.message; //where 'message' is key in php jason output
+					if (ajax_response == '' || ajax_response == 'undefined') {
+						ajax_response = lang_request_could_not_be_completed; //lang
+					}
+					
+					//fire up a noty message
+					noty({
+						text: '' + ajax_response,
+						layout: 'bottomRight',
+						type: 'warning',
+						timeout: 1500
+					});
+				}
+			});
+			//end ajax
+		});
+		
+		
+		$('#salesTable').on('click', 'td.toggle-lost', function(event)
+		{
+			$.ajax({
+				type: 'post',
+				url: '[conf.site_url]/admin/ajax/toggle-lost',
+				dataType: 'json',
+				data: { type:$(this).data('type'), id:$(this).data('id'), clients_id:$(this).data('clients-id') },
+	
+				success: function(data){
+//					$(this).html(data.newValue? 'LOST': '');
+					$(event.target).html(data.newValue? 'LOST': '');
+					
+					//show noty notification 1 sec later
+					setTimeout(function(){
+						noty({
+							text: data.message,
+							layout: 'bottomRight',
+							type: 'information',
+							timeout: 1500
+						});
+					}, 300);
+				},
+				error: function(data){
+					var data = data.responseJSON
+					
+					//get a json message from server if one exists
+					ajax_response = data.message; //where 'message' is key in php jason output
+					if (ajax_response == '' || ajax_response == 'undefined') {
+						ajax_response = lang_request_could_not_be_completed; //lang
+					}
+					
+					//fire up a noty message
+					noty({
+						text: '' + ajax_response,
+						layout: 'bottomRight',
+						type: 'warning',
+						timeout: 1500
+					});
+				}
+			});
+			//end ajax
+		});
+		});
+	</script>
+</body>
+</html>

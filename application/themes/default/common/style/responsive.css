@@ -1,0 +1,272 @@
+@charset "utf-8";
+/*------------------------------------------------RESPONSIVE ACTIONS-------------------------------------------------------- */
+
+@media (max-width: 480px) {
+ .mainbar .page-head h2 {
+ float: none;
+}
+ .mainbar .bread-crumb {
+ float: none;
+ margin-top: 10px;
+}
+ .col-left {
+ width: 100%;
+ float: none;
+ margin-right: none;
+}
+ .col-right {
+ width: 100%;
+ float: none;
+}
+ .fc-button-month, .fc-button-agendaWeek, .fc-button-agendaDay {
+ display: none;
+}
+ .billboard {
+ display:none;
+}
+
+
+/*tables - remove some columns*/
+.responsive-table-xs-remove{
+display:none;
+visibility:collapse;
+}
+
+}
+
+/*------------------------------------------767 Pixels---------------------------------------------------/
+* [left main menu] - Hide
+* [top menu] - Show
+* [navbar] - Switch
+*
+*-------------------------------------------------------------------------------------------------------*/
+ @media (max-width: 767px) {
+ .form-inline button {
+ margin-left:0px;
+}
+
+/*header*/
+ header {
+ padding-top: 0px !important;
+ padding-bottom: 20px !important;
+}
+ header .logo {
+ padding: 0px;
+ display: none;
+}
+ header .nav.nav-pills {
+ margin-top: 30px;
+ margin-bottom: 20px;
+ margin-left:20px;
+}
+ header .header-data {
+ margin-top: 15px;
+ margin-left: 20px;
+}
+/*navbar*/
+ .navbar {
+ margin-top: 0px !important;
+ margin-bottom: 0px !important;
+}
+ .nav-collapse .dropdown-menu {
+ padding: 10px 10px !important;
+}
+ .nav-collapse .dropdown-menu > li {
+ color: #999 !important;
+}
+ .nav-collapse .dropdown-menu a {
+ color: #555555;
+}
+ .nav-collapse .dropdown-menu a:hover {
+ color: #555555;
+ background:transparent !important;
+}
+ .nav-collapse .dropdown-menu hr {
+ border-top: 1px solid #eee;
+ border-bottom: 1px solid #ccc;
+}
+/*sidebar*/
+ .sidebar {
+ float: none;
+ width: 100%;
+}
+ .sidebar .sidebar-dropdown {
+ display: block;
+}
+ .pmsClient .mainbar { 
+ margin-left:0px;
+}
+ .sidebar #nav {
+ display: none;
+}
+/*main bar*/
+ .mainbar {
+ float: none;
+ margin:0px;
+ border:0px;
+}
+
+/*Page - Dashboard*/
+
+
+}
+
+
+/*-------------------------------------768 - 991 Pixels--------------------------------------------------/
+*
+*-------------------------------------------------------------------------------------------------------*/
+ @media (min-width: 768px) and (max-width: 991px) {
+ .form {
+ margin: 0px !important;
+}
+ form .control-group {
+ margin:0px !important;
+}
+ form .control-label {
+ float: none !important;
+ width: auto !important;
+ text-align: left !important;
+}
+ form .controls {
+ float: none !important;
+ margin-left: 0px !important;
+}
+ form .form-actions {
+ padding-left: 0px !important;
+}
+ .navbar {
+ margin-top: 0px !important;
+ margin-bottom: 0px !important;
+}
+ .nav-collapse .dropdown-menu {
+ padding: 10px 10px !important;
+}
+ .nav-collapse .dropdown-menu > li {
+ color: #999 !important;
+}
+ .nav-collapse .dropdown-menu a {
+ color: #555555;
+}
+ .nav-collapse .dropdown-menu a:hover {
+ color: #555555;
+ background:transparent !important;
+}
+ .nav-collapse .dropdown-menu hr {
+ border-top: 1px solid #eee;
+ border-bottom: 1px solid #ccc;
+}
+ .sidebar {
+ width: 200px;
+}
+ header {
+ padding-top:10px;
+}
+ header .nav.nav-pills {
+ margin-top: 30px;
+ margin-bottom: 20px;
+ margin-left:20px;
+}
+ header .header-data {
+ margin-top: 15px;
+ margin-left: 20px;
+}
+}
+ @media (max-width: 1199px) {
+}
+
+
+/*----------------------------------timeline responsiveness---------------------------------------------------*/
+/** media queries **/
+@media (max-width: 991px) {
+ .timeline li .timeline-panel {
+ width: 44%;
+}
+.clientBox { height:auto !important; margin-bottom:20px;}
+}
+ @media (max-width: 700px) {
+ .page-header h1 {
+font-size: 1.8em;
+}
+ ul.timeline:before {
+ left: 40px;
+}
+ .tldate {
+width: 140px;
+}
+ ul.timeline li .timeline-panel {
+ width: calc(100% - 90px);
+ width: -moz-calc(100% - 90px);
+ width: -webkit-calc(100% - 90px);
+}
+ ul.timeline li .tl-circ {
+ top: 22px;
+ left: 22px;
+ margin-left: 0;
+}
+ ul.timeline > li > .tldate {
+ margin: 0;
+}
+ ul.timeline > li > .timeline-panel {
+ float: right;
+}
+ ul.timeline > li > .timeline-panel:before {
+ border-left-width: 0;
+ border-right-width: 15px;
+ left: -15px;
+ right: auto;
+}
+ ul.timeline > li > .timeline-panel:after {
+ border-left-width: 0;
+ border-right-width: 14px;
+ left: -14px;
+ right: auto;
+}
+}
+
+
+ @media (min-width: 900px) {
+  .project-details .page-header h1 {
+font-size: 1.8em;
+}
+ .project-details ul.timeline:before {
+ left: 40px;
+}
+ .tldate {
+width: 140px;
+}
+ .project-details ul.timeline li .timeline-panel {
+ width: calc(100% - 90px);
+ width: -moz-calc(100% - 90px);
+ width: -webkit-calc(100% - 90px);
+}
+ .project-details ul.timeline li .tl-circ {
+ top: 22px;
+ left: 22px;
+ margin-left: 0;
+}
+ .project-details ul.timeline > li > .tldate {
+ margin: 0;
+}
+ .project-details ul.timeline > li > .timeline-panel {
+ float: right;
+}
+ .project-details ul.timeline > li > .timeline-panel:before {
+ border-left-width: 0;
+ border-right-width: 15px;
+ left: -15px;
+ right: auto;
+}
+ .project-details ul.timeline > li > .timeline-panel:after {
+ border-left-width: 0;
+ border-right-width: 14px;
+ left: -14px;
+ right: auto;
+}
+}
+
+ @media (max-width: 950px) {
+.login-background img {
+width: 950px;
+vertical-align: middle;
+}
+}

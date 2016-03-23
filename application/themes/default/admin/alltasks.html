@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TASKS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/alltasks/search-tasks" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="tasks_text" placeholder="[lang.lang_task_title]" >
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="team-members-list" data-placeholder="[lang.lang_assigned_to]" name="team_profile_id">
+                  <option></option>
+                  
+                    
+                     <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                  
+                </select>
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="projects-list" data-placeholder="[lang.lang_project_home]" name="tasks_project_id">
+                  <option></option>
+                  
+                    
+                     <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->           
+                  
+                  
+                </select>
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="task-status-list" data-placeholder="[lang.lang_task_status]" name="tasks_status">
+                  <option></option>
+                  <option value="completed"> [lang.lang_completed]</option>
+                  <option value="pending"> [lang.lang_completed]</option>
+                  <option value="behind schedule"> [lang.lang_behind_schedule]</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">[lang.lang_search_my_tasks]</button>
+            </form>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_TASKS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_TASKS_TABLE-->
+        <div class="row fullscreen-mode">
+          <!--[onshow;block=div;when [visible.wi_tasks_table] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th><a href="[vars.sortby_taskid;noerr]"> [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_projectid;noerr]"> [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>[lang.lang_title]</th>
+                      <th>[lang.lang_assigned]</th>
+                      <th><a href="[vars.sortby_taskduedate;noerr]"> [lang.lang_date_due]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_taskstatus;noerr]"> [lang.lang_status]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:50px; text-align:center; font-size:14px;"> <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><!--[tasks.tasks_id;block=tr;comm]-->
+                      </td>
+                      <td><a href="[conf.site_url]/admin/project/[tasks.projects_id;block=tr;noerr]/view" class="links-blue">
+                        <!--[tasks.projects_title;block=tr;comm;ope=max:20]-->
+                        </a> </td>
+                      <td style="min-width:300px;"><!--[tasks.tasks_text;block=tr;comm]-->
+                      </td>
+                      <td><!--[tasks.team_profile_full_name;block=tr;comm;ope=max:10]--></td>
+                      <td><!--[tasks.tasks_end_date;block=tr;comm;onformat=runtime_date]--></td>
+                      <td><!--[tasks.tasks_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                      <td><!--control buttons edit-->
+                        <a class="btn btn-xs btn-info edit-task-modal" 
+                                data-toggle="modal"
+                                data-modal-window-title="Edit Task Details"
+                                data-height="350" 
+                                data-width="100%"
+                                data-task-text="[tasks.tasks_text;block=tr;noerr]"
+                                data-task-start-date="[tasks.tasks_start_date;block=tr;noerr]"
+                                data-task-end-date="[tasks.tasks_end_date;block=tr;noerr]"
+                                data-task-id="[tasks.tasks_id;block=tr;noerr]"
+                                data-task-assigned-to-id="[tasks.tasks_assigned_to_id;block=tr;noerr]"
+                                data-task-milestone-id="[tasks.tasks_milestones_id;block=tr;noerr]"
+                                data-task-events-id="[tasks.tasks_events_id;block=tr;noerr]"
+                                data-task-status="[tasks.tasks_status;block=tr;noerr]"
+                                data-target="#editTaskModal"><i class="icon-pencil"></i></a>
+                        <!--control buttons edit - end-->
+                        <!--control buttons delete-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_are_you_sure;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[tasks.tasks_id;block=tr]"
+                                data-mysql-table-name="tasks"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-task"> <i class="icon-trash"></i>
+                        
+                        </button>
+                        <!--control buttons delete - end -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_TASKS_TABLE-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_TASK_MODAL-->
+<div class="row">
+  <div id="addNewTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/mytasks/add-task" method="post" id="addNewTask">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_new_task]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="tasks_text" name="tasks_text" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project]</label>
+              <div class="col-lg-12">
+                <select id="add-tasks-project-list" name="tasks_project_id" style="width:100%"
+                        data-ajax-url="[conf.site_url]/admin/ajax/project-milestones-list" autocomplete="off">
+                  <option selected>[lang.lang_select_project]</option>
+                              
+                 <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+                
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_milestone]</label>
+              <div class="col-lg-12">
+                <select id="add-tasks-milestones-list" name="tasks_milestones_id" style="width:100%" autocomplete="off">
+                  <!--ajax milestones here-->
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_start_date"  id="tasks_start_date">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_end_date"  id="tasks_end_date">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="tasks_client_id" id="add_tasks_client_id" value="">
+            <input type="hidden" name="tasks_events_id" value="[vars.new_events_id;noerr]">
+            <input type="hidden" name="tasks_created_by_id" value="[vars.my_id;noerr]">
+            <input type="hidden" name="tasks_assigned_to_id" value="[vars.my_id;noerr]">
+             <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_create_new_task]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_TASK_MODAL-->
+<!--WI_EDIT_TASK_MODAL-->
+<div class="row">
+  <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/mytasks/edit-task" method="post" id="editTask">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit_task]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="task_text_edit" name="tasks_text" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_start_date"  id="task_start_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_end_date"  id="task_end_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_status]</label>
+              <div class="col-lg-12">
+                <select id="tasks-status-list-edit" name="tasks_status" style="width:100%">
+                  <option value="pending"> [lang.lang_pending]</option>
+                  <option value="completed"> [lang.completed]</option>
+                  <option value="behind schedule"> [lang.lang_behind_schedule]</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" id="task_id_edit" name="tasks_id" value="">
+            <input type="hidden" id="task_assigned_to_id_edit" name="tasks_assigned_to_id" value="">
+            <input type="hidden" id="task_milestone_id_edit" name="tasks_milestones_id" value="">
+            <input type="hidden" id="task_events_id_edit" name="tasks_events_id" value="">
+             <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_TASK_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: VARIOUS
+//ACTIONS: creates a nice pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#team-members-list").select2({
+        allowClear: true
+    });
+	
+    $("#task-status-list").select2({
+        allowClear: true
+    });
+    $("#task-timer-status-list").select2({
+        allowClear: true
+    });
+	
+    $("#projects-list").select2({
+        allowClear: true
+    });
+	
+    $("#add-tasks-project-list").select2({
+        allowClear: true
+    });
+	
+    $("#add-tasks-milestones-list").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+<!--JS_EDIT_TASK_TIMER_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_TASK_TIMER_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+		
+    //---edit item link clicked-------
+    $(".edit-task-timer-modal").click(function(){
+    
+        //get variables from "edit link" data attributes
+		var tasks_id_edit = $(this).attr("data-task-id");
+
+        //set modal input values dynamically
+		$('#task_id_edit_timer').val(tasks_id_edit);
+
+  });
+    
+});
+</script>
+<!--JS_EDIT_TASK_TIMER_MODAL-->
+<!--JS_EDIT_TASK_TIMER_MODAL-->
+<script>
+$().ready(function() {
+    //USED BY: WI_EDIT_TASK_TIMER_MODAL
+	//ACTIONS: validates time entered is a valid number (1 or 1.5 etc)
+	//REQUIRES: jquery.validate.js
+	$("#editTaskTimer").validate({
+		rules: {
+             tasks_timer_duration: {
+                required: true,
+                number: true
+            }
+		},
+		messages: {
+			    tasks_timer_duration: {
+                required: "Enter a number",
+                number: "A valid number is required"
+            }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_TASK_TIMER_MODAL-->
+<!--JS_ADD_NEW_TASK_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_NEW_TASK_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#addNewTask").validate({
+		rules: {
+             tasks_text: "required",
+			 tasks_project_id: "required",
+			 tasks_milestones_id: "required",
+			 tasks_start_date: "required",
+			 tasks_end_date: "required"
+		},
+		messages: {
+			tasks_text: "[lang.lang_field_is_required]",
+			tasks_project_id: "[lang.lang_field_is_required]",
+			tasks_milestones_id: "[lang.lang_field_is_required]",
+			tasks_start_date: "[lang.lang_field_is_required]",
+			tasks_end_date: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_ADD_NEW_TASK_MODAL-->
+<!--JS_EDIT_NEW_TASK_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_NEW_TASK_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#editTask").validate({
+		rules: {
+             tasks_text: "required",
+			 tasks_milestones_id: "required",
+			 tasks_start_date: "required",
+			 tasks_end_date: "required",
+			 tasks_assigned_to_id: "required"
+		},
+		messages: {
+			tasks_text: "[lang.lang_field_is_required]",
+			tasks_milestones_id: "[lang.lang_field_is_required]",
+			tasks_start_date: "[lang.lang_field_is_required]",
+			tasks_end_date: "[lang.lang_field_is_required]",
+			tasks_assigned_to_id: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_NEW_TASK_MODAL-->
+<!--JS_EDIT_TASK_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_TASK_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+	//ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
+    //REQUIRES-2: select2.js
+		
+    //---edit item link clicked-------
+    $(".edit-task-modal").click(function(){
+    
+        //get variables from "edit link" data attributes
+        var task_text_edit = $(this).attr("data-task-text");
+		var task_start_date_edit = $(this).attr("data-task-start-date");
+		var task_end_date_edit = $(this).attr("data-task-end-date");
+		var task_id_edit = $(this).attr("data-task-id");
+		var task_events_id_edit = $(this).attr("data-task-events-id");
+		var task_assigned_to_id_edit = $(this).attr("data-task-assigned-to-id");
+		var task_milestone_id_edit = $(this).attr("data-task-milestone-id");
+		var task_status_preselected = $(this).attr("data-task-status");
+
+        //set modal input values dynamically
+		$('#task_text_edit').val(task_text_edit);
+		$('#task_start_date_edit').val(task_start_date_edit);
+		$('#task_end_date_edit').val(task_end_date_edit);
+		$('#task_id_edit').val(task_id_edit);
+		$('#task_events_id_edit').val(task_events_id_edit);
+		$('#task_assigned_to_id_edit').val(task_assigned_to_id_edit);
+		$('#task_milestone_id_edit').val(task_milestone_id_edit);
+
+       //pre-select data in pull down lists
+       $("#tasks-status-list-edit").select2().select2('val', task_status_preselected); 
+  });
+    
+});
+</script>
+<!--JS_EDIT_TASK_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

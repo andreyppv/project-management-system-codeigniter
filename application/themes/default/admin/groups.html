@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+          <div class="widget titlebar-widget">
+            <div class="titlebar">
+              <h3>[lang.lang_manage_groups;noerr]</h3>
+            </div>
+          </div>
+      <!--WI_TITLE_BAR-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_GROUPS_TABLE-->
+        <div class="row fullscreen-mode">
+          <!--[onshow;block=div;when [visible.wi_groups_table] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-head-light">
+                <div class="pull-left">
+                  <div class="bns-info-div pull-left"> <i class="icon-list"></i></div>
+                </div>
+                <div class="widget-icons pull-right"> <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> <a href="#" class="wclose"><i class="icon-remove"></i></a> </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-content">
+                <table class="table table-bordered table-hover table-with-avatar">
+                  <thead>
+                    <tr>
+                      <th>[lang.lang_id]</th>
+                      <th><a href="[vars.sortby_companyname;noerr]">[lang.lang_group_name]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>[lang.lang_team_members]</th>
+                      <th><i class="icon-reorder"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><!--[blk1.groups_id;block=tr;comm;htmlconv=no]--></td>
+                      <td><!--[blk1.groups_name;block=tr;comm;onformat=runtime_check_blank_ucfirst]--></td>
+                      <td><!--[blk1.groups_members_count;block=tr;comm;onformat=runtime_functions_check_number;]--></td>
+                      <td><!--permissions-->
+                        <button class="btn btn-warning btn-smallest iframeModal" 
+                              data-toggle="modal" 
+                              data-modal-window-title="Group Permission - [blk1.groups_name;block=tr]"
+                              data-src="[conf.site_url]/admin/groups/permissions-modal/[blk1.groups_id;block=tr]" 
+                              data-height="350" 
+                              data-width="100%" 
+                              data-target="#modalIframe">
+                        <!--[onshow;block=button;when [blk1.groups_allow_change_permissions;block=tr;noerr] == 1;comm]-->
+                        <i class="icon-unlock"></i> [lang.lang_permissions]</button>
+                        <!--permissions end-->
+                        <!--migrate members-->
+                        <button data-toggle="modal" class="btn btn-info btn-smallest migrate-group"
+                                                  href="#migrateGroupMembersModal"
+                                                  data-group-id="[blk1.groups_id;block=tr;noerr]"
+                                                  data-group-name="[blk1.groups_name;block=tr;noerr]" >
+                        <!--[onshow;block=button;when [blk1.groups_allow_migrate;block=tr;noerr] == 1;comm]-->
+                        <i class="icon-exchange"></i> [lang.lang_migrate_members]</button>
+                        <!--migrate memeber end-->
+                        <!--view members-->
+                        <button class="btn btn-success btn-smallest iframeModal" 
+                              data-toggle="modal" 
+                              data-modal-window-title="Group members ([blk1.groups_name;block=tr])"
+                              data-src="[conf.site_url]/admin/groups/list-members-modal/[blk1.groups_id;block=tr]" 
+                              data-height="350" 
+                              data-width="100%" 
+                              data-target="#modalIframe"><i class="icon-user"></i> [lang.lang_group_members]</button>
+                        <!--view members end-->
+                        <!--edit settings-->
+                        <button data-toggle="modal" class="btn btn-purple btn-smallest edit-group"
+                                                  href="#editGroupSettingsModal"
+                                                  data-group-id="[blk1.groups_id;block=tr;noerr]"
+                                                  data-group-name="[blk1.groups_name;block=tr;noerr]" >
+                        <!--[onshow;block=button;when [blk1.groups_allow_edit;block=tr;noerr] == 1;comm]-->
+                        <i class="icon-edit"></i> [lang.lang_edit_settings]</button>
+                        <!--edit settings end-->
+                        <button class="btn btn-smallest btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_milestone;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[blk1.groups_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-group">
+                        <!--[onshow;block=button;when [blk1.groups_allow_delete;block=tr;noerr] == 1;comm]-->
+                        <i class="icon-trash"></i> [lang.lang_delete_group]</button>
+                        <!--control buttons delete - end -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_GENERAL_INFO-->
+                  <div class="bns-info-div pull-right" style="max-width:400px;">
+                    <button href="#addNewGroupModal" class="btn btn-success" data-toggle="modal"><i class="icon-plus"></i> [lang.lang_add_new_group]</button>
+                  </div>
+                  <!--WI_GENERAL_INFO-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+            <div class="alert alert-info">
+              <!--[onshow;block=div;when [settings_general.show_information_tips] == 'yes';comm]-->
+              <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_disable_info]"> <i class="icon-info-sign"></i> </a>
+              <!--info start-->
+              [lang.lang_info_administrators_global_permissions;noerr]
+              <!--info end-->
+            </div>
+            <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+            <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+            <div class="alert alert-info">
+              <!--[onshow;block=div;when [settings_general.show_information_tips] == 'yes';comm]-->
+              <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_disable_info]"> <i class="icon-info-sign"></i> </a>
+              <!--info start-->
+              [lang.lang_info_groups_minimum_maximum_levels;noerr]
+              <!--info end-->
+            </div>
+            <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+          </div>
+        </div>
+        <!--WI_GROUPS_TABLE-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"></h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--WI_EDIT_GROUP_SETTING-->
+<div class="row">
+  <div id="editGroupSettingsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/groups/edit-settings" method="post" id="EditGroupSettings">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_change_group_settings]</h4>
+          </div>
+          <div class="modal-body">
+            <!-- Email -->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12 full-width" for="edit_modal_groups_name"> [lang.lang_group_name]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="edit_modal_groups_name" placeholder="[lang.lang_enter_new_group_name]" name="groups_name" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"> [lang.lang_close]</button>
+            <input type="hidden" name="groups_id" id="edit_modal_groups_id" value="">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_GROUP_SETTING(end)-->
+<!--WI_ADD_GROUP-->
+<div class="row">
+  <div id="addNewGroupModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/groups/add-new-group" method="post" id="addNewGroup">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_add_new_group]</h4>
+          </div>
+          <div class="modal-body">
+            <!-- Email -->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12 full-width" for="edit_modal_groups_name"> [lang.lang_group_name]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="groups_name" placeholder="[lang.lang_enter_new_group_name]" name="groups_name" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"> [lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_create_new_group]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_GROUP(end)-->
+<!--WI_MIGRATE_GROUP_MEMBERS-->
+<div class="row">
+  <div id="migrateGroupMembersModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/groups/migrate-members" method="post" id="migrateGroupMembers">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title" id="migrate_modal_title"></h4>
+          </div>
+          <div class="modal-body">
+            <!-- Email -->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12 full-width" for="new_groups_id"> [lang.lang_move_all_members_to_this_group]</label>
+              <div class="col-lg-12">
+                <select class="form-control" id="new_groups_id" name="new_groups_id" style="width:100%">
+                  <!--[lists.all_groups_id;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"> [lang.lang_close]</button>
+            <input type="hidden" name="old_groups_id" id="migrate_modal_groups_id" value="">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_MIGRATE_GROUP_MEMBERS(end)-->
+<!--JS_EDIT_GROUP_SETTING-->
+<script type="text/javascript">
+$().ready(function(){
+    //USED BY: WI_EDIT_GROUP_SETTING
+    //ACTIONS: dynamically add data into modal form
+    //REQUIRES: n/a   
+    $(".edit-group").click(function(e){
+			
+        //get variables from link attributes
+        var group_id = $(this).attr("data-group-id");
+		var modal_groups_name = $(this).attr("data-group-name");
+
+        //set hidden form field to this group_id
+        $("#edit_modal_groups_id").val(group_id);
+		$("#edit_modal_groups_name").attr("placeholder", modal_groups_name);
+		       
+    });
+});
+</script>
+<!--JS_EDIT_GROUP_SETTING-->
+<!--JS_MIGRATE_GROUP_MEMBERS-->
+<script type="text/javascript">
+$().ready(function(){
+    //USED BY: WI_MIGRATE_GROUP_MEMBERS
+    //ACTIONS: dynamically add data into modal form
+    //REQUIRES: n/a   
+    $(".migrate-group").click(function(e){
+	
+        //get variables from link attributes
+        var group_id = $(this).attr("data-group-id");
+		var modal_groups_name = $(this).attr("data-group-name");
+        //set hidden form field to this group_id
+        $("#migrate_modal_groups_id").val(group_id);
+		$("#migrate_modal_title").html(modal_groups_name);
+		       
+    });
+});
+</script>
+<!--JS_MIGRATE_GROUP_MEMBERS-->
+<!--JS_EDIT_GROUP_SETTING-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_GROUP_SETTING
+	//ACTIONS: validates the form. Each specified field must not be empty on submit
+	//REQUIRES: jquery.validate.js
+	$("#EditGroupSettings").validate({
+		rules: {
+			groups_name: {
+				required: true,
+			}
+		},
+		messages: {
+			groups_name: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_GROUP_SETTING-->
+<!--JS_WI_ADD_GROUP-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_GROUP
+	//ACTIONS: validates the form. Each specified field must not be empty on submit
+	//REQUIRES: jquery.validate.js
+	$("#addNewGroup").validate({
+		rules: {
+            groups_name: {
+                required: true,
+                remote: {
+                    url: "[conf.site_url;noerr]/admin/ajax/validation-is-group-available",
+                    type: "post"
+                }
+            }		
+		},
+		messages: {
+            groups_name: {
+                required: "[lang.lang_field_is_required]",
+                remote: "[lang.lang_name_is_already_in_use]"
+            }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_WI_ADD_GROUP-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+
+</html>

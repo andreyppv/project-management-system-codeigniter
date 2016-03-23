@@ -1,0 +1,11 @@
+{
+    "token_type": "bearer",
+    "access_token": "U0pDMTFQMDFQQVMwMXxBQUJrOW9wV0kxZWhmRzNySlVORThqMHpKUUhEaTE2bEExQWd5TzFhRXE1dXZoc2dIS1BZOWJlVTZaZW1uVlZ5V053OEVhRHNxRWdJVUhPV3FzbEwwTUtuekNyT2tWSG43SDl2cjZSYUdsbW93amZ5RzlhaG9Iakd8QeSIaCTRQq8n7Qr5mGUCbzChX8M",
+    "expires_in": 3599,
+    "expire_time": 1443563865,
+    "refresh_token": "U0pDMTFQMDFQQVMwMXxBQUJrOW9wV0kxZWhmRzNySlVORThqMHpKUUhEaTE2bEExQWd5TzFhRXE1dXZoc2dIS1BZOWJlVTZaZW1uVlZ5V053OEVhRHNxRWdJVU0xSzFJYWk3X0lMYjBvbjBRTG1oZ3h2cjZSYUdsbW93ak1hdU9CQVlfVEJ8XfNdMLg84jLxNyCOAoCvRuSQzWM",
+    "refresh_token_expires_in": 604799,
+    "refresh_token_expire_time": 1444165065,
+    "scope": "EditMessages ReadCallLog ReadMessages Faxes RingOut InternalMessages ReadPresence SMS ReadAccounts",
+    "owner_id": "133138004"
+}

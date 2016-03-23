@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+		<link href="../common/style/bootstrap.css" rel="stylesheet">
+		<link href="../common/style/style.css" rel="stylesheet">
+		<style>
+			.mainbar {
+				margin: 0px;
+			}
+			.sidebar {
+				display: none;
+			}
+		</style>
+		<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+	</head>
+	<!--HEAD - ONLOAD-->
+	<!--[onload;file=../common/common.head.html;getbody;comm]-->
+	<!--HEAD - ONLOAD-->
+	<body>
+		<!--JS SECTION - ONLOAD-->
+		<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+		<!--JS SECTION - ONLOAD-->
+		<!--DEBUG SECTION - ONLOAD-->
+		<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+		<!--DEBUG SECTION - ONLOAD-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--[onload;file=common.header.html;getbody;comm]-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!-- Main content starts -->
+		<div class="content">
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!--SIDE MENU - ONLOAD -->
+				<!--[onload;file=common.menu.html;getbody;comm]-->
+				<!--SIDE MENU - ONLOAD -->
+			</div>
+			<!-- Sidebar ends -->
+			<div class="mainbar">
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<!--[onload;file=common.heading.html;getbody;comm]-->
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<div class="matter">
+					<!----------------------COMMON PROJECT HEAD--------------------------------->
+					<!--[onload;file=common.project.header.html;getbody;comm]-->
+					<!----------------------COMMON PROJECT HEAD--------------------------------->
+					<div class="container">
+						<div class="row">
+							<!--WI_PROJECT_NAV_CONTENT-->
+							<div class="col-md-12">
+								<!----------------------COMMON PROJECT MENU--------------------------------->
+								<!--[onload;file=common.project.navigation.html;getbody;comm]-->
+								<!----------------------COMMON PROJECT MENU--------------------------------->
+							</div>
+							<!--WI_PROJECT_NAV_CONTENT-->
+							<div class="col-md-12">
+								<div class="widget">
+									
+									<div class="widget-content-project">
+
+										<!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+										<div class="dropzoneOverlay" style="display:none; opacity:0; background-color:#333; width: 400px; height: 300px;"></div>
+										<div class="project-info-tabs">
+											<!--WI_FILES_NAVIGATION-->
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="tabs-sub-nav">
+														<span class="pull-left"> <h3>Files</h3> <!--button data-toggle="modal" class="btn btn-mid btn-success pull-right" href="#addNewFileModal">Add a File</button--> </span>
+														<div class="clearfix"></div>
+													</div>
+												</div>
+											</div>
+											<!--WI_FILES_NAVIGATION-->
+											<!--WI_FILES_TABLE-->
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="widget wtabs">
+														<div class="widget-content">
+<script src="../common/js/dropzone.js" type="text/javascript"></script>
+                                                        <script type="text/javascript">
+                                                            function initDragAndDrop() {
+                                                                var mainDropZone = new Dropzone('#dropzone', {
+                                                                    url : '/admin/upload/project/?files_project_id=[vars.project_id;noerr]&files_client_id=[vars.client_id;noerr]&files_events_id=[vars.new_events_id;noerr]&files_uploaded_by=[vars.my_user_type;noerr]&files_uploaded_by_id=[vars.my_id;noerr]'
+                                                                });
+
+                                                                mainDropZone.on('addedfile', function(file) {
+                                                                    console.log('File Added');
+                                                                });
+
+                                                                mainDropZone.on('drop', function(event) {
+                                                                    console.log('File dropped');
+                                                                })
+
+                                                                mainDropZone.on('dragover', function(event) {
+                                                                    console.log('File Over the Dropzone');
+                                                                    /*if($(".dropzoneOverlay").css("display") == "none"){
+                                                                     $(".project-info-tabs").css("display", "none");
+                                                                     $(".dropzoneOverlay").css("display", "block");
+                                                                     }*/
+
+                                                                });
+
+                                                                mainDropZone.on('dragleave', function(event) {
+                                                                    console.log('File Left the Dropzone');
+                                                                    /*if($(".dropzoneOverlay").css("display") == "block"){
+                                                                     $(".project-info-tabs").css("display", "block");
+                                                                     $(".dropzoneOverlay").css("display", "none");
+                                                                     }*/
+                                                                });
+
+                                                                mainDropZone.on('success', function(file, xhr, formData) {
+                                                                		var resp = jQuery.parseJSON(xhr);
+                                                                		if(resp.error != '') {
+                                                                			alert(resp.error);
+                                                                		} else {
+                                                                    	prompt('File Uploaded, please copy this link.', resp.link);
+                                                                    }
+
+                                                                    location.href = '/admin/files/'+[vars.project_id;noerr]+'/view';
+
+                                                                });
+
+                                                                mainDropZone.on("uploadprogress", function(file, progress) {
+                                                                    $("#progress-bar").css("width", progress + "%");
+                                                                });
+
+                                                                mainDropZone.on("complete", function(file) {
+                                                                    mainDropZone.removeFile(file);
+                                                                });
+                                                            }
+
+
+                                                            $(document).ready(function() {
+                                                                /*Init drag and drop*/
+                                                                initDragAndDrop();
+                                                            });
+                                                        </script>
+
+                                                        <form class="form-horizontal" action="[conf.site_url]/admin/files/[vars.project_id;noerr]/add" method="post" id="addNewFile">
+                                                            <div class="widget">
+<div id="dropzone" class="widget-tabs-notification" style="margin:0 0 5px 0;cursor:pointer;">
+	Click here or Drag and Drop files here
+</div>
+                                                                    <!--/div-->
+                                                                    <div class="form-group" style="margin-bottom:10px;">
+                                                                        <div class="col-lg-12">
+                                                                            <div>
+                                                                                <div id="upload-button-container">
+                                                                                    <!--input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button" value="[lang.lang_attach_a_new_file]"-->
+                                                                                </div>
+                                                                                <div id="file-info-div"></div>
+                                                                                <div id="progress-container">
+                                                                                    <div class="progress active progress-table">
+                                                                                        <div id="progress-bar"
+                                                                                        class="progress-bar progress-bar-primary progress-bar-table"
+                                                                                        role="progressbar"
+                                                                                        aria-valuenow="100"
+                                                                                        aria-valuemin="0"
+                                                                                        aria-valuemax="100"
+                                                                                        style="width:0%"></div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div id="results-container" style="display:none;"></div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                <input type="hidden" name="files_project_id" value="[vars.project_id;noerr]">
+                                                                <input type="hidden" name="files_client_id" value="[vars.client_id;noerr]">
+                                                                <input type="hidden" name="files_events_id" value="[vars.new_events_id;noerr]">
+                                                                <input type="hidden" name="files_uploaded_by" value="[vars.my_user_type;noerr]">
+                                                                <input type="hidden" name="files_uploaded_by_id" value="[vars.my_id;noerr]">
+                                                                <input type="hidden" name="files_foldername" id="files_foldername" value="">
+                                                                <input type="hidden" name="files_extension" id="files_extension" value="">
+                                                                <input type="hidden" name="files_size" id="files_size" value="">
+                                                                <div id="form-submit-button-container" style="display:none;">
+                                                                    <input class="btn btn-primary" type="submit" value="[lang.lang_save_new_file]" id="" name="submit">
+                                                                </div>
+                                                                </button>
+                                                            </div>
+                                                        </form> 
+															<table class="footable table table-bordered table-hover table-files">
+																<thead>
+																	<tr>
+																		<th data-hide="phone"><a href="[vars.sortby_filetype;noerr]">[lang.lang_type]<i class="icon-sort bns-padded-left"></i></a></th>
+																		<th><a href="[vars.sortby_filename;noerr]">[lang.lang_name]<i class="icon-sort bns-padded-left"></i></a></th>
+																		<th><a href="[vars.sortby_uploadedby;noerr]"> [lang.lang_uploaded_by]<i class="icon-sort bns-padded-left"></i></a></th>
+																		<th data-hide="phone"><a href="[vars.sortby_size;noerr]"> [lang.lang_size]<i class="icon-sort bns-padded-left"></i></a></th>
+																		<th data-hide="phone"><a href="[vars.sortby_date;noerr]">[lang.lang_date]<i class="icon-sort bns-padded-left"></i></a></th>
+																		<th style="width:75px; text-align:center; font-size:14px;"><i class="icon-reorder"></i></th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr class="tr-link" data-link="[conf.site_url;noerr]/admin/file/[vars.project_id]/view/[files.files_id;block=tr;noerr]">
+																		<td style="width:120px; vertical-align:middle;" class="text-center"><img src="[conf.site_url;noerr]/admin/files/[vars.project_id]/thumbnail/[files.files_id;block=tr;comm;]" style="max-width:100px;"></td>
+																		<td><!--[files.files_name;block=tr;onformat=runtime_check_blank;comm;ope=max:30]--></td>
+																		<td><!--[files.uploaded_by;block=tr;comm;;ope=max:18]--></td>
+																		<td><!--[files.files_size_human;block=tr;htmlconv=no;comm]--></td>
+																		<td><!--[files.files_date_uploaded;block=tr;onformat=runtime_date;comm]--></td>
+																		<td style="max-width:100px" class="tr-link-excluded">
+																			<!--control buttons view profile-->
+																			<span><a class="btn btn-xs btn-success"
+																			href="[conf.site_url;noerr]/admin/file/[vars.project_id]/download/[files.files_id;block=tr;noerr]"><i class="icon-download-alt"></i></a></span>
+
+																			<!--control buttons edit-->
+																			<span><!--[onshow;block=span;when [project_permissions.edit_item_my_project_files] == 1;comm]--><!--permissions--> <a class="btn btn-xs btn-info edit-files-modal"
+																			data-toggle="modal"
+																			data-modal-window-title="[lang.lang_edit_file_details]"
+																			data-height="250"
+																			data-width="100%"
+																			data-files-description="[files.files_description;block=tr;noerr]"
+																			data-files-id="[files.files_id;block=tr;noerr]"
+																			data-files-events-id="[files.files_events_id;block=tr;noerr]"
+																			data-target="#editFilesModal"><i class="icon-pencil"></i></a></span>
+																			<!--control buttons edit - end-->
+
+																			<!--control buttons share-->
+																			<a title="Share" class="btn btn-xs btn-warning share-files-modal"
+																			data-toggle="modal"
+																			data-modal-window-title="Share link"
+																			data-height="250"
+																			data-width="100%"
+																			data-files-share-link="[files.files_share_link;block=tr;noerr]"
+																			data-target="#shareFilesModal"><i class="icon-share"></i></a>
+																			<!--control buttons share - end-->
+
+																			<!--control buttons delete-->
+																			<span><!--[onshow;block=span;when [project_permissions.delete_item_my_project_files] == 1;comm]--><!--permissions-->
+																			<button class="btn btn-xs btn-danger ajax-delete-record"
+																			data-popconfirm-yes="[lang.lang_yes;noerr]"
+																			data-popconfirm-no="[lang.lang_no;noerr]"
+																			data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+																			data-popconfirm-placement="left"
+																			data-mysql-record-id="[files.files_id;block=tr]"
+																			data-mysql-record-id2="[files.files_foldername;block=tr]"
+																			data-mysql-record-id3="[files.files_project_id;block=tr]"
+																			data-mysql-record-id4="[files.files_name;block=tr]"
+																			data-mysql-table-name="files"
+																			data-ajax-url="[conf.site_url]/common/ajax/delete-project-file">
+																				<i class="icon-trash"></i>
+																			</button> <!--control buttons delete - end --></span>
+
+																			</td>
+																	</tr>
+																</tbody>
+															</table>
+															<div class="widget-foot">
+																<!--WI_BUTTONS_INFORMATION-->
+																<div class="bns-info-div pull-left" style="max-width:350px; margin-top:8px;">
+																	[lang.lang_buttons_information]:
+																	<button class="btn btn-xs btn-success tooltips" title="[lang.lang_download;noerr]">
+																		<i class="icon-download-alt"></i>
+																	</button>
+																	<button class="btn btn-xs btn-danger tooltips" title="[lang.lang_delete;noerr]">
+																		<i class="icon-trash"></i>
+																	</button>
+																	<button class="btn btn-xs btn-info tooltips" title="[lang.lang_edit;noerr]">
+																		<i class="icon-pencil"></i>
+																	</button>
+																</div>
+																<!--WI_BUTTONS_INFORMATION-->
+																<!--WI_PAGINATION-->
+																<ul class="pagination pull-right">
+																	[vars.pagination;noerr;htmlconv=no]
+																</ul>
+																<!--WI_PAGINATION-->
+																<div class="clearfix"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--WI_FILES_TABLE-->
+											<!--WI_TABS_NOTIFICATIONS-->
+											<div class="row">
+												<div class="col-lg-12">
+													<!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+													<div class="widget-tabs-notification">
+														[vars.notification;noerr]
+													</div>
+												</div>
+											</div>
+											<!--WI_TABS_NOTIFICATIONS-->
+										</div>
+										<div class="clearfix"></div>
+										<!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--WI_NOTIFICATION-->
+						<div class="row">
+							<!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+							<div class="col-md-12">
+								<div class="widget">
+									<div class="widget-content widget-big-box">
+										[vars.notification;noerr]
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--WI_NOTIFICATION-->
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!----------------------COMMON FOOTER--------------------------------->
+		<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+		<!----------------------COMMON FOOTER--------------------------------->
+		<!-- Scroll to top -->
+		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+		<!--WI_ADD_NEW_FILE_MODAL-->
+		<div class="row">
+			<!--[onshow;block=div;when [project_permissions.add_item_my_project_files] == 1;comm]--><!--permissions-->
+			<div id="addNewFileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<form class="form-horizontal" action="[conf.site_url]/admin/files/[vars.project_id;noerr]/add" method="post" id="addNewFile">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									x
+								</button>
+								<!--full screen icon - custom.js-->
+								<button type="button" class="full-screen-modal close" aria-hidden="true">
+									<i class="icon-fullscreen"></i>
+								</button>
+								<!--full screen icon - custom.js-->
+								<h4 class="modal-title"> [lang.lang_add_new_file]</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group" style="margin-bottom:10px;">
+									<label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+									<div class="col-lg-12">
+										<input type="text" class="form-control" id="files_description" name="files_description" autocomplete="off">
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom:10px;">
+									<label class="control-label col-lg-12" style="width:150px;"> [lang.[lang.lang_file_name]]</label>
+									<div class="col-lg-12">
+										<input type="text" class="form-control" id="files_name" name="files_name" autocomplete="off" readonly="readonly">
+									</div>
+								</div>
+								<!--[conditional] - for project leader only-->
+								<div class="form-group" style="margin-bottom:10px;">
+									<div class="col-lg-12">
+										<!---------------------------SIMPLE AJAX FILEUPLOAD---------------------->
+										<div>
+											<!--upload button-->
+											<div id="upload-button-container">
+												<input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button" value="[lang.lang_attach_a_new_file]">
+											</div>
+											<!--upload button end-->
+											<!--file info-->
+											<div id="file-info-div"></div>
+											<!--file info end-->
+											<!--progress bar-->
+											<div id="progress-container">
+												<div class="progress active progress-table">
+													<div id="progress-bar"
+													class="progress-bar progress-bar-primary progress-bar-table"
+													role="progressbar"
+													aria-valuenow="100"
+													aria-valuemin="0"
+													aria-valuemax="100"
+													style="width:0%"></div>
+												</div>
+											</div>
+											<!--progress bar end-->
+											<!--results div-->
+											<div id="results-container" style="display:none;"></div>
+											<!--results info end-->
+										</div>
+										<!---------------------------SIMPLE AJAX FILEUPLOAD END---------------------->
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+									[lang.lang_close]
+								</button>
+								<input type="hidden" name="files_project_id" value="[vars.project_id;noerr]">
+								<input type="hidden" name="files_client_id" value="[vars.client_id;noerr]">
+								<input type="hidden" name="files_events_id" value="[vars.new_events_id;noerr]">
+								<input type="hidden" name="files_uploaded_by" value="[vars.my_user_type;noerr]">
+								<input type="hidden" name="files_uploaded_by_id" value="[vars.my_id;noerr]">
+								<input type="hidden" name="files_foldername" id="files_foldername" value="">
+								<input type="hidden" name="files_extension" id="files_extension" value="">
+								<input type="hidden" name="files_size" id="files_size" value="">
+								<div id="form-submit-button-container" style="display:none;">
+									<input class="btn btn-primary" type="submit" value="[lang.lang_save_new_file]" id="" name="submit">
+								</div>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--WI_ADD_NEW_FILE_MODAL-->
+		<!--WI_EDIT_NEW_FILE_MODAL-->
+		<div class="row">
+			<!--[onshow;block=div;when [project_permissions.edit_item_my_project_files] == 1;comm]--><!--permissions-->
+			<div id="editFilesModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<form class="form-horizontal" action="[conf.site_url]/admin/files/[vars.project_id;noerr]/edit" method="post" id="editFiles">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									x
+								</button>
+								<!--full screen icon - custom.js-->
+								<button type="button" class="full-screen-modal close" aria-hidden="true">
+									<i class="icon-fullscreen"></i>
+								</button>
+								<!--full screen icon - custom.js-->
+								<h4 class="modal-title"> [lang.lang_edit] File Details</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group" style="margin-bottom:10px;">
+									<label class="control-label col-lg-12" style="width:150px;"> [lang.lang_file_description]</label>
+									<div class="col-lg-12">
+										<input type="text" class="form-control" id="files_description_edit" name="files_description" autocomplete="off">
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+									[lang.lang_close]
+								</button>
+								<input type="hidden" name="files_id" value="" id="files_id_edit">
+								<input type="hidden" name="files_events_id" value="" id="files_events_id_edit">
+								<input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--WI_EDIT_NEW_FILE_MODAL-->
+		<!--WI_SHARE_FILE_MODAL-->
+		<div class="row">
+			<div id="shareFilesModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									x
+								</button>
+								<!--full screen icon - custom.js-->
+								<button type="button" class="full-screen-modal close" aria-hidden="true">
+									<i class="icon-fullscreen"></i>
+								</button>
+								<!--full screen icon - custom.js-->
+								<h4 class="modal-title"> Share link</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group" style="margin-bottom:10px;">
+									<label class="control-label col-lg-12" style="width:150px;"> Link to file</label>
+									<div class="col-lg-12">
+										<input type="text" class="form-control" id="files_share_link" readonly="readonly">
+										<p class="help-block">Anyone with the link can see it</p>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+									[lang.lang_close]
+								</button>
+								</button>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_SHARE_FILE_MODAL-->
+		<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+		<!----------------------COMMON PROJECT FOOTER--------------------------------->
+		<!--[onload;file=common.project.footer.html;getbody;comm]-->
+		<!----------------------COMMON PROJECT FOOTER--------------------------------->
+		<!--JS_ADD_NEW_FILE_MODAL-->
+		<script>
+			//USED BY: ADD_NEW_FILE_MODAL
+			//ACTIONS: creates a noce pull down/select for each specified field
+			//REQUIRES: select2.js
+			//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+			$("#files-milestones-list").select2({
+				allowClear : true
+			});
+		</script>
+		<!--JS_ADD_NEW_FILE_MODAL-->
+		<!--JS_SIMPLE_AJAX_UPLOADER -->
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js"></script>
+		<!--JS_SIMPLE_AJAX_UPLOADER -->
+		<!--JS_LANG_AJAX_FILE_UPLOAD-->
+		<script>
+			//-------------------------------------------------------------------------------
+			//[DYNAMIC (TBS) VARIABLES & LANGUAGE]
+			//-------------------------------------------------------------------------------
+			//variabled
+			var upload_url = '[conf.site_url;noerr]/common/ajax/upload-project-file/[vars.project_id;noerr]/team';
+			var js_files_project_allowed_types = [vars.js_allowed_types;protect = no;noerr];
+			var js_file_size_limit = [vars.js_file_size_limit;noerr];
+
+			//language
+			var lang_file_too_big = "[lang.lang_upload_invalid_filesize;noerr]";
+			var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_attached;noerr]";
+			var lang_upload_invalid_filetype = "[lang.lang_upload_invalid_filetype;noerr]";
+			var lang_upload_invalid_filesize = "[lang.lang_upload_invalid_filesize;noerr]";
+			var lang_upload_system_error = "[lang.lang_upload_system_error;noerr]";
+
+		</script>
+		<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.upload.projectfile.js"></script>
+		<!--JS_LANG_AJAX_FILE_UPLOAD-->
+		<!--JS_ADD_NEW_FILE_MODAL-->
+		<script type="text/javascript">
+			$().ready(function() {
+				//USED BY: WI_ADD_NEW_FILE_MODAL
+				//ACTIONS: validates the form and submits it
+				//REQUIRES: jquery.validate.js
+				$("#addNewFile").validate({
+					rules : {
+						files_description : "required",
+						files_name : "required",
+					},
+					messages : {
+						files_description : "[lang.lang_field_is_required]",
+						files_name : "[lang.lang_field_is_required]",
+					},
+					submitHandler : function(form) {
+						//alert('form submitted');
+						form.submit();
+					}
+				});
+			});
+		</script>
+		<!--JS_ADD_NEW_FILE_MODAL-->
+		<!--JS_EDIT_FILE_MODAL-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//USED BY: WI_EDIT_FILE_MODAL
+				//ACTIONS: dynamically add data into modal form
+				//REQUIRES: jquery.js
+
+				//---edit item link clicked-------
+				$(".edit-files-modal").click(function() {
+					//get variables from "edit link" data attributes
+					var files_id_edit = $(this).attr("data-files-id");
+					var files_description_edit = $(this).attr("data-files-description");
+					var files_events_id_edit = $(this).attr("data-files-events-id");
+
+					//set modal input values dynamically
+					$('#files_id_edit').val(files_id_edit);
+					$('#files_description_edit').val(files_description_edit);
+					$('#files_events_id_edit').val(files_events_id_edit);
+				});
+
+				//---share item link clicked-------
+				$(".share-files-modal").click(function() {
+					var files_share_link = $(this).attr("data-files-share-link");
+					//set modal input values dynamically
+					$('#files_share_link').val('http://pms.isodeveloper.com/common/share/'+files_share_link);
+				});
+
+			});
+		</script>
+		<!--JS_EDIT_FILE_MODAL-->
+		<!--JS_EDIT_FILE_MODAL-->
+		<script type="text/javascript">
+			$().ready(function() {
+				//USED BY: WI_EDIT_FILE_MODAL
+				//ACTIONS: validates the form and submits it
+				//REQUIRES: jquery.validate.js
+				$("#editFiles").validate({
+					rules : {
+						files_description : "required"
+					},
+					messages : {
+						files_description : "[lang.lang_field_is_required]"
+					},
+					submitHandler : function(form) {
+						//alert('form submitted');
+						form.submit();
+					}
+				});
+			});
+		</script>
+		<!--JS_EDIT_FILE_MODAL-->
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+	</body>
+</html>

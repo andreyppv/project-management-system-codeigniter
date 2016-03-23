@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<!-- This whole <head></head> section is not loaded during runtime -->
+<title>Temporary Head Section</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<!--define our base-->
+<base href="../common">
+<!--define our base-->
+<!-- Stylesheets -->
+<link href="style/bootstrap.css" rel="stylesheet">
+<!-- Font awesome icon -->
+<link rel="stylesheet" href="style/font-awesome.css">
+<!-- jQuery UI -->
+<link rel="stylesheet" href="style/jquery-ui.css">
+<!-- Calendar -->
+<link rel="stylesheet" href="style/fullcalendar.css">
+<!-- prettyPhoto -->
+<link rel="stylesheet" href="style/prettyPhoto.css">
+<!-- Star rating -->
+<link rel="stylesheet" href="style/rateit.css">
+<!-- Date picker -->
+<link rel="stylesheet" href="style/bootstrap-datetimepicker.min.css">
+<!-- CLEditor -->
+<link rel="stylesheet" href="style/jquery.cleditor.css">
+<!-- Uniform -->
+<link rel="stylesheet" href="style/uniform.default.css">
+<!-- Bootstrap toggle -->
+<link rel="stylesheet" href="style/bootstrap-switch.css">
+<!-- Main stylesheet -->
+<link href="style/style.css" rel="stylesheet">
+<!-- Widgets stylesheet -->
+<link href="style/widgets.css" rel="stylesheet">
+<!-- HTML5 Support for IE -->
+<!--[if lt IE 9]>
+  <script src="js/html5shim.js"></script>
+  <![endif]-->
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/favicon/favicon.png">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_EDIT_MESSAGE_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_message_table] == 1;comm]-->
+    <div class="col-md-12">
+    <form action="[conf.site_url]/admin/file/[vars.project_id;noerr]/edit-message/[vars.file_id;noerr]/[message.messages_id;noerr]/[vars.offset]" method="post" target="_parent">
+            <textarea name="messages_text" id="message_new" cols="20" rows="5">[message.messages_text;noerr;htmlconv=no]</textarea>
+            <script>
+            document.addEventListener('DOMContentLoaded', function(){
+             CKEDITOR.replace( 'message_new', {
+                      toolbar: 'Plain',
+                      uiColor: '#ffffff',
+	                  height: '120px'
+                      });
+              });
+
+
+           </script><div align="right" style="padding-top:15px;">
+            <input type="hidden" name="messages_id" value="[message.messages_id;noerr]">
+            <input id="" class="btn btn-primary" type="submit" name="submit" value="[lang.lang_save_changes]">
+            </div>
+     </form>
+    </div>
+  </div>
+  <!--WI_EDIT_MESSAGE_TABLE-->
+  
+    <!--WI_EDIT_REPLIES_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_replies_table] == 1;comm]-->
+    <div class="col-md-12">
+    <form action="[conf.site_url]/admin/file/[vars.project_id;noerr]/edit-reply/[vars.file_id;noerr]/[replies.messages_replies_id;noerr]/[vars.offset]" method="post" target="_parent">
+            <textarea name="messages_replies_text" id="message_reply" cols="20" rows="5">[replies.messages_replies_text;noerr]</textarea>
+            <script>
+document.addEventListener('DOMContentLoaded', function(){
+             CKEDITOR.replace( 'message_reply', {
+                      toolbar: 'Plain',
+                      uiColor: '#ffffff',
+	                  height: '120px'
+                      });
+});
+
+           </script><div align="right" style="padding-top:15px;">
+            <input type="hidden" name="messages_replies_id" value="[replies.messages_replies_id;noerr]">
+            <input id="" class="btn btn-primary" type="submit" name="submit" value="[lang.lang_save_changes]">
+            </div>
+     </form>
+    </div>
+  </div>
+  <!--WI_EDIT_REPLIES_TABLE-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

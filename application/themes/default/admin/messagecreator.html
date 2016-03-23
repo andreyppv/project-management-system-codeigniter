@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+		<link href="../common/style/bootstrap.css" rel="stylesheet">
+		<link href="../common/style/style.css" rel="stylesheet">
+		<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+		<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+	</head>
+	<!--HEAD - ONLOAD-->
+	<!--[onload;file=../common/common.head.html;getbody;comm]-->
+	<!--HEAD - ONLOAD-->
+	<body>
+		<!--JS SECTION - ONLOAD-->
+		<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+		<!--JS SECTION - ONLOAD-->
+		<!--DEBUG SECTION - ONLOAD-->
+		<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+		<!--DEBUG SECTION - ONLOAD-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!--[onload;file=common.header.html;getbody;comm]-->
+		<!--HEADER SECTION - ONLOAD-->
+		<!-- Main content starts -->
+		<div class="content">
+			<!-- Sidebar ends -->
+			<div class="mainbar">
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<!--[onload;file=common.heading.html;getbody;comm]-->
+				<!----------------------COMMON PAGE HEADING--------------------------------->
+				<div class="matter">
+					<!---->
+					<div class="row fullscreen-mode">
+						<div class="col-md-12">
+							<div class="widget">
+								<div class="widget-head-light">
+									<div class="pull-left">
+										<div class="bns-info-div pull-left">
+											<i class="icon-list"></i> Project Message Creator
+										</div>
+
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="widget-content">
+
+									<style>
+										.time-list li {
+											display: inline-block;
+											max-width: 350px;
+											padding-left: 10px;
+										}
+										.time-list {
+											float: right;
+											padding: 15px;
+										}
+									</style>
+
+									<div class="collapse navbar-collapse"></div>
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<ul class="nav nav-tabs" role="tablist">
+												<li role="presentation" class="active">
+													<a href="#client" aria-controls="client" role="tab" data-toggle="tab">Client Communications</a>
+												</li>
+												<li role="presentation">
+													<a href="#team" aria-controls="team" role="tab" data-toggle="tab">Team Discussions</a>
+												</li>
+											</ul>
+											<script type="text/javascript">
+												$.ajax({
+													url : "http://pms.isodeveloper.com/__freshbooksapi/_tasks.php"
+												}).done(function(data) {
+													$(".freshbookstaskid").append(data);
+												});
+
+												$.ajax({
+													url : "http://pms.isodeveloper.com/__freshbooksapi/_teammembers.php?all"
+												}).done(function(data) {
+													$(".tasks-assigned-to-list").append(data);
+												});
+												$.ajax({
+													url : "http://pms.isodeveloper.com/__freshbooksapi/_clientusers.php"
+												}).done(function(data) {
+													$("#tasks-assigned-to-list").append(data);
+												});
+
+												$.ajax({
+													url : "http://pms.isodeveloper.com/__freshbooksapi/_projects.php"
+												}).done(function(data) {
+													$(".projects").append(data);
+												});
+											</script>
+											<div class="tab-content">
+												<div role="tabpanel" class="tab-pane active" id="client">
+													<form action="" method="POST">
+														<input type="hidden" name="type" value="1" />
+
+														<div>
+															<h3>Mail from:</h3>
+															<input class="form-control" value="[vars.mail.failed_mails_from]" />
+														</div>
+
+														<div>
+															<h3>Mail Subject:</h3>
+															<input class="form-control" value="[vars.mail.failed_mails_subject]" />
+														</div>
+
+														<div>
+															<h3>Mail Content:</h3>
+															<textarea>[vars.mail.failed_mails_text]</textarea>
+														</div>
+
+														<div>
+															<h3>Project Name:</h3>
+															<select class="form-control projects"  name="messages_project_id"></select>
+														</div>
+
+														<div>
+															<h3>User Name:</h3>
+															<select id="tasks-assigned-to-list"  name="messages_by_id" class="form-control tasks-assigned-to-list">
+
+															</select>
+														</div>
+
+														<div>
+															<h3>User Type:</h3>
+															<select name="messages_by" class="form-control">
+																<option value="client">Client</option>
+																<option value="team">Developer</option>
+															</select>
+														</div>
+
+														<div>
+															<h3>Message:</h3>
+															<textarea name="messages_text"></textarea>
+														</div>
+
+														<div>
+															<button type="submit" class="btn btn-primary">
+																Post Message
+															</button>
+														</div>
+
+													</form>
+												</div>
+												<div role="tabpanel" class="tab-pane" id="team">
+													<form action="" method="POST">
+														<input type="hidden" name="type" value="2" />
+
+														<div>
+															<h3>Mail from:</h3>
+															<input class="form-control" value="[vars.mail.failed_mails_from]" />
+														</div>
+
+														<div>
+															<h3>Mail Subject:</h3>
+															<input class="form-control" value="[vars.mail.failed_mails_subject]" />
+														</div>
+
+														<div>
+															<h3>Mail Content:</h3>
+															<textarea>[vars.mail.failed_mails_text]</textarea>
+														</div>
+
+														<div>
+															<h3>Project Name:</h3>
+															<select class="form-control projects"  name="messages_project_id"></select>
+														</div>
+
+														<div>
+															<h3>User Name:</h3>
+															<select  name="messages_by_id" class="form-control tasks-assigned-to-list">
+
+															</select>
+														</div>
+
+														<div>
+															<h3>Message:</h3>
+															<textarea name="messages_text"></textarea>
+														</div>
+
+														<div>
+															<button type="submit" class="btn btn-primary">
+																Post Message
+															</button>
+														</div>
+
+													</form>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+		<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+		<!--WI_IFRAME_MODAL-->
+		<div class="row">
+			<div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								x
+							</button>
+							<!--full screen icon - custom.js-->
+							<button type="button" class="full-screen-modal close" aria-hidden="true">
+								<i class="icon-fullscreen"></i>
+							</button>
+							<!--full screen icon - custom.js-->
+							<h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+								[lang.lang_close]
+							</button>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--WI_IFRAME_MODAL-->
+	</body>
+</html>

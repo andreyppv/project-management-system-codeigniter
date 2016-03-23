@@ -1,0 +1,127 @@
+<div class="sidebar-dropdown"><a href="#">[vars.main_title;noerr]</a></div>
+<ul id="nav" class="main-nav">
+  <div class="nav_logo"> <img class="img-responsive" src="[conf.site_url_themes_common]/images/logo.png" alt="Freelane dashboard"> </div>
+  <!--ADMIN PLUS MENU-->
+  <li class="nav_alternative">
+    <!--[onshow;block=li;when [vars.my_group] == 1;comm]-->
+    <ul class="nav_alternative_controls" tabindex="-1" data-reactid=".1.0.1.0">
+      <li class="url-link [vars.css_menu_topnav_quotation_forms;noerr]" data-link="[conf.site_url]/admin/quotationforms/list"><i class="icon-file-text"></i></li>
+      <li class="url-link [vars.css_menu_topnav_tasks;noerr]" data-link="[conf.site_url]/admin/alltasks"><i class="icon-list-ul"></i> </li>
+      <li class="url-link [vars.css_menu_topnav_timers;noerr]" data-link="[conf.site_url]/admin/timers/view/all"><i class="icon-time"></i></li>
+      <li class="url-link [vars.css_menu_topnav_groups;noerr]" data-link="[conf.site_url]/admin/groups/list"><i class="icon-sitemap"></i></li>
+      <li class="url-link [vars.css_menu_topnav_settings;noerr]" data-link="[conf.site_url]/admin/settings/general"><i class="icon-wrench"></i></li>
+    </ul>
+  </li>
+  <!--ADMIN PLUS MENU-->
+  
+    <!--STAFF PLUS MENU-->
+  <li class="nav_alternative_client">
+    <!--[onshow;block=li;when [vars.my_group] +- 1;comm]-->
+  </li>
+  <!--STAFF PLUS MENU--
+  
+  
+  <!--DASHBOARD-->
+  <li> <a href="[conf.site_url]/admin/home" class="[vars.css_menu_dashboard;noerr]"> <i class="icon-home"></i> [lang.lang_dashboard]<span class="pull-right"></span></a> </li>
+  <!--DASHBOARD END-->
+  <!--MY PROJECTS-->
+  <li> <a href="[conf.site_url]/admin/myprojects" class="[vars.css_menu_myprojects;noerr]"> <i class="icon-folder-open-alt"></i> [lang.lang_my_projects]
+    <label class="label label-info  pull-right"> [vars.count_my_projects;;onformat=runtime_number] </label>
+    </a> </li>
+  <!--MY PROJECTS END-->
+  <!--ALL PROJECTS-->
+  <li> 
+  <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions--> 
+ <a href="[conf.site_url]/admin/projects/list" class="[vars.css_menu_projects;noerr]">
+    
+    <i class="icon-folder-open"></i> [lang.lang_all_projects]
+    <label class="label label-success  pull-right"> [projects_count.all_projects;onformat=runtime_number] </label>
+    </a> </li>
+  <!--ALL PROJECTS END-->
+    <!--ALL CLIENTS-->
+  <li>
+  <!--[onshow;block=li;when [permission.view_item_clients] == 1;comm]--><!--permissions-->  
+  <a href="[conf.site_url]/admin/clients/list" class="[vars.css_menu_clients;noerr]">
+    
+    <i class="icon-user"></i> [lang.lang_clients]
+    <label class="label label-purple  pull-right"> [vars.clients_count;onformat=runtime_number] </label>
+    </a> </li>
+  <!--ALL CLIENTS END-->
+  <!--INVOICES-->
+  <li class="has_sub"> <a href="javascript:void(0)" class="[vars.css_menu_invoices;noerr]">
+  <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions--> 
+    <i class="icon-list-alt"></i> [lang.lang_invoices]<span class="pull-right"><i class="icon-chevron-right"  style="font-size:12px"></i></span></a>
+    <ul [vars.css_submenu_invoices;noerr;htmlconv=no]>
+      <li><a href="[conf.site_url]/admin/allinvoices/view">[lang.lang_manage_invoices]</a></li>
+      <li><a href="[conf.site_url]/admin/invoiceitems/view">[lang.lang_manager_invoice_items]</a></li>
+    </ul>
+  </li>
+  <!--INVOICES END-->
+
+  <!--TICKETS-->
+  <li class="has_sub"> <a href="javascript:void(0)" class="[vars.css_menu_tickets;noerr]">
+    <!--[onshow;block=li;when [permission.view_item_tickets] == 1;comm]--><!--permissions-->   
+    <i class="icon-file-text"></i> [lang.lang_tickets]<span class="pull-right"><i class="icon-chevron-right"  style="font-size:12px"></i></span></a>
+    <ul [vars.css_submenu_tickets;noerr;htmlconv=no]>
+      <li>
+<!--[onshow;block=li;when [permission.add_item_tickets] == 1;comm]--><!--permissions-->         
+        <a href="[conf.site_url]/admin/tickets/new"> [lang.lang_create_new_ticket]</a></li>
+      <li><a href="[conf.site_url]/admin/tickets/list/new">[lang.lang_new]
+        <label class="label label-success  pull-right">
+        <!--[tickets_count.new;noerr;comm;onformat=runtime_number]-->
+        </label>
+        </a></li>
+      <li><a href="[conf.site_url]/admin/tickets/list/answered"> [lang.lang_answered]
+        <label class="label label-warning  pull-right">
+        <!--[tickets_count.answered;noerr;comm;onformat=runtime_number]-->
+        </label>
+        </a></li>
+      <li><a href="[conf.site_url]/admin/tickets/list/client-replied"> [lang.lang_client_replied]
+        <label class="label label-danger  pull-right">
+        <!--[tickets_count.client_replied;noerr;comm;onformat=runtime_number]-->
+        </label>
+        </a></li>
+      <li><a href="[conf.site_url]/admin/tickets/list/open"> [lang.lang_open]
+        <label class="label label-info  pull-right">
+        <!--[tickets_count.all_tickets;noerr;comm;onformat=runtime_number]-->
+        </label>
+        </a></li>
+      <li><a href="[conf.site_url]/admin/tickets/list/closed-tickets"> [lang.lang_closed]
+        <label class="label label-default  pull-right">
+        <!--[tickets_count.closed;noerr;comm;onformat=runtime_number]-->
+        </label>
+        </a></li>
+    </ul>
+  </li>
+  <!--TICKETS END-->
+    <!--PAYMENTS-->
+  <li>
+  <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->    
+    <a href="[conf.site_url]/admin/allpayments/all" class="[vars.css_menu_payments;noerr]"> <i class="icon-credit-card"></i> [lang.lang_payments]</a> </li>
+  <!--PAYMENTS END-->
+  <!--QUOTATIONS-->
+  <li>
+    <!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]--><!--permissions-->      
+    <a href="[conf.site_url]/admin/quotations/list" class="[vars.css_menu_quotations;noerr]"> <i class="icon-paste"></i> [lang.lang_quotations]
+    <label class="label label-success  pull-right"> [quotations_count.all_open;onformat=runtime_number] </label>
+    </a></li>
+  <!--QUOTATIONS-->
+   <!--QUOTATION FORM-->
+  <li>
+  <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->    
+    <a href="[conf.site_url]/admin/quotationforms/list" class="[vars.css_menu_quotationforms;noerr]"> <i class="icon-paste"></i> [lang.lang_quotation_forms]
+    <label class="label label-success  pull-right"> [vars.quotation_forms_count;onformat=runtime_number] </label>
+    </a></li>
+  <!--QUOTATION FORMS-->
+  <!--BUGS-->
+  <li>
+    <!--[onshow;block=li;when [permission.view_item_bugs] == 1;comm]--><!--permissions-->        
+   <a href="[conf.site_url]/admin/bugs/list" class="[vars.css_menu_bugs;noerr]"> <i class="icon-bug"></i> [lang.lang_bug_tracker]
+    <label class="label label-warning  pull-right"> [bugs_count.all_open;onformat=runtime_number] </label>
+    </a></li>
+  <!--BUGS-->
+  <!--TEAM-->
+  <li>
+<a href="[conf.site_url]/admin/team" class="[vars.css_menu_team;noerr]"> <i class="icon-group"></i> [lang.lang_team_members]</a> </li>
+  <!--TEAM-->
+</ul>

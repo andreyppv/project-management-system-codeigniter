@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+
+<body>
+    <!--JS SECTION - ONLOAD-->
+    <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+    <!--JS SECTION - ONLOAD-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--[onload;file=../common/include.debug.html;getbody;comm]-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!--[onload;file=common.header.html;getbody;comm]-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!-- Main content starts -->
+    <div class="content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!--SIDE MENU - ONLOAD -->
+            <!--[onload;file=common.menu.html;getbody;comm]-->
+            <!--SIDE MENU - ONLOAD -->
+        </div>
+        <!-- Sidebar ends -->
+        <div class="mainbar">
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!--[onload;file=common.heading.html;getbody;comm]-->
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <div class="matter">
+                <!----------------------COMMON PROJECT HEAD--------------------------------->
+                <!--[onload;file=common.project.header.html;getbody;comm]-->
+                <!----------------------COMMON PROJECT HEAD--------------------------------->
+                <div class="container">
+                    <div class="row">
+                        <!--WI_PROJECT_NAV_CONTENT-->
+                        <div class="col-md-12">
+                            <!----------------------COMMON PROJECT MENU--------------------------------->
+                            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+                            <!----------------------COMMON PROJECT MENU--------------------------------->
+                        </div>
+                        <!--WI_PROJECT_NAV_CONTENT-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content-project">
+                                    <!-----------------------------------------------TABS-MESSAGES------------------------------------------------------------------>
+                                    <div class="project-info-tabs">
+                                        <!--top actions menu-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="tabs-sub-nav messaging-menu">
+                                                    <div class="pull-left">
+                                                        <h3>[lang.lang_project_messages]</h3>
+                                                    </div>
+                                                    <button data-toggle="modal" class="btn btn-mid btn-success divminimize pull-right">
+                                                        <i class="icon-plus"></i> [lang.lang_post_new_message]
+                                                    </button>
+                                                    <div class="clearfix"></div>
+                                                    <!--add-message-box-->
+                                                    <div class="toggle-div message-input" style="display:none;">
+                                                        <form action="[conf.site_url]/admin/messages/[vars.project_id;noerr]/add-message" method="post">
+                                                            <div class="form-group form-group-standard">
+                                                                <div class="col-lg-12">
+                                                                    <textarea name="messages_text" id="message_new" cols="20" rows="5"></textarea>
+                                                                    <script>
+                                                                        document.addEventListener('DOMContentLoaded', function() {
+                                                                            CKEDITOR.replace('message_new', {
+                                                                                toolbar: 'Plain',
+                                                                                uiColor: '#ffffff',
+                                                                                height: '120px'
+                                                                            });
+                                                                        });
+                                                                    </script>
+                                                                    <input type="hidden" name="messages_project_id" value="[vars.project_id;noerr]">
+                                                                    <input type="hidden" name="messages_by_id" value="[vars.my_id;noerr]">
+                                                                    <input type="hidden" name="posted_by" value="[vars.my_name;noerr]">
+                                                                    <input type="hidden" name="messages_by" value="[vars.my_user_type;noerr]">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group form-group-standard">
+                                                                <div class="col-lg-12">
+                                                                    <button class="btn btn-mid btn-primary" type="submit">[lang.lang_post_message]</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!--add-message-box-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--top actions menu-->
+                                        <!--WI_PROJECT_MESSAGES-->
+                                        <div class="row">
+                                            <div class="col-lg-12"> 
+                                                [messages;block=begin; sub1=(replies)]
+                                                <div id="message_[messages.messages_id]">
+                                                    <!--[onshow;block=div;when [visible.wi_project_messages] == 1;comm]-->
+                                                    <!--message-->
+                                                    <div class="messaging messaging-boxed"> 
+                                                        <img alt="" src="[conf.site_url;noerr]/files/avatars/[messages.avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                                                        <div class="messaging-container">
+                                                            <div class="messaging-meta">
+                                                                <!--posted by-->
+                                                                <!--[messages.uploaded_by;htmlconv=no;comm]-->
+                                                                <!--posted by -->
+                                                                <small class="text-muted pull-right"><i class="icon-time"></i>
+                                                                    <!--[messages.messages_date;comm;onformat=runtime_time_ago;noerr]-->
+                                                                </small> 
+                                                            </div>
+                                                            <!--message text-->
+                                                            <div class="messaging-text line-height-normal">
+                                                                <!--[messages.messages_text;comm;htmlconv=no]-->
+                                                            </div>
+                                                            <!--message text-->
+                                                            <div class="messaging-actions">
+                                                                <a class="btn-group pull-right btn btn-xs btn-default divminimize" href="#"> <span class="lowercase">[lang.lang_reply]</span>
+                                                                    <!--[onshow;block=a;when [project_permissions.add_item_my_project_team_messages] == 1;comm]-->
+                                                                    <!--permissions-->
+                                                                </a>
+                                                                <!--WI_MESSAGE_CONTROL-->
+                                                                <div class="btn-group pull-right">
+                                                                    <!--edit message-->
+                                                                    <span>
+                                                                        <!--[onshow;block=span;when [project_permissions.edit_item_my_project_messages] == 1;comm]--><!--permissions-->                                                    
+                                                                        <button class="btn btn-xs btn-default iframeModal"
+                                                                              data-toggle="modal" 
+                                                                              data-height="250" 
+                                                                              data-width="100%" 
+                                                                              data-src="[conf.site_url]/admin/messages/[vars.project_id;noerr]/edit-message/[messages.messages_id]/[vars.offset;noerr]/modal"
+                                                                              data-target="#modalIframe"><i class="icon-pencil"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                    <!--edit message-->
+                                                                    <!--control buttons delete-->
+                                                                    <span>
+                                                                        <!--[onshow;block=span;when [project_permissions.delete_item_my_project_messages] == 1;comm]--><!--permissions-->                                                    
+                                                                        <button class="btn btn-xs btn-default ajax-delete-content"
+                                                                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+                                                                                data-popconfirm-no="[lang.lang_no;noerr]"
+                                                                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                                                                data-popconfirm-placement="left"
+                                                                                data-parent-div-id="message_[messages.messages_id]"
+                                                                                data-mysql-record-id="[messages.messages_id]"
+                                                                                data-mysql-record-id2="[messages.messages_project_id]"
+                                                                                data-ajax-url="[conf.site_url]/admin/ajax/delete-project-message"> <i class="icon-remove"></i>
+                                                                        
+                                                                        </button>
+                                                                    </span>
+                                                                    <!--control buttons delete-->
+                                                                </div>
+                                                                <!--WI_MESSAGE_CONTROL_END-->
+                                                                <div class="clearfix"></div>
+                                                                <!--message-reply-box-->
+                                                                <div class="toggle-div message-input" style="display:none;">
+                                                                    <!--[onshow;block=div;when [project_permissions.add_item_my_project_messages] == 1;comm]-->
+                                                                    <!--permissions-->
+                                                                    <form action="[conf.site_url]/admin/messages/[vars.project_id;noerr]/add-reply" method="post">
+                                                                        <div class="form-group form-group-standard">
+                                                                            <div class="col-lg-12">
+                                                                                <textarea name="messages_replies_text" id="message_reply_[messages.messages_id]" class="ckeditor" cols="20" rows="4"></textarea>
+                                                                                <script>
+                                                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                                                        CKEDITOR.replace('message_reply_[messages.messages_id]', {
+                                                                                            toolbar: 'Plain',
+                                                                                            uiColor: '#ffffff',
+                                                                                            height: '120px'
+                                                                                        });
+                                                                                    });
+                                                                                </script>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group form-group-standard">
+                                                                            <div class="col-lg-12">
+                                                                                <input type="hidden" name="messages_replies_message_id" value="[messages.messages_id]">
+                                                                                <input type="hidden" name="messages_replies_by_id" value="[vars.my_id;noerr]">
+                                                                                <input type="hidden" name="messages_replies_by" value="[vars.my_user_type;noerr]">
+                                                                                <input type="hidden" name="posted_by" value="[vars.my_name;noerr]">
+                                                                                <input type="hidden" name="messages_replies_project_id" value="[messages.messages_project_id;noerr]">
+                                                                                <button class="btn btn-mid btn-primary" type="submit">[lang.lang_post_reply]</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <!--message-reply-box-->
+                                                            </div>
+                                                            <!--main message end-->
+                                                        </div>
+                                                        <!--reply message-->
+                                                        [messages_sub1;block=begin]
+                                                        <div class="messaging-reply" id="reply_[messages_sub1.messages_replies_id]"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[messages_sub1.avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                                                            <div class="messaging-container">
+                                                                <div class="messaging-meta">
+                                                                    [messages_sub1.uploaded_by;htmlconv=no] 
+                                                                    <small class="text-muted pull-right"><i class="icon-time"></i>
+                                                                        <!--[messages_sub1.messages_replies_date;comm;onformat=runtime_time_ago;noerr]-->
+                                                                    </small> 
+                                                                </div>
+                                                                <div class="messaging-reply-text">[messages_sub1.messages_replies_text;htmlconv=no]</div>
+                                                                <div class="messaging-actions">
+                                                                    <!--WI_REPLY_CONTROL-->
+                                                                    <div class="btn-group pull-right">
+                                                                        <!--edit reply-->
+                                                                        <span>
+                                                                            <!--[onshow;block=span;when [project_permissions.edit_item_my_project_messages] == 1;comm]--><!--permissions-->                                                    
+                                                                            <button class="btn btn-xs btn-default iframeModal"
+                                                                                  data-toggle="modal" 
+                                                                                  data-height="250" 
+                                                                                  data-width="100%" 
+                                                                                  data-src="[conf.site_url]/admin/messages/[vars.project_id;noerr]/edit-reply/[messages_sub1.messages_replies_id]/[vars.offset;noerr]/modal"
+                                                                                  data-target="#modalIframe"><i class="icon-pencil"></i>
+
+                                                                            </button>
+                                                                        </span>
+                                                                        <!--edit reply-->
+                                                                        <!--control buttons delete-->
+                                                                        <span>
+                                                                            <!--[onshow;block=span;when [project_permissions.delete_item_my_project_messages] == 1;comm]--><!--permissions-->                                                    
+                                                                            <button class="btn btn-xs btn-default ajax-delete-content"
+                                                                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+                                                                                data-popconfirm-no="[lang.lang_no;noerr]"
+                                                                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                                                                data-popconfirm-placement="left"
+                                                                                data-parent-div-id="reply_[messages_sub1.messages_replies_id]"
+                                                                                data-mysql-record-id="[messages_sub1.messages_replies_id]"
+                                                                                data-mysql-record-id2="[messages_sub1.messages_replies_project_id]"
+                                                                                data-ajax-url="[conf.site_url]/admin/ajax/delete-project-message-reply"> <i class="icon-remove"></i>
+
+                                                                            </button>
+                                                                        </span>
+                                                                        <!--control buttons delete-->
+                                                                        <!--WI_REPLY_CONTROL_END-->
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        [messages_sub1;block=end]
+                                                        <!--reply message end-->
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                [messages;block=end]
+                                            </div>
+                                        </div>
+                                        <!--WI_PROJECT_MESSAGES_END-->
+                                        <!--MESSAGE-FOOTER-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <!--WI_PAGINATION-->
+                                                    <ul class="pagination pull-right">
+                                                        [vars.pagination;noerr;htmlconv=no]
+                                                    </ul>
+                                                    <!--WI_PAGINATION-->
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--WI_TABS_NOTIFICATIONS-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                                                <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                                            </div>
+                                        </div>
+                                        <!--WI_TABS_NOTIFICATIONS-->
+                                    </div>
+                                    <!-----------------------------------------------TABS-MESSAGES------------------------------------------------------------------>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_NOTIFICATION-->
+                    <div class="row">
+                        <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_NOTIFICATION-->
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!--[onload;file=../common/common.footer.html;getbody;comm]-->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+    <!--WI_IFRAME_MODAL-->
+    <div class="row">
+        <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title" id="modal-iframe-title">[lang.lang_edit]</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-body">
+                        <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--WI_IFRAME_MODAL-->
+    <!----------------------COMMON PROJECT FOOTER--------------------------------->
+    <!--[onload;file=common.project.footer.html;getbody;comm]-->
+    <!----------------------COMMON PROJECT FOOTER--------------------------------->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+
+</html>

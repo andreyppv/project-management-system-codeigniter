@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="widget titlebar-widget">
+            <div class="titlebar">
+              <h3>[vars.sub_title_icon;htmlconv=no] [vars.sub_title;noerr]</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--WI_TITLE_BAR-->
+      <!--WI_CLIENTS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <!--[onshow;block=div;when [visible.wi_clients_search] == 1;comm]-->
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">
+            <!--lang-->
+            Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/clients/search-clients" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="client_id" placeholder="<!--lang-->Client ID" >
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="clients-list" data-placeholder="<!--lang-->Company Name" name="client_name">
+                  <!--lang-->
+                  <option></option>
+                  
+                    
+                    
+                                       
+                  <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                  
+                  
+                  
+                </select>
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="users-email-list" data-placeholder="<!--lang-->Email" name="client_email">
+                  <!--lang-->
+                  <option></option>
+                  
+                    
+                    
+                                       
+                  <!--[lists.all_users_email;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                  
+                  
+                  
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="invoices_due" placeholder="<!--lang-->Invoice Due > or =" >
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                <!--lang-->
+                Search Clients</button>
+              </div>
+              <div class="form-group">
+                <button href="#addNewClientModal" class="btn btn-success" data-toggle="modal"><i class="icon-plus"></i>
+                <!--lang-->
+                Add New Client</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_CLIENTS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!---------------------------------------CONTENT GOES HERE--------------------------------->
+        XYZ
+        <!---------------------------------------CONTENT GOES HERE--------------------------------->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#projects-list").select2({
+        allowClear: true
+    });
+    $("#task-status").select2({
+        allowClear: true
+    });
+    $("#task-timer-status").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

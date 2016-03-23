@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <div class="mainbar">
+<!----------------------COMMON PAGE HEADING--------------------------------->
+<!--[onload;file=common.heading.html;getbody;comm]-->
+<!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <div class="container">
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <!--[onload;file=common.settings.header.html;getbody;comm]-->
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="widget">
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <!--[onload;file=common.settings.menu.html;getbody;comm]-->
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+                <div class="project-info-tabs">
+                  <!--actions navigation end-->
+                  <div class="row">
+                    <div class="col-md-12">
+                    <a class="btn btn-mid btn-success pull-right" style="margin-left:6px;" href="[conf.site_url]/admin/settings/emailtemplates/0/view/admin">
+                        [lang.lang_admin_template]
+                        </a>
+                     <a class="btn btn-mid btn-purple pull-right" href="[conf.site_url]/admin/settings/emailtemplates/0/view/client">
+                        [lang.lang_client_templates]
+                        </a>
+                      <div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                        <h3>[lang.lang_email_templates] ([vars.template_type;onformat=runtime_lang;noerr])</h3>
+                        </span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--actions navigation end-->
+                  <!--WI_GENERAL_SETTINGS_FORM-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_emailtemplates_settings] == 1;comm]-->
+                    <!--WI_SIDE_MENU-->
+                    <div class="col-lg-3">
+                      <div class="widget side-menu-container wtabs">
+                        <div class="side-menu">
+                          <ul>
+                            <li>
+                            <a href="[conf.site_url]/admin/settings/emailtemplates/[emailtemplates.id;block=li]/view/[vars.template_type;noerr]">
+                              
+                              <!--[emailtemplates.title;block=li;onformat=runtime_lang;comm]--></a></li>
+                          </ul>
+                          <div class="side-menu-details">
+                            <!--[onshow;block=div;when [visible.no_templates_found] == 1;comm]-->
+                            [lang.lang_no_templates_found]</div>
+                        </div>
+                      </div>
+                    </div>
+                     <!--WI_SIDE_MENU_END-->
+                    <!--WI_EDIT_TABLE-->
+                    <div class="col-md-9">
+                                          <!--[onshow;block=div;when [visible.wi_edit_table] == 1;comm]-->
+                      <form class="form-horizontal" action="[conf.site_url]/admin/settings/emailtemplates/[emailtemplate.id;noerr]/edit/[vars.template_type;noerr]" method="post" id="editGeneralSettings">
+                        <div class="widget wtabs">
+                          <div class="widget-content">
+                            <table class="table table-bordered table-forms">
+                              <thead>
+                                <tr>
+                                  <th >[lang.lang_value]</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+                                      <input type="text" class="form-control" id="subject" name="subject" value="[emailtemplate.subject;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                  <div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+                                      <textarea name="message" id="message">
+                                      [emailtemplate.message;noerr;htmlconv=no]</textarea>
+                                           <script>
+										   document.addEventListener('DOMContentLoaded', function(){
+                                               CKEDITOR.replace( 'message', {
+                                                        toolbar: 'Advanced',
+                                                        uiColor: '#ffffff',
+	                                                    height: '450px'});
+                                            });
+                                           </script>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td><h3>[lang.lang_available_variables]</h3>
+                                  [emailtemplate.variables;protect=no]</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="widget-foot">
+                            <div class="bns-info-div pull-right">
+                              <!--control buttons - restore default settings-->
+                              <a class="btn btn-danger confirm-url-action"
+                                          href="[conf.site_url]/admin/settings/emailtemplates/[emailtemplate.id;noerr]/restore-default/[vars.template_type;noerr]"
+                                          data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                              data-popconfirm-no="[lang.lang_no;noerr]"
+                                          data-popconfirm-title="[lang.lang_are_you_sure;noerr]"
+                                          data-popconfirm-placement="left">
+                              [lang.lang_reset_default_settings]</a>
+                              <!--control buttons - restore default settings-->
+                              <!--control submit form button-->
+                              <input type="hidden" name="id" value="[emailtemplate.id;noerr]">
+                              <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+                              <!--control submit form button-->
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!--WI_EDIT_TABLE_END-->
+                    
+                    <!--WI_INNER_TABS_NOTIFICATION-->
+                    <div class="col-lg-9">
+                      <!--[onshow;block=div;when [visible.wi_inner_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                    <!--WI_INNER_TABS_NOTIFICATION-->
+                    
+                  </div>
+                  <!--WI_SETTINGS_FORM-->
+                  <!--wi_tabs_notification-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--wi_tabs_notification-->
+                </div>
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

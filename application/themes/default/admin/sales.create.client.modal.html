@@ -1,0 +1,165 @@
+<div class="modal-dialog" style="width:750px;">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				x
+			</button>
+			<!--full screen icon - custom.js-->
+			<button type="button" class="full-screen-modal close" aria-hidden="true">
+				<i class="icon-fullscreen"></i>
+			</button>
+			<!--full screen icon - custom.js-->
+			<h4 class="modal-title" id="modal-iframe-title">Create Client From Lead</h4>
+			<div class="clearfix"></div>
+		</div>
+		<form class="form-horizontal" action="/admin/clients/add" method="post" id="addNewProject" novalidate>
+		<div class="modal-body">
+				<div class="box">
+					<div class="">
+						<h2>Company Details</h2>
+						<table class="table table-bordered table-forms">
+							<tbody>
+								<tr>
+									<td style="width: 250px;">Company Name</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_company_name" value="[vars.leadDetails.leads_company]" required>
+									</div></td>
+								</tr>
+								<tr>
+									<td>Address</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_address" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>City</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_city" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>State</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_state" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Zip Code</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_zipcode" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_country" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Website</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_website" value="[vars.leadDetails.leads_www]" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Value</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="clients_value" value="[vars.leadDetails.leads_value]">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Hot</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="hidden" name="clients_hot" value="0" />
+										<input type="checkbox" name="clients_hot" value="1" [vars.leadDetails.leads_hot;if [val]='1';then 'checked'] />
+									</div></td>
+								</tr>
+								<tr>
+									<td>Lost</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="hidden" name="clients_lost" value="0" />
+										<input type="checkbox" name="clients_lost" value="1" [vars.leadDetails.leads_lost;if [val]='1';then 'checked'] />
+									</div></td>
+								</tr>
+								
+							</tbody>
+						</table>
+						<h2>Main Contact</h2>
+						<table class="table table-bordered table-forms">
+							<tbody>
+								<tr>
+									<td style="width: 250px;">Full Name</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="client_users_full_name" value="[vars.leadDetails.leads_name]" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Job Title</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="client_users_job_position_title">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Telephone</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="client_users_telephone" value="[vars.leadDetails.leads_telephone]" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="client_users_email" value="[vars.leadDetails.leads_email]" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Password</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="password" class="form-control" name="client_users_password" required="required">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Confirm Password</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="password" class="form-control" name="confirm_password" required="required">
+									</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-primary" type="submit" value="Create Client" id="" name="submit">
+			<input type="hidden" name="lead_id" value="[vars.leadDetails.id]">
+			<button class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		CKEDITOR.replace('leads_description', {
+			toolbar : 'Basic',
+			uiColor : '#ffffff',
+			height : '200px'
+		});
+	});
+</script>

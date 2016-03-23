@@ -1,0 +1,36 @@
+<!--WI_EDIT_TIMER_MODAL-->
+<div class="row">
+  <div id="editTimerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/project/[vars.project_id;noerr]/edit-timer" method="post" id="editTimer">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_edit_my_timer]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="col-lg-12">
+              [lang.lang_fill_in_new_time]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="new_time" name="new_time" placeholder="0">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" id="timer_id" name="timer_id" value="[vars.my_project_timer_id]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_TIMER_MODAL-->

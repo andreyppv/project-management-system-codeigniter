@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!-- REQUIRED - jquery.fileupload.js -->
+<link href="[conf.site_url_themes_common;noerr]/js/jqueryfileupload/jquery.fileupload.css" rel="stylesheet">
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/jqueryfileupload/jquery.fileupload.js"></script>
+<!-- REQUIRED - jquery.fileupload.js -->
+<div class="content">
+  <!--WI_EDIT_USER_DETAILS_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_user_details_table] == 1;comm]-->
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr>
+            <td style="width:40%;"><strong>
+              <div class="avatar pull-left"> <img class="avatar-large image-boardered" src="[conf.site_url;noerr]/files/avatars/[profile.client_users_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/> </div>
+              </strong></td>
+            <td><!---------------------------SIMPLE AJAX FILEUPLOAD---------------------->
+              <div>
+              <!--[onshow;block=div;when [vars.my_user_type] == 'client';comm]-->
+              <div>
+              <!--[onshow;block=div;when [vars.my_id] == [profile.client_users_id;block=tr];comm]-->
+                <!--upload button-->
+                <div id="upload-button-container">
+                  <input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button" value="[lang.lang_choose_file]">
+                  
+                </div>
+                <!--upload button end-->
+                <!--file info-->
+                <div id="file-info-div"> </div>
+                <!--file info end-->
+                <!--progress bar-->
+                <div id="progress-container">
+                  <div class="progress active progress-table">
+                    <div id="progress-bar"
+                         class="progress-bar progress-bar-primary progress-bar-table" 
+                         role="progressbar" 
+                         aria-valuenow="100" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100"
+                         style="width:0%"></div>
+                  </div>
+                </div>
+                <!--progress bar end-->
+                <!--results div-->
+                <div id="results-container" style="display:none;"> </div>
+                <!--results info end-->
+              </div>
+              </div>
+              <!---------------------------SIMPLE AJAX FILEUPLOAD END---------------------->
+            </td>
+          </tr>
+          <tr>
+            <td><strong>
+              
+              [lang.lang_id]</strong></td>
+            <td><span class="label label-info">[profile.client_users_id;block=tr;onformat=runtime_check_blank]</span></td>
+          </tr>
+          <tr>
+            <td><strong>Client ID</strong></td>
+            <td><span class="label label-info">[profile.client_users_clients_id;block=tr;onformat=runtime_check_blank]</span></td>
+          </tr>
+          <tr>
+            <td><strong>
+              
+               [lang.lang_company_name]</strong></td>
+            <td><span class="label label-default">[profile.clients_company_name;block=tr;onformat=runtime_check_blank_ucwords]</span></td>
+          </tr>
+          <tr>
+            <td><strong>
+              
+              [lang.lang_full_name]</strong></td>
+            <td><a href="#" id="client_users_full_name" 
+                                  data-type="text" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_users_full_name" 
+                                  class="editable_area">[profile.client_users_full_name;noerr] </a></td>
+          </tr>
+          <tr>
+            <td><strong>
+              
+              [lang.lang_job_title]</strong></td>
+            <td><a href="#" id="client_users_job_position_title" 
+                                  data-type="text" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_users_job_position_title" 
+                                  class="editable_area">[profile.client_users_job_position_title;noerr] </a></td>
+          </tr>
+          <tr>
+            <td><strong>
+              [lang.lang_email_address]</strong></td>
+            <td><a href="#" id="client_users_email" 
+                                  data-type="text" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_users_email" 
+                                  class="editable_area">[profile.client_users_email;noerr] </a></td>
+          </tr>
+          <tr>
+            <td><strong>
+              
+              [lang.lang_password]</strong></td>
+            <td><a href="#" id="client_users_password" 
+                                  data-type="password" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_users_password" 
+                                  class="editable_area">[hidden]</a></td>
+          </tr>
+          <tr>
+            <td><strong>
+              
+              [lang.lang_telephone]</strong></td>
+            <td><a href="#" id="client_users_telephone" 
+                                  data-type="text" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_users_telephone"
+                                  class="editable_area">[profile.client_users_telephone;noerr] </a></td>
+          </tr>
+          <tr>
+            <td><strong> [lang.lang_receive_project_notifications]</strong></td>
+            <td><a href="#" id="notifications_system" 
+                                  data-type="select" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_notifications_system">[profile.client_notifications_system;block=tr;onformat=runtime_check_blank]</a>
+              <!--editable pulldown js end-->
+              <script>
+                                 $(function(){
+                                 $('#notifications_system').editable({
+                                 value: '', 
+                                 source: [{value: 'yes', text: '[lang.lang_yes]'},{value: 'no', text: '[lang.lang_no]'}]
+                                 });
+                                 });
+                                 </script>
+              <!--editable pulldown js end-->
+            </td>
+          </tr>          
+          <tr>
+            <td><strong>
+              
+              [lang.lang_primary_contact]</strong></td>
+            <td><a href="#" id="client_users_main_contact" 
+                                  data-type="select" 
+                                  data-pk="[profile.client_users_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/common/ajax/editable-user-profile" 
+                                  data-name="client_users_main_contact">[profile.client_users_main_contact;block=tr;onformat=runtime_check_blank]</a>
+              <script>
+                                 $(function(){
+                                 $('#client_users_main_contact').editable({
+                                 value: '', 
+                                 source: [
+                                 {value: '[profile.client_users_id;noerr]', text: 'yes'}<!--text:-->
+                                 ]
+                                 });
+                                 });
+                                 </script>
+              <!--editable pulldown js end-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_EDIT_USER_DETAILS_TABLE-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+<div>
+<!--[onshow;block=div;when [vars.my_user_type] == 'client';comm]-->
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js">
+<!--[onshow;block=script;when [vars.my_id] == [profile.client_users_id;block=tr];comm]-->
+</script>
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<!--JS_FILE_UPLOAD-->
+<script>
+<!--[onshow;block=script;when [vars.my_id] == [profile.client_users_id;block=tr];comm]-->
+//-------------------------------------------------------------------------------
+//[DYNAMIC (TBS) VARIABLES & LANGUAGE] 
+//-------------------------------------------------------------------------------
+//variabled
+var upload_url = '[conf.site_url;noerr]/common/ajax/upload-avatar/client';
+//language
+var lang_file_too_big = "[lang.upload_invalid_filesize;noerr]";
+var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_uploaded;noerr]";
+var lang_upload_invalid_filetype = "[lang.lang_upload_invalid_filetype;noerr]";
+var lang_upload_invalid_filesize = "[lang.lang_upload_invalid_filesize;noerr]";
+var lang_upload_system_error = "[lang.lang_upload_system_error;noerr]";
+
+</script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.upload.avatars.js">
+<!--[onshow;block=script;when [vars.my_id] == [profile.client_users_id;block=tr];comm]-->
+</script>
+</div>
+<!--JS_FILE_UPLOAD_END-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

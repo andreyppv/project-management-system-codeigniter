@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<script type="text/javascript">
+    function checkTimer_() {
+        if (timerActive) {
+            alert('Timer is active, we will open a popup to keep your timer running.');
+            window.open("[conf.site_url]/admin/popuptimer/[vars.project_id]/[vars.task_id]?timer=start", null, "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+            timer_stop();
+        }
+    }
+
+</script>
+<body onunload="checkTimer_();">
+    <!--JS SECTION - ONLOAD-->
+    <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+    <!--JS SECTION - ONLOAD-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--[onload;file=../common/include.debug.html;getbody;comm]-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!--[onload;file=common.header.html;getbody;comm]-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!-- Main content starts -->
+    <div class="content">
+        <!-- MODAL EDIT TASK -->
+        <div class="row">
+            <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" action="[conf.site_url]/admin/mytasks/edit-description" method="post" id="editTask">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title"> [lang.lang_edit_task]</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" id="task_text_edit" name="tasks_text"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                                    [lang.lang_closed]
+                                </button>
+                                <input type="hidden" id="task_id_edit" name="tasks_id" value="">
+                                <input type="hidden" id="task_assigned_to_id_edit" name="tasks_assigned_to_id" value="">
+                                <input type="hidden" id="task_milestone_id_edit" name="tasks_milestones_id" value="">
+                                <input type="hidden" id="task_project_id_edit" name="tasks_project_id" value="">
+                                <input type="hidden" id="task_events_id_edit" name="tasks_events_id" value="">
+                                <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" name="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL EDIT TASK -->
+
+        <!-- MODAL ASSIGNED -->
+        <div class="row">
+            <div id="editAssignedModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" action="[conf.site_url]/admin/mytasks/edit-assigned" method="post" id="editAssigned">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title"> [lang.lang_edit_task]</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> Assigned to:</label>
+                                    <div class="col-lg-12">
+                                        <select class="form-control" id="task_assigned_edit" name="tasks_assigned">
+                                            <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                                    [lang.lang_closed]
+                                </button>
+                                <input type="hidden" id="task_id_edit" name="tasks_id" value="[vars.task_id]">
+                                <input type="hidden" id="task_assigned_to_id_edit" name="tasks_assigned_to_id" value="">
+                                <input type="hidden" id="task_milestone_id_edit" name="tasks_milestones_id" value="">
+                                <input type="hidden" id="task_project_id_edit" name="tasks_project_id" value="[vars.project_id]">
+                                <input type="hidden" id="task_events_id_edit" name="tasks_events_id" value="">
+                                <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" name="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL ASSIGNED -->
+
+        <!-- MODAL ASSIGNED TIME -->
+        <div class="row">
+            <div id="editAssignedTimeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" action="[conf.site_url]/admin/mytasks/edit-assigned-time" method="post" id="editAssignedTime">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title">Edit Assigned Time</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;">Assigned Time:</label>
+                                    <div class="col-lg-12">
+                                        <input class="form-control" name="assigned_time" value="[vars.assigned_time]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                                    [lang.lang_closed]
+                                </button>
+                                <input type="hidden" name="tasks_id" value="[vars.task_id]">
+                                <input type="hidden" name="tasks_project_id" value="[vars.project_id]">
+                                <input type="hidden" name="redirect_url" value="[vars.current_url]">
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" name="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL ASSIGNED TIME -->
+
+        <!-- MODAL ADD VIEWER -->
+        <div class="row">
+            <div id="addViewerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" action="[conf.site_url]/admin/tasksexpanded/[vars.project_id]/[vars.task_id]/add-viewer" method="post">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title"> Add viewer</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> Viewer:</label>
+                                    <div class="col-lg-12">
+                                        <select class="form-control" name="viewer_profile_id">
+                                            <!--[lists.all_team_members_viewer;noerr;htmlconv=no;protect=no;comm]-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                                    [lang.lang_closed]
+                                </button>
+                                <input type="hidden" id="task_id_edit" name="tasks_id" value="[vars.task_id]">
+                                <input type="hidden" id="task_project_id_edit" name="tasks_project_id" value="[vars.project_id]">
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" name="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL ADD VIEWER -->
+
+<!--MODAL FOR REJECTION REASON-->
+<style>
+
+</style>
+ <div class="row">
+            <div id="rejectreason" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                     <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title">Task Rejection Feedback</h4>
+                            </div>
+                            <div style="padding:20px;">         
+                                <h4>Please tell us why you are reject this task:</h4>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="I don't have the time">I don't have the time</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="Someone else would be better skilled">Someone else would be better skilled</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="Assigned hours are too low">Assigned hours are too low</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="Other">Other</label>
+                                </div>
+                                <br>
+                                <!--<a class="btn-lg btn-warning" style="border-radius:0; width:100px;display:block; margin:20px auto; text-align:center; cursor:pointer;">Submit</a>-->
+                                <button id="rejectreason-submit" class="btn btn-danger">[lang.lang_submit]</button>
+                         </div>
+                 </div>
+               </div>    
+            </div>
+        </div>
+        <style type="text/css">
+            .mainbar {
+                margin-left: 0px;
+            }
+        </style>
+        <div class="mainbar">
+            <!--COMMON PAGE HEADING-->
+            <!--[onload;file=common.heading.html;getbody;comm]-->
+            <!--COMMON PAGE HEADING-->
+            <div class="matter">
+                <!--OMMON PROJECT HEAD-->
+                <!--[onload;file=common.project.header.html;getbody;comm]-->
+                <!--COMMON PROJECT HEAD-->
+                <!---->
+                <script type="text/javascript" src="[conf.site_url]/__freshbooksapi/newtimer.js"></script>
+                <script type="text/javascript">
+                    /*USER SETTINGS*/
+                    var task = "[vars.task_id]";
+                    var project = "[vars.project_id]";
+                    var user = "[vars.my_id]";
+                    /*End of USER SETTINGS*/
+
+                    $(document).ready(function() {
+                        /*Update timer variables.*/
+
+                        timerHours = '[vars.hoursworked]';
+                        /*Default to current task hours*/
+                        timerMinutes = '[vars.minutesworked]';
+                        /*Default to current task minutes*/
+                        timerSeconds = '[vars.secondsworked]';
+                        /*Default to current task seconds*/
+
+                        convertTimer(true);
+
+                    });
+                </script>
+
+                <div>
+                    <!--[onshow;block=div;when [visible.acceptoffer] == 1;comm]-->
+                        <div id="task-offer-panel" style="background:#fff; width:100%; padding:7px; padding-left:30px; margin-bottom:15px;">
+                            <form action="[conf.site_url]/admin/tasksexpanded/[vars.project_id]/[vars.task_id]/accept-offer" method="post" id="form-acceptoffer">
+                                <span style="font-size:14px; font-weight:600; text-align:center;">
+                                    You have been offered the following task.
+                                </span><br>
+                                Please accept or reject the offer:
+                                <label class="radio-inline">
+                                    <input type="radio" name="taskoffer" value="1" id="acceptoffer">
+                                    Accept offer with <a href="#" style="text-decoration: underline">Terms and Conditions</a>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="taskoffer" value="2" id="rejectoffer">
+                                    Reject offer
+                                </label>
+                                <button type="button" id="submit-acceptoffer" class="btn btn-primary">[lang.lang_submit]</button>
+                                <input type="hidden" name="feedback" value="">
+                            </form>
+                            <script>
+                                function acceptoffer_send()
+                                {
+                                    var feedback = $('#form-acceptoffer').find('input[name=feedback]').val();
+                                    if( !$('#rejectoffer').prop('checked') && !$('#acceptoffer').prop('checked') ) {
+                                        return false;
+                                    }
+
+                                    if( $('#rejectoffer').prop('checked') && !feedback) {
+                                        //event.preventDefault();
+                                        $('#rejectreason').modal('show');
+                                        return false;
+                                    }
+                                    //submit
+                                    $('#form-acceptoffer').submit();
+                                }
+
+                                $('#submit-acceptoffer').click(function(){
+                                    acceptoffer_send();
+                                });
+
+                                $('#rejectreason-submit').click(function(){
+                                    var rej = $('input:checked[name=optradio]').val();
+                                    if(rej) {
+                                        $('#rejectreason').modal('hide');
+                                        $('#form-acceptoffer').find('input[name=feedback]').val(rej);
+                                        acceptoffer_send();
+                                    } else {
+                                        alert('Please select an option');
+                                    }
+                                });
+                            </script>
+                        </div>
+                </div>
+
+                <div class="container">
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-9">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <script>
+                                        /*$.ajax({
+                                         url: "[conf.site_url]/__freshbooksapi/_projectdetailsmilestones.php?projectid=[rows4.projects_id]"
+                                         }).done(function(data){
+                                         $(".milestones").append(data);
+                                         });*/
+                                        /*$.ajax({
+                                            url : "[conf.site_url]/__freshbooksapi/_teamcommunication.php?projectid=[rows4.projects_id]"
+                                        }).done(function(data) {
+                                            $(".team_communication").append(data);
+                                        });*/
+                                        /*$.ajax({
+                                            url : "[conf.site_url]/__freshbooksapi/_clientcommunication.php?projectid=[rows4.projects_id]"
+                                        }).done(function(data) {
+                                            $(".client_communication").append(data);
+                                        });*/
+                                    </script>
+
+                                    <style type="text/css">
+                                        .milestones {
+                                            width: 100%;
+                                            background: #fff;
+                                        }
+                                        .task-table {
+                                            width: 96%;
+margin: 0px 2% 20px 2%;
+                                        }
+                                        .task-table tr {
+                                            border-bottom: 1px solid #d2d2d2;
+                                            padding: 5px 0;
+                                        }
+                                        .task-table th {
+                                            padding: 10px 0 5px 0;
+                                        }
+                                        .task-table input {
+                                            display: block;
+                                            margin: 0 auto;
+                                        }
+                                        .class-column {
+                                            width: 50px !important;
+                                        }
+                                        #newSubTask {
+                                            padding: 20px;
+                                            width: 100%;
+                                            height: 200px;
+                                        }
+                                        .task-table .pad-me {
+                                            padding-left: 10px;
+                                        }
+                                        /*#cke_1_contents, #cke_newSubTask{height:500px!important;}*/
+                                    </style>
+                                    <script type="text/javascript">
+                                        $(document).ready(function() {
+                                            $.each($("#subtaskrow"), function(e) {
+                                                if ($($($(this).children()[3]).children()[0]).is(':checked')) {
+                                                    $(this).css('text-decoration', 'line-through');
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    
+                                    <div class="milestones">
+                                        <div class="bg-night" style=" color:#fff; font-size:18px; width:100%;padding:10px 0 10px 10px; margin-bottom: 10px;">[vars.taskname]</div>
+                                        <style> .task-info-panel{padding-left:10px;}</style>
+                                                                                    
+                                        <div id="edit-form">
+                                            <!--[onshow;block=div;when [vars.has_edit_permission] == 1;comm]-->
+                                            <a class="btn btn-xs btn-info edit-task-modal"
+                                                style="float: right; margin-right: 20px;"
+                                                data-toggle="modal"
+                                                data-modal-window-title="[lang.lang_edit_task]"
+                                                data-task-id="[vars.task_id]"
+                                                data-height="350"
+                                                data-width="100%"
+                                                data-task-text="[vars.taskname]"
+                                                data-target="#editTaskModal">Edit task title</a>
+                                            <span>
+                                            <!--[onshow;block=span;when [visible.wi_timedoctor] == 1;comm]-->
+                                            <a class="iframeModal btn btn-xs btn-info edit-task-modal"
+                                               style="float: right; margin-right: 20px;"
+                                               data-toggle="modal"
+                                               data-modal-window-title="Tasks Time Doctor"
+                                               data-src="[conf.site_url]/admin/tasksexpanded/[vars.project_id]/[vars.task_id]/time-doctor"
+                                               data-height="350"
+                                               data-width="100%"
+                                               data-target="#modalIframe"
+                                               data-tdid="[vars.timedoctortaskid]"
+                                               id="time_doctor_id">Time Doctor</a>
+                                                <script>
+                                                  $('#time_doctor_id').removeClass('btn-warning btn-success');
+                                                  if( $('#time_doctor_id').data('tdid') == '0' ) {
+                                                    $('#time_doctor_id').addClass('btn-success').html('Create TimeDoctor Task');
+                                                  } else {
+                                                    $('#time_doctor_id').addClass('btn-warning').html('TimeDoctor Task');;
+                                                  }
+                                                </script>
+                                            </span>
+                                            <p class="task-info-panel">
+                                                <span style="font-weight:600;">Assigned to : </span><a class="edit-assigned-modal"
+                                                data-toggle="modal"
+                                                data-modal-window-title="[lang.lang_edit_task]"
+                                                data-task-id="[vars.task_id]"
+                                                data-height="350"
+                                                data-width="100%"
+                                                data-task-text="[vars.taskname]"
+                                                data-target="#editAssignedModal">[vars.assigned.team_profile_full_name]</a>
+                                            </p>
+                                            <p class="task-info-panel"><span style="font-weight:600;">Assigned by : </span>[vars.assigned_by]</p>
+                                            <p class="task-info-panel">
+                                                <span style="font-weight:600;">Assigned date : </span>[vars.assigned.created;onformat=runtime_datetime]<br/>
+                                                <span style="font-weight:600;">Last update : </span>[vars.assigned.updated;onformat=runtime_datetime]
+                                            </p>
+                                            <div style="padding:20px;">
+                                                <form action="[conf.site_url]/admin/tasksexpanded/[vars.project_id]/[vars.task_id]/edit-description" method="post">
+                                                <textarea name="task_notes" id="newSubTask">[vars.descr]</textarea>
+                                                <script>
+                                                  document.addEventListener('DOMContentLoaded', function() {
+                                                      CKEDITOR.replace('newSubTask', {
+                                                        toolbar : 'Basic',
+                                                        uiColor : '#ffffff',
+                                                        height : '200px'
+                                                      });
+                                                  });
+                                                </script> 
+
+                                                <button type="submit" class="btn btn-primary" style="margin-top:15px;">
+                                                    Submit task additional info
+                                                </button>
+                                                </form>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="static-form">
+                                            <!--[onshow;block=div;when [vars.has_edit_permission] == 0;comm]-->
+                                            <a class="iframeModal btn btn-xs btn-info edit-task-modal"
+                                               style="float: right; margin-right: 20px;"
+                                               data-toggle="modal"
+                                               data-modal-window-title="Tasks Time Doctor"
+                                               data-src="[conf.site_url]/admin/tasksexpanded/[vars.project_id]/[vars.task_id]/time-doctor"
+                                               data-height="350"
+                                               data-width="100%"
+                                               data-target="#modalIframe"
+                                               data-tdid="[vars.timedoctortaskid]"
+                                               id="time_doctor_id">Time Doctor</a>
+
+                                            <script>
+                                              $('#time_doctor_id').removeClass('btn-warning btn-success');
+                                              if( $('#time_doctor_id').data('tdid') == '0' ) {
+                                                $('#time_doctor_id').addClass('btn-success').html('Create TimeDoctor Task');
+                                              } else {
+                                                $('#time_doctor_id').addClass('btn-warning').html('TimeDoctor Task');;
+                                              }
+                                            </script>
+                                            
+                                            <p class="task-info-panel">
+                                                <span style="font-weight:600;">Assigned to : </span><a class="edit-assigned-modal"
+                                                data-toggle="modal"
+                                                data-modal-window-title="[lang.lang_edit_task]"
+                                                data-task-id="[vars.task_id]"
+                                                data-height="350"
+                                                data-width="100%"
+                                                data-task-text="[vars.taskname]"
+                                                data-target="#editAssignedModal">[vars.assigned.team_profile_full_name]</a>
+                                            </p>
+                                            <p class="task-info-panel"><span style="font-weight:600;">Assigned by : </span>[vars.assigned_by]</p>
+                                            <p class="task-info-panel">
+                                                <span style="font-weight:600;">Assigned date : </span>[vars.assigned.created]<br/>
+                                                <span style="font-weight:600;">Last update : </span>[vars.assigned.updated]
+                                            </p>
+                                            <p class="task-info-panel">[vars.descr]</p>
+                                        </div>
+                                    </div><br/>
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="tabs-sub-nav messaging-menu">
+                                                <div class="pull-left">
+                                                    <h3>Task Messages</h3>
+                                                </div>
+                                                
+                                                <div class="clearfix"></div>
+                                                <!--add-message-box-->
+                                                <div class="message-input">
+                                                    <form action="[conf.site_url]/admin/tasksexpanded/[rows4.projects_id]/[vars.task_id]/add-message" method="post">
+                                                        <div class="form-group form-group-standard">
+                                                            <textarea name="messages_text" id="message_new" cols="20" rows="5"></textarea>
+                                                            <script>
+                                                                document.addEventListener('DOMContentLoaded', function() {
+                                                                    CKEDITOR.replace('message_new', {
+                                                                        toolbar: 'Plain',
+                                                                        uiColor: '#ffffff',
+                                                                        height: '120px'
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <div class="form-group form-group-standard">
+                                                            <button class="btn btn-mid btn-primary" type="submit">[lang.lang_post_message]</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!--add-message-box-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!--WI_TASK_MESSAGES-->
+                                    <div class="row">
+                                        <div class="col-lg-12"> 
+                                            [messages;block=begin; sub1=(replies)]
+                                            <div id="message_[messages.messages_id]">
+                                                <!--message-->
+                                                <div class="messaging messaging-boxed"> 
+                                                    <img alt="" src="[conf.site_url;noerr]/files/avatars/[messages.team_profile_avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                                                    <div class="messaging-container">
+                                                        <div class="messaging-meta">
+                                                            <!--posted by-->
+                                                            <a class="links-blue iframeModal"
+                                                                data-height="250" 
+                                                                data-width="100%"
+                                                                data-toggle="modal"
+                                                                data-target="#modalIframe"
+                                                                data-modal-window-title="[lang.lang_user_profile]" 
+                                                                data-src="[conf.site_url;noerr]/admin/people/team/[messages.team_profile_id]"
+                                                                href="#">[messages.team_profile_full_name]</a><br/>
+                                                            <b>[messages.team_profile_job_position_title]</b>
+                                                            <!--posted by -->
+                                                            <small class="text-muted pull-right"><i class="icon-time"></i>
+                                                                <!--[messages.created_on;comm;onformat=runtime_time_ago;noerr]-->
+                                                            </small> 
+                                                        </div>
+                                                        <!--message text-->
+                                                        <div class="messaging-text line-height-normal">
+                                                            <!--[messages.message;comm;htmlconv=no]-->
+                                                        </div>
+                                                        
+                                                        <div class="messaging-actions">
+                                                            <a class="btn-group pull-right btn btn-xs btn-default divminimize" href="#"> <span class="lowercase">[lang.lang_reply]</span></a>
+                                                            <div class="clearfix"></div>
+                                                            
+                                                            <div class="toggle-div message-input" style="display:none;">
+                                                                <form action="[conf.site_url]/admin/tasksexpanded/[rows4.projects_id]/[vars.task_id]/add-message-reply" method="post">
+                                                                    <input type="hidden" name="message_id" value="[messages.id]"/>
+                                                                    <input type="hidden" name="offset" value="[vars.offset]"/>
+                                                                    <div class="form-group form-group-standard">
+                                                                        <div class="">
+                                                                            <textarea name="reply_message" id="message_reply_[messages.messages_id]" class="ckeditor" cols="20" rows="4"></textarea>
+                                                                            <script>
+                                                                                document.addEventListener('DOMContentLoaded', function() {
+                                                                                    CKEDITOR.replace('message_reply_[messages.messages_id]', {
+                                                                                        toolbar: 'Plain',
+                                                                                        uiColor: '#ffffff',
+                                                                                        height: '120px'
+                                                                                    });
+                                                                                });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-group-standard">
+                                                                        <button class="btn btn-mid btn-primary" type="submit">[lang.lang_post_reply]</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                    
+                                                    <!--reply message-->
+                                                    [messages_sub1;block=begin]
+                                                    <div class="messaging-reply" id="reply_[messages_sub1.id]"> 
+                                                        <img src="[conf.site_url;noerr]/files/avatars/[messages_sub1.team_profile_avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                                                        <div class="messaging-container">
+                                                            <div class="messaging-meta">
+                                                                <!--posted by-->
+                                                                <a class="links-blue iframeModal"
+                                                                    data-height="250" 
+                                                                    data-width="100%"
+                                                                    data-toggle="modal"
+                                                                    data-target="#modalIframe"
+                                                                    data-modal-window-title="[lang.lang_user_profile]" 
+                                                                    data-src="[conf.site_url;noerr]/admin/people/team/[messages.team_profile_id]"
+                                                                    href="#">[messages_sub1.team_profile_full_name]</a><br/>
+                                                                <b>[messages.team_profile_job_position_title]</b>
+                                                                <!--posted by -->
+                                                                <small class="text-muted pull-right">
+                                                                    <i class="icon-time"></i>
+                                                                    <!--[messages_sub1.created_on;comm;onformat=runtime_time_ago;noerr]-->
+                                                                </small> 
+                                                            </div>
+                                                            
+                                                            <div class="messaging-reply-text">[messages_sub1.message;htmlconv=no]</div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    [messages_sub1;block=end]
+                                                    <!--reply message end-->
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            [messages;block=end]
+                                        </div>
+                                    </div>
+                                    <!--WI_TASK_MESSAGES_END-->
+                                    <!--MESSAGE-FOOTER-->
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div>
+                                                <!--WI_PAGINATION-->
+                                                <ul class="pagination pull-right">
+                                                    [vars.pagination;noerr;htmlconv=no]
+                                                </ul>
+                                                <!--WI_PAGINATION-->
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--MESSAGE-FOOTER_END-->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <!--TASK TIMINGS-->
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div style="border: 1px solid #d2d2d2;"><h2 class="bg-night" style="color:#fff; margin-top:0; display:block; padding:10px;">Time &amp; Status</h2>
+
+                                        <form style="margin:20px;" action="[conf.site_url]/admin/tasksexpanded/[vars.project_id;noerr]/[vars.task_id;noerr]/change-status" method="POST">
+                                            <!--Log Time: <input class="timefield" type="text" name="logtime" placeholder="e.g. 25"  value="[vars.logged_time_manual]">
+                                            <br/><br/>-->
+                                            <div class="form-group">
+                                                <label>Assigned Time (hrs)</label>
+                                                <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="0" value="[vars.assigned_time]" disabled="disabled">
+                                                    <div class="input-group-addon">
+                                                    <!--[onshow;block=div;when [vars.has_edit_permission] == 1;comm]-->
+                                                    <a href="#"
+                                                        data-toggle="modal"
+                                                        data-target="#editAssignedTimeModal">
+                                                        <i class="icon-pencil"></i>
+                                                    </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Logged Time: <input class="timefield" type="text" name="loggedtime" placeholder="0" value="[vars.logged_time]" disabled="disabled">
+                                            <br/><br/>
+                                            Time Remaining: <input class="timefield" type="text" name="timeremaining" placeholder="0" value="[vars.time_remaining]" disabled="disabled">
+                                            <br/><br/>-->
+                                            <div class="form-group">
+                                                <label>Task Stage</label>
+                                                <select name="stage"  class="form-control">
+                                                <!--[lists.all_stages;noerr;htmlconv=no;protect=no;comm]-->
+                                                </select>
+                                            </div>
+                                            <input type="submit" class="btn btn-success" value="Submit">
+                                        </form>
+
+                                        <div>
+                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END TASK TIMINGS-->
+                            
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <script src="[conf.site_url]/__freshbooksapi/html5upload/dropzone.js" type="text/javascript"></script>
+                                    <script type="text/javascript">
+                                        function initDragAndDrop() {
+                                            var mainDropZone = new Dropzone("#dropzone", {
+                                                url : "[conf.site_url]/__freshbooksapi/html5upload/upload.php?files_project_id=[vars.project_id;noerr]&files_task_id=[vars.task_id;noerr]&files_client_id=[vars.client_id;noerr]&files_events_id=[vars.new_events_id;noerr]&files_uploaded_by=[vars.my_user_type;noerr]&files_uploaded_by_id=[vars.my_id;noerr]&files_foldername=&files_extension=&files_size="
+                                            });
+
+                                            mainDropZone.on("addedfile", function(file) {
+                                                console.log("File Added");
+                                            });
+
+                                            mainDropZone.on("drop", function(event) {
+                                                console.log("File dropped");
+                                            })
+
+                                            mainDropZone.on("dragover", function(event) {
+                                                console.log("File Over the Dropzone");
+                                                /*if($(".dropzoneOverlay").css("display") == "none"){
+                                                 $(".project-info-tabs").css("display", "none");
+                                                 $(".dropzoneOverlay").css("display", "block");
+                                                 }*/
+
+                                            });
+
+                                            mainDropZone.on("dragleave", function(event) {
+                                                console.log("File Left the Dropzone");
+                                                /*if($(".dropzoneOverlay").css("display") == "block"){
+                                                 $(".project-info-tabs").css("display", "block");
+                                                 $(".dropzoneOverlay").css("display", "none");
+                                                 }*/
+                                            });
+
+                                            mainDropZone.on("success", function(file, xhr, formData) {
+                                                prompt("File Uploaded, please copy this link.", xhr);
+                                            });
+
+                                            mainDropZone.on("uploadprogress", function(file, progress) {
+                                                $("#progress-bar").css("width", progress + "%");
+                                            });
+
+                                            mainDropZone.on("complete", function(file) {
+                                                mainDropZone.removeFile(file);
+                                            });
+                                        }
+
+
+                                        $(document).ready(function() {
+                                            /*Init drag and drop*/
+                                            initDragAndDrop();
+                                        });
+                                    </script>
+
+                                    <form class="form-horizontal" action="[conf.site_url]/admin/files/[vars.project_id;noerr]/add" method="post" id="addNewFile">
+                                        <div style="border: 1px solid #d2d2d2;margin-top:20px"><h2 class="bg-night" style="color:#fff; margin-top:0; display:block; padding:10px;">Project Files</h2>
+                                        
+
+                                            <div class="widget" style="margin:10px; border: 1px solid #d2d2d2;">                                        
+                                            <div class="bg-night" style="text-align:center; font-size:16px; width:100%; color:#fff;padding:5px 0;">Upload a File</div>
+
+                                            <div class="widget-content widget-content-project height-auto">
+                                                <!--div class="form-group" style="margin-bottom:10px;">
+                                                <div class="col-lg-12">Desc:
+                                                <input type="text" class="form-control" id="files_description" name="files_description" autocomplete="off" placeholder="description">
+                                                </div>
+                                                </div-->
+                                                <div class="form-group" id="dropzone" style="margin-bottom:10px;height:60px;">
+                                                    <span  style="height:60px; display:block; text-align:center;">Click here or Drag and Drop files here</span>
+                                                </div>
+                                                <!--/div-->
+                                                <div class="form-group" style="margin-bottom:10px;">
+                                                    <div class="col-lg-12">
+                                                        <div>
+                                                            <div id="upload-button-container">
+                                                                <!--input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button" value="[lang.lang_attach_a_new_file]"-->
+                                                            </div>
+                                                            <div id="file-info-div"></div>
+                                                            <div id="progress-container">
+                                                                <div class="progress active progress-table">
+                                                                    <div id="progress-bar"
+                                                                    class="progress-bar progress-bar-primary progress-bar-table"
+                                                                    role="progressbar"
+                                                                    aria-valuenow="100"
+                                                                    aria-valuemin="0"
+                                                                    aria-valuemax="100"
+                                                                    style="width:0%"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="results-container" style="display:none;"></div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="files_project_id" value="[vars.project_id;noerr]">
+                                            <input type="hidden" name="files_client_id" value="[vars.client_id;noerr]">
+                                            <input type="hidden" name="files_events_id" value="[vars.new_events_id;noerr]">
+                                            <input type="hidden" name="files_uploaded_by" value="[vars.my_user_type;noerr]">
+                                            <input type="hidden" name="files_uploaded_by_id" value="[vars.my_id;noerr]">
+                                            <input type="hidden" name="files_foldername" id="files_foldername" value="">
+                                            <input type="hidden" name="files_extension" id="files_extension" value="">
+                                            <input type="hidden" name="files_size" id="files_size" value="">
+                                            <div id="form-submit-button-container" style="display:none;">
+                                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_new_file]" name="submit">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <table class="task-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="pad-me">File</th>
+                                                <th style="text-align:center;" class="date-column">Date</th>
+                                                <th style="text-align:center;">By</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr id="subtaskrow">
+                                                <td class="pad-me"><a target="_blank" href="/files/projects/<!--[files.files_project_id;block=tr;comm]-->/<!--[files.files_foldername;block=tr;comm]-->/<!--[files.files_name;block=tr;comm]-->"><!--[files.files_name;block=tr;comm]--></a></td>
+
+                                                <td class="date-column"><!--[files.files_date_uploaded;block=tr;comm]--></td>
+                                                <td><!--[files.team_profile_full_name;block=tr;comm]--></td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div style="border: 1px solid #d2d2d2; margin-top:20px">
+                                        <h2 class="bg-night" style="color:#fff; margin-top:0; display:block; padding:10px;">Viewers</h2>
+
+                                        <table class="task-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Developer</th>
+                                                <th width="20">
+                                                    <a class="btn btn-xs btn-info"
+                                                       data-toggle="modal"
+                                                       data-modal-window-title="Add viewer"
+                                                       data-height="250"
+                                                       data-width="350"
+                                                       data-target="#addViewerModal"
+                                                    >
+                                                    <i class="icon-plus"></i></a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pad-me">
+                                                        <!--[viewers.team_profile_full_name;block=tr;comm]-->
+                                                    </td>
+                                                    <td>
+<button class="btn btn-xs btn-danger ajax-delete-record"
+        data-popconfirm-yes="Yes"
+        data-popconfirm-no="No"
+        data-popconfirm-title="Confirm - delete item"
+        data-popconfirm-placement="left"
+        data-mysql-record-id="<!--[viewers.tasks_viewers_id;block=tr;comm]-->"
+        data-ajax-url="/common/ajax/delete-task-viewer">
+<i class="icon-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <!--WI_NOTIFICATION-->
+                    <div class="row">
+                        <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content widget-big-box">
+                                    [vars.notification;noerr]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_NOTIFICATION-->
+
+                    
+
+
+                    <!--END OF TASK TIMING-->
+
+
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!--[onload;file=../common/common.footer.html;getbody;comm]-->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+    <!--WI_EDIT_PROJECT_MODAL-->
+    <div class="row">
+        <!--[onshow;block=div;when [project_permissions.edit_item_my_project_details] == 1;comm]-->
+        <!--permissions-->
+        <div id="editProjectModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-horizontal" action="[conf.site_url]/admin/project/[vars.project_id;noerr]/edit-project" method="post" id="editProject">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                x
+                            </button>
+                            <!--full screen icon - custom.js-->
+                            <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                <i class="icon-fullscreen"></i>
+                            </button>
+                            <!--full screen icon - custom.js-->
+                            <h4 class="modal-title"> [lang.lang_edit_project_details]</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project_title]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="projects_title" name="projects_title" value="[rows4.projects_title;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_deadline]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control pickadate" id="project_deadline" name="project_deadline" value="[rows4.project_deadline;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project_title]</label>
+                                <div class="col-lg-12">
+                                    <textarea name="projects_description" id="projects_description">
+                                  [rows4.projects_description;noerr;htmlconv=no]</textarea>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            CKEDITOR.replace('projects_description', {
+                                                toolbar : 'Basic',
+                                                uiColor : '#ffffff',
+                                                height : '300px'
+                                            });
+                                        });
+
+                                    </script>
+                                </div>
+                            </div>
+                            <!--------------------OPTIONAL FIELDS------------------------------>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_projects_optionalfield1] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield1]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="projects_optionalfield1" name="projects_optionalfield1" value="[rows4.projects_optionalfield1;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_projects_optionalfield2] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield2]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="projects_optionalfield2" name="projects_optionalfield2" value="[rows4.projects_optionalfield2;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_projects_optionalfield3] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield3]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="projects_optionalfield3" name="projects_optionalfield3" value="[rows4.projects_optionalfield3;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_projects_optionalfield4] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield4]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="projects_optionalfield4" name="projects_optionalfield4" value="[rows4.projects_optionalfield4;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <!--[onshow;block=div;when [visible.wi_projects_optionalfield5] == 1;comm]-->
+                                <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield5]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="projects_optionalfield5" name="projects_optionalfield5" value="[rows4.projects_optionalfield5;noerr]" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <!--------------------OPTIONAL FIELDS------------------------------>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                                [lang.lang_closed]
+                            </button>
+                            <input type="hidden" name="projects_id" value="[rows4.projects_id]">
+                            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" name="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--WI_EDIT_PROJECT_MODAL-->
+
+    <!--WI_IFRAME_MODAL-->
+    <div class="row">
+        <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            x
+                        </button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true">
+                            <i class="icon-fullscreen"></i>
+                        </button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-body">
+                        <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                            [lang.lang_closed]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $('#modalIframe').on('hidden.bs.modal', function (e) {
+        var tdid = $('[data-tdid]').data('tdid');
+        if(tdid <= 0) {
+            location.reload();
+        }
+    })
+    </script>
+    <!--WI_IFRAME_MODAL-->
+    <!----------------------COMMON PROJECT FOOTER--------------------------------->
+    <!--[onload;file=common.project.footer.html;getbody;comm]-->
+    <!----------------------COMMON PROJECT FOOTER--------------------------------->
+    <!--JS_EDIT_PROJECT_VALIDATION-->
+    <script>
+        $().ready(function() {
+            //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+            //         when form is validated, its posted to appropriate controller, where more validation will be done
+            //REQUIRES: jquery.validate.js
+            $("#editProject").validate({
+                rules : {
+
+                    //fixed fields - each form field that needs to be validated
+                    projects_title : "required",
+                    project_deadline : "required",
+                    projects_description : "required"
+                },
+                messages : {
+                    projects_title : "[lang.lang_field_is_required]",
+                    project_deadline : "[lang.lang_field_is_required]",
+                    projects_description : "[lang.lang_field_is_required]"
+                },
+                submitHandler : function(form) {
+                    form.submit();
+                }
+            });
+
+        });
+    </script>
+    <!--JS_EDIT_PROJECT_VALIDATION-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+
+    <!--JS_EDIT_TASK_MODAL-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //USED BY: WI_EDIT_TASK_MODAL
+            //ACTIONS: dynamically add data into modal form
+            //REQUIRES: jquery.js
+            //ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
+            //REQUIRES-2: select2.js
+
+            //---edit item link clicked-------
+            $(".edit-task-modal").click(function() {
+
+                //get variables from "edit link" data attributes
+                var task_text_edit = $(this).attr("data-task-text");
+                //console.log(task_text_edit);
+                var task_id_edit = $(this).attr("data-task-id");
+
+                //set modal input values dynamically
+                $('#task_text_edit').val(task_text_edit);
+                $('#task_id_edit').val(task_id_edit);
+
+                //pre-select data in pull down lists
+                $("#tasks-status-list-edit").select2().select2('val', task_status_preselected);
+            });
+
+        });
+    </script>
+    <!--JS_EDIT_TASK_MODAL-->
+    <script src="http://designgeeks.net:4911/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/chatbox.js"></script>
+    <script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/moment.min.js"></script>
+    <script>
+        var socket = io.connect('http://designgeeks.net:4911');
+    </script>
+    <script>
+        $(".chat_input_t[vars.task_id]").keyup(function(e) {
+            if (e.keyCode == 13) {
+                var len = $(".chat_inner_t[vars.task_id] > .chat_row").length;
+                var tronc = len / 2;
+                if (tronc > 20) {
+                    var $firstElement = $(".chat_inner_t[vars.task_id] div:first");
+                    $firstElement.remove();
+                }
+            }
+            return false;
+        });
+        chat_user = {
+            Member_id : [vars.my_id],
+            name : '[vars.my_name]',
+            nickname : '[vars.my_name]',
+            image : '[conf.site_url;noerr]/files/avatars/[vars.my_avatar;onformat=runtime_check_avatar]'
+        }
+        var chatroom = {
+            title : 'General chat',
+            itemID : 't[vars.task_id]',
+            meme_type : 'private',
+            slug : '232',
+            url : '[vars.site_url_current_page]',
+            file : '', // room logo
+            user_fk : 'sherif',
+            owner : {
+                Member_id : '1',
+                name : 'David Whitaker',
+                nickname : 'David Whitaker',
+                image : '[conf.site_url]/files/avatars/5538f66a5d179.jpg'
+            }
+        };
+        socket.emit("join", chatroom, chat_user);
+
+        function acceptTask() {
+                var txt;
+                var r = confirm("You have chosen to accept this task., By clicking ok below you are accepting both the task and the number of hours for completion.");
+                if (r == true) {
+                    txt = "You pressed OK!";
+                } else {
+                    txt = "You pressed Cancel!";
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+    </script>
+</body>
+</html>

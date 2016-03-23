@@ -1,0 +1,254 @@
+<style type="text/css">
+    .nums{margin-left:4px;}
+    .dashboard-user-picture img {
+        border-radius: 999999px;
+        height: 50px;
+        width: 50px;
+    }
+    .sidebar-menu li {
+        padding: 15px;
+    }
+    .sidebar-menu li.active {background-color:#666;}
+    .sidebar-menu li a{ font-size:16px;}
+    .sidebar-menu li a i{font-size:16px;}
+	
+	a.open {
+		background-color: #506079;
+	}
+	
+	.sidebar-menu li .btn-group a label {
+		border-radius: 50% !important;
+		float: right;
+		height: 25px;
+		line-height: 14px;
+		padding: 6px 0 0;
+		text-align: center;
+		width: 25px;
+	}
+	
+	.headerbar-widget {
+		background-color: #35414f !important;
+		height: 100%;
+		position: absolute;
+		top: 55px;
+		width: 250px;
+	}
+	
+	.mainbar .matter {
+		min-height: 900px;
+	}
+    
+	.sidebar-menu li.active {
+		background-color: #506079 !important;
+	}
+</style>
+<!-- HIDDE MAIN MENU -->
+<script type="text/javascript">
+$('#navbar-hide').click(function(){		
+	if($('body').hasClass('sidebar-hidden')){									
+		$('body').removeClass('sidebar-hidden');			
+	} else {						
+		$('body').addClass('sidebar-hidden');			
+	}	
+});
+
+if ($(window).width() <= 992){          
+	$('body').addClass('sidebar-hidden-disabled');
+}
+
+$(window).resize(function(){
+    if ($(window).width() <= 992){          
+		if ( $('body').hasClass('sidebar-hidden') ) {
+			$('body').removeClass('sidebar-hidden').addClass('sidebar-hidden-disabled');
+		}
+		$('body').addClass('sidebar-hidden-disabled');
+    }
+});
+</script>
+<!-- ADD ACTIVE CLASS TO MAIN MENU -->
+
+<div class="widget headerbar-widget">
+    <div  style="margin-top:30px; padding-left:20px;">
+        <div class="pull-left dashboard-user-picture" ><img class="avatar-small" src="[conf.site_url;noerr]/files/avatars/[vars.my_avatar;onformat=runtime_check_avatar]" alt=""/>
+        </div>
+        <div class="headerbar-project-title pull-left">
+            <h3>[vars.my_name]</h3>
+            <div class="dashboard-user-group pull-left" style="color:#fff;">
+                <label class="user-type">[vars.my_group_name]</label>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+    <ul class="sidebar-menu">
+        <!--WI_MY_PROJECTS-->
+        
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=dashboard]">
+            <div class="btn-group">		
+                <a href="[conf.site_url]/admin/home" >		
+                    <i class="icon-home"></i>
+                    <span>[lang.lang_dashboard]</span>	
+                </a>			
+            </div>
+        </li>
+		
+		<!--PROJECTS-->
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=myprojects]">
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/admin/myprojects"> 				
+                    <i class="icon-folder-open-alt"></i> 
+                    <span> [lang.lang_projects] </span>	
+					<label  class="nums label label-info">[vars.count_my_projects;onformat=runtime_number]</label>
+                </a>
+            </div> 
+        </li>
+        <!--PROJECTS END-->
+		
+		 <li class="[vars.menu;onformat=runtime_main_menu_class;item=notifications]">
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/admin/notifications"> 				
+                    <i class="icon-bell"></i> 
+                    <span> Notifications </span>	
+					<label class="nums label label-warning-dark"></label>
+					<script type="text/javascript">
+						var data = {count: 1}
+						$.ajax({                                                                                   
+						url : "[vars.site_url;noerr]admin/ajax/count-notifications"
+						}).done(function(e) {
+							console.log(e);
+						$(".label-warning-dark").append(e); 
+						});                                                                                
+					</script>
+                </a>
+            </div> 
+        </li>
+          
+        <!--WI_MY_PROJECTS-->
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=reports]">
+            <!--[onshow;block=li;when [vars.my_group] == 1;comm]-->
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/admin/reports/home"> 				
+                    <i class="icon-bar-chart"></i> 
+                    <span> [lang.lang_reports] </span>		
+                </a>
+            </div> 
+            <!--control buttons delete - end -->
+        </li>
+        
+        <!-- Calendar -->
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=calendar]">
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/admin/calendar">                 
+                    <i class="icon-calendar"></i>
+                    <span> [lang.lang_calendar] </span>        
+                </a>
+            </div> 
+        </li>
+
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=clients]">
+            <!--[onshow;block=li;when [permission.view_item_clients] == 1;comm]--><!--permissions-->
+            <div class="btn-group">  	
+                <a href="[conf.site_url]/admin/clients/list">			
+                    <i class="icon-user"></i> 
+                    <span> [lang.lang_clients] </span>
+                </a>
+            </div> 
+        </li>
+
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=sales]">
+            <div class="btn-group">	
+                <a class="" href="[conf.site_url]/admin/sales">				
+                    <i class="icon-credit-card"></i>
+                    <span> Sales </span>	
+                </a>
+            </div>
+        </li>
+        
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=marketing]">
+            <div class="btn-group">    
+                <a class="" href="[conf.site_url]/admin/marketing">                
+                    <i class="icon-credit-card"></i>
+                    <span> Marketing </span>    
+                </a>
+            </div>
+        </li>
+
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=bugs]">
+            <!--[onshow;block=li;when [permission.view_item_bugs] == 1;comm]--><!--permissions-->    
+            <div class="btn-group">	
+                <a class="[vars.css_menu_bugs;noerr]" href="[conf.site_url]/admin/bugs/list">			
+                    <i class="icon-bug"></i>
+                    <span> [lang.lang_bug_tracker] </span>	
+					<label class="label label-purple pull-right"> [bugs_count.all_open;onformat=runtime_number] </label>
+                </a>
+            </div>
+        </li>
+
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=team]">
+            <div class="btn-group">	
+                <a class="[vars.css_menu_team;noerr]" href="[conf.site_url]/admin/team">				
+                    <i class="icon-group"></i>
+                    <span> [lang.lang_team_members] </span>	
+                </a>
+            </div>
+        </li>
+        <!--WI_MY_TASKS-->
+        
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=mytasks]">
+            <div class="btn-group">
+                <a href="[conf.site_url]/admin/mytasks"> 
+					<i class="icon-list-ul"></i> <span>[lang.lang_my_tasks]</span>
+					<label class="nums label label-success">[my_tasks_count.all_open;onformat=runtime_number]</label>
+                </a>
+            </div>
+        </li>
+        <!--WI_MY_TASKS-->
+        <!--WI_MY_TIMES-->
+        
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=timers]">
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/admin/timers">
+                    <i class="icon-list-ul"></i> <span>My Times</span>
+                </a>
+            </div>
+        </li>
+        <!--WI_MY_TIMES-->
+        <!--WI_ACCOUNT-->
+    
+        
+        <li>
+            <div class="btn-group dropup"> 
+                <a class="iframeModal"
+                   data-toggle="modal" 
+                   data-modal-window-title="[lang.lang_edit_user_profile]"
+                   data-src="[conf.site_url]/admin/team/edit-modal/[vars.my_id]" 
+                   data-height="350" 
+                   data-width="100%" 
+                   data-target="#modalIframe">
+                   <i class="icon-gears"></i> <span>[lang.lang_my_account]</span>
+                </a>
+            </div>
+        </li>
+
+        <!--WI_ACCOUNT-->
+        <!--WI_SETTINGS-->
+        <li class="[vars.menu;onformat=runtime_main_menu_class;item=settings]">
+            <!--[onshow;block=li;when [vars.my_group] == 1;comm]-->  
+            <div class="btn-group dropup">
+                <a href="[conf.site_url]/admin/settings/general">
+                    <i class="icon-wrench"></i> <span>[lang.lang_settings]</span> 
+                </a>
+            </div>
+        </li>
+        <!--WI_SETTINGS-->
+        <!--WI_LOGOUT-->
+        <li>
+            <div class="btn-group dropup">
+                <a href="[conf.site_url]/admin/login/logout">
+                    <i class="icon-off"></i> <span>[lang.lang_logout]</span>
+                </a>
+            </div>
+        </li>
+        <!--WI_LOGOUT-->
+    </ul>
+</div>

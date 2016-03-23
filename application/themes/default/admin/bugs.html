@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+      <div class="widget titlebar-widget">
+        <!--[onshow;block=div;when [visible.wi_show_bug] == 1;comm]-->
+        <div class="titlebar">
+          <h3>[bug.projects_title;noerr]</h3>
+        </div>
+      </div>
+      <!--WI_TITLE_BAR-->
+      <!--WI_BUGS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <!--[onshow;block=div;when [visible.wi_bugs_search] == 1;comm]-->
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only"> [lang.Toggle navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/bugs/search-bugs" method="post">
+              
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" data-toggle="modal" href="#reportNewBugModal"> [lang.lang_report_new_bugs]</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_BUGS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_BUGS_TABLE-->
+        <div class="row fullscreen-mode">
+          <!--[onshow;block=div;when [visible.wi_bugs_table] == 1;comm]-->
+          <div class="col-md-12 widget" style="padding-top: 20px; padding-bottom: 20px;">
+          	<a class="btn btn-success" href="[conf.site_url]/admin/bugs/list/[vars.bugs_list_link]">[vars.bugs_list]</a>
+            <div class="">
+              <div class="widget-content">
+                <table id="bugsTable" class="selectSort cell-border" >
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th style="width:40px;">&nbsp;</th>
+                      <th>&nbsp;</th>
+                      <th>[lang.lang_title]</th>
+                      <th>[lang.lang_submitted_by]</th>
+                      <th style="width:100px;">[lang.lang_date]</th>
+                      <th class="select">[lang.lang_status]</th>
+                      <th style="width:30px; text-align:center; font-size:14px;"> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tr-link" data-link="[conf.site_url]/admin/bugs/view/[bugs.bugs_id;block=tr]">
+                      <td>[bugs.bugs_id]</td>
+                      <td><img class="avatar-smallest image-boardered" src="[conf.site_url;noerr]/files/avatars/[bugs.client_users_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/></td>
+                      <td><!--[bugs.projects_title;block=tr;onformat=runtime_check_blank_ucfirst;comm;ope=max:20]--></td>
+                      <td><!--[bugs.bugs_title;block=tr;onformat=runtime_check_blank_ucfirst;comm;ope=max:30]--></td>
+                      <td><span class="label label-info">
+                        <!--[bugs.name;block=tr;onformat=runtime_check_blank_ucwords;comm;ope=max:30]-->
+                        </span></td>
+                      <td><!--[bugs.bugs_date;block=tr;onformat=runtime_date;comm;ope=max:30]--></td>
+                      <td><!--[bugs.bugs_status;block=tr;onformat=runtime_status_colors;htmlconv=no;comm]--></td>
+                      <td class="tr-link-excluded"><!--control buttons delete-->
+                        <span>
+                        <!--[onshow;block=span;when [permission.delete_item_bugs] == 1;comm]-->
+                        <!--permissions-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[bugs.bugs_id;block=tr]"
+                                data-ajax-url="[conf.site_url]/admin/ajax/delete-bug"> <i class="icon-trash"></i> </button>
+                        </span>
+                        <!--control buttons delete - end -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_BUGS_TABLE-->
+        <!--WI_VIEW_BUG-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_show_bug] == 1;comm]-->
+          <div class="col-lg-3">
+            <!--WI_BUG_DETAILS_TABLE-->
+            <div class="box">
+              <div class="box-head-dark"><i class="icon-list"></i> [lang.lang_bug_details] </div>
+              <div class="box-content">
+                <table class="table table-bordered table-extra-padd">
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-3"> [lang.lang_id]</td>
+                      <td class="col-sm-9"><!--[bug.bugs_id;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3">[lang.lang_date]:</td>
+                      <td class="col-sm-9"><!--[bug.bugs_date;noerr;comm;onformat=runtime_date]--></td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3">[lang.lang_status]:</td>
+                      <td class="col-sm-9"><!--[bug.bugs_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3">[lang.lang_submitted_by]:</td>
+                      <td class="col-sm-9"><a class="links-blue" href="[conf.site_url]/admin/client/[bug.clients_id]/view">
+                        <!--[onshow;block=a;when [bug.clients_id] != 0;comm]-->
+                        <!--[bug.clients_company_name;noerr;comm;onformat=runtime_check_blank_ucwords;htmlconv=no;ope=max:20]-->
+                        </a>
+                        <span class="links-blue">
+                        <!--[onshow;block=span;when [bug.clients_id] == 0;comm]-->
+                        <!--[bug.clients_company_name;noerr;comm;onformat=runtime_check_blank_ucwords;htmlconv=no;ope=max:20]-->
+                        </span>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-12" colspan="2"><div align="right">
+                          <button class="btn btn-info btn-mid" data-toggle="modal" href="#updateBugModal">
+                          <!--[onshow;block=button;when [permission.edit_item_bugs] == 1;comm]-->
+                          <!--permissions-->
+                          [lang.lang_update_bug_status]</button>
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_BUG_DETAILS_TABLE-->
+          </div>
+          <div class="col-lg-9">
+            <!--bug title-->
+            <div class="box">
+              <div class="box-content box-pad">
+                <h4>[bug.bugs_title]</h4>
+              </div>
+            </div>
+            <!--bug title-->
+            <!--main bug-->
+            <div class="box">
+            	
+                              <div class="box-content box-pad">
+                              	<div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                       			 <h3>Bug Comments</h3>
+                       			 </span>
+                        
+                        		<div class="clearfix"></div>
+                        
+                     			 </div>
+                                <form class="addmessageform2" action="[conf.site_url]/admin/bugs/[bug.bugs_id]/add-comment" method="post">
+                                  <div class="form-group form-group-standard">
+                                    <div class="col-lg-12">
+                                        <textarea name="bug_comment" id="bug_comment"></textarea>
+                                    </div>
+                                  </div>
+                                </form>
+                               </div>
+				<div class="row">
+                    <div class="col-lg-12"> 
+			              <div class="box-content box-pad"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[bug.client_users_avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+			                <div class="ticket-container">
+			                  <div class="ticket-meta"><span class="label label-purple">[bug.client_users_full_name;htmlconv=no]</span> <small class="text-muted pull-right"><i class="icon-time"></i>
+			                    <!--[bug.bugs_date;comm;onformat=runtime_time_ago;noerr]-->
+			                    </small> </div>
+			                  <div class="ticket-message line-height-normal">[bug.bugs_description;htmlconv=no;]</div>
+			                  <div class="ticket-actions">
+			                    <!--attachment-->
+			                    <div class="pull-left"> </div>
+			                  </div>
+			                </div>
+			                <div class="clearfix"></div>
+			              </div>
+                    	[messages;block=begin;]
+                    	<div class="box-content box-pad">
+                    		<img alt="" src="[conf.site_url;noerr]/files/avatars/[messages.avatar;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                    		<div class="ticket-container">
+                 				 <div class="ticket-meta"><span class="label label-purple">[messages.name;htmlconv=no;comm]</span> <small class="text-muted pull-right"><i class="icon-time"></i>
+                    				<!--[messages.messages_date;comm;onformat=runtime_time_ago;noerr]-->
+                    				</small>
+                    		 	</div>
+                  				<div class="ticket-message line-height-normal">[messages.messages_text;strconv=no]</div>
+                  				<div class="ticket-actions">
+                   				 <!--attachment-->
+                    			<div class="pull-left"> </div>
+                 				 </div>
+               				</div>
+                    	</div>
+                    	[messages;block=end]
+                    	
+                    	
+                      <div id="message_[messages.messages_id]">
+                        <!--[onshow;block=div;when [visible.wi_project_messages] == 1;comm]-->
+                        <!--message-->
+                        <div class="messaging messaging-boxed"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[messages.avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                          <div class="messaging-container">
+                            <div class="messaging-meta">
+                              <!--posted by-->
+                              <!--[messages.uploaded_by;htmlconv=no;comm]-->
+                              <!--posted by -->
+                              <small class="text-muted pull-right"><i class="icon-time"></i>
+                              <!--[messages.messages_date;comm;onformat=runtime_time_ago;noerr]-->
+                              </small> </div>
+                            <!--message text-->
+                            <div class="messaging-text line-height-normal">
+                              <!--[messages.messages_text;comm;htmlconv=no]-->
+                            </div>
+                            <!--message text-->
+                            <!--main message end-->
+                          </div>
+                          <!--reply message-->
+                          <!--reply message end-->
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      </div>
+                  </div>
+
+            </div>
+            <!--main bug-->
+           
+          </div>
+          <!--WI_VIEW_BUG-->
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+      <!-- Matter ends -->
+    </div>
+    <!-- Mainbar ends -->
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_UPDATE_BUG_MODAL-->
+<div class="row">
+  <!--[onshow;block=div;when [permission.edit_item_bugs] == 1;comm]-->
+  <!--permissions-->
+  <div id="updateBugModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/bugs/update/[bug.bugs_id]" method="post" id="updateBug">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_update_bug]</h4>
+          </div>
+          <div class="modal-body">
+            <!--[conditional] - for project leader only-->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_status]</label>
+              <div class="col-lg-12">
+                <select id="bugs_status_edit" name="bugs_status" style="width:100%">
+                  <!--NB: do not change lang on value=""-->
+                  <option value="new-bug"> [lang.lang_new]</option>
+                  <option value="resolved"> [lang.lang_resolved]</option>
+                  <option value="not-a-bug"> [lang.lang_not_a_bug]</option>
+                  <option value="in-progress"> [lang.lang_in_progress]</option>
+                  <option value="feature-req"> [lang.lang_feature_req]</option>
+                </select>
+              </div>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="bugs_id" value="[bug.bugs_id]">
+            <input type="hidden" name="bugs_project_id" value="[bug.bugs_project_id]">
+            <input type="hidden" name="bugs_title" value="[bug.bugs_title]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_update_bug]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_UPDATE_BUG_MODAL-->
+<!--WI_NEW_BUG_MODAL-->
+<div class="row">
+  <div id="reportNewBugModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/bugs/report-bug" method="post" id="reportNewBug">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_report_new_bugs]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="bugs_title" name="bugs_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project]</label>
+              <div class="col-lg-12">
+                <select id="bugs_project_id_new" name="bugs_project_id">
+                  <option></option>
+                  <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <textarea name="bugs_description" id="bugs_description">
+                                        </textarea>
+                <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                                            CKEDITOR.replace( 'bugs_description', {
+                                                     toolbar: 'Basic',
+                                                     uiColor: '#ffffff',
+                                                   height: '120px'
+                                                     });
+              });
+
+                                        </script>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_report_new_bugs]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_NEW_BUG_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#bugs_client_id").select2({
+        allowClear: true
+    });
+    $("#bugs_project_id").select2({
+        allowClear: true
+    });
+    $("#bugs_status").select2({
+        allowClear: true
+    });
+    $("#bugs_status_edit").select2({
+        allowClear: true
+    });	
+</script>
+<!--JS_SELECT_LISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

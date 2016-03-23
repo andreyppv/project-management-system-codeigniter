@@ -1,0 +1,129 @@
+<div class="modal-dialog" style="width:750px;">
+	<div class="modal-content">
+		<form class="form-horizontal" action="/admin/sales/lead-details-save" method="post" id="addNewProject" novalidate>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				x
+			</button>
+			<!--full screen icon - custom.js-->
+			<button type="button" class="full-screen-modal close" aria-hidden="true">
+				<i class="icon-fullscreen"></i>
+			</button>
+			<!--full screen icon - custom.js-->
+			<h4 class="modal-title" id="modal-iframe-title"> Edit Lead </h4>
+			<div class="clearfix"></div>
+		</div>
+		<div class="modal-body">
+			
+				<input type="hidden" name="lead_id" value="[vars.current_item]">
+				<div class="box">
+					<div class="box-content">
+						<table class="table table-bordered table-forms">
+							<tbody>
+								<tr>
+									<td>Name</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control " name="leads_name" value="[vars.leadDetails.leads_name]" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Company</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control " name="leads_company" value="[vars.leadDetails.leads_company]" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Telephone</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control " name="leads_telephone"  value="[vars.leadDetails.leads_telephone]" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>E-mail</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control " name="leads_email" value="[vars.leadDetails.leads_email]" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>Website</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="leads_www" value="[vars.leadDetails.leads_www]" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+									<td>[lang.lang_value]</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+										<input type="text" class="form-control" name="leads_value" value="[vars.leadDetails.leads_value]" autocomplete="off" aria-required="true">
+									</div></td>
+								</tr>
+								<tr>
+                                    <td>Sales Person</td>
+                                    <td>
+                                    <div class="col-sm-12 col-md-8 no-padding-both">
+                                        <select class="form-control" name="sales_person" id="sales_person" data-sales-person-preselected="[vars.leadDetails.sale_person_id]">
+                                            <option value="">Select</option>
+                                            <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                        </select>
+                                    </div></td>
+                                </tr>
+								<tr>
+									<td>[lang.lang_hot]</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+                              			<input type="hidden" name="leads_hot" value="0" />
+                                    	<input type="checkbox" name="leads_hot" value="1" [vars.leadDetails.leads_hot;if [val]='1';then 'checked'] />
+									</div></td>
+								</tr>
+								<tr>
+									<td>[lang.lang_lost]</td>
+									<td>
+									<div class="col-sm-12 col-md-8 no-padding-both">
+                              			<input type="hidden" name="leads_lost" value="0" />
+                                    	<input type="checkbox" name="leads_lost" value="1" [vars.leadDetails.leads_lost;if [val]='1';then 'checked'] />
+									</div></td>
+								</tr>
+								<tr>
+									<td>Description</td>
+									<td>
+									<div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+										<textarea name="leads_description_edit" id="leads_description_edit" style="visibility: hidden; display: none;">
+											[vars.leadDetails.leads_description]
+										</textarea>
+									</div></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-primary" type="submit" value="Save changes" id="" name="submit">
+			<button class="btn btn-danger" data-dismiss="modal">Close</button>
+		</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	CKEDITOR.replace('leads_description_edit', {
+		toolbar : 'Basic',
+		uiColor : '#ffffff',
+		height : '300px'
+	});
+	console.log('test');
+});
+
+//added by Tomasz
+var pre_sales_person_id = $("#sales_person").data("sales-person-preselected");
+$("#sales_person").val(pre_sales_person_id);
+//end by Tomasz
+</script>

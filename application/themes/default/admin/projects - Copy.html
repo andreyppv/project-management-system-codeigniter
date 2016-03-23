@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Main bar -->
+  <div class="mainbar">
+    <div class="matter">
+      <!--WI_PROJECTS_SEARCH-->
+      <div class="navbar navbar-default" role="navigation">
+        <!--[onshow;block=div;when [visible.wi_projects_search] == 1;comm]-->
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/projects/search-projects" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="projects_id" placeholder="[lang.lang_project_id]" >
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="projects-list" name="projects_title" data-placeholder="[lang.lang_project_title]">
+                  <option></option>
+                  <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="clients-list" name="clients_company_name" data-placeholder="[lang.lang_client_company_name]">
+                  <option></option>
+                  <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+              <div class="form-group">
+                <!--select2.js pulldown-->
+                <select id="projects-status" name="projects_status" data-placeholder="[lang.lang_status]">
+                  <option></option>
+                  <option value="all">[lang.lang_all]</option>
+                  <option value="in progress">[lang.lang_in_progress]</option>
+                  <option value="behind schedule">[lang.lang_behind_schedule]</option>
+                  <option value="completed">[lang.lang_completed]</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search Projects</button>
+              </div>
+              <div class="form-group"> <a href="[conf.site_url]/admin/projects/new-project" class="btn btn-success"><i class="icon-plus"></i> [lang.lang_add_new_project]</a> </div>
+            </form>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!--WI_PROJECTS_SEARCH END-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_ADD_NEW_PROJECT-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_add_project_form] == 1;comm]-->
+          <div class="col-md-12">
+            <form class="form-horizontal" action="[conf.site_url]/admin/projects/add-project" method="post" id="addNewProject">
+              <div class="box">
+                <div class="box-content">
+                  <table class="table table-bordered table-forms">
+                    <tbody>
+                      <tr>
+                        <td>[lang.lang_client]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <div class="col-sm-12 col-md-8 no-padding-both">
+                              <select name="projects_clients_id" id="projects_clients_id">
+                                <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->
+                              </select>
+                            </div>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_project_title]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="projects_title" name="projects_title" value="[post.projects_title;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_project_deadline]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control pickadate" id="project_deadline" name="project_deadline" value="[post.project_deadline;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>Time Estimate</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="project_estimate" placeholder="In hours ( E.g 20 )" name="project_timeestimate" value="[post.project_timeestimate;noerr]" required autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>Project Budget</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="project_budget" placeholder="In dollars ( E.g 250000 )" name="project_budget" value="[post.project_budget;noerr]" required autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_description]</td>
+                        <td><div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
+                            <textarea name="projects_description" id="projects_description">
+                                      [post.projects_description;noerr;htmlconv=no]</textarea>
+                            <script>
+document.addEventListener('DOMContentLoaded', function(){
+                                               CKEDITOR.replace( 'projects_description', {
+                                                        toolbar: 'Basic',
+                                                        uiColor: '#ffffff',
+	                                                    height: '300px'});
+});
+
+                                           </script>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_projects_optionalfield1] == 1;comm]-->
+                        <td> [row.wi_projects_optionalfield1]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="projects_optionalfield1" name="projects_optionalfield1" value="[post.projects_optionalfield1;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_projects_optionalfield2] == 1;comm]-->
+                        <td> [row.wi_projects_optionalfield2]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="projects_optionalfield2" name="projects_optionalfield2" value="[post.projects_optionalfield2;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_projects_optionalfield3] == 1;comm]-->
+                        <td> [row.wi_projects_optionalfield3]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="projects_optionalfield3" name="projects_optionalfield3" value="[post.projects_optionalfield3;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_projects_optionalfield4] == 1;comm]-->
+                        <td> [row.wi_projects_optionalfield4]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="projects_optionalfield4" name="projects_optionalfield4" value="[post.projects_optionalfield4;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_projects_optionalfield5] == 1;comm]-->
+                        <td> [row.wi_projects_optionalfield5]</td>
+                        <td><div class="col-sm-12 col-md-8 no-padding-both">
+                            <input type="text" class="form-control" id="projects_optionalfield5" name="projects_optionalfield5" value="[post.projects_optionalfield5;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="box-footer">
+                  <div class="bns-info-div pull-right">
+                    <!--control submit form button-->
+                    <input class="btn btn-primary" type="submit" value="[lang.lang_add_new_project]" id="" name="submit">
+                    <!--control submit form button-->
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--WI_ADD_NEW_PROJECT-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_WI_PROJECTS_SEARCH-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#projects-list").select2({
+        allowClear: true
+    });
+    $("#clients-list").select2({
+        allowClear: true
+    });
+    $("#projects_clients_id").select2({
+        allowClear: true
+    });
+    $("#projects-status").select2({
+        allowClear: true
+    });	
+</script>
+<!--JS_WI_PROJECTS_SEARCH-->
+<!--JS_WI_ADD_PROJECT_VALIDATION-->
+<script>
+$().ready(function(){
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#addNewProject").validate({
+        rules: {
+
+			//optional fields (required fields)
+			//these are fields from client optional fields table
+			//this data is generated by [optionalfields_helper.php
+			[js_validation.wi_projects_optionalfield1;noerr;protect=no;htmlconv=no]
+			[js_validation.wi_projects_optionalfield2;noerr;protect=no;htmlconv=no]
+			[js_validation.wi_projects_optionalfield3;noerr;protect=no;htmlconv=no]
+			[js_validation.wi_projects_optionalfield4;noerr;protect=no;htmlconv=no]
+			[js_validation.wi_projects_optionalfield5;noerr;protect=no;htmlconv=no]
+			        
+            //fixed fields - each form field that needs to be validated
+            projects_clients_id: "required",
+            projects_title: "required",
+            project_deadline: "required",
+            projects_description: "required"
+        },
+        messages: {
+
+			//error messages for dbase optional fields (required messages)
+			//for each optional field in clients table, the validation message
+			[js_validation_message.wi_projects_optionalfield1;noerr;protect=no;htmlconv=no]
+			[js_validation_message.wi_projects_optionalfield2;noerr;protect=no;htmlconv=no]
+			[js_validation_message.wi_projects_optionalfield3;noerr;protect=no;htmlconv=no]
+			[js_validation_message.wi_projects_optionalfield4;noerr;protect=no;htmlconv=no]
+			[js_validation_message.wi_projects_optionalfield5;noerr;protect=no;htmlconv=no]
+
+            client_users_clients_id: "[lang.lang_field_is_required]",
+            client_users_full_name: "[lang.lang_field_is_required]",
+            client_users_job_position_title: "[lang.lang_field_is_required]",
+            client_users_telephone: "[lang.lang_field_is_required]"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_WI_ADD_PROJECT_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

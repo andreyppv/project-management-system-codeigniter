@@ -1,0 +1,193 @@
+<style type="text/css">
+    .nums{margin-left:4px;}
+    .dashboard-user-picture img {
+        border-radius: 999999px;
+        height: 50px;
+        width: 50px;
+    }
+    .sidebar-menu li {
+        padding: 15px;
+    }
+    .sidebar-menu li a{ font-size:16px;}
+    .sidebar-menu li a i{font-size:16px;}
+	
+	.headerbar-widget {
+		background-color: #35414f !important;
+		height: 100%;
+		position: absolute;
+		top: 55px;
+		width: 250px;
+		margin-top: -7px !important;
+	}
+
+	.dashboard-user-picture {
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	}
+
+	.sidebar-menu li a {
+		font-size: 16px;
+	}
+	
+	.headerbar-widget > ul li span, .headerbar-widget > ul li i {
+		color: #fff;
+	}
+	
+	.headerbar-project-title h3 {
+		color: #fff;
+	}
+	
+	.sidebar-menu li .btn-group a label {
+		border-radius: 50% !important;
+		float: right;
+		height: 25px;
+		line-height: 14px;
+		padding: 6px 0 0;
+		text-align: center;
+		width: 25px;
+	}
+	
+	a.open {
+		background-color: #506079;
+	}
+	
+	.headerbar-widget {
+		background-color: #35414f !important;
+		height: 100%;
+		position: absolute;
+		top: 55px;
+		width: 250px;
+	}
+	
+	.mainbar .matter {
+		min-height: 730px;
+	}
+</style>
+
+<div class="widget headerbar-widget">
+    <div  style="margin-top:30px; padding-left:20px;">
+        <div class="pull-left dashboard-user-picture" ><img class="avatar-small" src="[conf.site_url;noerr]/files/avatars/[vars.my_avatar;onformat=runtime_check_avatar]" alt=""/>
+        </div>
+        <div class="headerbar-project-title pull-left">
+            <h3>[vars.my_name]</h3>
+			<div class="dashboard-user-group pull-right" style="color:#fff;">
+                <label class="user-type">[vars.my_group_name]</label>
+            </div>            
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+    <ul class="sidebar-menu">
+        <!--CLIENT PLUS MENU-->
+		<li>
+            <div class="btn-group">		
+                <a href="[conf.site_url]/client/home" >		
+                    <i class="icon-home"></i>
+                    <span>[lang.lang_dashboard]</span>	
+                </a>			
+            </div>
+        </li>
+        <!--DASHBOARD END-->
+				
+        <!--PROJECTS-->
+        <li>
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/client/projects"> 				
+                    <i class="icon-folder-open-alt"></i> 
+                    <span> [lang.lang_projects] </span>	
+					<label class="label label-info  pull-right"> [client_projects_count.all_projects;onformat=runtime_number] </label>
+                </a>
+            </div> 
+        </li>
+        <!--PROJECTS END-->
+		
+        <!--INVOICES-->
+        <li>
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/client/invoices">                 
+                    <i class="icon-list-alt"></i>
+                    <span> [lang.lang_invoices] </span>        
+                </a>
+            </div> 
+        </li>
+		<!--INVOICES END-->
+		
+		<!--PAYMENTS-->
+		 <li>
+            <div class="btn-group"> 
+                <a href="[conf.site_url]/client/payments">                 
+                    <i class="icon-credit-card"></i>
+                    <span> [lang.lang_payments] </span>        
+                </a>
+            </div> 
+        </li>
+		<!--PAYMENTS END-->
+		
+		<!--QUOTATIONS-->
+        <li>
+            <div class="btn-group">  	
+                <a href="[conf.site_url]/client/quotations/list">			
+                    <i class="icon-paste"></i> 
+                    <span> [lang.lang_my_quotations] </span>
+					<label class="label label-success  pull-right"> [client_quotations_count.all_quotations;onformat=runtime_number] </label>
+                </a>
+            </div> 
+        </li>
+		<!--QUOTATIONS END-->
+		
+		<!--TICKETS-->
+        <li>
+            <div class="btn-group">	
+                <a href="[conf.site_url]/client/tickets/list">				
+                    <i class="icon-file-text"></i>
+                    <span> [lang.lang_tickets] </span>	
+					<label class="label label-purple  pull-right"> [client_tickets_count.all_open;onformat=runtime_number] </label>
+                </a>
+            </div>
+        </li>
+		<!--TICKETS END-->
+		
+		<!--BUGS-->
+        <li> 
+            <div class="btn-group">	
+                <a href="[conf.site_url]/client/bugs/list">			
+                    <i class="icon-bug"></i>
+                    <span> [lang.lang_report_bugs] </span>
+					 <label class="label label-warning  pull-right"> [client_bugs_count.all_open;onformat=runtime_number] </label>
+                </a>
+            </div>
+        </li>
+		<!--BUGS END-->
+		
+		<!--USERS-->
+        <li>
+            <div class="btn-group">	
+                <a href="[conf.site_url]/client/users/view">				
+                    <i class="icon-group"></i>
+                    <span> [lang.lang_users] </span>	
+                </a>
+            </div>
+        </li>
+        <!--USERS END-->
+		
+		<!--COMPANY PROFILE-->
+        <li>
+            <div class="btn-group">
+                <a href="[conf.site_url]/client/profile"> 
+					<i class="icon-briefcase"></i> 
+					<span> [lang.lang_company_profile] </span>
+                </a>
+            </div>
+        </li>
+		<!--COMPANY PROFILE END-->
+
+        <!--LOGOUT-->
+        <li>
+            <div class="btn-group dropup">
+                <a href="[conf.site_url]/client/login/logout">
+                    <i class="icon-off"></i> <span>[lang.lang_logout]</span>
+                </a>
+            </div>
+        </li>
+        <!--LOGOUT END-->
+    </ul>
+</div>

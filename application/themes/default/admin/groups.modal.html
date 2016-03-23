@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_EDIT_GROUP_PERMISSIONS_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_group_permissions_table] == 1;comm]-->
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover modal-table">
+        <thead>
+          <tr>
+            <th bgcolor="#FAFAFA"><strong> [lang.lang_category]</strong></th>
+            <th>[lang.lang_view_item]</th>
+            <th>[lang.lang_add]</th>
+            <th>[lang.lang_edit]</th>
+            <th>[lang.lang_delete]</th>
+            <th width="100px">[lang.lang_permission_level]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td bgcolor="#999999"><strong>
+              <!--[blk1.component;block=tr;comm;onformat=runtime_group_name;ope=max:25]-->
+              </strong></td>
+            <td id="[blk1.component;block=tr;noerr]_view_item" bgcolor="#999999"><!--[blk1.view_item;block=tr;comm;onformat=runtime_permission_setting;htmlconv=no]--></td>
+            <td id="[blk1.component;block=tr;noerr]_add_item" bgcolor="#999999"><!--[blk1.add_item;block=tr;comm;onformat=runtime_permission_setting;htmlconv=no]--></td>
+            <td id="[blk1.component;block=tr;noerr]_edit_item" bgcolor="#999999"><!--[blk1.edit_item;block=tr;comm;onformat=runtime_permission_setting;htmlconv=no]--></td>
+            <td id="[blk1.component;block=tr;noerr]_delete_item" bgcolor="#999999"><!--[blk1.delete_item;block=tr;comm;onformat=runtime_permission_setting;htmlconv=no]--></td>
+            <td bgcolor="#999999"><span style="font-size:14px;"><a href="#" id="[blk1.component;block=tr]" 
+                                  data-type="select" 
+                                  data-pk="[blk1.groups_id;block=tr]" 
+                                  data-name="[blk1.component;block=tr]"
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-group-permissions">[blk1.level;block=tr]</a></span>
+              <!--editable.js groups id-->
+              <script>
+                                  $(function(){
+                                      $('#[blk1.component;block=tr]').editable({
+									     ajaxOptions: {dataType: 'json'},
+                                          value: '',
+										  //preset permission levels
+                                          /*source: [{value: 0,text: "0"},
+										           {value: 1,text: "1"}, 
+										           {value: 2,text: "2"},
+												   {value: 3,text: "3"},
+												   {value: 4,text: "4"}],
+										  lets create this list onformat. 
+										  to allow us to set some categories that start at say level 1 as minimum etc
+										  */
+										  source: [[blk1.component;block=tr;onformat=runtime_permission_levels_select;htmlconv=no]],
+									      //get response and dynamically display new permissios in each row <td>
+                                          success: function(response, newValue){
+										  //check if we have valid json reposne and update each <td> with new permission value
+										  var view_item = response.view_item;
+										  var add_item = response.add_item;
+										  var edit_item = response.edit_item;
+										  var delete_item = response.delete_item;
+										  var extended = response.extended;
+										  $('#[blk1.component;block=tr;noerr]_view_item').html(view_item);
+										  $('#[blk1.component;block=tr;noerr]_add_item').html(add_item);
+										  $('#[blk1.component;block=tr;noerr]_edit_item').html(edit_item);
+										  $('#[blk1.component;block=tr;noerr]_delete_item').html(delete_item);
+										  $('#[blk1.component;block=tr;noerr]_extended').html(extended);
+                                          }
+                                      });
+                                  });
+                                  </script>
+              <!--editable.js select item-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <!--[onshow;block=div;when [settings_general.show_information_tips] == 'yes';comm]-->
+        <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_disable_info]"> <i class="icon-info-sign"></i> </a>
+        <!--info start-->
+        [lang.lang_info_groups_minimum_maximum_levels;noerr]
+        <!--info end-->
+      </div>
+    </div>
+    <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+  </div>
+  <!--WI_EDIT_PERMISSIONS_TABLE-->
+  <!--WI_GROUP_MEMBERS_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_group_members_table] == 1;comm]-->
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover modal-table">
+        <thead>
+          <tr>
+            <th bgcolor="#FAFAFA"><strong> [lang.lang_id]</strong></th>
+            <th bgcolor="#FAFAFA">[lang.lang_full_name]</th>
+            <th>[lang.lang_job_title]</th>
+            <th>[lang.lang_email_address]</th>
+            <th>[lang.lang_change_group]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><!--[blk2.team_profile_id;block=tr;comm;]--></td>
+            <td><!--[blk2.team_profile_full_name;block=tr;comm]--></td>
+            <td><!--[blk2.team_profile_job_position_title;block=tr;comm;ope=max:20]--></td>
+            <td><!--[blk2.team_profile_email;block=tr;comm;ope=max:20]--></td>
+            <td style="min-width:185px;"><a href="#" id="groups_name_[blk2.team_profile_id;noerr]" 
+                                  data-type="select" 
+                                  data-pk="[blk2.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_groups_id">[blk2.groups_name;block=tr;onformat=runtime_check_blank]</a>
+              <!--editable.js pulldown (change groups)-->
+              <script>
+                                 $(function(){
+                                 $('#groups_name_[blk2.team_profile_id;noerr]').editable({
+                                 value: '', 
+                                 source: [
+                                 [vars.editable_groups_list;noerr]
+                                 ]
+                                 });
+                                 });
+                                 </script>
+              <!--editable.js pulldown (change groups)-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_GROUP_MEMBERS_TABLE END-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

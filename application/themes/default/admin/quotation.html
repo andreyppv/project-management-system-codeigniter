@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+          <div class="widget titlebar-widget">
+            <div class="titlebar">
+              <h3>[quotation.quotations_form_title;noerr]</h3>
+            </div>
+          </div>
+      <!--WI_TITLE_BAR-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_QUOATATION_MAIN_CONTAINER-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_quotation] == 1;comm]-->
+          <!--LEFT_SIDE_CONTAINER-->
+          <div class="col-lg-3">
+            <!--WI_QUOTATION_SUMMARY-->
+            <div class="box side-menu-main">
+              <div class="box-head-dark"><i class="icon-list"></i> [lang.lang_quotation_details]
+                <div class="clearfix"></div>
+              </div>
+              <div class="box-content">
+                <table class="table table-bordered table-no-division-border">
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-5">
+                        [lang.lang_id]:</td>
+                      <td class="col-sm-7"><!--[quotation.quotations_id;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_date]:</td>
+                      <td><!--[quotation.quotations_date;noerr;comm;onformat=runtime_date]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_status]:</td>
+                      <td><!--[quotation.quotations_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_client]:</td>
+                      <td><!--[quotation.quotations_by_client;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_reviewed]:</td>
+                      <td><!--[quotation.team_profile_full_name;noerr;comm;onformat=runtime_check_blank_ucwords;ope=max:16]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_date_priced]:</td>
+                      <td><!--[quotation.quotations_reviewed_date;noerr;comm;onformat=runtime_date]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_quote]</td>
+                      <td><strong>
+                        <!--[settings_general.currency_symbol;comm]--><!--[quotation.quotations_amount;noerr;comm;onformat=runtime_number_decimal]-->
+                        </strong></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><div align="center">
+                          <button class="btn btn-mid btn-success" data-toggle="modal" href="#updateQuotationModal">[lang.lang_price_quotation_now]</button>
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_QUOTATION_SUMMARY-->
+          </div>
+          <!--LEFT_SIDE_CONTAINER-->
+          <!--WI_RIGHTSIDE_CONTAINER-->
+          <div class="col-lg-9">
+            <!--WI_CLIENT_DETAILS-->
+            <div class="box">
+              <div class="box-head-dark">
+                <div class="pull-left">
+                  <div class="pull-left">
+                    
+                    <i class="icon-user"></i> [lang.lang_customer_details]</div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="box-content">
+                <table class="table table-bordered table-extra-padd">
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-3"> [lang.lang_company]</td>
+                      <td class="col-sm-9">
+                        <!--[quotation.quotations_company_name;onformat=runtime_check_blank_ucwords;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_name]</td>
+                      <td><!--[quotation.quotations_name;onformat=runtime_check_blank_ucwords;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_email]</td>
+                      <td><!--[quotation.quotations_email;onformat=runtime_check_blank;noerr;comm]--></td>
+                    </tr>
+                    <tr>
+                      <td> [lang.lang_Telephone]</td>
+                      <td><!--[quotation.quotations_telephone;onformat=runtime_check_blank;noerr;comm]--></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_CLIENT_DETAILS-->
+            <!--WI_QUOTATION_ANSWERS-->
+            <div class="widget">
+              <div class="widget-head-light">
+                <div class="pull-left">
+                  <div class="pull-left">
+                    <i class="icon-user"></i> [lang.lang_quotation_form_responses]</div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-content">
+                <table class="table table-bordered quotation-extra-padd">
+                  <tbody>
+                    <tr>
+                      <td><label>
+                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank;comm]-->
+                        </label>
+                        <div>
+                          <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--WI_QUOTATION_ANSWERS-->
+            <!--WI_QUOTATION_NOTES-->
+            <div class="box">
+              <div class="box-head-dark"> [lang.lang_admin_notes] </div>
+              <div class="box-content box-pad"> [quotation.quotations_admin_notes;htmlconv=no]</div>
+            </div>
+            <!--WI_QUOTATION_NOTES-->
+          </div>
+          <!--WI_RIGHTSIDE_CONTAINER_END-->
+        </div>
+        <!--WI_QUOATATION_MAIN_CONTAINER-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_UPDATE_QUOTATION_MODAL-->
+<div class="row">
+  <div id="updateQuotationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/quotation/update/[quotation.quotations_id]" method="post" id="updateQuotation">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_quotation]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_amount]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="quotations_amount" name="quotations_amount" autocomplete="off" value="[quotation.quotations_amount]">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_notes] <strong>([lang.lang_visible_to_client])</strong></label>
+              <div class="col-lg-12">
+                <textarea name="quotations_admin_notes" id="quotations_admin_notes">
+                                        [quotation.quotations_admin_notes;htmlconv=no]
+                                        </textarea>
+                <script>
+ document.addEventListener('DOMContentLoaded', function(){
+                                            CKEDITOR.replace( 'quotations_admin_notes', {
+                                                     toolbar: 'Plain',
+                                                     uiColor: '#ffffff',
+	                                                 height: '120px'
+                                                     });
+});
+
+                                        </script>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_send_email]</label>
+              <div class="col-lg-12">
+                <label class="checkbox">
+                <input type="checkbox" value="yes" name="send_email" checked="checked">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="quotations_id" value="[quotation.quotations_id]">
+            <input type="hidden" name="clients_email" value="[quotation.quotations_email]">
+            <input type="hidden" name="client_users_full_name" value="[quotation.quotations_name]">
+            <input type="hidden" name="quotations_reviewed_by_id" value="[vars.my_id]">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="submit" name="submit" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_UPDATE_QUOTATION_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_UPDATE_QUOTATION_VALIDATION-->
+<script>
+$().ready(function(){
+    //USED BY: WI_UPDATE_QUOTATION_VALIDATION
+    //REQUIRES: jquery.validate.js
+    $("#updateQuotation").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            quotations_amount: {
+                required: true,
+                number: true
+            }
+        },
+        messages: {
+            quotations_amount: {
+                required: "[lang.lang_field_is_required]",
+                number: "[lang.form_field_is_not_a_number]"
+            }
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_UPDATE_QUOTATION_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

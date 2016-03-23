@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <div class="mainbar">
+<!----------------------COMMON PAGE HEADING--------------------------------->
+<!--[onload;file=common.heading.html;getbody;comm]-->
+<!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <div class="container">
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <!--[onload;file=common.settings.header.html;getbody;comm]-->
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="widget">
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <!--[onload;file=common.settings.menu.html;getbody;comm]-->
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+                <div class="project-info-tabs">
+                  <!--actions navigation end-->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                        <h3>[lang.lang_invoice_settings]</h3>
+                        </span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--actions navigation end-->
+                  <!--WI_GENERAL_SETTINGS_FORM-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_invoice_settings] == 1;comm]-->
+                    <div class="col-md-12">
+                      <form class="form-horizontal" action="[conf.site_url]/admin/settings/invoices/edit" method="post" id="editPaypalSettings">
+                        <div class="widget wtabs">
+                          <div class="widget-content">
+                            <table class="table table-bordered table-hover table-forms">
+                              <thead>
+                                <tr>
+                                  <th class="col-md-2">[lang.lang_item]</th>
+                                  <th>[lang.lang_value]</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>[lang.lang_allow_partial_payments]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="settings_invoices_allow_partial_payment" id="settings_invoices_allow_partial_payment" data-partial-payment-preselected="[invoices.settings_invoices_allow_partial_payment;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_email_overdue_reminder]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="settings_invoices_email_overdue_reminder" id="settings_invoices_email_overdue_reminder" data-email-overdue-preselected="[invoices.settings_invoices_email_overdue_reminder;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_invoice_notes]</td>
+                                  <td>
+                                  <div class="form-group form-group-standard">
+                                      <div class="col-lg-11">
+                                        <textarea name="settings_invoices_notes" id="settings_invoices_notes">
+                                        [invoices.settings_invoices_notes;htmlconv=no;noerr]
+                                        </textarea>
+                                        <script>
+document.addEventListener('DOMContentLoaded', function(){
+                                            CKEDITOR.replace( 'settings_invoices_notes', {
+                                                     toolbar: 'Basic',
+                                                     uiColor: '#ffffff',
+	                                                 height: '120px'
+                                                     });
+});
+
+                                        </script>
+                                    </div>
+                                    </div></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="widget-foot">
+                            <div class="bns-info-div pull-left">[lang.lang_these_settings_will_not_apply_to] </div>
+                            <div class="bns-info-div pull-right">
+                              <!--control submit form button-->
+                              <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+                              <!--control submit form button-->
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <!--WI_SETTINGS_FORM-->
+                  <!--wi_tabs_notification-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--wi_tabs_notification-->
+                </div>
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_INVOICES_SETINGS_FORM-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_INVOICES_SETINGS_FORM
+	//ACTIONS: preselect form fields
+    //REQUIRES: select2.js
+		
+        //get the preselected values from data atrributes
+		var allow_partial_payment_preselected = $("#settings_invoices_allow_partial_payment").attr("data-partial-payment-preselected");
+		var overdue_reminder_preselected = $("#settings_invoices_email_overdue_reminder").attr("data-email-overdue-preselected");
+
+       //pre-select data in pull down lists
+       $("#settings_invoices_allow_partial_payment").select2().select2('val', allow_partial_payment_preselected);
+       $("#settings_invoices_email_overdue_reminder").select2().select2('val', overdue_reminder_preselected);
+
+});
+</script>
+<!--JS_INVOICES_SETINGS_FORM-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

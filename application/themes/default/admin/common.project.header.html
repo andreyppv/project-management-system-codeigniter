@@ -1,0 +1,60 @@
+        <!--WI_PROJECT_HEADER-->
+          <div class="headerbar">
+            <div class="widget" style="width: 100%; background: #fff; padding: 7px;">
+              <div class="headerbar-project-title col-lg-8">
+                <h3 class="project-title"><a href="[vars.return_link;noerr]">[rows4.projects_title;noerr]</a><button class="btn btn-success btn-lg" href="#editProjectModal"  style="font-size: 11px; margin-left:20px; margin-top:-5px;" data-toggle="modal"> 
+                    <!--[onshow;block=button;when [vars.my_group] == 1;comm]-->
+                    [lang.lang_edit_project_details]
+                  </button>
+                </h3>
+                
+              </div>
+		      <div class="clearfix"></div>
+            </div>
+          </div>
+        <!--WI_PROJECT_HEADER-->
+        <div class="container">
+        <!--WI_NOTICE_ERROR-->
+        <div class="row" id="wi_notice_error">
+          <!--[onshow;block=div;when [visible.wi_notice_error] == 1;comm]-->
+          <div class="col-md-12 bns-pull-center">
+            <div class="alert alert-warning">[notices.error;noerr;htmlconv=no] </div>
+          </div>
+        </div>
+        <!--WI_NOTICE_ERROR-->
+        <!--WI_NOTICE_SUCCESS-->
+        <div class="row" id="wi_notice_success">
+          <!--[onshow;block=div;when [visible.wi_notice_success] == 1;comm]-->
+          <div class="col-md-12 bns-pull-center">
+            <div class="alert alert-success">[notices.success;noerr;htmlconv=no] </div>
+          </div>
+        </div>
+        <!--WI_NOTICE_SUCCESS-->
+        </div>
+        <!--WI_NOTICE_ERROR_NOTY-->        
+        <script type="text/javascript">
+          <!--[onshow;block=script;when [visible.wi_notice_error_noty] == 1;comm]-->
+    $().ready(function() {
+                noty({
+                    text: '[notices.error;noerr;htmlconv=no]',
+                    layout: 'bottomRight',
+                    type: 'warning',
+                    timeout: [settings_general.notifications_display_duration;noerr]
+                });
+             });
+    </script>
+        <!--WI_NOTICE_ERROR_NOTY-->      
+        <!--WI_NOTICE_SUCCESS_NOTY-->        
+        <script type="text/javascript">
+          <!--[onshow;block=script;when [visible.wi_notice_success_noty] == 1;comm]-->
+    $().ready(function() {
+                noty({
+                    text: '[notices.success;noerr;htmlconv=no]',
+                    layout: 'bottomRight',
+                    type: 'information',
+                    timeout: [settings_general.notifications_display_duration;noerr]
+                });
+             });
+    </script>
+        <!--WI_NOTICE_SUCCESS_NOTY-->
+

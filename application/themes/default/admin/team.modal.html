@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="ModalPopUp">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<div class="content">
+  <!--WI_EDIT_TEAM_MEMBER_DETAILS_TABLE-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_edit_team_member_details_table] == 1;comm]-->
+    <div class="col-md-12">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td style="border-top:0;"><strong>
+              <div class="avatar pull-left"> <img class="avatar-large image-boardered" src="[conf.site_url;noerr]/files/avatars/[row.team_profile_avatar_filename;block=tr;onformat=runtime_check_avatar]" alt=""/> </div>
+              </strong></td>
+            <td style="border-top:0;"><!---------------------------SIMPLE AJAX FILEUPLOAD---------------------->
+              <div>
+                <!--[onshow;block=div;when [visible.wi_upload_avatar] == 1;comm]-->
+                <!--upload button-->
+                <div id="upload-button-container">
+                  <input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button" value="[lang.lang_choose_file]">
+                </div>
+                <!--upload button end-->
+                <!--file info-->
+                <div id="file-info-div"> </div>
+                <!--file info end-->
+                <!--progress bar-->
+                <div id="progress-container">
+                  <div class="progress active progress-table">
+                    <div id="progress-bar"
+                         class="progress-bar progress-bar-primary progress-bar-table" 
+                         role="progressbar" 
+                         aria-valuenow="100" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100"
+                         style="width:0%"></div>
+                  </div>
+                </div>
+                <!--progress bar end-->
+                <!--results div-->
+                <div id="results-container" style="display:none;"> </div>
+                <!--results info end-->
+              </div>
+              <!---------------------------SIMPLE AJAX FILEUPLOAD END---------------------->
+            </td>
+          </tr>
+          <!--<tr>
+            <td><strong> [lang.lang_id]</strong></td>
+            <td><span class="label label-info">[row.team_profile_id;block=tr;onformat=runtime_check_blank]</span></td>
+          </tr>-->
+          <tr>
+            <td><strong> [lang.lang_full_name]</strong></td>
+            <td><a href="#" id="team_profile_full_name" 
+                                  data-type="text" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_full_name" 
+                                  class="editable_area">[row.team_profile_full_name;noerr] </a></td>
+          </tr>
+          <tr>
+            <!--[onshow;block=tr;when [vars.my_group] == 1;comm]-->
+            <td><strong> [lang.lang_job_title]</strong></td>
+            <td><a href="#" id="team_profile_job_position_title" 
+                                  data-type="text" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_job_position_title" 
+                                  class="editable_area">[row.team_profile_job_position_title;noerr] </a></td>
+          </tr>
+          <tr>
+            <td><strong> [lang.lang_email_address]</strong></td>
+            <td><a href="#" id="client_users_email" 
+                                  data-type="text" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_email" 
+                                  class="editable_area">[row.team_profile_email;noerr] </a></td>
+          </tr>
+          <tr>
+            <td><strong> [lang.lang_password]</strong></td>
+            <td><a href="#" id="team_profile_password" 
+                                  data-type="password" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_password" 
+                                  class="editable_area">[hidden]</a></td>
+          </tr>
+          <tr>
+            <td><strong> [lang.lang_telephone]</strong></td>
+            <td><a href="#" id="team_profile_telephone" 
+                                  data-type="text" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_telephone"
+                                  class="editable_area">[row.team_profile_telephone;noerr] </a></td>
+          </tr>
+
+          <script>
+            $.ajax({
+              url: "http://pms.isodeveloper.com/__freshbooksapi/_info.php?rate&profileid=[row.team_profile_id]"
+            }).done(function(data){
+              $("#teamprofilehourlyrate").text(data);
+            });
+
+            $.ajax({
+              url: "http://pms.isodeveloper.com/__freshbooksapi/_info.php?yesterdayhours&profileid=[row.team_profile_id]"
+            }).done(function(data){
+              $("#teamprofilehoursyesterday").text(data);
+            });
+
+            $.ajax({
+              url: "http://pms.isodeveloper.com/__freshbooksapi/_info.php?todayhours&profileid=[row.team_profile_id]"
+            }).done(function(data){
+              $("#teamprofilehourstoday").text(data);
+            });
+
+            $.ajax({
+              url: "http://pms.isodeveloper.com/__freshbooksapi/_info.php?weekhours&profileid=[row.team_profile_id]"
+            }).done(function(data){
+              $("#teamprofilehoursweek").text(data);
+            });
+
+            $.ajax({
+              url: "http://pms.isodeveloper.com/__freshbooksapi/_info.php?skills&profileid=[row.team_profile_id]"
+            }).done(function(data){
+              $("#teamprofileskills").text(data);
+            });
+
+            $.ajax({
+              url: "http://pms.isodeveloper.com/__freshbooksapi/_info.php?amountpaid&profileid=[row.team_profile_id]"
+            }).done(function(data){
+              $("#teamprofileamountpaidtodeveloper").text(data);
+            });
+
+            $(document).ready(function(){
+
+              $('#timedoctor_key').click(function(){
+                var tdWin = window.open(
+                    decodeURIComponent('[config.timedoctor_url_auth_code]'),
+                    'tdWin',
+                    'width=1000,height=700,resizable=no,scrollbars=no,status=no'
+                  );
+                tdWin.focus();
+              });
+            });
+
+          </script>
+          <tr>
+            <td><strong> Hourly Rate</strong></td>
+            <td>$<span id="teamprofilehourlyrate"></span>/hr</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked Yesterday</strong></td>
+            <td><span id="teamprofilehoursyesterday"></span> hours</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked Today</strong></td>
+            <td><span id="teamprofilehourstoday"></span> hours</td>
+          </tr>
+          <tr>
+            <td><strong> Total Hours Worked This Week</strong></td>
+            <td><span id="teamprofilehoursweek"></span> hours</td>
+          </tr>
+          <tr>
+            <td><strong> Skill Set</strong></td>
+            <td><span id="teamprofileskills"></span></td>
+          </tr>
+          <tr>
+            <td><strong> Amount Paid to Developer</strong></td>
+            <td>$<span id="teamprofileamountpaidtodeveloper"></span></td>
+          </tr>
+
+          <tr>
+            <td><strong> [lang.lang_receive_project_notifications]</strong></td>
+            <td><a href="#" id="notifications_system" 
+                                  data-type="select" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_notifications_system">[row.team_profile_notifications_system;block=tr;onformat=runtime_check_blank]</a>
+              <!--editable pulldown js end-->
+              <script>
+                                 $(function(){
+                                 $('#notifications_system').editable({
+                                 value: '', 
+                                 source: [{value: 'yes', text: '[lang.lang_yes]'},{value: 'no', text: '[lang.lang_no]'}]
+                                 });
+                                 });
+                                 </script>
+              <!--editable pulldown js end-->
+            </td>
+          </tr>
+          <tr>
+            <!--[onshow;block=tr;when [vars.my_group] == 1;comm]-->
+            <td><strong> [lang.lang_group]</strong></td>
+            <td><a href="#" id="groups_name" 
+                                  data-type="select" 
+                                  data-pk="[row.team_profile_id;noerr]" 
+                                  data-url="[conf.site_url;noerr]/admin/ajax/editable-team-profile" 
+                                  data-name="team_profile_groups_id">[row.groups_name;block=tr;onformat=runtime_check_blank]</a>
+              <!--editable pulldown js end-->
+              <script>
+                                 $(function(){
+                                 $('#groups_name').editable({
+                                 value: '', 
+                                 source: [
+                                 [vars.editable_groups_list;noerr]
+                                 ]
+                                 });
+                                 });
+                                 </script>
+              <!--editable pulldown js end-->
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Time Doctor ID</strong></td>
+            <td>
+              <a href="javascript:void(0)" id="timedoctor_key">[row.team_profile_timedoctorid;block=tr;onformat=runtime_check_blank;ope=max:23]
+              <i class="glyphicon glyphicon-refresh"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--WI_EDIT_TEAM_MEMBER_DETAILS_TABLE-->
+  <!--WI_NOTIFICATION-->
+  <div class="row">
+    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+    <div class="col-md-12">
+      <div class="widget">
+        <div class="widget-content widget-big-box"> [vars.notification;noerr]</div>
+      </div>
+    </div>
+  </div>
+  <!--WI_NOTIFICATION-->
+</div>
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js">
+<!--[onshow;block=script;when [visible.wi_upload_avatar] == 1;comm]-->
+</script>
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<!--JS_FILE_UPLOAD-->
+<script>
+<!--[onshow;block=script;when [visible.wi_upload_avatar] == 1;comm]-->
+//-------------------------------------------------------------------------------
+//[DYNAMIC (TBS) VARIABLES & LANGUAGE] 
+//-------------------------------------------------------------------------------
+//variabled
+var upload_url = '[conf.site_url;noerr]/common/ajax/upload-avatar/team';
+//language
+var lang_file_too_big = "[lang.upload_invalid_filesize;noerr]";
+var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_uploaded;noerr]";
+var lang_upload_invalid_filetype = "[lang.lang_upload_invalid_filetype;noerr]";
+var lang_upload_invalid_filesize = "[lang.lang_upload_invalid_filesize;noerr]";
+var lang_upload_system_error = "[lang.lang_upload_system_error;noerr]";
+
+</script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.upload.avatars.js">
+<!--[onshow;block=script;when [visible.wi_upload_avatar] == 1;comm]-->
+</script>
+<!--JS_FILE_UPLOAD_END-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <div class="mainbar">
+<!----------------------COMMON PAGE HEADING--------------------------------->
+<!--[onload;file=common.heading.html;getbody;comm]-->
+<!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <div class="container">
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <!--[onload;file=common.settings.header.html;getbody;comm]-->
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="widget">
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <!--[onload;file=common.settings.menu.html;getbody;comm]-->
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+                <div class="project-info-tabs">
+                  <!--actions navigation end-->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                        <h3>[lang.lang_general_settings]</h3>
+                        </span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--actions navigation end-->
+                  <!--WI_GENERAL_SETTINGS_FORM-->
+                  <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_general_settings] == 1;comm]-->
+                    <div class="col-md-12">
+                      <form class="form-horizontal" action="[conf.site_url]/admin/settings/general/edit" method="post" id="editGeneralSettings">
+                        <div class="widget wtabs">
+                          <div class="widget-content">
+                            <table class="table table-bordered table-hover table-forms">
+                              <thead>
+                                <tr>
+                                  <th class="col-md-3">
+                                    [lang.lang_item]</th>
+                                  <th>[lang.lang_value]</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>[lang.lang_dashboard_title]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="dashboard_title" name="dashboard_title" value="[general.dashboard_title;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_language]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                                                            <select name="language" id="language" data-language-preselected="[general.language;noerr]">
+                                         <!--[lists.all_languages;noerr;htmlconv=no;protect=no;comm]-->
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_theme]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="theme" id="theme" data-theme-preselected="[general.theme;noerr]">
+                                        <option value="default">[lang.lang_default]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_date_format]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="date_format" id="date_format" data-date-format-preselected="[general.date_format;noerr]">
+                                        <option value="d-m-Y">d-m-Y</option>
+                                        <option value="m-d-Y">m-d-Y</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_general_page_limits]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="results_limit" name="results_limit" value="[general.results_limit;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_messages_page_limit]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="messages_limit" name="messages_limit" value="[general.messages_limit;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_timeline_display_limits]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="timeline_limit" name="timeline_limit" value="[general.timeline_limit;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_currency]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="currency_code" name="currency_code" value="[general.currency_code;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>                                
+                                <tr>
+                                  <td>[lang.lang_currency_symbol]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="currency_symbol" name="currency_symbol" value="[general.currency_symbol;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_show_information_tips]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="show_information_tips" 
+                          id="show_information_tips"
+                          data-show-information-preselected="[general.show_information_tips;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_allow_client_registration]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="client_registration" 
+                          id="client_registration"
+                          data-show-information-preselected="[general.client_registration;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>                                <tr>
+                                  <td>[lang.lang_notifications_display_durations] (mili-seconds)</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="notifications_display_duration" name="notifications_display_duration" value="[general.notifications_display_duration;noerr]" autocomplete="off">
+                                  </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_product_purchase_code]                         <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_product_purchase_code]"> <i class="icon-info-sign"></i> </a></td>
+                                  <td><span class="col-sm-12 col-md-8 no-padding-both">
+                                    <input type="text" class="form-control" id="product_purchase_code" name="product_purchase_code" value="[general.product_purchase_code;noerr]" autocomplete="off">
+                                  </span></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="widget-foot">
+                            <div class="bns-info-div pull-right">
+                              <!--control buttons - restore default settings-->
+                              <a class="btn btn-danger confirm-url-action"
+                                          href="[conf.site_url]/admin/settings/general/restore-default"
+                                          data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                              data-popconfirm-no="[lang.lang_no;noerr]"
+                                          data-popconfirm-title="[lang.lang_are_you_sure;noerr]"
+                                          data-popconfirm-placement="left">
+                              [lang.lang_reset_default_settings] </a>
+                              <!--control buttons - restore default settings-->
+                              <!--control submit form button-->
+                              <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+                              <!--control submit form button-->
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <!--WI_SETTINGS_FORM-->
+                  <!--wi_tabs_notification-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--wi_tabs_notification-->
+                </div>
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_GENERAL_SETINGS_FORM-->
+<script>
+//USED BY: ADD_NEW_TASK_MODAL
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#date_format").select2({
+        allowClear: false
+    });
+    $("#language").select2({
+        allowClear: false
+    });
+</script>
+<!--JS_GENERAL_SETINGS_FORM-->
+<!--JS_GENERAL_SETINGS_FORM-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_GENERAL_SETINGS_FORM
+	//ACTIONS: preselect form fields
+    //REQUIRES: select2.js
+		
+        //get the preselected values from data atrributes
+		var date_format_preselected = $("#date_format").attr("data-date-format-preselected");
+		var theme_preselected = $("#theme").attr("data-theme-preselected");
+		var language_preselected = $("#language").attr("data-language-preselected");
+		var information_tips_preselected = $("#show_information_tips").attr("data-show-information-preselected");
+		var client_registration_preselected = $("#client_registration").attr("data-show-information-preselected");
+
+
+       //pre-select data in pull down lists
+       $("#date_format").select2().select2('val', date_format_preselected);
+       $("#theme").select2().select2('val', theme_preselected);
+       $("#language").select2().select2('val', language_preselected);
+       $("#show_information_tips").select2().select2('val', information_tips_preselected);
+       $("#client_registration").select2().select2('val', client_registration_preselected);
+
+});
+</script>
+<!--JS_GENERAL_SETINGS_FORM-->
+<!--JS_GENERAL_SETINGS_FORM-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_GENERAL_SETINGS_FORM
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#editGeneralSettings").validate({
+		rules: {
+             language: "required",
+			 date_format: "required",
+			 dashboard_title: "required",
+			 currency_code: "required",
+			 currency_symbol: "required",
+			 dashboard_title: "required",
+			 theme: "required",
+			 results_limit: {
+                required: true,
+                number: true
+            },
+			messages_limit: {
+                required: true,
+                number: true
+            },
+			timeline_limit: {
+                required: true,
+                number: true
+            }
+		},
+		messages: {
+			language: "[lang.lang_field_is_required]",
+			date_format: "[lang.lang_field_is_required]",
+			dashboard_title: "[lang.lang_field_is_required]",
+			currency_code: "[lang.lang_field_is_required]",
+			currency_symbol: "[lang.lang_field_is_required]",
+			dashboard_title: "[lang.lang_field_is_required]",
+			theme: "[lang.lang_field_is_required]",
+			results_limit: {
+                required: "[lang.lang_field_is_required]",
+                number: "[lang.lang_not_a_valid_number]"
+            },
+			messages_limit: {
+                required: "[lang.lang_field_is_required]",
+                number: "[lang.lang_not_a_valid_number]"
+            },
+			timeline_limit: {
+                required: "[lang.lang_field_is_required]",
+                number: "[lang.lang_not_a_valid_number]"
+            }
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_GENERAL_SETINGS_FORM-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

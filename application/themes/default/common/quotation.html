@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="style/bootstrap.css" rel="stylesheet">
+<link href="style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="body-light">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<div class="content quotation-form">
+  <div class="container">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+    <!--WI_QUOTATION_FORM-->
+    <div class="row">
+      <!--[onshow;block=div;when [visible.wi_quotation_form] == 1;comm]-->
+      <div class="col-lg-12">
+        <form action="[conf.site_url]/common/quotation/save/[vars.quotation_form_id]" method="post" id="" class="formbuilder">
+          <div class="box quotation-form">
+            <div class="box-head-light box-head-bordered">[vars.quotationforms_title;noerr]</div>
+            <div class="box-content box-pad">
+              <!--WI_FORM_CONTACT_DETAILS_NEW_CLIENT-->
+              <div>
+              
+                <div class="heading-bar">
+                  <h4>[lang.lang_contact_information]</h4>
+                </div>
+                <div>
+                  <div style="margin-bottom:10px;" class="form-group">
+                    <label class="control-label">
+                    [lang.lang_company_name]
+                    </label>
+                    <div>
+                    <input type="text" autocomplete="off" name="quotations_company_name" id="quotations_company_name" class="form-control" data-rule-required="true" value="[vars.my_company_name]">
+                    <input type="hidden" name="required[quotations_company_name]" value="[lang.lang_company_name]">
+                    </div>
+                  </div>
+                  <div style="margin-bottom:10px;" class="form-group">
+                    <label class="control-label">
+                    [lang.lang_full_name]</label>
+                    <div>
+                      <input type="text" autocomplete="off" name="quotations_name" id="required[quotations_name]" class="form-control" data-rule-required="true"  value="[vars.my_name]">
+                      <input type="hidden" name="required[quotations_name]" value="[vars.my_name]">
+                    </div>
+                  </div>
+                  <div style="margin-bottom:10px;" class="form-group">
+                    <label class="control-label">
+                    [lang.lang_email_address]</label>
+                    <div>
+                      <input type="text" autocomplete="off" name="quotations_email" id="required[quotations_email]" class="form-control" data-rule-required="true" value="[vars.my_email]">
+                      <input type="hidden" name="required[quotations_email]" value="[lang.lang_email_address]">
+                    </div>
+                  </div>
+                  <div style="margin-bottom:10px;" class="form-group">
+                    <label class="control-label">
+                    [lang.lang_telephone]<strong>*</strong></label>
+                    <div>
+                      <input type="text" autocomplete="off" name="quotations_telephone" id="required[quotations_telephone]" class="form-control" data-rule-required="true" value="[vars.my_telephone]">
+                      <input type="hidden" name="required[quotations_telephone]" value="[lang.lang_telephone]">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--WI_FORM_CONTACT_DETAILS_NEW_CLIENT-->
+       
+              <!--WI_FORM_PROJECT_DETAILS-->
+              <div>
+                <div class="heading-bar"  style="margin-top:35px;">
+                  <h4>[lang.lang_project_details]</h4>
+                </div>
+                <!--rendered form-->
+                <div>
+                  <!--[vars.rendered_form;htmlconv=no;comm;protect=no]-->
+                </div>
+                <!--rendered form-->
+              </div>
+            </div>
+            <!--WI_FORM_PROJECT_DETAILS-->
+            <div class="box-footer">
+              <div class="pull-left"> <strong>*[lang.lang_required_fields;noerr]</strong></div>
+              <div class="pull-right">
+              
+              <!--original form title and structured form-->
+              <input type="hidden" name="quotations_form_title" value="[vars.quotationforms_title]">
+              <input type="hidden" name="form_session_code" value="[vars.form_session_code]">
+              <!--original form title and structured form-->
+              
+                <input class="btn btn-info" type="submit" name="submit" value="[lang.lang_request_a_quotation]">
+                
+                
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--WI_QUOTATION_FORM-->
+    <!--WI_QUOTATION_SELECTOR-->
+    <div class="row">
+      <!--[onshow;block=div;when [visible.wi_quotation_selector] == 1;comm]-->
+      <div class="col-lg-12 quotation-selector">
+        <form action="[conf.site_url]/common/quotation/select" method="post">
+          <div class="box">
+            <div class="box-content box-pad">
+              <div class="heading-bar">
+                <h4>
+                  
+                 [lang.lang_select_a_quotation_form]</h4>
+              </div>
+              <div class="" align="center">
+                <!--select2.js pulldown-->
+                <select id="quotation_form" name="quotation_form">
+                  
+                  
+                  
+                  
+                  
+                  
+                     <!--[lists.all_quotation_forms;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                
+                
+                
+                
+                </select>
+              </div>
+            </div>
+            <div class="box-footer">
+              <div class="pull-left"></div>
+              <div class="pull-right">
+                <button class="btn btn-info btn-mid" type="submit"><i class="icon-plus"></i>
+                
+                [lang.lang_next]</button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--WI_QUOTATION_SELECTOR-->
+    <!--WI_NOTIFICATION-->
+    <div class="row">
+      <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+      <div class="col-md-12 quotation-notification">
+        <div class="widget">
+          <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+        </div>
+      </div>
+    </div>
+    <!--WI_NOTIFICATION-->
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#quotation_form").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_SELECT_LISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

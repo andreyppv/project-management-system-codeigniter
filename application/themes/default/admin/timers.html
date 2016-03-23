@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+
+<body>
+    <!--JS SECTION - ONLOAD-->
+    <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+    <!--JS SECTION - ONLOAD-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--[onload;file=../common/include.debug.html;getbody;comm]-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!--[onload;file=common.header.html;getbody;comm]-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!-- Main content starts -->
+    <div class="content">
+        <!-- Main bar -->
+        <div class="mainbar">
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!--[onload;file=common.heading.html;getbody;comm]-->
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!-- Matter -->
+            <div class="matter">
+                <!--WI_INVOICE_ITEMS_SEARCH-->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/timers" method="post">
+                                <div class="form-group">
+                                    <!--[onshow;block=div;when [vars.my_group] == 1;comm]-->
+                                    <!--select2.js pulldown-->
+                                    <select id="team_members" class="timerMembers" data-placeholder="[lang.lang_team_member]" name="team_profile_id">
+                                        <option></option>
+                                        <!--[vars.team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="date_from" class="form-control pickadate" placeholder="Date from" value="[vars.date_from]" name="date_from">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="date_to" class="form-control  pickadate" placeholder="Date to" value="[vars.date_to]" name="date_to">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" name="btn_search">[lang.lang_search_timers]</button>
+                                </div>
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </div>
+                <!--WI_INVOICE_ITEMS_SEARCH END-->
+                <div class="container">
+                    <!----------------------COMMON NOTICES--------------------------------->
+                    <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+                    <!----------------------COMMON NOTICES--------------------------------->
+                    <!--WI_TIMERS_TABLE-->
+                    <div class="row fullscreen-mode">
+                        <!--[onshow;block=div;when [visible.wi_timers_table] == 1;comm]-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content">       
+                                    <table id="activityTable" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>[lang.lang_project]</th>
+                                                <th>[lang.lang_task_title]</th>
+                                                <th>Assigned by</th>
+                                                <th>Status</th>
+                                                <th>[lang.lang_time]</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <!--[result.projects_title;block=tr;comm;ope=max:150;onformat=runtime_check_blank_ucwords]-->
+                                                </td>
+                                                <td>
+                                                    <!--[result.tasks_text;block=tr;comm;ope=max:150;onformat=runtime_check_blank_ucwords]-->
+                                                </td>
+                                                <td>
+                                                    <!--[result.team_profile_full_name;block=tr;comm;ope=max:100;onformat=runtime_check_blank_ucwords]-->
+                                                </td>
+                                                <td>
+                                                    <!--[result.tasks_status;block=tr;comm;ope=max:100;onformat=runtime_check_blank_ucwords]-->
+                                                </td>
+                                                <td>
+                                                    <!--[result.created_on;block=tr;comm;;onformat=runtime_datetime]-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="widget-foot">
+                                        [vars.pagination;noerr;htmlconv=no]
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_PROJECTS_TABLE-->
+                    <!--WI_NOTIFICATION-->
+                    <div class="row">
+                        <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_NOTIFICATION-->
+                </div>
+            </div>
+            <!-- Matter ends -->
+        </div>
+        <!-- Mainbar ends -->
+        <div class="clearfix"></div>
+    </div>
+    <!-- Content ends -->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!--[onload;file=../common/common.footer.html;getbody;comm]-->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+    <!--JS_PULLDOWNLISTS-->
+    <script>
+        $("#team_members").val([vars.team_profile_id]);
+        
+        $("#team_members").select2({
+            allowClear: true
+        });
+    </script>
+    <!--JS_PULLDOWNLISTS-->
+    
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    <script>
+        /*$(document).ready(function() {
+            if ($("#date_from").val() == '') {
+                var curr = new Date;
+                var first = curr.getDate() - curr.getDay();
+
+                var date = new Date(curr.setDate(first + 1));
+                var month = date.getMonth() + 1
+                var firstday = date.getFullYear() + '-' + ('0' + month).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+                $("#date_to").val(firstday);
+            }
+
+        });*/
+    </script>
+</body>
+
+</html>

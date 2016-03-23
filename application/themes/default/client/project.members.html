@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-3">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-9">
+            <div class="widget">
+              <div class="widget-content-project">
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+                <div class="project-info-tabs">
+                  <!--WI_FILES_NAVIGATION-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="tabs-sub-nav"> <span class="pull-left">
+                        <h3>[lang.lang_project_members]</h3>
+                        </span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_FILES_NAVIGATION-->
+                  <!--WI_FILES_TABLE-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_project_members] == 1;comm]-->
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <table class="table table-bordered table-hover table-files">
+                            <thead>
+                              <tr>
+                                <th><a href="[vars.sortby_filetype;noerr]">[lang.lang_type]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th><a href="[vars.sortby_filename;noerr]">[lang.lang_name]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th><a href="[vars.sortby_uploadedby;noerr]">[lang.lang_email]<i class="icon-sort bns-padded-left"></i></a></th>
+                                <th><a href="[vars.sortby_size;noerr]">
+                                  [lang.lang_telephone]<i class="icon-sort bns-padded-left"></i></a></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!--team members-->
+                              <tr>
+                                <td><!--[members.project_members_project_lead;block=tr;comm;onformat=runtime_project_members_label;htmlconv=no]--></td>
+                                <td><!--[members.team_profile_full_name;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm]--></td>
+                                <td><!--[members.team_profile_email;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><!--[members.team_profile_telephone;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                              </tr>
+                              <!--team members end-->
+                              <!--clients user-->
+                              <tr>
+                                <td><span class="label label-purple">
+                                  [lang.lang_client_users]</span></td>
+                                <td><!--[clients_users.client_users_full_name;block=tr;onformat=runtime_check_blank_ucwords;noerr;comm;ope=max:15]--></td>
+                                <td><!--[clients_users.client_users_email;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><!--[clients_users.client_users_telephone;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <!--clients users end-->
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="widget-foot">
+                            <!--WI_PAGINATION-->
+                            <ul class="pagination pull-right">
+                              [vars.pagination;noerr;htmlconv=no]
+                            </ul>
+                            <!--WI_PAGINATION-->
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_FILES_TABLE-->
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                </div>
+                <div class="clearfix"></div>
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_PULLDOWNLISTS-->
+<script>
+//USED BY: VARIOUS
+//ACTIONS: creates a nice pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#team_profile_id").select2({
+        allowClear: true
+    });
+    $("#project_members_project_lead").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_PULLDOWNLISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

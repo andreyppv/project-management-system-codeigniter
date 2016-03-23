@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-3">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-9">
+            <!--[onshow;block=div;when [visible.wi_file_details] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+                <div class="project-info-tabs">
+                  <!--WI_FILES_NAVIGATION-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="tabs-sub-nav"> <span class="pull-left">
+                        <h3>
+                          <!--[file.files_name;noerr;comm]-->
+                        </h3>
+                        </span> <a class="btn btn-mid btn-success pull-right" href="[conf.site_url;noerr]/client/file/[vars.project_id]/download/[file.files_id;noerr]"><i class="icon-download-alt"></i> [lang.lang_download_file]
+                        <label class="label bg-success-dark">
+                        <!--[file.downloads;noerr;comm]-->
+                        </label>
+                        </a>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--WI_FILES_NAVIGATION-->
+                  <div class="row">
+                    <!--WI_FILE_PREVIEW-->
+                    <div class="col-lg-12">
+                      <div class="widget wtabs">
+                        <!--[onshow;block=div;when [visible.wi_file_details] == 1;comm]-->
+                        <div class="widget-box">
+                          <div class="widget-box-head"><span class="pull-left">[lang.lang_file_preview] (
+                            <!--[file.files_size_human;noerr;onformat=runtime_check_blank;comm]-->
+                            )</span> <span class="pull-right">
+                            <!--[file.uploaded_by;noerr;comm;htmlconv=no]-->
+                            </span> <span class="clearfix"></span> </div>
+                          <div class="widget-box-body">
+                            <!--wi_file_preview_image-->
+                            <div class="file-preview-image-container" align="center">
+                              <!--[onshow;block=div;when [visible.wi_file_preview_image] == 1;comm]-->
+                              <img class="img-responsive" src="[file.file_url;noerr]" > </div>
+                            <!--wi_file_preview_image-->
+                            <!--wi_file_no_preview-->
+                            <div class="file-no-preview">
+                              <!--[onshow;block=div;when [visible.wi_file_no_preview] == 1;comm]-->
+                              [lang.lang_no_preview]
+                            </div>
+                            <!--wi_file_no_preview-->
+                          </div>
+                          <div class="widget-box-footer">
+                            <!--[file.files_date_uploaded;noerr;onformat=runtime_date;comm]-->
+                            (
+                            <!--[file.files_time_uploaded;noerr;comm]-->
+                            )
+                            <div class="file-description">
+                              <!--[file.files_description;noerr;comm]-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--WI_FILE_PREVIEW-->
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <div class="col-lg-12">
+                    <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                    <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                </div>
+                <div class="clearfix"></div>
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+                <!--------------------------------------------TABS-FILE-MESSAGES/COMMENTS---------------------------------------------------->
+                <!--MESSAGES-->
+                <div class="project-info-tabs">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--top actions menu-->
+                      <div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                        <h3>[lang.lang_file_messages]</h3>
+                        </span>
+                        <button data-toggle="modal" class="btn btn-mid btn-success divminimize pull-right" href="#"><i class="icon-plus"></i> [lang.lang_post_new_message] </button>
+                        <div class="clearfix"></div>
+                        <!--message-reply-box-->
+                        <div class="toggle-div message-input" style="display:none;">
+                          <form action="[conf.site_url]/client/file/[vars.project_id;noerr]/add-message/[vars.file_id;noerr]" method="post">
+                            <div class="form-group form-group-standard">
+                              <div class="col-lg-12">
+                                <textarea name="messages_text" id="message_new" cols="20" rows="5"></textarea>
+                                <script>
+            document.addEventListener('DOMContentLoaded', function(){
+             CKEDITOR.replace( 'message_new', {
+                      toolbar: 'Basic',
+                      uiColor: '#ffffff',
+	                  height: '120px'
+                      });
+              });
+
+
+           </script>
+                                <input type="hidden" name="messages_project_id" value="[vars.project_id;noerr]">
+                                <input type="hidden" name="messages_file_name" value="[file.files_name;noerr]">
+                                <input type="hidden" name="messages_file_id" value="[vars.file_id;noerr]">
+                                <input type="hidden" name="messages_by_id" value="[vars.my_id;noerr]">
+                              </div>
+                            </div>
+                            <div class="form-group form-group-standard">
+                              <div class="col-lg-12">
+                                <button class="btn btn-mid btn-primary" type="submit">[lang.lang_post_message]</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!--message-reply-box-->
+                      </div>
+                      <!--top actions menu-->
+                      <!--WI_PROJECT_MESSAGES-->
+                      [messages;block=begin; sub1=(replies)]
+                      <div id="message_[messages.messages_id]">
+                        <!--[onshow;block=div;when [visible.wi_project_file_messages] == 1;comm]-->
+                        <!--message-->
+                        <div class="messaging messaging-boxed"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[messages.avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                          <div class="messaging-container">
+                            <div class="messaging-meta">
+                              <!--posted by-->
+                              <!--[messages.uploaded_by;htmlconv=no;comm]-->
+                              <!--posted by -->
+                              <small class="text-muted pull-right"><i class="icon-time"></i>
+                              <!--[messages.messages_date;comm;onformat=runtime_time_ago;noerr]-->
+                              </small> </div>
+                            <!--message text-->
+                            <div class="messaging-text line-height-normal">
+                              <!--[messages.messages_text;comm;htmlconv=no]-->
+                            </div>
+                            <!--message text-->
+                            <div class="messaging-actions"> <a class="label label-info divminimize pull-left" href="#"> <span class="lowercase">[lang.lang_reply]</span></a>
+                              <div class="clearfix"></div>
+                              <!--message-reply-box-->
+                              <div class="toggle-div message-input" style="display:none;">
+                                <form action="[conf.site_url]/client/file/[vars.project_id;noerr]/add-reply/[vars.file_id;noerr]" method="post">
+                                  <div class="form-group form-group-standard">
+                                    <div class="col-lg-12">
+                                      <textarea name="messages_replies_text" id="message_reply_[messages.messages_id]" cols="20" rows="4"></textarea>
+                                      <script>
+document.addEventListener('DOMContentLoaded', function(){
+                          CKEDITOR.replace( 'message_reply_[messages.messages_id]', {
+                                   toolbar: 'Basic',
+                                   uiColor: '#ffffff',
+			                       height: '120px'
+                                    });
+});
+
+                          </script>
+                                    </div>
+                                  </div>
+                                  <div class="form-group form-group-standard">
+                                    <div class="col-lg-12">
+                                      <input type="hidden" name="messages_replies_message_id" value="[messages.messages_id]">
+                                      <input type="hidden" name="messages_replies_by_id" value="[vars.my_id;noerr]">
+                                      <input type="hidden" name="messages_replies_file_id" value="[vars.file_id;noerr]">
+                                      <input type="hidden" name="messages_file_name" value="[file.files_name;noerr]">
+                                      <input class="btn btn-mid btn-primary" type="submit" name="submit" value="[lang.lang_post_reply]">
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <!--message-reply-box-->
+                            </div>
+                            <!--main message end-->
+                          </div>
+                          <!--reply message-->
+                          [messages_sub1;block=begin]
+                          <div class="messaging-reply" id="reply_[messages_sub1.messages_replies_id]"> <img alt="" src="[conf.site_url;noerr]/files/avatars/[messages_sub1.avatar_filename;onformat=runtime_check_avatar]" class="avatar-small image-boardered pull-left">
+                            <div class="messaging-container">
+                              <div class="messaging-meta">[messages_sub1.uploaded_by;htmlconv=no] <small class="text-muted pull-right"><i class="icon-time"></i>
+                                <!--[messages_sub1.messages_replies_date;comm;onformat=runtime_time_ago;noerr]-->
+                                </small> </div>
+                              <div class="messaging-reply-text">[messages_sub1.messages_replies_text;htmlconv=no]</div>
+                              <div class="messaging-actions"> </div>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                          [messages_sub1;block=end]
+                          <!--reply message end-->
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      [messages;block=end]
+                      <!--WI_PROJECT_MESSAGES_END-->
+                      <!--MESSAGE-FOOTER-->
+                      <div>
+                        <!--WI_PAGINATION-->
+                        <ul class="pagination pull-right">
+                          [vars.pagination;noerr;htmlconv=no]
+                        </ul>
+                        <!--WI_PAGINATION-->
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--MESSAGES-->
+                <!--------------------------------------------TABS-FILE-COMENTS------------------------------------------------------------->
+              </div>
+            </div>
+          </div>
+          <!--WI_NOTIFICATION-->
+          <div class="col-md-9">
+            <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+          <!--WI_NOTIFICATION-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

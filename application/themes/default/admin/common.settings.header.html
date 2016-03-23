@@ -1,0 +1,43 @@
+        <!--WI_NOTICE_ERROR-->
+        <div class="row" id="wi_notice_error">
+          <!--[onshow;block=div;when [visible.wi_notice_error] == 1;comm]-->
+          <div class="col-md-12 bns-pull-center">
+            <div class="alert alert-warning">[notices.error;noerr;htmlconv=no] </div>
+          </div>
+        </div>
+        <!--WI_NOTICE_ERROR-->
+        <!--WI_NOTICE_SUCCESS-->
+        <div class="row" id="wi_notice_success">
+          <!--[onshow;block=div;when [visible.wi_notice_success] == 1;comm]-->
+          <div class="col-md-12 bns-pull-center">
+            <div class="alert alert-success">[notices.success;noerr;htmlconv=no] </div>
+          </div>
+        </div>
+        <!--WI_NOTICE_SUCCESS-->
+        <!--WI_NOTICE_ERROR_NOTY-->        
+        <script type="text/javascript">
+          <!--[onshow;block=script;when [visible.wi_notice_error_noty] == 1;comm]-->
+		$().ready(function() {
+                noty({
+                    text: '[notices.error;noerr;htmlconv=no]',
+                    layout: 'bottomRight',
+                    type: 'warning',
+                    timeout: [settings_general.notifications_display_duration;noerr]
+                });
+             });
+		</script>
+        <!--WI_NOTICE_ERROR_NOTY-->      
+        <!--WI_NOTICE_SUCCESS_NOTY-->        
+        <script type="text/javascript">
+          <!--[onshow;block=script;when [visible.wi_notice_success_noty] == 1;comm]-->
+		$().ready(function() {
+                noty({
+                    text: '[notices.success;noerr;htmlconv=no]',
+                    layout: 'bottomRight',
+                    type: 'information',
+                    timeout: [settings_general.notifications_display_duration;noerr]
+                });
+             });
+		</script>
+        <!--WI_NOTICE_SUCCESS_NOTY-->        
+

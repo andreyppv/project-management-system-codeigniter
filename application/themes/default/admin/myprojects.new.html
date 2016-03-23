@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+
+<body>
+    <!--JS SECTION - ONLOAD-->
+    <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+    <!--JS SECTION - ONLOAD-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--[onload;file=../common/include.debug.html;getbody;comm]-->
+    <!--DEBUG SECTION - ONLOAD-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!--[onload;file=common.header.html;getbody;comm]-->
+    <!--HEADER SECTION - ONLOAD-->
+    <!-- Main content starts -->
+    <div class="content">
+        <!-- Main bar -->
+        <div class="mainbar">
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!--[onload;file=common.heading.html;getbody;comm]-->
+            <!----------------------COMMON PAGE HEADING--------------------------------->
+            <!-- Matter -->
+            <div class="matter">
+                <!--WI_TITLE_BAR-->
+                <div class="widget titlebar-widget">
+                    <div class="titlebar">
+                        <a type="submit" class="btn btn-information btn-mid" href="[conf.site_url]/admin/myprojects?status=all">[lang.lang_all]</a>
+                        <a type="submit" style="margin-left:0;" class="btn btn-success btn-mid" href="[conf.site_url]/admin/myprojects?status=completed">[lang.lang_completed]</a>
+                        <a type="submit" style="margin-left:0;" class="btn btn-info btn-mid" href="[conf.site_url]/admin/myprojects?status=progress">[lang.lang_in_progress]</a>
+                        <a type="submit" class="btn btn-danger btn-mid" href="[conf.site_url]/admin/myprojects?status=schedule">[lang.lang_behind_schedule]</a>
+                    </div>
+                </div>
+                <!--WI_TITLE_BAR-->
+
+                <div class="container">
+                    <script type="text/javascript">
+                        $.ajax({
+                            url: "http://pms.isodeveloper.com/__freshbooksapi/_myprojectsnew.php?userid=[vars.my_id]"
+                        }).done(function(data) {
+                            $("#myprojectsnew").append(data);
+                        });
+                    </script>
+                    <div id="myprojectsnew">
+
+                    </div>
+
+                    <!----------------------COMMON NOTICES--------------------------------->
+                    <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+                    <!----------------------COMMON NOTICES--------------------------------->
+                    <!--WI_PROJECTS_TABLE-->
+                    <div class="row fullscreen-mode">
+                        <!--[onshow;block=div;when [visible.wi_projects_table] == 1;comm]-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th class="[vars.order;onformat=runtime_sort_class;order=project]">
+                                                    <a href="[vars.base][vars.order;onformat=runtime_sort_link;order=project]"><span>[lang.lang_project]</span><span class="sorting-indicator"></span></a>
+                                                </th>
+                                                <th class="[vars.order;onformat=runtime_sort_class;order=client]">
+                                                    <a href="[vars.base][vars.order;onformat=runtime_sort_link;order=client]"><span>[lang.lang_client]</span><span class="sorting-indicator"></span></a>
+                                                </th>
+                                                <th class="[vars.order;onformat=runtime_sort_class;order=deadline]">
+                                                    <a href="[vars.base][vars.order;onformat=runtime_sort_link;order=deadline]"><span>[lang.lang_deadline]</span><span class="sorting-indicator"></span></a>
+                                                </th>
+                                                <th class="[vars.order;onformat=runtime_sort_class;order=progress]">
+                                                    <a href="[vars.base][vars.order;onformat=runtime_sort_link;order=progress]"><span>[lang.lang_progress]</span><span class="sorting-indicator"></span></a>
+                                                </th>
+                                                <th class="[vars.order;onformat=runtime_sort_class;order=date_created]">
+                                                    <a href="[vars.base][vars.order;onformat=runtime_sort_link;order=date_created]"><span>[lang.lang_date_created]</span><span class="sorting-indicator"></span></a>
+                                                </th>
+                                                <th>[lang.lang_my_time]</th>
+                                                <th>[lang.lang_my_tasks]</th>
+                                                <th class="[vars.order;onformat=runtime_sort_class;order=status]">
+                                                    <a href="[vars.base][vars.order;onformat=runtime_sort_link;order=status]"><span>[lang.lang_status]</span><span class="sorting-indicator"></span></a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="">
+                                            <tr class="tr-link" data-link="[conf.site_url]/admin/project/[myprojects.projects_id;block=tr;noerr]/view">
+                                                <td>
+                                                    <!--[myprojects.projects_id;block=tr;comm]-->
+                                                </td>
+                                                <td>
+                                                    <!--[myprojects.projects_title;block=tr;comm;ope=max:120]-->
+                                                </td>
+                                                <td>
+                                                    <span class="label label-purple">
+                                                        <!--[myprojects.clients_company_name;block=tr;comm;ope=max:20]-->
+                                                    </span> 
+                                                </td>
+                                                <td>
+                                                    <!--[myprojects.project_deadline;block=tr;comm;onformat=runtime_date]-->
+                                                </td>
+                                                <td class="progress-bar-td">
+                                                    <!--progress bar-->
+                                                    <div class="progress active progress-table"><div class="progress-bar progress-bar-primary progress-bar-table" style="width:[myprojects.projects_progress_percentage;block=tr;onformat=runtime_number]%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar">
+                                                        <span class="progress-text"><!--[myprojects.projects_progress_percentage;block=tr;onformat=runtime_number;comm]-->%</span>
+                                                    </div></div>
+                                                    <!--progress bar-->
+                                                </td>
+                                                <td>
+                                                    <!--[myprojects.projects_date_created;block=tr;comm;onformat=runtime_date]-->
+                                                </td>
+                                                <td>
+                                                    <span class="label label-success">
+                                                        <!--[myprojects.timer;block=tr;comm;onformat=runtime_timer]-->
+                                                    </span> 
+                                                </td>
+                                                <td>
+                                                    <!--[myprojects.pending_tasks;block=tr;comm;onformat=runtime_number]-->
+                                                </td>
+                                                <td>
+                                                    <!--[myprojects.projects_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="widget-foot">
+                                        <!--WI_SORTING_INFO-->
+                                        <div class="bns-info-div pull-left" style="max-width:300px;"> </div>
+                                        <!--WI_SORTING_INFO-->
+                                        <!--WI_PAGINATION-->
+                                        <ul class="pagination pull-right">
+                                            [vars.pagination;noerr;htmlconv=no]
+                                        </ul>
+                                        <!--WI_PAGINATION-->
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_PROJECTS_TABLE-->
+                    <!--WI_NOTIFICATION-->
+                    <div class="row">
+                        <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--WI_NOTIFICATION-->
+                </div>
+            </div>
+            <!-- Matter ends -->
+        </div>
+        <!-- Mainbar ends -->
+        <div class="clearfix"></div>
+    </div>
+    <!--WI_ADD_NEW_TASK_MODAL-->
+    <div class="row">
+        <div id="addNewTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-horizontal" action="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/add" method="post" id="addNewTask">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                            <!--full screen icon - custom.js-->
+                            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+                            <!--full screen icon - custom.js-->
+                            <h4 class="modal-title"> [lang.lang_add_new_task]</h4>
+                        </div>
+                        <div class="modal-body">
+                            <script type="text/javascript">
+                                $.ajax({
+                                    url: "http://pms.isodeveloper.com/__freshbooksapi/_tasks.php"
+                                }).done(function(data) {
+                                    $("#tasks-tasks-list-edit").append(data);
+                                });
+                            </script>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> Add a Task</label>
+                                <div class="col-lg-12">
+                                    <select id="tasks-tasks-list-edit" name="freshbookstaskid" style="width:100%">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> Hours needed to complete task</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" placeholder="In hours (E.g .5 for 30minutes)" id="estimatedtaskhours" name="estimatedtaskhours" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+                                <div class="col-lg-12">
+                                    <textarea class="form-control" id="tasks_text" name="tasks_text" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_milestone]</label>
+                                <div class="col-lg-12">
+                                    <select id="tasks-milestones-list" name="tasks_milestones_id" style="width:100%">
+                                        <!--[lists.all_milestones;noerr;htmlconv=no;protect=no;comm]-->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control pickadate" name="tasks_start_date" id="tasks_start_date">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control pickadate" name="tasks_end_date" id="tasks_end_date">
+                                </div>
+                            </div>
+                            <!--admin & project leader only-->
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_assigned_to]</label>
+                                <div class="col-lg-12">
+                                    <select id="tasks-assigned-to-list" name="tasks_assigned_to_id" style="width:100%">
+                                        <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                    </select>
+                                </div>
+                            </div>
+                            <!--admin & project leader only-->
+
+                            <!--regular team member only-->
+                            <div>
+                                <!--[onshow;block=div;when [project_permissions.regular_user] == 1;comm]-->
+                                <!--permissions-->
+                                <!--input type="hidden" name="tasks_assigned_to_id" value="[vars.my_id;noerr]"-->
+                            </div>
+                            <!--regular team member only-->
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+                            <input type="hidden" name="tasks_project_id" value="[vars.project_id;noerr]">
+                            <input type="hidden" name="tasks_client_id" value="[vars.client_id;noerr]">
+                            <input type="hidden" name="tasks_events_id" value="[vars.new_events_id;noerr]">
+                            <input type="hidden" name="tasks_created_by_id" value="[vars.my_id;noerr]">
+                            <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+                            <input class="btn btn-primary" type="submit" value="[lang.lang_create_new_task]" name="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--WI_ADD_NEW_TASK_MODAL-->
+    <!-- Content ends -->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!--[onload;file=../common/common.footer.html;getbody;comm]-->
+    <!----------------------COMMON FOOTER--------------------------------->
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+    <!--WI_IFRAME_MODAL-->
+    <div class="row">
+        <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title" id="modal-iframe-title">[lang.lang_edit]</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-body">
+                        <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_closed]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--WI_IFRAME_MODAL-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+    <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+    <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+
+</html>

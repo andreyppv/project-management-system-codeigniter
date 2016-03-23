@@ -1,0 +1,88 @@
+<!--WI_MAIN_NAVIGATION-->
+<style type="text/css">
+  
+  .box-content {
+    border: none;
+    background: none;
+}
+.box-content ul li {
+    margin: 20px;
+    border:none;
+}
+.box-content ul li a {
+    border:none;
+    text-align: center;
+    color: #fff;
+    padding: 20px 8px!important;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    width:150px;
+     box-shadow: 2px 3px 5px #888888;
+     margin:0 auto;
+}
+.box-content ul li a:hover{
+    border:none;
+    opacity: 0.8;
+    padding: 20px 8px!important;
+
+}
+</style>
+<div class="row">
+  <!--WI_PROJECT_MENU-->
+  <div class="col-lg-12">
+    <div class="box">
+      <div class="box-content">
+        <ul>
+          <li> <a class="[vars.css_active_tab_details;noerr] bg-success" href="[conf.site_url]/client/project/[vars.project_id;noerr]/view"> [lang.lang_details]</a></li>
+          <li> <a class="[vars.css_active_tab_files;noerr] bg-primary" href="[conf.site_url]/client/files/[vars.project_id;noerr]/view"> [lang.lang_files]</a></li>
+          <!--li> <a class="[vars.css_active_tab_milestones;noerr]" href="[conf.site_url]/client/milestones/[vars.project_id;noerr]/view"> [lang.lang_milestones]</a></li-->
+          <li> <a class="[vars.css_active_tab_tasks;noerr] bg-warning" href="[conf.site_url]/client/tasks/[vars.project_id;noerr]/view"> Tasks</a></li>
+		  <li> <a class="[vars.css_active_tab_messages;noerr] bg-danger" href="[conf.site_url]/client/messages/[vars.project_id;noerr]/view"> [lang.lang_messages]</a></li>
+          <li> <a style="color:#333;" class="[vars.css_active_tab_members;noerr] bg-default" href="[conf.site_url]/client/members/[vars.project_id;noerr]/view"> [lang.lang_members]</a></li>
+<li> <a style="color:#333;" class="[vars.css_active_tab_members;noerr] bg-default" href="[conf.site_url]/client/wireframe/[vars.project_id;noerr]"> Project Workbook</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--PROJECT MILESTONE-->
+  <div class="col-lg-12">
+    <!--<div class="client-split-panel" style="margin-bottom:15px;">
+      <div class="panel-left bg-information-dark"> <span class="count">[this_project_counts.milestone_completed;onformat=runtime_number]</span> <span class="heading"> <span class="allcaps">[lang.lang_completed]</span> <br/>[lang.lang_milestones]</span> </div>
+      <div class="panel-right bg-information"> <span class="count">[this_project_counts.milestone_all_open;onformat=runtime_number]</span> <span class="heading"><span class="allcaps">[lang.lang_pending]</span> <br/>[lang.lang_milestones]</span> </div>
+    </div>-->
+  </div>
+  <!--PROJECT MILESTONE-->
+  <!--WI_INFO_PANEL_INVOICES-->
+  <div class="col-lg-12">
+    <!--<div class="split-info-panel project">
+      <div class="split-info-panel-header bg-success"> <span class="split-panel-heading"> [lang.lang_invoices]</span> </div>
+      <ul class="split-info-panel-footer">
+        <li class="border-right">
+          <div class="text-count">[this_project_counts.invoices_paid;onformat=runtime_number]</div>
+          <div class="text-description text-muted"> <span class="allcaps">[lang.lang_paid]</span></div>
+        </li>
+        <li class="border-right">
+          <div class="text-count">[this_project_counts.invoices_all_unpaid;onformat=runtime_number]</div>
+          <div class="text-description text-muted"> <span class="allcaps">[lang.lang_unpaid]</span></div>
+        </li>
+      </ul>
+    </div>-->
+  </div>
+  <!--WI_INFO_PANEL_INVOICES-->
+  
+  
+</div>
+<!--WI_PROJECT_MENU-->
+<!--JS_TOGGLE_TIMER-->
+<script>
+ //language
+ var lang_request_could_not_be_completed = "[lang.lang_request_could_not_be_completed;noerr]";
+ var lang_timer_has_been_updated = "[lang.lang_timer_has_been_updated;noerr]";
+</script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.ajax.toggle.timer.js"></script>
+<!--JS_TOGGLE_TIMER--->
+<!--JS_TOGGLE_REFRESH--->
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/custom/custom.ajax.refresh.timer.js"></script>
+<!--JS_TOGGLE_REFRESH--->

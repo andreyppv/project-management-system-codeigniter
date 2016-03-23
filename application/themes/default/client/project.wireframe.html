@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+
+  <!-- Sidebar ends -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.header.logo.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+	
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <!--[onload;file=common.headbar.html;getbody;comm]-->
+    <!----------------------COMMON PAGE MENU--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-2">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-10">
+            <div class="widget">
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TABS-TASKS------------------------------------------------------------------>
+                <!--WI_PROJECT_TASKS-->
+                <div class="project-info-tabs">
+                  <!--[onshow;block=div;when [visible.wi_project_tasks] == 1;comm]-->
+                  <!--actions navigation end-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="tabs-sub-nav"> <span class="pull-left">
+                        <h3>Wireframe</h3>
+                        </span> <!--<a data-toggle="modal" class="btn btn-mid btn-success pull-right" href="[vars.completed_tasks_link]"> [lang.lang_completed] </a> <a data-toggle="modal" class="btn btn-mid btn-danger pull-right" href="[vars.behind_tasks_link]"> [lang.lang_behind] </a> <a data-toggle="modal" class="btn btn-mid btn-warning pull-right" href="[vars.pending_tasks_link]"> [lang.lang_pending] </a> <a data-toggle="modal" class="btn btn-mid btn-purple pull-right" href="[vars.all_tasks_link]"> [lang.lang_all] </a>--> <!--a data-toggle="modal" class="btn btn-mid btn-info pull-right" href="#addNewTaskModal"><i class="icon-plus"></i> [lang.lang_add_new_task] <!--[onshow;block=a;when [project_permissions.add_item_my_project_my_tasks] == 1;comm]--><!--/a-->
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--actions navigation end-->
+                  <!--actions table-->
+                  <div class="row">
+                    <div class="just-a-wrapper">
+                      <!--[onshow;block=div;when [visible.tasks_milestone_list] == 1;comm]-->
+                      <div class="col-lg-12">
+                        <div class="widget wtabs">
+                          <div class="widget-content">
+                          <script type="text/javascript">
+                          var totalcost = 0;
+                          var row = 0;
+                          </script>
+                          <style type="text/css">                 
+                                  .even_row{ background:#FFFFE0;}
+                          </style>
+                          
+                          <div class="row">
+                            <!--div class="col-md-6">
+                              <form action="" method="POST">
+                                <h3>Create New Page:</h3><br/>
+                                <input type="text" name="wireframe_title" placeholder="Title" required="required" class="form-control"/><br/>
+                                <input type="text" name="wireframe_url" placeholder="URL" required="required" class="form-control"/><br/>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                            </div-->
+                            <div class="col-md-12">
+                              <form action="" method="POST">
+                                <h3>Select Existing Page:</h3><br/>
+                                <script type="text/javascript">
+                                $(document).ready(function(){ $.ajax({
+                                  url : "http://pms.isodeveloper.com/__freshbooksapi/_getwireframeoptions.php?projectid=[vars.wireframeid]"
+                                }).done(function(e){
+                                  $("#wireframeoptions").html(e);
+                                });});
+
+                                </script>
+                                <select name="wireframe_page" required="required" class="form-control" id="wireframeoptions">
+                                </select><br/>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                            </div>
+                          </div>
+
+                            
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <div class="col-lg-12">
+                    <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                    <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                  </div>
+                  <!--WI_TABS_NOTIFICATIONS-->
+                  <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                  <div class="just-a-wrapper col-lg-12" style="margin-top:15px;">
+                    <!--[onshow;block=div;when [vars.tasks_info_no_tasks_found] == 1;comm]-->
+                  </div>
+                  <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                </div>
+                <div class="clearfix"></div>
+                <!--WI_PROJECT_TASKS-->
+                <!-----------------------------------------------TABS-TASKS------------------------------------------------------------------>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_TASK_MODAL-->
+        <div class="row">
+            <div id="addNewTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" action="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/add" method="post" id="addNewTask">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title"> [lang.lang_add_new_task]</h4>
+                            </div>
+                            <div class="modal-body">
+                            <div id="task">
+                                <script type="text/javascript">
+                                    $.ajax({
+                                        url : "http://pms.isodeveloper.com/__freshbooksapi/_tasks.php"
+                                    }).done(function(data) {
+                                        $("#tasks-tasks-list-edit").append(data);
+                                    });
+
+                                    function loadMilestones() {
+                                        $.ajax({
+                                            url : "http://pms.isodeveloper.com/__freshbooksapi/_milestones.php?projectid=[vars.project_id;noerr]"
+                                        }).done(function(data) {
+                                            $("#tasks-milestones-list").append(data);
+                                        });
+                                        $("#tasks-milestones-list").empty();
+                                    }
+
+                                    function loadTeam() {
+                                        $.ajax({
+                                            url : "http://pms.isodeveloper.com/__freshbooksapi/_teammembers.php?projectid=[vars.project_id;noerr]"
+                                        }).done(function(data) {
+                                            $("#tasks-assigned-to-list").append(data);
+                                        });
+                                    }
+
+                                    //$(document).ready(function(){
+                                    loadMilestones();
+                                    loadTeam();
+                                    //});
+
+                                      var hidden = false;
+                                      function showMilestone(){
+                                        if (hidden) {
+                                          $("#task").show(); $("#milestone").hide();
+                                          hidden = false;
+                                        }else{
+                                          $("#task").hide(); $("#milestone").show();
+                                          hidden = true;
+                                        }
+                                      }
+                                </script>
+                                <!--div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> Billing Category</label>
+                                    <div class="col-lg-12">
+                                        <select required id="tasks-tasks-list-edit" name="freshbookstaskid" style="width:100%">
+
+                                        </select>
+                                    </div>
+                                </div-->
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group" style="margin-bottom:10px;">
+                                            <label class="control-label col-lg-12" style="width:300px;"> Associate task with Milestone:</label>
+                                            <div class="col-lg-12">
+                                                <select required id="tasks-milestones-list" name="tasks_milestones_id" style="width:100%"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4"><br/>
+                                        <a onClick="showMilestone();" class="btn btn-primary">Add new Milestone</a>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> Describe the task</label>
+                                    <div class="col-lg-12">
+                                        <textarea required class="form-control" id="tasks_text" name="tasks_text" autocomplete="off"></textarea>
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col-md-4" style="margin-left:20px;">
+                                        <div class="row">
+                                            <div class="form-group" style="margin-bottom:10px;">
+                                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+                                                <div class="col-lg-12">
+                                                    <input required type="text" class="form-control pickadate" name="tasks_start_date"  id="tasks_start_date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group" style="margin-bottom:10px;">
+                                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+                                                <div class="col-lg-12">
+                                                    <input required type="text" class="form-control pickadate" name="tasks_end_date"  id="tasks_end_date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group" style="margin-bottom:10px;">
+                                                <label class="control-label col-lg-12" style="width:300px;"> Hours needed to complete task</label>
+                                                <div class="col-lg-12">
+                                                    <input required type="text" class="form-control" placeholder="In hours (E.g .5 for 30minutes)" id="estimatedtaskhours" name="estimatedtaskhours" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--admin & project leader only-->
+                                            <div class="form-group" style="margin-bottom:10px;">
+                                                <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_assigned_to]</label>
+                                                <div class="col-lg-12">
+                                                    <select required id="tasks-assigned-to-list" name="tasks_assigned_to_id" style="width:100%">
+                                                        <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--admin & project leader only-->
+
+                                            <!--regular team member only-->
+                                            <div>
+                                                <!--[onshow;block=div;when [project_permissions.regular_user] == 1;comm]--><!--permissions-->
+                                                <!--input type="hidden" name="tasks_assigned_to_id" value="[vars.my_id;noerr]"-->
+                                            </div>
+                                            <!--regular team member only-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                   
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-6" style="margin-left:20px;">
+                                        <div class="form-group" style="margin-bottom:10px;">
+                                            <label class="control-label col-lg-12" style="width:150px;"> Billing Category</label>
+                                            <div class="col-lg-12">
+                                                <input type="radio" name="billing_category" value="1">Preliminary Research and Discovery Phase
+                                                <br>
+                                                <input type="radio" name="billing_category" value="2">Strategic Planning
+                                                <br>
+                                                <input type="radio" name="billing_category" value="3">Web Design – Graphic Design Work                                                
+                                                <br>
+                                                <input type="radio" name="billing_category" value="4">Front End Programming                                                
+                                                <br>
+                                                <input type="radio" name="billing_category" value="5">Server-side Development                                            
+                                                <br>
+                                                <input type="radio" name="billing_category" value="6">Quality Assurance and Launch                                                
+                                                <br>
+                                                <input type="radio" name="billing_category" value="7">SEO, Promotion, Statistics and Reporting                                                
+                                                </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div id="milestone" style="display:none;">
+                                      <div class="form-group" style="margin-bottom:10px;">
+                                        <h3 class="control-label col-lg-12" style="width:300px;">Add a new milestone</h3>
+                                        <div class="col-lg-12">
+                                          <script type="text/javascript">
+                                            function createMilestone() {
+                                              $.post("http://pms.isodeveloper.com/__freshbooksapi/_createmilestone.php", {
+                                                milestones_title : $("#milestoneText").val(),
+                                                milestones_project_id : $("#milestones_project_id").val(),
+                                                milestones_client_id : $("#milestones_client_id").val(),
+                                                milestones_created_by : $("#milestones_created_by").val(),
+                                                milestones_events_id : $("#milestones_events_id").val(),
+                                              }, function(data) {
+                                                console.log(data);
+                                                loadMilestones();
+                                                /*Refresh milestones*/
+                                                showMilestone();
+                                                alert('Milestone has been created.')
+                                              });
+                                            }
+                                          </script>
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              Milestone Name: <textarea name="milestoneText" id="milestoneText"></textarea>
+                                            </div>
+                                          </div>
+                                          <br/>
+                                          <input type="hidden" name="milestones_project_id" id="milestones_project_id" value="[vars.project_id;noerr]">
+                                          <input type="hidden" name="milestones_client_id" id="milestones_client_id" value="[vars.client_id;noerr]">
+                                          <input type="hidden" name="milestones_created_by" id="milestones_created_by" value="[vars.my_id;noerr]">
+                                          <input type="hidden" name="milestones_events_id" id="milestones_events_id" value="[vars.new_events_id;noerr]">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <a value="showMilestone" class="btn btn-warning" onClick="showMilestone();" id="saveMilestoneBtn" style="width:100%;">Return</a>
+                                            </div>
+                                            <div class="col-md-6">
+                                              <a value="saveMilestone" class="btn btn-success" onClick="createMilestone();" id="saveMilestoneBtn" style="width:100%;">Create Milestone</a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+                                <input type="hidden" name="tasks_project_id" value="[vars.project_id;noerr]">
+                                <input type="hidden" name="tasks_client_id" value="[vars.client_id;noerr]">
+                                <input type="hidden" name="tasks_events_id" value="[vars.new_events_id;noerr]">
+                                <input type="hidden" name="tasks_created_by_id" value="[vars.my_id;noerr]">
+                                <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_create_new_task]" id="" name="submit">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--WI_ADD_NEW_TASK_MODAL-->
+<!--WI_EDIT_TASK_MODAL-->
+<div class="row">
+  <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/edit" method="post" id="editTask">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title"> [lang.lang_edit] Task</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="task_text_edit" name="tasks_text" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_milestone]</label>
+              <div class="col-lg-12">
+                <select id="tasks-milestones-list-edit" name="tasks_milestones_id" style="width:100%">
+                  <!--[lists.all_milestones;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_start_date"  id="task_start_date_edit">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control pickadate" name="tasks_end_date"  id="task_end_date_edit">
+              </div>
+            </div>
+            <!--admin & project leader only-->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_assigned_to]</label>
+              <div class="col-lg-12">
+                <select id="tasks-assigned-to-list-edit" name="tasks_assigned_to_id" style="width:100%">
+                  <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                </select>
+              </div>
+            </div>
+            <!--admin & project leader only-->
+<!--regular team member only-->
+            
+            <div>
+            <!--[onshow;block=div;when [project_permissions.regular_user] == 1;comm]--><!--permissions-->            
+              <!--input type="hidden" name="tasks_assigned_to_id" value="[vars.my_id;noerr]"-->
+            </div>
+<!--regular team member only-->            
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_status]</label>
+              <div class="col-lg-12">
+                <select id="tasks-status-list-edit" name="tasks_status" style="width:100%">
+                  <!--NB: do not change lang on value=""-->
+                  <option value="pending"> [lang.lang_pending]</option>
+                  <option value="completed"> [lang.lang_completed]</option>
+                  <option value="behind schedule"> [lang.lang_behind_schedule]</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" id="task_id_edit" name="tasks_id" value="[vars.task_id_edit;noerr]">
+            <input type="hidden" id="task_events_id_edit" name="tasks_events_id" value="[vars.task_events_id_edit;noerr]">
+             <input type="hidden" id="redirect_url" name="redirect_url" value="[vars.current_url]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_TASK_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_ADD_NEW_TASK_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_NEW_TASK_MODAL
+  //ACTIONS: validates the form and submits it
+  //REQUIRES: jquery.validate.js
+  $("#addNewTask").validate({
+    rules: {
+             tasks_text: "required",
+       tasks_milestones_id: "required",
+       tasks_start_date: "required",
+       tasks_end_date: "required",
+       tasks_assigned_to_id: "required"
+    },
+    messages: {
+      tasks_text: "[lang.lang_field_is_required]",
+      tasks_milestones_id: "[lang.lang_field_is_required]",
+      tasks_start_date: "[lang.lang_field_is_required]",
+      tasks_end_date: "[lang.lang_field_is_required]",
+      tasks_assigned_to_id: "[lang.lang_field_is_required]"
+    },
+    submitHandler: function(form) {
+        //alert('form submitted');
+    form.submit();
+        }
+  });
+});
+</script>
+<!--JS_ADD_NEW_TASK_MODAL-->
+<!--JS_ADD_NEW_TASK_MODAL-->
+<script>
+//USED BY: ADD_NEW_TASK_MODAL
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#tasks-milestones-list").select2({
+        allowClear: true
+    });
+    $("#tasks-assigned-to-list").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_ADD_NEW_TASK_MODAL-->
+<!--JS_EDIT_NEW_TASK_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_NEW_TASK_MODAL
+  //ACTIONS: validates the form and submits it
+  //REQUIRES: jquery.validate.js
+  $("#editTask").validate({
+    rules: {
+             tasks_text: "required",
+       tasks_milestones_id: "required",
+       tasks_start_date: "required",
+       tasks_end_date: "required",
+       tasks_assigned_to_id: "required"
+    },
+    messages: {
+      tasks_text: "[lang.lang_field_is_required]",
+      tasks_milestones_id: "[lang.lang_field_is_required]",
+      tasks_start_date: "[lang.lang_field_is_required]",
+      tasks_end_date: "[lang.lang_field_is_required]",
+      tasks_assigned_to_id: "[lang.lang_field_is_required]"
+    },
+    submitHandler: function(form) {
+        //alert('form submitted');
+    form.submit();
+        }
+  });
+});
+</script>
+<!--JS_EDIT_NEW_TASK_MODAL-->
+<!--JS_EDIT_TASK_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_TASK_MODAL
+  //ACTIONS: dynamically add data into modal form
+  //REQUIRES: jquery.js
+  //ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
+    //REQUIRES-2: select2.js
+    
+    //---edit item link clicked-------
+    $(".edit-task-modal").click(function(){
+    
+        //get variables from "edit link" data attributes
+    var task_text_edit = $(this).attr("data-task-text");
+    var task_start_date_edit = $(this).attr("data-task-start-date");
+    var task_end_date_edit = $(this).attr("data-task-end-date");
+    var task_id_edit = $(this).attr("data-task-id");
+    var task_events_id_edit = $(this).attr("data-task-events-id");
+    var task_assigned_to_preselected = $(this).attr("data-task-assigned-to-id");
+    var task_milestone_preselected = $(this).attr("data-task-milestone-id");
+    var task_status_preselected = $(this).attr("data-task-status");
+
+        //set modal input values dynamically
+    $('#task_text_edit').val(task_text_edit);
+    $('#task_start_date_edit').val(task_start_date_edit);
+    $('#task_end_date_edit').val(task_end_date_edit);
+    $('#task_id_edit').val(task_id_edit);
+    $('#task_events_id_edit').val(task_events_id_edit);
+
+       //pre-select data in pull down lists
+       $("#tasks-assigned-to-list-edit").select2().select2('val', task_assigned_to_preselected); 
+       $("#tasks-milestones-list-edit").select2().select2('val', task_milestone_preselected); 
+       $("#tasks-status-list-edit").select2().select2('val', task_status_preselected); 
+  });
+    
+});
+</script>
+<!--JS_EDIT_TASK_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <style type="text/css">
+  .mainbar{
+    margin-left: 0px;
+  }
+  </style>
+  <div class="mainbar">
+
+    <div class="matter">
+      <script type="text/javascript" src="http://pms.isodeveloper.com/__freshbooksapi/newtimer.js"></script>
+      <script type="text/javascript">
+        /*USER SETTINGS*/
+        var task = "[vars.task_id]";
+        var project = "[vars.project_id]";
+        var user = "[vars.my_id]";
+        /*End of USER SETTINGS*/
+
+        $(document).ready(function(){
+          /*Update timer variables.*/
+          
+          timerHours = [vars.hoursworked]; /*Default to current task hours*/
+          timerMinutes = [vars.minutesworked]; /*Default to current task minutes*/
+          timerSeconds = [vars.secondsworked]; /*Default to current task seconds*/
+          
+          convertTimer(true);
+
+        });
+      </script>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+                              <div class="split-info-panel project project-timer">
+                  <div class="split-info-panel-header bg-night url-link"> <span class="split-panel-heading split-panel-heading-timer" id="my-project-time">
+                    <!--[vars.my_project_timer_hours_spent;onformat=runtime_timer;comm]-->
+                    </span> </div>
+                    <div class="split-info-panel-header bg-night url-link">
+                      
+                      <script type="text/javascript">
+                        $.ajax({
+                          url : "http://pms.isodeveloper.com/__freshbooksapi/_mytasks.php?projectid=[vars.project_id]"
+                        }).done(function (data){
+                          $("#taskId").append(data);
+                          updateCurrentTask();
+                        });
+            
+                        function updateCurrentTask(){
+                          var taskId = $("#taskId").val();
+                          $("#starttimer").attr('data-timer-task', taskId);
+                          $("#stoptimer").attr('data-timer-task', taskId);
+                        }
+                        
+                        $(function () {
+                          $('[data-toggle="tooltip"]').tooltip()
+                        })
+                      </script>
+                      <script type="text/javascript">
+            var getQueryParam = function(param) {
+                var found = "";
+                window.location.search.substr(1).split("&").forEach(function(item) {
+                    if (param ==  item.split("=")[0]) {
+                        found = item.split("=")[1];
+                    }
+                });
+                return found;
+            };
+            $(document).ready(function(){ 
+              if(getQueryParam("type") == "client"){
+                $("#tab_2").click();
+              }else{
+                $("#tab_1").click();
+              }
+
+              if(getQueryParam("timer") == "start"){
+                $("#starttimer").click(); //Start timer
+              }
+            });
+            </script>
+                      <!--
+                        <select name="taskId" id="taskId" onChange="updateCurrentTask();" onLoad="updateCurrentTask();">
+                        </select>
+                      -->
+                    </div>
+            
+                  <ul class="split-info-panel-footer">
+                    <!--
+                    <li  style="vertical-align:middle; padding: 10px 0px;">
+                      <span class="[vars.css_start_timer_btn]" id="btn-start-timer">
+                      <button class="btn btn-success ajax-toggle-timer" id="starttimer"
+                                   data-mysql-record-id="[vars.my_project_timer_id]"
+                                   data-project-id="[vars.project_id]"
+                                   data-timer-new-status="running"
+                                   data-timer-userid="[vars.my_id]"
+                                   data-ajax-url="[conf.site_url]/admin/ajax/toggle-timer"><i class="icon-play"></i> [lang.lang_start_my_timer]</button>
+                      </span>
+                      <span class="[vars.css_stop_timer_btn]" id="btn-stop-timer">
+                      <button class="btn btn-danger ajax-toggle-timer" id="stoptimer"
+                                   data-mysql-record-id="[vars.my_project_timer_id]"
+                                   data-project-id="[vars.project_id]"
+                                   data-timer-new-status="stopped"
+                                   data-timer-userid="[vars.my_id]"
+                                   data-ajax-url="[conf.site_url]/admin/ajax/toggle-timer"><i class="icon-pause"></i> [lang.lang_stop_my_timer]</button>
+                      </span>
+                       <span class="[vars.css_start_timer_btn]" id="btn-finish-timer">
+                      <button class="btn btn-success ajax-toggle-timer" id="starttimer"
+                                   data-mysql-record-id="[vars.my_project_timer_id]"
+                                   data-project-id="[vars.project_id]"
+                                   data-timer-new-status="running"
+                                   data-timer-userid="[vars.my_id]"
+                                   data-ajax-url="[conf.site_url]/admin/ajax/toggle-timer"><i class="icon-eject"></i> Finish Task</button>
+                      </span>
+                    </li>
+                    -->
+                    <li style="vertical-align:middle; font-size:18px; font-weight:normal; padding: 10px 0px;width:10%;" id="starttimer"><span><i class="icon-play" data-toggle="tooltip" data-placement="bottom" title="Start Timer"></i></span></li>
+                    <li style="vertical-align:middle; font-size:18px; font-weight:normal; padding: 10px 0px;width:10%;" id="pausetimer"><span><i class="icon-pause" data-toggle="tooltip" data-placement="bottom" title="Pause Timer"></i></span></li>
+                    <!--Removed per Davids request-->
+                    <li style="vertical-align:middle; font-size:18px; font-weight:normal; padding: 10px 0px;width:10%;" id="completedtimer"><span><i class="icon-check" data-toggle="tooltip" data-placement="bottom" title="Finish Task"></i></span></li>
+                    <!--li style="vertical-align:middle; font-size:18px; font-weight:normal; padding: 10px 0px;width:10%;"> <a class="refresh-project-timer" data-toggle="tooltip" data-placement="bottom" title="Refresh Timer"
+                                  data-project-id="[vars.project_id]" 
+                                  data-mysql-record-id="[vars.my_project_timer_id]"
+                                  data-ajax-url="[conf.site_url]/admin/ajax/refresh-timer" href="#"> <i class="icon-refresh"></i></a> </li--> <!--NO LONGER NEEDED!-->
+                    <!--
+                      <li style="vertical-align:middle; font-size:18px; font-weight:normal; padding: 10px 0px;width:10%;"> <a data-toggle="modal" href="#editTimerModal"> <i class="icon-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Timer"></i></a> </li>
+                    -->
+                  </ul>
+                </div>
+          </div>
+        </div>
+        <div class="row">
+              <div class="col-md-12">
+                
+
+
+                <style type="text/css">
+
+                  .milestones{width:100%; background:#fff;}
+                  .task-table{ width:100%;}
+                  .task-table tr {border-bottom:1px solid #d2d2d2; padding:5px 0; }
+                  .task-table th{ padding:10px 0 5px 0;}
+                  .task-table input{display:block; margin: 0 auto;}
+                  .class-column{ width:50px!important;}
+                  #newSubTask{ padding:20px; width:100%;}
+                  .task-table .pad-me{padding-left:10px;}
+
+                </style>
+                <script type="text/javascript">
+                  function taskCompleted(element){
+                    var subtaskid = $(element).attr('subtaskid');
+                    console.log('called');
+
+                    if($(element).is(':checked')){
+                      /*Marked complete*/
+                      $.ajax({
+                        url: "http://pms.isodeveloper.com/__freshbooksapi/_subtaskchange.php?status=0&subtaskid=" + subtaskid
+                      }).done(function(e){ /*Action*/ });
+                      $.each($("#subtaskrow"), function(e){ if($($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'line-through'); } });
+
+                    }else{
+                      /*Marked incomplete*/
+                      $.ajax({
+                        url: "http://pms.isodeveloper.com/__freshbooksapi/_subtaskchange.php?status=1&subtaskid=" + subtaskid
+                      }).done(function(e){ /*Action*/ });
+                      $.each($("#subtaskrow"), function(e){ if(!$($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'none'); } });
+                    }
+                  }
+
+                  function markCompleted(element, status){
+                    console.log("Called event");
+                    if(status == 0){
+                      $(element).attr('checked', 'checked');
+                      $.each($("#subtaskrow"), function(e){ if($($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'line-through'); } });
+                    }
+                  }
+
+                  $(document).ready(function(){
+                    $.each($("#subtaskrow"), function(e){ if($($($(this).children()[3]).children()[0]).is(':checked')) {  $(this).css('text-decoration', 'line-through'); } });
+                  });
+                </script>
+                 <div class="milestones">
+                  <div class="bg-night" style="text-align:center; font-size:18px; width:100%; color:#fff;padding:10px 0;">[vars.taskname]</div>
+                  <table class="task-table">
+                    <thead>
+                      <tr>
+                        <th class="pad-me">Description/Comment</th>
+                        <th style="text-align:center;" class="date-column">Date</th>
+                        <th style="text-align:center;">By</th>
+                        <th style="text-align:center;">Done</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="subtaskrow">
+                        <td class="pad-me"><!--[blk1.task_notes;block=tr;comm]--></td>
+                        <td class="date-column"><!--[blk1.task_timestamp;block=tr;comm]--></td>
+                        <td><!--[blk1.task_by;block=tr;comm]--></td>
+                        <td><input onClick="taskCompleted(this);" type="checkbox" subtaskid="[blk1.id;block=tr;comm]" onLoad="console.log('loaded'); markCompleted(this, [blk1.task_status;block=tr;comm]);"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="padding:20px;">
+                    <script>
+                    //$(document).ready(function(){
+                      //$("#submitSubTask").click(function(){
+                        function submitSubTask(){
+                          var task_id = "[vars.task_id]";
+                          var task_by = "[vars.my_name;noerr]";
+                          var task_projectid = "[rows4.projects_id]";
+                          var task_notes = $("#newSubTask").val();
+
+                          $.ajax({
+                            url: "http://pms.isodeveloper.com/__freshbooksapi/_addsubtask.php?task_id=" + task_id + "&task_by=" + task_by + "&task_projectid=" + task_projectid + "&task_notes=" + task_notes
+                          }).done(function(e){
+                            console.log(e);
+                            //alert('Subtask has been submitted');
+                            location.href = location.href + "?timer=start";
+                          });
+                        }
+                      //});
+                    //});
+                    </script>
+                    <textarea id="newSubTask"></textarea>
+                    <button onClick="submitSubTask();" id="submitSubTask" class="btn btn-primary">Submit</button>
+                  <div style="clear:both;"></div>
+                  </div>
+                 </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<script>
+$().ready(function(){
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#editProject").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            projects_title: "required",
+            project_deadline: "required",
+            projects_description: "required"
+        },
+        messages: {
+            projects_title: "[lang.lang_field_is_required]",
+            project_deadline: "[lang.lang_field_is_required]",
+            projects_description: "[lang.lang_field_is_required]"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

@@ -1,0 +1,6 @@
+.idea
+demo/_cache
+demo/_credentials.php
+dist
+composer*.lock
+vendor

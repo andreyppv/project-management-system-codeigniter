@@ -1,0 +1,143 @@
+<!--WI_EDIT_TIMER_MODAL-->
+<div class="row">
+  <div id="editTimerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/project/[vars.project_id;noerr]/edit-timer" method="post" id="editTimer">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_edit_my_timer]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="col-lg-12">
+              [lang.lang_fill_in_new_time]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="new_time" name="new_time" placeholder="0">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" id="timer_id" name="timer_id" value="[vars.my_project_timer_id]">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_TIMER_MODAL-->
+<!--WI_EDIT_PROJECT_MODAL-->
+        <div class="row">
+            <!--[onshow;block=div;when [project_permissions.edit_item_my_project_details] == 1;comm]-->
+            <!--permissions-->
+            <div id="editProjectModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" action="[conf.site_url]/admin/project/[vars.project_id;noerr]/edit-project" method="post" id="editProject">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    x
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <button type="button" class="full-screen-modal close" aria-hidden="true">
+                                    <i class="icon-fullscreen"></i>
+                                </button>
+                                <!--full screen icon - custom.js-->
+                                <h4 class="modal-title"> [lang.lang_edit_project_details]</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project_title]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control" id="projects_title" name="projects_title" value="[rows4.projects_title;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_deadline]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control pickadate" id="project_deadline" name="project_deadline" value="[rows4.project_deadline;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_project_title]</label>
+                                    <div class="col-lg-12">
+                                        <textarea name="projects_description" id="projects_description">
+                                      [rows4.projects_description;noerr;htmlconv=no]</textarea>
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                CKEDITOR.replace('projects_description', {
+                                                    toolbar : 'Basic',
+                                                    uiColor : '#ffffff',
+                                                    height : '300px'
+                                                });
+                                            });
+
+                                        </script>
+                                    </div>
+                                </div>
+                                <!--------------------OPTIONAL FIELDS------------------------------>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <!--[onshow;block=div;when [visible.wi_projects_optionalfield1] == 1;comm]-->
+                                    <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield1]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control" id="projects_optionalfield1" name="projects_optionalfield1" value="[rows4.projects_optionalfield1;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <!--[onshow;block=div;when [visible.wi_projects_optionalfield2] == 1;comm]-->
+                                    <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield2]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control" id="projects_optionalfield2" name="projects_optionalfield2" value="[rows4.projects_optionalfield2;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <!--[onshow;block=div;when [visible.wi_projects_optionalfield3] == 1;comm]-->
+                                    <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield3]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control" id="projects_optionalfield3" name="projects_optionalfield3" value="[rows4.projects_optionalfield3;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <!--[onshow;block=div;when [visible.wi_projects_optionalfield4] == 1;comm]-->
+                                    <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield4]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control" id="projects_optionalfield4" name="projects_optionalfield4" value="[rows4.projects_optionalfield4;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <!--[onshow;block=div;when [visible.wi_projects_optionalfield5] == 1;comm]-->
+                                    <label class="control-label col-lg-12" style="width:150px;"> [row.wi_projects_optionalfield5]</label>
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control" id="projects_optionalfield5" name="projects_optionalfield5" value="[rows4.projects_optionalfield5;noerr]" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <!--------------------OPTIONAL FIELDS------------------------------>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                                    [lang.lang_closed]
+                                </button>
+                                <input type="hidden" name="projects_id" value="[rows4.projects_id]">
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--WI_EDIT_PROJECT_MODAL-->

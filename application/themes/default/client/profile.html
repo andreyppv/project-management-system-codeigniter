@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<style>
+.mainbar {
+	margin:0px;
+}
+.sidebar {
+	display:none;
+}
+</style>
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body class="pmsClient">
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <!--WI_TITLE_BAR-->
+          <div class="widget titlebar-widget">
+            <div class="titlebar">
+              <h3>[vars.sub_title_icon;htmlconv=no] [vars.sub_title;noerr]</h3>
+            </div>
+          </div>
+      <!--WI_TITLE_BAR-->
+      <div class="container">
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+        <!----------------------COMMON NOTICES--------------------------------->
+        <!---------------------------------------CLIENT PROFILE--------------------------------->
+        <div class="row">
+          <div class="col-lg-12">
+            <form action="[conf.site_url]/client/profile/edit-profile" method="post" id="editClientProfile">
+              <div class="box">
+                <div class="box-content">
+                  <table class="table table-bordered table-hover table-profile">
+                    <tbody>
+                      <!--<tr>
+                        <td class="col-md-3">[lang.lang_id]</td>
+                        <td><div class="col-sm-6 col-md-3 no-padding-both">
+                            <input type="text" class="form-control" name="clients_id" value="[client.clients_id;noerr]" autocomplete="off" readonly>
+                          </div></td>
+                      </tr>-->
+                      <tr>
+                        <td>[lang.lang_date_created]</td>
+                        <td><div class="col-sm-6 col-md-4 no-padding-both">
+                            <input type="text" class="form-control" name="clients_date_created" value="[client.clients_date_created;onformat=runtime_date]" autocomplete="off" readonly>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_company_name]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_company_name" value="[client.clients_company_name;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_address]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_address" value="[client.clients_address;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_city]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_city" value="[client.clients_city;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_state]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_state" value="[client.clients_state;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_zip_code]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_zipcode" value="[client.clients_zipcode;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_country]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_country" value="[client.clients_country;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td>[lang.lang_website]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_website" value="[client.clients_website;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_clients_optionalfield1] == 1;comm]-->
+                        <td> [row.wi_clients_optionalfield1;noerr]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_optionalfield1" value="[client.clients_optionalfield1;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_clients_optionalfield2] == 1;comm]-->
+                        <td> [row.wi_clients_optionalfield2;noerr]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_optionalfield2" value="[client.clients_optionalfield2;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <!--[onshow;block=tr;when [visible.wi_clients_optionalfield3] == 1;comm]-->
+                        <td> [row.wi_clients_optionalfield3;noerr]</td>
+                        <td><div class="col-sm-12 no-padding-both">
+                            <input type="text" class="form-control" name="clients_optionalfield3" value="[client.clients_optionalfield3;noerr]" autocomplete="off">
+                          </div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="box-footer">
+                  <div class="pull-right">
+                    <input type="submit" class="btn btn-success" name="submit" value="[lang.lang_save_changes]">
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!---------------------------------------CLIENT PROFILE END--------------------------------->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_EDIT_PROFILE-->
+<script>
+$().ready(function(){
+    //USED BY: EDIT CLIENT PROFILE
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#editClientProfile").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            clients_company_name: "required",
+            clients_address: "required",
+			clients_city: "required",
+			clients_state: "required",
+			clients_zipcode: "required",
+			[js_validation.wi_clients_optionalfield1;htmlconv=no]
+			[js_validation.wi_clients_optionalfield2;htmlconv=no]
+			[js_validation.wi_clients_optionalfield3;htmlconv=no]
+			clients_country: "required"
+        },
+        messages: {
+            clients_company_name: "[lang.lang_field_is_required;noerr]",
+            clients_address: "[lang.lang_field_is_required;noerr]",
+			clients_city: "[lang.lang_field_is_required;noerr]",
+			clients_state: "[lang.lang_field_is_required;noerr]",
+			clients_zipcode: "[lang.lang_field_is_required;noerr]",
+			[js_validation_message.wi_clients_optionalfield1;htmlconv=no]
+			[js_validation_message.wi_clients_optionalfield2;htmlconv=no]
+			[js_validation_message.wi_clients_optionalfield3;htmlconv=no]
+			clients_country: "required"
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_EDIT_PROFILE-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

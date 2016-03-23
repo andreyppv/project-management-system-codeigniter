@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+<!----------------------COMMON PAGE HEADING--------------------------------->
+<!--[onload;file=common.heading.html;getbody;comm]-->
+<!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <div class="container">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_USERS_SEARCH-->
+        <div class="navbar navbar-default" role="navigation">
+          <!--[onshow;block=div;when [visible.wi_users_search] == 1;comm]-->
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">[lang.lang_toggle_navigation]</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+           </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form class="navbar-form navbar-left form-small" action="[conf.site_url]/admin/users/search-users" method="post">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="client_users_id" placeholder="[lang.lang_id]" >
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="clients-list" data-placeholder="[lang.lang_company_name]" name="client_users_id">
+                    <option></option>
+                    
+                                       
+                  <!--[lists.all_clients;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                  
+                  </select>
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="users-list" data-placeholder="[lang.lang_full_name]" name="client_users_full_name">
+                    <option></option>
+                    
+                                       
+                  <!--[lists.all_users;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                  
+                  </select>
+                </div>
+                <div class="form-group">
+                  <!--select2.js pulldown-->
+                  <select id="users-email-list" data-placeholder="[lang.lang_email]" name="client_users_email">
+                    <option></option>
+                    
+                                       
+                  <!--[lists.all_users_email;noerr;htmlconv=no;protect=no;comm]-->            
+                  
+                  
+                  </select>
+                </div> <div class="form-group">
+                <button type="submit" class="btn btn-primary">[lang.lang_search_users]</button></div>
+                              <div class="form-group">
+                <button href="#addNewUserModal" class="btn btn-success" data-toggle="modal"><i class="icon-plus"></i> [lang.lang_add_new_user]</button>
+              </div>
+              </form>
+
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!--WI_USERS_SEARCH END-->
+        <!--WI_USERS_TABLE-->
+        <div class="row fullscreen-mode">
+          <!--[onshow;block=div;when [visible.wi_users_table] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-head-light">
+                <div class="pull-left">
+                  
+                  <div class="bns-info-div pull-left">
+                    
+                    <i class="icon-list"></i> [lang.lang_users]</div>
+                </div>
+                <div class="widget-icons pull-right"> <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> <a href="#" class="wclose"><i class="icon-remove"></i></a> </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-content">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th><a href="[vars.sortby_userid;noerr]">ID<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_fullname;noerr]">
+                        
+                        [lang.lang_full_name]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_companyname;noerr]">
+                        
+                        [lang.lang_company_name]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th>
+                        [lang.lang_telephone]</th>
+                      <th>[lang.lang_email]</th>
+                      <th style="width:50px; text-align:center; font-size:14px;">
+                        <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><!--[blk1.client_users_id;block=tr;comm]--></td>
+                      <td><a class="links-blue iframeModal"
+                                data-toggle="modal" 
+                                data-modal-window-title="Edit User Profile"
+                                data-src="[conf.site_url]/admin/users/edit-modal/[blk1.client_users_id;block=tr]" 
+                                data-height="350" 
+                                data-width="100%" 
+                                data-target="#modalIframe">
+                        <!--[blk1.client_users_full_name;block=tr;onformat=runtime_check_blank_ucwords;ope=max:20;comm]-->
+                        </a></td>
+                      <td><!--[blk1.clients_company_name;block=tr;comm;onformat=runtime_check_blank_ucwords;htmlconv=no;ope=max:20]-->                      </td>
+                      <td><!--[blk1.client_users_telephone;block=tr;comm;onformat=runtime_check_blank;ope=max:15]--></td>
+                      <td><!--[blk1.client_users_email;block=tr;comm;onformat=runtime_check_blank]-->                      </td>
+                      <td><!--control buttons edit-->
+                        <button class="btn btn-xs btn-info iframeModal"
+                                data-toggle="modal" 
+                                data-modal-window-title="[lang.lang_edit_user_profile]"
+                                data-src="[conf.site_url]/admin/users/edit-modal/[blk1.client_users_id;block=tr]" 
+                                data-height="350" 
+                                data-width="100%" 
+                                data-target="#modalIframe"><i class="icon-pencil"></i></button>
+                        <!--control buttons edit - end-->
+                        <!--control buttons delete-->
+                        <button class="btn btn-xs btn-danger ajax-delete-record"
+                                data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                    data-popconfirm-no="[lang.lang_no;noerr]"
+                                data-popconfirm-title="[lang.lang_confirm_delete_milestone;noerr]"
+                                data-popconfirm-placement="left"
+                                data-mysql-record-id="[blk1.client_users_id;block=tr]"
+                                data-mysql-record-id2 = "[blk1.clients_id;block=tr]"
+                                data-ajax-url="[conf.site_url_admin]/admin/ajax/delete-client-user"> <i class="icon-trash"></i> </button>
+                        <!--control buttons delete - end -->                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <!--WI_PAGINATION-->
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <!--WI_PAGINATION-->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_USERS_TABLE-->
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"></h4>
+		  <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--WI_ADD_NEW_USER_MODAL-->
+<div class="row">
+  <div id="addNewUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/users/add" method="post" id="addNewUser">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              
+              [lang.lang_add_new_user]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_full_name]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_full_name" name="client_users_full_name" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_company_name]</label>
+              <div class="col-lg-12">
+                <!--select2.js pulldown-->
+                <select id="client-company-list" name="client_users_clients_id" style="width:100%">
+                   
+               
+ <!--[lists.all_clients_byid;noerr;htmlconv=no;protect=no;comm]-->
+
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_job_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_job_position_title" name="client_users_job_position_title" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              lang_email_address</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_email" name="client_users_email" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_telephone]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="client_users_telephone" name="client_users_telephone" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              
+              [lang.lang_password]</label>
+              <div class="col-lg-12">
+                <input type="password" class="form-control" id="client_users_password" name="client_users_password" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_primary_contact]?</label>
+              <div class="col-lg-12">
+                <div class="make-switch" data-on="info" data-off="danger" data-on-label="yes" data-off-label="no">
+                  <input type="checkbox" checked="" name="client_users_main_contact">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_add_new_client]" id="" name="submit">
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_USER_MODAL-->
+<!--JS_WI_ADD_NEW_USER_MODAL-->
+<script>
+//[usedby]: WI_ADD_NEW_USER_MODAL
+//[actions]: creates a noce pull down/select for each specified field
+//[requires]: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#client-company-list").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_WI_ADD_NEW_USER_MODAL-->
+<!--JS_WI_USERS_SEARCH-->
+<script>
+//USED BY: WI_USERS_SEARCH
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#users-list").select2({
+        allowClear: true
+    });
+    $("#clients-list").select2({
+        allowClear: true
+    });
+    $("#users-email-list").select2({
+        allowClear: true
+    });
+</script>
+<!--JS_WI_USERS_SEARCH-->
+<!--JS_ADD_NEW_USER_MODAL-->
+<script>
+$().ready(function(){
+    //USED BY: WI_ADD_NEW_USER_MODAL
+    //ACTIONS: validates the [add new client, modal] form. Each specified field is validated on submit
+    //         when form is validated, its posted to appropriate controller, where more validation will be done
+    //REQUIRES: jquery.validate.js
+    $("#addNewUser").validate({
+        rules: {
+        
+            //fixed fields - each form field that needs to be validated
+            client_users_clients_id: "required",
+            client_users_full_name: "required",
+            client_users_job_position_title: "required",
+            client_users_telephone: "required",
+            client_users_email: {
+                required: true,
+                email: true,
+                remote: {
+                    url: "[conf.site_url;noerr]/common/ajax/validation-is-user-email-in-use",
+                    type: "post"
+                }
+            },
+            client_users_password: {
+                required: true,
+                minlength: 8
+            }
+        },
+        messages: {
+            client_users_clients_id: "[lang.lang_field_is_required]",
+            client_users_full_name: "[lang.lang_field_is_required]",
+            client_users_job_position_title: "[lang.lang_field_is_required]",
+            client_users_telephone: "[lang.lang_field_is_required]",
+            client_users_email: {
+                required: "[lang.lang_please_enter_a_valid_email_address]",
+                remote: "[lang.lang_email_address_is_already_in_use]"
+            },
+            client_users_password: {
+                required: "[lang.lang_field_is_required]",
+                minlength: "[lang.lang_password_must_be_at_least_eight]"
+            }
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+    
+    
+});
+</script>
+<!--JS_ADD_NEW_USER_MODAL-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

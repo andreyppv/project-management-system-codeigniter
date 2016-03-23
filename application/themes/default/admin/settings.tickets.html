@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <div class="mainbar">
+<!----------------------COMMON PAGE HEADING--------------------------------->
+<!--[onload;file=common.heading.html;getbody;comm]-->
+<!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <div class="container">
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <!--[onload;file=common.settings.header.html;getbody;comm]-->
+        <!----------------------COMMON PROJECT HEAD--------------------------------->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="widget">
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <!--[onload;file=common.settings.menu.html;getbody;comm]-->
+              <!----------------------COMMON SETTINGS MENU--------------------------------->
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+                <div class="project-info-tabs">
+                  <!--actions navigation end-->
+                  <div class="row">
+                    <div class="col-md-12"> <a class="btn btn-mid btn-success pull-right"  data-toggle="modal"  href="#addNewDepartment">
+                      <!--[onshow;block=div;when [visible.wi_ticket_departments_add] == 1;comm]-->
+                      <i class="icon-plus"></i>
+                      [lang.lang_add_department]</a>
+                      <div class="tabs-sub-nav messaging-menu"> <span class="pull-left">
+                        <h3>[lang.lang_tickets] - [vars.ticket_settings_title]</h3>
+                        </span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--actions navigation end-->
+                  <!--WI_GENERAL_SETTINGS_FORM-->
+                  <div class="row">
+                    <!--WI_SIDE_MENU-->
+                    <div class="col-lg-3">
+                      <div class="widget side-menu-container wtabs">
+                        <div class="side-menu">
+                          <ul>
+                            <li class="[vars.css_menu_settings_side_home;noerr]"> <a href="[conf.site_url]/admin/settings/tickets">
+                              [lang.lang_settings_home]</a></li>
+                            <li class="[vars.css_menu_settings_side_departments;noerr]"> <a href="[conf.site_url]/admin/settings/tickets/view-departments">
+                              [lang.lang_departments]</a></li>
+                            <li class="[vars.css_menu_settings_side_mailer;noerr]"> <a href="[conf.site_url]/admin/settings/tickets/view-mailer">
+                              [lang.lang_mail_reader] (IMAP/POP3)</a>
+                              <!--[onshow;block=li;when [visible.wi_tickets_mail_reader] == 1;comm]-->
+                              </li>
+                          </ul>
+                          <div class="side-menu-details">
+                            <!--[onshow;block=div;when [visible.no_templates_found] == 1;comm]-->
+                            [lang.lang_no_templates_found]</div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--WI_SIDE_MENU_END-->
+                    <!--WI_EDIT_TABLE-->
+                    <div class="col-md-9">
+                      <!--[onshow;block=div;when [visible.wi_ticket_departments_table] == 1;comm]-->
+                      <div class="widget wtabs">
+                        <div class="widget-content">
+                          <table class="table table-bordered table-hover table-forms">
+                            <thead>
+                              <tr>
+                                <th>[lang.lang_name]</th>
+                                <th>[lang.lang_tickets]</th>
+                                <th>[lang.lang_action]</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><!--[tickets.department_name;block=tr;onformat=runtime_check_blank;noerr;comm;ope=max:20;]--></td>
+                                <td><!--[tickets.tickets_count;block=tr;onformat=runtime_check_blank;noerr;comm]--></td>
+                                <td><!--WI_TICKETS_CONTROL-->
+                                  <div>
+                                    <!--migrate tickets-->
+                                    <button data-toggle="modal" class="btn btn-info btn-smallest migrate-tickets"
+                                                  href="#migrateTicketsModal"
+                                                  data-department-id="[tickets.department_id;block=tr;noerr]"
+                                                  data-department-name="[tickets.department_name;block=tr;noerr]"
+                                                  data-department-desription="[tickets.department_description;block=tr;noerr]"> <i class="icon-exchange"></i>
+                                    [lang.lang_move_tickets]</button>
+                                    <!--migrate tickets end-->
+                                    <!--delete department -->
+                                    <button class="btn btn-smallest btn-danger ajax-delete-record"
+                                            data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                                data-popconfirm-no="[lang.lang_no;noerr]"
+                                            data-popconfirm-title="[lang.lang_confirm_delete_ticket_departmet;noerr]"
+                                            data-popconfirm-placement="left"
+                                            data-mysql-record-id="[tickets.department_id;block=tr]"
+                                            data-ajax-url="[conf.site_url]/admin/ajax/delete-department"> <i class="icon-trash"></i>
+                                    [lang.lang_delete_department]</button>
+                                    <!--delete department -->
+                                    <!--delete tickets -->
+                                    <a class="btn btn-smallest btn-danger confirm-url-action"
+                                            href="[conf.site_url]/admin/settings/tickets/delete-tickets/[tickets.department_id;block=tr]"
+                                            data-popconfirm-yes="[lang.lang_yes;noerr]"
+			                                data-popconfirm-no="[lang.lang_no;noerr]"
+                                            data-popconfirm-title="[lang.lang_confirm_delete_department_tickets;noerr]"
+                                            data-popconfirm-placement="left"> <i class="icon-trash"></i>
+                                    [lang.lang_delete_tickets]</a>
+                                    <!--delete tickets -->
+                                    <!--edit department-->
+                                    <button data-toggle="modal" class="btn btn-success btn-smallest edit-department"
+                                                  href="#editDepartmentModal"
+                                                  data-department-id="[tickets.department_id;block=tr;noerr]"
+                                                  data-department-name="[tickets.department_name;block=tr;noerr]"
+                                                  data-department-description="[tickets.department_description;block=tr;noerr]"> <i class="icon-edit"></i>
+                                    [lang.lang_edit_settings]</button>
+                                    <!--edit department end-->
+                                  </div>
+                                  <!--WI_TICKETS_CONTROL-->
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="widget-foot">
+                          <div class="bns-info-div pull-left"></div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                      <div class="alert alert-info">
+                        <!--[onshow;block=div;when [settings_general.show_information_tips] == 'yes';comm]-->
+                         <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_disable_info]"> <i class="icon-info-sign"></i> </a>
+                        <!--info start-->[lang.lang_info_migrate_tickets;noerr]<!--info end--></div>
+                      <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                    </div>
+                    <!--WI_EDIT_TABLE_END-->
+                    <!--WI_TICKETS_MAILER_SETTINGS-->
+                    <div class="col-md-9">
+                      <!--[onshow;block=div;when [visible.wi_ticket_mailer_settings] == 1;comm]-->
+                      <form class="form-horizontal" action="[conf.site_url]/admin/settings/tickets/edit-mailer" method="post" id="editGeneralSettings">
+                        <div class="widget wtabs">
+                          <div class="widget-content">
+                            <table class="table table-bordered table-hover table-forms">
+                              <thead>
+                                <tr>
+                                  <th class="col-md-3">[lang.lang_item]</th>
+                                  <th>[lang.lang_value]</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>[lang.lang_enable_email_tickets]
+                                    <!--info-tip-->
+                                    <a class="pull-right" 
+                                       title="[lang.lang_enable_mailer]"  
+                                       data-container="body" 
+                                       data-toggle="popover" 
+                                       data-placement="top" 
+                                       data-content="[lang.lang_info_enable_mailer]"> <i class="icon-info-sign"></i> </a>
+                                    <!--info-tip-->
+                                  </td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="tickets_mailer_enabled" 
+                          id="tickets_mailer_enabled"
+                          data-mailer-enabled-preselected="[mailer.tickets_mailer_enabled;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_delate_imported_emails]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="tickets_mailer_delete_read" 
+                          id="tickets_mailer_delete_read" 
+                          data-tickets-mailer-delete-read-preselected="[mailer.tickets_mailer_delete_read;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    IMAP/POP</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="tickets_mailer_imap_pop" id="tickets_mailer_imap_pop" data-tickets-mailer-imap-pop-preselected="[mailer.tickets_mailer_imap_pop;noerr]">
+                                        <option value="IMAP">IMAP</option>
+                                        <option value="POP">POP</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    SSL</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <select name="tickets_mailer_ssl" id="tickets_mailer_ssl" data-tickets-mailer-ssl-preselected="[mailer.tickets_mailer_ssl;noerr]">
+                                        <option value="yes">[lang.lang_yes;noerr]</option>
+                                        <option value="no">[lang.lang_no;noerr]</option>
+                                      </select>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_email_address]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_email_address" name="tickets_mailer_email_address" value="[mailer.tickets_mailer_email_address;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_email_server]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_server" name="tickets_mailer_server" value="[mailer.tickets_mailer_server;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>lang_email_server_port</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_server_port" name="tickets_mailer_server_port" value="[mailer.tickets_mailer_server_port;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_username]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_username" name="tickets_mailer_username" value="[mailer.tickets_mailer_username;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>[lang.lang_password]</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_password" name="tickets_mailer_password" value="[mailer.tickets_mailer_password;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>lang_additional_flags</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_flags" name="tickets_mailer_flags" value="[mailer.tickets_mailer_flags;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                  <td>IMAP Server</td>
+                                  <td><div class="col-sm-12 col-md-8 no-padding-both">
+                                      <input type="text" class="form-control" id="tickets_mailer_imap_settings" name="tickets_mailer_imap_settings" value="[mailer.tickets_mailer_imap_settings;noerr]" autocomplete="off">
+                                    </div></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="widget-foot">
+                            <div class="bns-info-div pull-right">
+                              <!--control submit form button-->
+                              <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+                              <!--control submit form button-->
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </form>
+                      <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                      <div class="alert alert-info">
+                        <!--[onshow;block=div;when [settings_general.show_information_tips] == 'yes';comm]-->
+                         <a title="[lang.lang_info_information_and_tips]"  
+                            data-container="body" 
+                            data-toggle="popover" 
+                            data-placement="top" 
+                            data-content="[lang.lang_info_disable_info]"> <i class="icon-info-sign"></i> </a>
+                        <!--info start-->[lang.lang_info_check_mailer;noerr]<!--info end--></div>
+                      <!---------------------------------------WI_INFORMATION_AND_TIPS------------------------------------->
+                    </div>
+                    <!--WI_TICKETS_MAILER_SETTINGS-->
+                    <!--WI_INNER_TABS_NOTIFICATION-->
+                    <div class="col-lg-9">
+                      <!--[onshow;block=div;when [visible.wi_inner_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                    <!--WI_INNER_TABS_NOTIFICATION-->
+                  </div>
+                  <!--WI_SETTINGS_FORM-->
+                  <!--wi_tabs_notification-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <!--[onshow;block=div;when [visible.wi_tabs_notification] == 1;comm]-->
+                      <div class="widget-tabs-notification"> [vars.notification;noerr] </div>
+                    </div>
+                  </div>
+                  <!--wi_tabs_notification-->
+                </div>
+                <!-----------------------------------------------TAB SECTION------------------------------------------------------->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_DEPARTMENT_MODAL-->
+<div class="row">
+  <div id="addNewDepartment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/settings/tickets/add-department" method="post" id="addDepartment">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_add_new_ticket_department]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_name]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="department_name" name="department_name" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="department_description" name="department_description" autocomplete="off">
+              </div>
+            </div>
+            <!--[conditional] - for project leader only-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input class="btn btn-primary" type="submit" value="[lang.lang_submit]" id="" name="submit">
+            
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_ADD_NEW_DEPARTMENT_MODAL-->
+<!--WI_MIGRATE_TICKETS-->
+<div class="row">
+  <div id="migrateTicketsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/settings/tickets/migrate-tickets" method="post" id="migrateTickets">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title" id="migrate_modal_title"></h4>
+          </div>
+          <div class="modal-body">
+            <!-- Email -->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12 full-width" for="new_groups_id">
+              [lang.lang_move_tickets_to_department]</label>
+              <div class="col-lg-12">
+                <select id="new_departments_id" name="new_departments_id">
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              <!--[lists.all_departments_id;noerr;htmlconv=no;protect=no;comm]-->
+              
+              
+                
+                
+                
+                
+                
+                
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+            [lang.lang_close]</button>
+            <input type="hidden" name="old_departemnts_id" id="migrate_modal_department_id" value="">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_MIGRATE_TICKETS(end)-->
+<!--WI_EDIT_DEPARTMENT_MODAL-->
+<div class="row">
+  <div id="editDepartmentModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="form-horizontal" action="[conf.site_url]/admin/settings/tickets/edit-department" method="post" id="editDepartment">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title">
+              [lang.lang_edit_department]</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_name]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="department_name_edit" name="department_name" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;">
+              [lang.lang_description]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" id="department_description_edit" name="department_description" autocomplete="off">
+              </div>
+            </div>
+            <!--[conditional] - for project leader only-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+            <input type="hidden" name="department_id" id="department_id_edit">
+            <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id="" name="submit">
+            
+            
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--WI_EDIT_DEPARTMENT_MODAL-->
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_ADD_NEW_DEPARTMENT_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_ADD_NEW_DEPARTMENT_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#addDepartment").validate({
+		rules: {
+             department_name: "required",
+			 department_description: "required"
+		},
+		messages: {
+			department_name: "[lang.lang_field_is_required]",
+			department_description: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_ADD_NEW_DEPARTMENT_MODAL-->
+<!--JS_MIGRATE_TICKETS-->
+<script>
+//USED BY: WI_MIGRATE_TICKETS
+//ACTIONS: creates a noce pull down/select for each specified field
+//REQUIRES: select2.js
+//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
+    $("#new_departments_id").select2({
+        allowClear: false
+    });
+</script>
+<!--JS_MIGRATE_TICKETS-->
+<!--WI_MIGRATE_TICKETS-->
+<script type="text/javascript">
+$().ready(function(){
+    //USED BY: WI_MIGRATE_TICKETS
+    //ACTIONS: dynamically add data into modal form
+    //REQUIRES: n/a   
+    $(".migrate-tickets").click(function(e){
+	
+        //get variables from link attributes
+        var migrate_department_id = $(this).attr("data-department-id");
+		var migrate_department_name = $(this).attr("data-department-name");
+        //set hidden form field to this group_id
+        $("#migrate_modal_department_id").val(migrate_department_id);
+		$("#migrate_modal_title").html(migrate_department_name);
+		       
+    });
+});
+</script>
+<!--WI_MIGRATE_TICKETS-->
+<!--JS_EDIT_DEPARTMENT_MODAL-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //USED BY: WI_EDIT_TASK_MODAL
+	//ACTIONS: dynamically add data into modal form
+	//REQUIRES: jquery.js
+	//ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
+    //REQUIRES-2: select2.js
+		
+    //---edit item link clicked-------
+    $(".edit-department").click(function(){
+    
+        //get variables from "edit link" data attributes
+        var data_department_id_edit = $(this).attr("data-department-id");
+		var data_department_name_edit = $(this).attr("data-department-name");
+		var department_description_edit = $(this).attr("data-department-description");
+
+        //set modal input values dynamically
+		$('#department_id_edit').val(data_department_id_edit);
+		$('#department_name_edit').val(data_department_name_edit);
+		$('#department_description_edit').val(department_description_edit);
+  });
+    
+});
+</script>
+<!--JS_EDIT_DEPARTMENT_MODAL-->
+<!--JS_EDIT_DEPARTMENT_MODAL-->
+<script type="text/javascript">
+$().ready(function() {
+    //USED BY: WI_EDIT_DEPARTMENT_MODAL
+	//ACTIONS: validates the form and submits it
+	//REQUIRES: jquery.validate.js
+	$("#editDepartment").validate({
+		rules: {
+             department_name: "required",
+			 department_description: "required"
+		},
+		messages: {
+			department_name: "[lang.lang_field_is_required]",
+			department_description: "[lang.lang_field_is_required]"
+		},
+		submitHandler: function(form) {
+        //alert('form submitted');
+		form.submit();
+        }
+	});
+});
+</script>
+<!--JS_EDIT_DEPARTMENT_MODAL-->
+<!--JS_TICKETS_MAILER_SETTINGS-->
+<script type="text/javascript">
+<!--[onshow;block=script;when [visible.wi_ticket_mailer_settings] == 1;comm]-->
+$(document).ready(function(){
+    //USED BY: WI_TICKETS_MAILER_SETTINGS
+	//ACTIONS: creates a pull down/select for each specified field (with preselected values)
+    //REQUIRES: select2.js
+	//NOTES: only load this script when mailer section is loaded (wi_ticket_mailer_settings)
+		
+        //get variables from "edit link" data attributes
+        var tickets_mailer_enabled = $("#tickets_mailer_enabled").attr("data-mailer-enabled-preselected");
+		var tickets_mailer_delete_read = $("#tickets_mailer_delete_read").attr("data-tickets-mailer-delete-read-preselected");
+		var tickets_mailer_imap_pop = $("#tickets_mailer_imap_pop").attr("data-tickets-mailer-imap-pop-preselected");
+		var tickets_mailer_ssl = $("#tickets_mailer_ssl").attr("data-tickets-mailer-ssl-preselected");
+
+
+       //pre-select data in pull down lists
+       $("#tickets_mailer_enabled").select2().select2('val', tickets_mailer_enabled); 
+       $("#tickets_mailer_delete_read").select2().select2('val', tickets_mailer_delete_read);
+       $("#tickets_mailer_imap_pop").select2().select2('val', tickets_mailer_imap_pop);
+       $("#tickets_mailer_ssl").select2().select2('val', tickets_mailer_ssl); 
+    
+});
+</script>
+<!--JS_TICKETS_MAILER_SETTINGS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>
